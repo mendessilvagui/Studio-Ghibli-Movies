@@ -9,23 +9,27 @@
 /* Begin PBXBuildFile section */
 		D23E9C90264CEB1500312A56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9C8F264CEB1500312A56 /* AppDelegate.swift */; };
 		D23E9C92264CEB1500312A56 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9C91264CEB1500312A56 /* SceneDelegate.swift */; };
-		D23E9C94264CEB1500312A56 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9C93264CEB1500312A56 /* ViewController.swift */; };
+		D23E9C94264CEB1500312A56 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9C93264CEB1500312A56 /* WelcomeViewController.swift */; };
 		D23E9C97264CEB1500312A56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D23E9C95264CEB1500312A56 /* Main.storyboard */; };
 		D23E9C9A264CEB1500312A56 /* Studio_Ghibli_Movies.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D23E9C98264CEB1500312A56 /* Studio_Ghibli_Movies.xcdatamodeld */; };
 		D23E9C9C264CEB2100312A56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D23E9C9B264CEB2100312A56 /* Assets.xcassets */; };
 		D23E9C9F264CEB2100312A56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D23E9C9D264CEB2100312A56 /* LaunchScreen.storyboard */; };
+		D23E9CAC264DD60F00312A56 /* MoviesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9CAB264DD60F00312A56 /* MoviesTableViewController.swift */; };
+		D23E9CAE264DD64700312A56 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9CAD264DD64700312A56 /* FavoritesTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D23E9C8C264CEB1500312A56 /* Studio Ghibli Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Studio Ghibli Movies.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D23E9C8F264CEB1500312A56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D23E9C91264CEB1500312A56 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D23E9C93264CEB1500312A56 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D23E9C93264CEB1500312A56 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		D23E9C96264CEB1500312A56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D23E9C99264CEB1500312A56 /* Studio_Ghibli_Movies.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Studio_Ghibli_Movies.xcdatamodel; sourceTree = "<group>"; };
 		D23E9C9B264CEB2100312A56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D23E9C9E264CEB2100312A56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D23E9CA0264CEB2100312A56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D23E9CAB264DD60F00312A56 /* MoviesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesTableViewController.swift; sourceTree = "<group>"; };
+		D23E9CAD264DD64700312A56 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,14 +64,40 @@
 			children = (
 				D23E9C8F264CEB1500312A56 /* AppDelegate.swift */,
 				D23E9C91264CEB1500312A56 /* SceneDelegate.swift */,
-				D23E9C93264CEB1500312A56 /* ViewController.swift */,
-				D23E9C95264CEB1500312A56 /* Main.storyboard */,
+				D23E9CAF264DDA4D00312A56 /* Models */,
+				D23E9CAA264DD5B900312A56 /* Views */,
+				D23E9CA9264DD58D00312A56 /* Controllers */,
 				D23E9C9B264CEB2100312A56 /* Assets.xcassets */,
 				D23E9C9D264CEB2100312A56 /* LaunchScreen.storyboard */,
 				D23E9CA0264CEB2100312A56 /* Info.plist */,
-				D23E9C98264CEB1500312A56 /* Studio_Ghibli_Movies.xcdatamodeld */,
 			);
 			path = "Studio Ghibli Movies";
+			sourceTree = "<group>";
+		};
+		D23E9CA9264DD58D00312A56 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D23E9C93264CEB1500312A56 /* WelcomeViewController.swift */,
+				D23E9CAB264DD60F00312A56 /* MoviesTableViewController.swift */,
+				D23E9CAD264DD64700312A56 /* FavoritesTableViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D23E9CAA264DD5B900312A56 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D23E9C95264CEB1500312A56 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D23E9CAF264DDA4D00312A56 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D23E9C98264CEB1500312A56 /* Studio_Ghibli_Movies.xcdatamodeld */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,9 +170,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D23E9C94264CEB1500312A56 /* ViewController.swift in Sources */,
+				D23E9C94264CEB1500312A56 /* WelcomeViewController.swift in Sources */,
 				D23E9C90264CEB1500312A56 /* AppDelegate.swift in Sources */,
 				D23E9C92264CEB1500312A56 /* SceneDelegate.swift in Sources */,
+				D23E9CAE264DD64700312A56 /* FavoritesTableViewController.swift in Sources */,
+				D23E9CAC264DD60F00312A56 /* MoviesTableViewController.swift in Sources */,
 				D23E9C9A264CEB1500312A56 /* Studio_Ghibli_Movies.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
