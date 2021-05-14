@@ -37,22 +37,22 @@ class MoviesTableViewController: UITableViewController {
         return  movieList.count
 
     }
-//
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "AllMoviesCell", for: indexPath)
-//        cell.textLabel?.text = String(self.movieList[indexPath.row].index
-//        return cell
-//    }
-//
-//    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-//
-//        self.performSegue(withIdentifier: "goToDetails", sender: self)
-//    }
-//
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AllMoviesCell", for: indexPath)
+        cell.textLabel?.text = self.movieList[indexPath.row].title
+        return cell
+    }
+
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+
+        self.performSegue(withIdentifier: "goToDetails", sender: self)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+    }
 
 }
 
