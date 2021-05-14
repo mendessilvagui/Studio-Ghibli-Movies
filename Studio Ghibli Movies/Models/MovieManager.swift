@@ -11,33 +11,31 @@ class MovieManager {
 
     let url = "https://ghibliapi.herokuapp.com/films/"
 
-    func fetchMovie(from url: String) {
+    func fetchMovie(completionHandler:@escaping ([MovieData]) -> Void) {
         
-        let task = URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: { data, response, error in
-            
-            guard let data = data, error == nil else {
-                print("Couldn't fetch data.")
-                return
-            }
-            
-            var result: [MovieData]?
-            
-            do {
-                result = try JSONDecoder().decode([MovieData].self, from: data)
-            } catch {
-                print("Failed to convert data \(error.localizedDescription)")
-            }
-            
-            guard let json = result else {
-                return
-            }
-            
-            print(json[0].description)
-            print(json[0].director)
-            print(json[0].original_title)
-        })
+        var movieList = [MovieData]()
         
-        task.resume()
+        if let urlToServer = URL.init(string: url) {
+            
+            let task = URLSession.shared.dataTask(with: urlToServer, completionHandler: { data, response, error in
+            
+                if error != nil || data == nil {
+                    print("An error occured while fetching data from API")
+                } else {
+                    if let responseText = String.init(data: data!, encoding: .ascii) {
+                        let jsonData = responseText.data(using: .utf8)!
+                        movieList = try! JSONDecoder().decode([MovieData].self, from: jsonData)
+                        completionHandler(movieList)
+                    }
+                }
+            })
+            
+            task.resume()
+        }
+        
+        completionHandler(movieList)
     }
 }
+
+
 
