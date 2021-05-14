@@ -16,6 +16,8 @@
 		D23E9C9F264CEB2100312A56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D23E9C9D264CEB2100312A56 /* LaunchScreen.storyboard */; };
 		D23E9CAC264DD60F00312A56 /* MoviesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9CAB264DD60F00312A56 /* MoviesTableViewController.swift */; };
 		D23E9CAE264DD64700312A56 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9CAD264DD64700312A56 /* FavoritesTableViewController.swift */; };
+		D23E9CB1264E04E000312A56 /* MovieData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9CB0264E04E000312A56 /* MovieData.swift */; };
+		D23E9CB3264E0E2F00312A56 /* MovieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9CB2264E0E2F00312A56 /* MovieManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		D23E9CA0264CEB2100312A56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D23E9CAB264DD60F00312A56 /* MoviesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesTableViewController.swift; sourceTree = "<group>"; };
 		D23E9CAD264DD64700312A56 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
+		D23E9CB0264E04E000312A56 /* MovieData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieData.swift; sourceTree = "<group>"; };
+		D23E9CB2264E0E2F00312A56 /* MovieManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				D23E9C98264CEB1500312A56 /* Studio_Ghibli_Movies.xcdatamodeld */,
+				D23E9CB0264E04E000312A56 /* MovieData.swift */,
+				D23E9CB2264E0E2F00312A56 /* MovieManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -173,9 +179,11 @@
 				D23E9C94264CEB1500312A56 /* WelcomeViewController.swift in Sources */,
 				D23E9C90264CEB1500312A56 /* AppDelegate.swift in Sources */,
 				D23E9C92264CEB1500312A56 /* SceneDelegate.swift in Sources */,
+				D23E9CB1264E04E000312A56 /* MovieData.swift in Sources */,
 				D23E9CAE264DD64700312A56 /* FavoritesTableViewController.swift in Sources */,
 				D23E9CAC264DD60F00312A56 /* MoviesTableViewController.swift in Sources */,
 				D23E9C9A264CEB1500312A56 /* Studio_Ghibli_Movies.xcdatamodeld in Sources */,
+				D23E9CB3264E0E2F00312A56 /* MovieManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
