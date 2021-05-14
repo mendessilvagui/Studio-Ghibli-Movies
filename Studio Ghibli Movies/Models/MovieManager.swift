@@ -25,6 +25,7 @@ class MovieManager {
                     if let responseText = String.init(data: data!, encoding: .ascii) {
                         let jsonData = responseText.data(using: .utf8)!
                         movieList = try! JSONDecoder().decode([MovieData].self, from: jsonData)
+            
                         completionHandler(movieList)
                     }
                 }

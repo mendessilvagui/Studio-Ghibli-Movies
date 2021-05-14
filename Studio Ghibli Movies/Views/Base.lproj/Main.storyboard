@@ -74,7 +74,7 @@
                                     <color key="backgroundColor" red="0.84534531830000004" green="0.77848201989999999" blue="0.63526970149999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Ai8-rm-5bp" kind="show" id="7mf-px-UaB"/>
+                                    <segue destination="Ai8-rm-5bp" kind="show" identifier="" id="7mf-px-UaB"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -98,7 +98,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="SlV-FQ-Caf">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AllMoviesCell" id="SlV-FQ-Caf">
                                 <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SlV-FQ-Caf" id="Hkb-dq-6Jh">
@@ -114,15 +114,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="All Movies" id="Fbl-CK-18v"/>
+                    <connections>
+                        <segue destination="Ai8-rm-5bp" kind="show" identifier="goToDetails" id="G40-zp-dZb"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D9U-Je-fp6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1862" y="-285"/>
         </scene>
-        <!--View Controller-->
+        <!--Details View Controller-->
         <scene sceneID="2ua-41-LQV">
             <objects>
-                <viewController id="Ai8-rm-5bp" sceneMemberID="viewController">
+                <viewController id="Ai8-rm-5bp" customClass="DetailsViewController" customModule="Studio_Ghibli_Movies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t6c-Wv-WKg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -182,6 +185,9 @@
             <point key="canvasLocation" x="34.782608695652179" y="93.75"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="G40-zp-dZb"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="LOGO" width="866" height="271"/>
         <image name="TOTORO" width="528" height="967"/>

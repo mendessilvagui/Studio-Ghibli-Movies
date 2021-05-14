@@ -18,4 +18,5 @@ struct MovieData: Codable {
     let release_date : String
     let running_time : String
     let rt_score : String
+    
 }

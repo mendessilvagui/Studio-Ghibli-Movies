@@ -10,7 +10,7 @@ import UIKit
 class MoviesTableViewController: UITableViewController {
 
     var movieManager = MovieManager()
-    
+
     var movieList = [MovieData]() {
         didSet {
             DispatchQueue.main.async {
@@ -18,32 +18,45 @@ class MoviesTableViewController: UITableViewController {
             }
         }
     }
-    
-    var filteredList = [MovieData]()
 
     override func viewDidLoad() {
-        
+
         movieManager.fetchMovie{ movieArray in
             self.movieList = movieArray
         }
+
         super.viewDidLoad()
         tableView.dataSource = self
 
     }
-    
+
     //MARK - TableView Datasource Methods
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(movieList)
         return  movieList.count
+
     }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AllMoviesCell", for: indexPath)
-        cell.textLabel?.text = self.movieList[indexPath.row].title
-        return cell
-    }
+//
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "AllMoviesCell", for: indexPath)
+//        cell.textLabel?.text = String(self.movieList[indexPath.row].index
+//        return cell
+//    }
+//
+//    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+//
+//        self.performSegue(withIdentifier: "goToDetails", sender: self)
+//    }
+//
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//
+//    }
+
 }
+
+
 
 
 
