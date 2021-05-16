@@ -9,9 +9,9 @@ import Foundation
 
 class MovieManager {
 
-    let url = "https://ghibliapi.herokuapp.com/films/"
-
     func fetchMovie(completionHandler:@escaping ([MovieData]) -> Void) {
+        
+        let url = "https://ghibliapi.herokuapp.com/films"
         
         var movieList = [MovieData]()
         
@@ -25,7 +25,7 @@ class MovieManager {
                     if let responseText = String.init(data: data!, encoding: .ascii) {
                         let jsonData = responseText.data(using: .utf8)!
                         movieList = try! JSONDecoder().decode([MovieData].self, from: jsonData)
-            
+                        print(movieList)
                         completionHandler(movieList)
                     }
                 }
