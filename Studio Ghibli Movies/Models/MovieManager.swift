@@ -7,34 +7,38 @@
 
 import Foundation
 
+protocol MovieManagerDelegate {
+    func didUpdateList(movies: [MovieData])
+}
+
+
 class MovieManager {
 
-    func fetchMovie(completionHandler:@escaping ([MovieData]) -> Void) {
-        
-        let url = "https://ghibliapi.herokuapp.com/films"
-        
-        var movieList = [MovieData]()
-        
-        if let urlToServer = URL.init(string: url) {
+    var delegate: MovieManagerDelegate?
+    
+    var movies = [MovieData]()
+    
+    func fetchMovie(completed: @escaping () -> ()) {
+    
+        let url = URL(string: "https://ghibliapi.herokuapp.com/films/")
             
-            let task = URLSession.shared.dataTask(with: urlToServer, completionHandler: { data, response, error in
-            
-                if error != nil || data == nil {
-                    print("An error occured while fetching data from API")
-                } else {
-                    if let responseText = String.init(data: data!, encoding: .ascii) {
-                        let jsonData = responseText.data(using: .utf8)!
-                        movieList = try! JSONDecoder().decode([MovieData].self, from: jsonData)
-                        print(movieList)
-                        completionHandler(movieList)
+        let task = URLSession.shared.dataTask(with: url!) { [self] (data, response, error) in
+                
+                if error == nil {
+                    do {
+                        self.movies =  try JSONDecoder().decode([MovieData].self, from: data!)
+                        delegate?.didUpdateList(movies: movies)
+                        
+                        DispatchQueue.main.async{
+                            completed()
+                        }
+                        
+                    } catch {
+                        print("JSON error")
                     }
                 }
-            })
-            
+            }
             task.resume()
-        }
-        
-        completionHandler(movieList)
     }
 }
 

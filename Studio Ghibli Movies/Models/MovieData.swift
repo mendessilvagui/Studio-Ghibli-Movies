@@ -7,13 +7,9 @@
 
 import Foundation
 
-struct MovieList: Codable {
-    
-    let movie: [MovieData]
-}
-
 struct MovieData: Codable {
     
+    let id: String
     let title : String
     let original_title : String
     let original_title_romanised: String
