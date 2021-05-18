@@ -44,6 +44,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
         cell.textLabel?.text = movies[indexPath.row].title
+        cell.backgroundColor = UIColor(named: "totoro")
         return cell
     }
     
@@ -52,12 +53,14 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         performSegue(withIdentifier: "showDetails", sender: nil)
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetails" {
             if let destination = segue.destination as? DetailsViewController {
                 destination.movie = movies[(tableView.indexPathForSelectedRow?.row)!]
+                tableView.deselectRow(at: (tableView.indexPathForSelectedRow)!, animated: false)
             }
         }
     }

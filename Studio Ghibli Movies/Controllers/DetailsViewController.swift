@@ -13,13 +13,13 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var originalTitleLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var originalTitleRomanLabel: UILabel!
     @IBOutlet weak var directorLabel: UILabel!
     @IBOutlet weak var producerLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var rtScoreLabel: UILabel!
-    @IBOutlet weak var commentTextField: UITextField!
+    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var commentBox: UILabel!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -34,24 +34,34 @@ class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        titleLabel.text = movie?.title
-        originalTitleLabel.text = "\((movie?.original_title)!) (\((movie?.original_title_romanised)!))"
-        descriptionLabel.text = movie?.description
+        titleLabel.text = movie?.title.uppercased()
+        titleLabel.numberOfLines = 0
+        originalTitleLabel.text = movie?.original_title
+        originalTitleRomanLabel.text = movie?.original_title_romanised
         directorLabel.text = movie?.director
         producerLabel.text = movie?.producer
+        producerLabel.numberOfLines = 0
+        producerLabel.sizeToFit()
         releaseDateLabel.text = movie?.release_date
-        durationLabel.text = movie?.running_time
+        durationLabel.text = "\(String(describing: movie!.running_time)) min"
         rtScoreLabel.text = movie?.rt_score
-        imageView.image = UIImage(named: "\(String(describing: movie!.id)).jpeg")
+        descriptionLabel.text = movie?.description
+        descriptionLabel.numberOfLines = 0
+        descriptionLabel.sizeToFit()
+        imageView.image = UIImage(named: "\(String(describing: movie!.id)).png")
         
         self.updateRighBarButton(isFavorite: self.isFavorited)
-        
         
         loadFavorites()
         
     
 //       print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
     }
+    
+    override open var shouldAutorotate: Bool {
+        return false
+    }
+    
 // MARK: - Updatade favorite button on touch
 
     func updateRighBarButton(isFavorite : Bool){
@@ -109,8 +119,6 @@ class DetailsViewController: UIViewController {
     
         
         present(alert, animated: true, completion: nil)
-        
-        print(textField.text!)
     }
 
 // MARK: - Delete favorite and comment from database
@@ -136,7 +144,6 @@ class DetailsViewController: UIViewController {
 
         do {
             favoriteArray = try context.fetch(request)
-            print(favoriteArray[0].comment!)
         } catch {
             print("Error fetching favorite \(error)")
         }
