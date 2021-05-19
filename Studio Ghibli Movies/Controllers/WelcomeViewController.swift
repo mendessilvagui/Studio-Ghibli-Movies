@@ -13,13 +13,10 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         allMovies.layer.cornerRadius = 20
-        allMovies.layer.borderWidth = 1
     }
-    override open var shouldAutorotate: Bool {
-        return false
-    }
+    
+// MARK: - Hide navbar on title screen
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

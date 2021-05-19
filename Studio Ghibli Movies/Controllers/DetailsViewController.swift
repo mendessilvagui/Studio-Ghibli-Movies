@@ -24,38 +24,38 @@ class DetailsViewController: UIViewController {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    var movie: MovieData?
+    let database = DataBaseHandler.shared
+    
+    var selectedMovie: Movie?
     
     var favoriteArray = [Favorite]()
     
     var isFavorited = false
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        titleLabel.text = movie?.title.uppercased()
+        titleLabel.text = selectedMovie?.title!.uppercased()
         titleLabel.numberOfLines = 0
-        originalTitleLabel.text = movie?.original_title
-        originalTitleRomanLabel.text = movie?.original_title_romanised
-        directorLabel.text = movie?.director
-        producerLabel.text = movie?.producer
+        originalTitleLabel.text = selectedMovie?.original_title
+        originalTitleRomanLabel.text = selectedMovie?.original_title_romanised
+        directorLabel.text = selectedMovie?.director
+        producerLabel.text = selectedMovie?.producer
         producerLabel.numberOfLines = 0
         producerLabel.sizeToFit()
-        releaseDateLabel.text = movie?.release_date
-        durationLabel.text = "\(String(describing: movie!.running_time)) min"
-        rtScoreLabel.text = movie?.rt_score
-        descriptionLabel.text = movie?.description
+        releaseDateLabel.text = selectedMovie?.release_date
+        durationLabel.text = "\(selectedMovie?.running_time ?? "") min"
+        rtScoreLabel.text = selectedMovie?.rt_score
+        descriptionLabel.text = selectedMovie?.more_info
         descriptionLabel.numberOfLines = 0
         descriptionLabel.sizeToFit()
-        imageView.image = UIImage(named: "\(String(describing: movie!.id)).png")
+        imageView.image = UIImage(named: "\(selectedMovie?.id ?? "").png")
         
         self.updateRighBarButton(isFavorite: self.isFavorited)
         
         loadFavorites()
         
-    
-//       print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+//      commentBox.text = favoriteArray[0].comment
     }
     
     override open var shouldAutorotate: Bool {
@@ -68,7 +68,6 @@ class DetailsViewController: UIViewController {
         let favButton = UIButton()
         favButton.addTarget(self, action: #selector(favButtonDidTap), for: .touchUpInside)
 
-
         if isFavorite {
             favButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         }else{
@@ -79,7 +78,6 @@ class DetailsViewController: UIViewController {
     }
 
     @objc func favButtonDidTap() {
-        //do your stuff
         self.isFavorited = !self.isFavorited;
         if self.isFavorited {
             self.favorite();
@@ -91,61 +89,76 @@ class DetailsViewController: UIViewController {
     
 // MARK: - Add favorite and comment to database
 
-    
     func favorite() {
         
         var textField = UITextField()
         
-        let alert = UIAlertController(title: "Add to favorites", message: "", preferredStyle: .alert)
+        let addAlert = UIAlertController(title: "Add to favorites", message: "", preferredStyle: .alert)
         
-        let action = UIAlertAction(title: "Add", style: .default) { (action) in
-            // what will happen once the user clicks the Add Item Button on our UIAlert
-           
+        addAlert.addAction(UIAlertAction(title: "Add", style: .default, handler: { (action: UIAlertAction!) in
+            
             let newFavorite = Favorite(context: self.context)
             newFavorite.comment = textField.text
             newFavorite.selected = true
+            newFavorite.parentMovie = self.selectedMovie
             
             self.favoriteArray.append(newFavorite)
-            self.saveFavorites()
+            self.database.save()
             
-        }
+        }))
+
+        addAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            addAlert.dismiss(animated: true, completion: nil)
+            self.updateRighBarButton(isFavorite: false)
+            self.isFavorited = false
+        }))
         
-        alert.addAction(action)
-        
-        alert.addTextField { (alertTextField) in
+        addAlert.addTextField { (alertTextField) in
             alertTextField.placeholder = "Leave a comment"
             textField = alertTextField
         }
     
-        
-        present(alert, animated: true, completion: nil)
+        present(addAlert, animated: true, completion: nil)
     }
 
 // MARK: - Delete favorite and comment from database
 
     func unfavorite() {
-        //do your unfavourite logic
+        
+        let deleteAlert = UIAlertController(title: "Delete from favorites?", message: "", preferredStyle: .alert)
+        
+        deleteAlert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (action: UIAlertAction!) in
+            
+            self.database.delete(object: self.favoriteArray[0])
+            self.database.save()
+        }))
+
+        deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            deleteAlert.dismiss(animated: true, completion: nil)
+            self.updateRighBarButton(isFavorite: true)
+            self.isFavorited = true
+        }))
+        
+        present(deleteAlert, animated: true, completion: nil)
     }
 
 
-//MARK: - Data Manipulation Methods
+//MARK: - Load favorite to view according to selected movie
     
-    func saveFavorites() {
-        do {
-            try self.context.save()
-        } catch {
-            print("Error saving favorite \(error)")
+    func loadFavorites(with request: NSFetchRequest<Favorite> = Favorite.fetchRequest(), predicate: NSPredicate? = nil) {
+        
+        let moviePredicate = NSPredicate(format: "parentMovie.title MATCHES %@", selectedMovie!.title!)
+        
+        if let additionalPredicate = predicate {
+            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [moviePredicate, additionalPredicate])
+        } else {
+            request.predicate = moviePredicate
         }
-    }
-
-    func loadFavorites() {
-
-        let request : NSFetchRequest<Favorite> = Favorite.fetchRequest()
-
+        
         do {
             favoriteArray = try context.fetch(request)
         } catch {
-            print("Error fetching favorite \(error)")
+            print("Error fetching dara from context \(error)")
         }
     }
 }
