@@ -13,6 +13,8 @@ class APIHandler {
     
     static let shared = APIHandler()
     
+    let firstRun = UserDefaults.standard.bool(forKey: "firstRun") as Bool
+    
     func fetchMovie(completion: @escaping (() -> Void)) {
     
         var req = URLRequest(url: URL(string: "https://ghibliapi.herokuapp.com/films")!)
@@ -23,7 +25,11 @@ class APIHandler {
            
             do {
                 let model = try JSONDecoder().decode([MovieServerModel].self, from: data!)
-                model.forEach { $0.store() }
+                if !self.firstRun {
+                    model.forEach { $0.store() }
+                    UserDefaults.standard.set(true, forKey: "firstRun")
+                }
+                
                 completion()
             } catch {
                 print(error.localizedDescription)

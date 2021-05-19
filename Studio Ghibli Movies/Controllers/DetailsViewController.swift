@@ -52,10 +52,10 @@ class DetailsViewController: UIViewController {
         imageView.image = UIImage(named: "\(selectedMovie?.id ?? "").png")
         
         self.updateRighBarButton(isFavorite: self.isFavorited)
+//      commentBox.text = favoriteArray.last?.comment
         
         loadFavorites()
         
-//      commentBox.text = favoriteArray[0].comment
     }
     
     override open var shouldAutorotate: Bool {
@@ -81,7 +81,7 @@ class DetailsViewController: UIViewController {
         self.isFavorited = !self.isFavorited;
         if self.isFavorited {
             self.favorite();
-        }else{
+        } else {
             self.unfavorite();
         }
         self.updateRighBarButton(isFavorite: self.isFavorited);
@@ -104,6 +104,7 @@ class DetailsViewController: UIViewController {
             
             self.favoriteArray.append(newFavorite)
             self.database.save()
+            self.commentBox.text = self.favoriteArray.last?.comment
             
         }))
 
@@ -129,7 +130,7 @@ class DetailsViewController: UIViewController {
         
         deleteAlert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (action: UIAlertAction!) in
             
-            self.database.delete(object: self.favoriteArray[0])
+            self.database.delete(object: self.favoriteArray.last!)
             self.database.save()
         }))
 
