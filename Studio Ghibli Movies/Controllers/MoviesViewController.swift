@@ -40,7 +40,6 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         tableView.delegate = self
         tableView.dataSource = self
-        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
     }
 
 // MARK: - TableView DataSource Methods
@@ -67,8 +66,10 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetails" {
-            if let destination = segue.destination as? DetailsViewController {
-                destination.selectedMovie = movies?[(tableView.indexPathForSelectedRow?.row)!]
+            let destination = segue.destination as? DetailsViewController
+            
+            if let indexPath = tableView.indexPathForSelectedRow {
+                destination?.selectedMovie = movies?[indexPath.row]
                 tableView.deselectRow(at: (tableView.indexPathForSelectedRow)!, animated: false)
             }
         }

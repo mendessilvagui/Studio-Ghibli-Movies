@@ -26,11 +26,15 @@ class DetailsViewController: UIViewController {
     
     let database = DataBaseHandler.shared
     
-    var selectedMovie: Movie?
+    var selectedMovie: Movie? {
+        didSet {
+            loadFavorites()
+        }
+    }
     
     var favoriteArray = [Favorite]()
     
-    var isFavorited = false
+    var isFavorited: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,11 +55,10 @@ class DetailsViewController: UIViewController {
         descriptionLabel.sizeToFit()
         imageView.image = UIImage(named: "\(selectedMovie?.id ?? "").png")
         
+//        loadFavorites()
+        self.isFavorited = ((favoriteArray.last?.selected) != nil)
         self.updateRighBarButton(isFavorite: self.isFavorited)
-//      commentBox.text = favoriteArray.last?.comment
-        
-        loadFavorites()
-        
+        commentBox.text = favoriteArray.last?.comment
     }
     
     override open var shouldAutorotate: Bool {
@@ -132,6 +135,7 @@ class DetailsViewController: UIViewController {
             
             self.database.delete(object: self.favoriteArray.last!)
             self.database.save()
+            self.commentBox.text = self.favoriteArray.last?.comment
         }))
 
         deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
@@ -145,19 +149,22 @@ class DetailsViewController: UIViewController {
 
 
 //MARK: - Load favorite to view according to selected movie
-    
+
     func loadFavorites(with request: NSFetchRequest<Favorite> = Favorite.fetchRequest(), predicate: NSPredicate? = nil) {
-        
+
         let moviePredicate = NSPredicate(format: "parentMovie.title MATCHES %@", selectedMovie!.title!)
-        
+
+        print(moviePredicate)
+
         if let additionalPredicate = predicate {
             request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [moviePredicate, additionalPredicate])
         } else {
             request.predicate = moviePredicate
         }
-        
+
         do {
             favoriteArray = try context.fetch(request)
+            print(favoriteArray)
         } catch {
             print("Error fetching dara from context \(error)")
         }
