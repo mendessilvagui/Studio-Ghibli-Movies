@@ -38,5 +38,4 @@ class MovieServerModel: Codable {
         movie.rt_score = rt_score
         MovieServerModel.database.save()
     }
- 
 }

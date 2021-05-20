@@ -50,6 +50,5 @@ class DataBaseHandler {
         viewContext.delete(object)
         save()
     }
-    
 }
 

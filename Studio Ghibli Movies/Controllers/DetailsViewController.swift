@@ -55,7 +55,6 @@ class DetailsViewController: UIViewController {
         descriptionLabel.sizeToFit()
         imageView.image = UIImage(named: "\(selectedMovie?.id ?? "").png")
         
-//        loadFavorites()
         self.isFavorited = ((favoriteArray.last?.selected) != nil)
         self.updateRighBarButton(isFavorite: self.isFavorited)
         commentBox.text = favoriteArray.last?.comment
