@@ -3,7 +3,6 @@
 //  Studio Ghibli Movies
 //
 //  Created by Guilherme Mendes on 18/05/21.
-//
 
 import UIKit
 import CoreData

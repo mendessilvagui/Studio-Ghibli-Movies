@@ -3,7 +3,6 @@
 //  Studio Ghibli Movies
 //
 //  Created by Guilherme Mendes on 14/05/21.
-//
 
 import UIKit
 import CoreData
@@ -145,7 +144,6 @@ class DetailsViewController: UIViewController {
         
         present(deleteAlert, animated: true, completion: nil)
     }
-
 
 //MARK: - Load favorite to view according to selected movie
 

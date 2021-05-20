@@ -3,22 +3,12 @@
 //  Studio Ghibli Movies
 //
 //  Created by Guilherme Mendes on 15/05/21.
-//
-
-//
-//  ViewController.swift
-//  API Test
-//
-//  Created by Guilherme Mendes on 15/05/21.
-//
 
 import UIKit
 
 class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    
     @IBOutlet weak var tableView: UITableView!
-    
 
     var api = APIHandler()
     var database = DataBaseHandler.shared

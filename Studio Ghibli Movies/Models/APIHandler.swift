@@ -4,7 +4,6 @@
 //
 //  Created by Guilherme Mendes on 18/05/21.
 
-
 import Foundation
 
 //MARK: - Fetch data from API and save to database
