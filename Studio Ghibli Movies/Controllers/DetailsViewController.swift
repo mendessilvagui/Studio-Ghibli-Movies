@@ -7,31 +7,36 @@
 import UIKit
 import Parse
 
-class DetailsViewController: UIViewController {
-    
+class DetailsViewController: UIViewController, UINavigationControllerDelegate {
+
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var originalTitleLabel: UILabel!
     @IBOutlet weak var originalTitleRomanLabel: UILabel!
-    @IBOutlet weak var directorLabel: UILabel!
-    @IBOutlet weak var producerLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var rtScoreLabel: UILabel!
+    @IBOutlet weak var directorLabel: UILabel!
+    @IBOutlet weak var producerLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var commentBox: UILabel!
-
+    @IBOutlet weak var commentBoxLabel: UILabel!
+    
     let database = DataBase()
     var isFavorited: Bool = false
-    
-	var selectedMovie = PFObject(className: "Movie")
-	var details = PFObject(className:"Detail")
+    var selectedMovie = PFObject(className: "Movie")
+    var details = PFObject(className:"Detail")
+//    let moviesVC = MoviesViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-		showMovieData()
-        
+        self.title = "Details"
+        self.view.backgroundColor = UIColor(named: "totoro")
+    
+        showMovieData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         database.loadDetails(selectedMovie: selectedMovie) { object in
             if let object = object {
                 self.details = object
@@ -40,11 +45,20 @@ class DetailsViewController: UIViewController {
         }
     }
     
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//
+//        if self.isMovingFromParent {
+//            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
+//        }
+//    }
+    
     //MARK: - Show Movie data on screen
     
     func showMovieData() {
         
         titleLabel.text = selectedMovie["title"] as? String
+        titleLabel.backgroundColor = UIColor(named: "navBar")
         titleLabel.numberOfLines = 0
         originalTitleLabel.text =  selectedMovie["original_title"] as? String
         originalTitleRomanLabel.text = selectedMovie["original_title_romanised"] as? String
@@ -63,14 +77,14 @@ class DetailsViewController: UIViewController {
 
 //MARK: - Update details to DetailsViewController
 
-	func updateDetails() {
+    func updateDetails() {
         
         if let selected = details["selected"] as? Bool {
             self.isFavorited = selected
         }
-        commentBox.text = details["comment"] as? String
+        commentBoxLabel.text = details["comment"] as? String
         self.updateRightBarButton()
-	}
+    }
 
 // MARK: - Updatade favorite button on touch
 
@@ -80,7 +94,7 @@ class DetailsViewController: UIViewController {
 
         if self.isFavorited {
             favButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-		} else {
+        } else {
             favButton.setImage(UIImage(systemName: "heart"), for: .normal)
         }
         let rightButton = UIBarButtonItem(customView: favButton)
@@ -107,12 +121,18 @@ class DetailsViewController: UIViewController {
 
         addAlert.addAction(UIAlertAction(title: "Add", style: .default, handler: { (action: UIAlertAction!) in
             
-			self.details["selected"] = true
-			self.details["comment"] = textField.text
-			self.details["parentMovie"] = self.selectedMovie
+            self.details["selected"] = true
+            self.details["comment"] = textField.text
+            self.details["parentMovie"] = self.selectedMovie
             self.database.save(object: self.details)
-            self.database.updateMovie(selectedMovie: self.selectedMovie, details: self.details)
-            self.commentBox.text = self.details["comment"] as? String
+            
+            self.database.updateMovie(selectedMovie: self.selectedMovie) { object in
+                object?["childDetail"] = self.details
+                object?.saveInBackground()
+            }
+            
+            self.commentBoxLabel.text = self.details["comment"] as? String
+        
         }))
 
         addAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
@@ -139,7 +159,12 @@ class DetailsViewController: UIViewController {
 
             self.database.delete(object: self.details)
             self.details = PFObject(className: "Detail")
-            self.database.deleteChildDetail(selectedMovie: self.selectedMovie)
+            
+            self.database.updateMovie(selectedMovie: self.selectedMovie) { object in
+                object?.remove(forKey: "childDetail")
+                object?.saveInBackground()
+            }
+            
             self.updateDetails()
         }))
 

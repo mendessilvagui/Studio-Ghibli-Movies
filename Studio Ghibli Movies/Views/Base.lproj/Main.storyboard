@@ -27,7 +27,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Movies" id="NiN-di-ZQw"/>
                     <connections>
-                        <outlet property="tableView" destination="5qm-kM-weV" id="lPw-oa-Yah"/>
                         <segue destination="Ai8-rm-5bp" kind="show" identifier="showDetails" id="lDU-sb-LF7"/>
                     </connections>
                 </viewController>
@@ -197,19 +196,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="commentBox" destination="Rkk-hL-0ds" id="vc6-6F-M5e"/>
-                        <outlet property="descriptionLabel" destination="THo-BU-QWN" id="JuC-lx-mcI"/>
-                        <outlet property="directorLabel" destination="5RU-aG-8MH" id="sRh-br-0Pb"/>
-                        <outlet property="durationLabel" destination="Sqa-RO-FP1" id="Lo2-4r-GtV"/>
-                        <outlet property="imageView" destination="kyn-vr-eHJ" id="3zB-ju-j98"/>
-                        <outlet property="originalTitleLabel" destination="gwM-HX-FLB" id="67h-qc-4hA"/>
-                        <outlet property="originalTitleRomanLabel" destination="r9I-ZA-b7y" id="nkr-Ao-K0I"/>
-                        <outlet property="producerLabel" destination="gr5-TO-hR3" id="hUP-m1-dm6"/>
-                        <outlet property="releaseDateLabel" destination="PuQ-9Q-bhO" id="uGV-zd-ozf"/>
-                        <outlet property="rtScoreLabel" destination="z3l-3z-YVq" id="SS0-VY-VA0"/>
-                        <outlet property="titleLabel" destination="TsY-YS-g3v" id="AcC-fT-Gl5"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eby-9o-y5j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

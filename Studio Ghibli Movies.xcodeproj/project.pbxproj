@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03D1599F268A533A001E3144 /* MoviesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03D1599E268A533A001E3144 /* MoviesView.xib */; };
+		03D159A1268A5341001E3144 /* DetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03D159A0268A5341001E3144 /* DetailsView.xib */; };
 		60165CF4AAE6DC94E2777BDF /* Pods_Studio_Ghibli_Movies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 819D9C0DB4D311270FD910EE /* Pods_Studio_Ghibli_Movies.framework */; };
 		D23E9C90264CEB1500312A56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9C8F264CEB1500312A56 /* AppDelegate.swift */; };
 		D23E9C92264CEB1500312A56 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9C91264CEB1500312A56 /* SceneDelegate.swift */; };
-		D23E9C97264CEB1500312A56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D23E9C95264CEB1500312A56 /* Main.storyboard */; };
 		D23E9C9C264CEB2100312A56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D23E9C9B264CEB2100312A56 /* Assets.xcassets */; };
 		D23E9C9F264CEB2100312A56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D23E9C9D264CEB2100312A56 /* LaunchScreen.storyboard */; };
 		D23E9CB1264E04E000312A56 /* MovieServerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9CB0264E04E000312A56 /* MovieServerModel.swift */; };
@@ -21,13 +22,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03D1599E268A533A001E3144 /* MoviesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoviesView.xib; sourceTree = "<group>"; };
+		03D159A0268A5341001E3144 /* DetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailsView.xib; sourceTree = "<group>"; };
 		819D9C0DB4D311270FD910EE /* Pods_Studio_Ghibli_Movies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Studio_Ghibli_Movies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAB65E4BED664886EC859F61 /* Pods-Studio Ghibli Movies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Studio Ghibli Movies.debug.xcconfig"; path = "Target Support Files/Pods-Studio Ghibli Movies/Pods-Studio Ghibli Movies.debug.xcconfig"; sourceTree = "<group>"; };
 		CB6325ED92742E895322AC53 /* Pods-Studio Ghibli Movies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Studio Ghibli Movies.release.xcconfig"; path = "Target Support Files/Pods-Studio Ghibli Movies/Pods-Studio Ghibli Movies.release.xcconfig"; sourceTree = "<group>"; };
 		D23E9C8C264CEB1500312A56 /* Studio Ghibli Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Studio Ghibli Movies.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D23E9C8F264CEB1500312A56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D23E9C91264CEB1500312A56 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D23E9C96264CEB1500312A56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D23E9C9B264CEB2100312A56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D23E9C9E264CEB2100312A56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D23E9CA0264CEB2100312A56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -112,7 +114,8 @@
 		D23E9CAA264DD5B900312A56 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D23E9C95264CEB1500312A56 /* Main.storyboard */,
+				03D1599E268A533A001E3144 /* MoviesView.xib */,
+				03D159A0268A5341001E3144 /* DetailsView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -187,8 +190,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D23E9C9F264CEB2100312A56 /* LaunchScreen.storyboard in Resources */,
+				03D1599F268A533A001E3144 /* MoviesView.xib in Resources */,
 				D23E9C9C264CEB2100312A56 /* Assets.xcassets in Resources */,
-				D23E9C97264CEB1500312A56 /* Main.storyboard in Resources */,
+				03D159A1268A5341001E3144 /* DetailsView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,14 +258,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		D23E9C95264CEB1500312A56 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D23E9C96264CEB1500312A56 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D23E9C9D264CEB2100312A56 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

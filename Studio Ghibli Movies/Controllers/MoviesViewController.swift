@@ -9,9 +9,8 @@ import Parse
 
 class MoviesViewController: UIViewController {
     
-
-    @IBOutlet weak var tableView: UITableView!
-
+    @IBOutlet var tableView: UITableView!
+    
     var api = APIHandler()
     var database = DataBase()
     var movies = [PFObject]()
@@ -21,17 +20,31 @@ class MoviesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "Movies"
+        self.navigationController?.navigationBar.barTintColor = UIColor(named: "navBar")
+        navigationController?.navigationBar.tintColor = UIColor.white
+        
+        tableView.backgroundColor = UIColor(named: "totoro")
         tableView.delegate = self
         tableView.dataSource = self
-
+        
+        setUpSearchController()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
         api.fetchMovie {
             self.database.loadMovies { objects in
                 self.movies = objects
                 self.tableView.reloadData()
             }
         }
-        setUpSearchController()
+//        NotificationCenter.default.addObserver(self, selector: #selector(reloadFavoriteList), name: NSNotification.Name(rawValue: "reload"), object: nil)
     }
+    
+//    @objc func reloadFavoriteList() {
+//        self.tableView.reloadData()
+//    }
     
     override func viewDidAppear(_ animated: Bool) {
         searchController.searchBar.searchTextField.attributedPlaceholder = NSAttributedString(string: "Search Movie", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
@@ -94,12 +107,14 @@ extension MoviesViewController: UISearchResultsUpdating {
         let searchBar = searchController.searchBar
         let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
         filterContentForSearchText(searchText: searchController.searchBar.text!, scope: scope)
+        tableView.reloadData()
     }
 }
 
 extension MoviesViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         filterContentForSearchText(searchText: searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
+        tableView.reloadData()
     }
 }
 
@@ -135,28 +150,24 @@ extension MoviesViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showDetails", sender: nil)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "showDetails" {
-            let destination = segue.destination as? DetailsViewController
+        if let indexPath = tableView.indexPathForSelectedRow {
+        
+            let movie: PFObject
+            let destination = DetailsViewController()
             
-            if let indexPath = tableView.indexPathForSelectedRow {
-                
-                let movie: PFObject
-                
-                if isFiltering() {
-                    movie = filteredMovies[indexPath.row]
-                } else {
-                    movie = movies[indexPath.row]
-                }
-                
-                destination?.selectedMovie = movie
-                tableView.deselectRow(at: (tableView.indexPathForSelectedRow)!, animated: false)
+            if isFiltering() {
+                movie = filteredMovies[indexPath.row]
+            } else {
+                movie = movies[indexPath.row]
             }
+        
+            destination.selectedMovie = movie
+            tableView.deselectRow(at: (tableView.indexPathForSelectedRow)!, animated: false)
+            
+            self.show(destination, sender: self)
         }
+        self.searchController.searchBar.endEditing(true)
     }
 }
 
