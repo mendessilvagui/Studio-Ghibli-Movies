@@ -6,47 +6,25 @@
 //
 
 import UIKit
-import CoreData
+import Parse
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
+		let parseConfig = ParseClientConfiguration {
+			$0.applicationId = "d2frdirPKmh2OC5STRU4AdRYHkHKelZZB1UiBwEC"
+			$0.clientKey = "bgUpLtYqHwES7ZWyOMtXXbI92ZspcKkXanuzKTSt"
+			$0.server = "https://parseapi.back4app.com/"
+		}
+		Parse.initialize(with: parseConfig)
+		
         return true
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-
-        self.saveContext()
-    }
-
-    // MARK: - Core Data stack
-
-    lazy var persistentContainer: NSPersistentContainer = {
-     
-        let container = NSPersistentContainer(name: "Studio_Ghibli_Movies")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-             
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-        return container
-    }()
-
-    // MARK: - Core Data Saving support
-
-    func saveContext () {
-        let context = persistentContainer.viewContext
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
-        }
+        
     }
 }
 

@@ -3,31 +3,31 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		60165CF4AAE6DC94E2777BDF /* Pods_Studio_Ghibli_Movies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 819D9C0DB4D311270FD910EE /* Pods_Studio_Ghibli_Movies.framework */; };
 		D23E9C90264CEB1500312A56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9C8F264CEB1500312A56 /* AppDelegate.swift */; };
 		D23E9C92264CEB1500312A56 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9C91264CEB1500312A56 /* SceneDelegate.swift */; };
-		D23E9C94264CEB1500312A56 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9C93264CEB1500312A56 /* WelcomeViewController.swift */; };
 		D23E9C97264CEB1500312A56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D23E9C95264CEB1500312A56 /* Main.storyboard */; };
-		D23E9C9A264CEB1500312A56 /* Studio_Ghibli_Movies.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D23E9C98264CEB1500312A56 /* Studio_Ghibli_Movies.xcdatamodeld */; };
 		D23E9C9C264CEB2100312A56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D23E9C9B264CEB2100312A56 /* Assets.xcassets */; };
 		D23E9C9F264CEB2100312A56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D23E9C9D264CEB2100312A56 /* LaunchScreen.storyboard */; };
 		D23E9CB1264E04E000312A56 /* MovieServerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9CB0264E04E000312A56 /* MovieServerModel.swift */; };
 		D23E9CB7264EBFF900312A56 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9CB6264EBFF900312A56 /* DetailsViewController.swift */; };
 		D23E9CE4265084A700312A56 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9CE3265084A700312A56 /* MoviesViewController.swift */; };
 		D2D8211326546A18004328C3 /* APIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D8211226546A18004328C3 /* APIHandler.swift */; };
-		D2D8211526546AE3004328C3 /* DataBaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D8211426546AE3004328C3 /* DataBaseHandler.swift */; };
+		D2D8211526546AE3004328C3 /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D8211426546AE3004328C3 /* DataBase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		819D9C0DB4D311270FD910EE /* Pods_Studio_Ghibli_Movies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Studio_Ghibli_Movies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAB65E4BED664886EC859F61 /* Pods-Studio Ghibli Movies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Studio Ghibli Movies.debug.xcconfig"; path = "Target Support Files/Pods-Studio Ghibli Movies/Pods-Studio Ghibli Movies.debug.xcconfig"; sourceTree = "<group>"; };
+		CB6325ED92742E895322AC53 /* Pods-Studio Ghibli Movies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Studio Ghibli Movies.release.xcconfig"; path = "Target Support Files/Pods-Studio Ghibli Movies/Pods-Studio Ghibli Movies.release.xcconfig"; sourceTree = "<group>"; };
 		D23E9C8C264CEB1500312A56 /* Studio Ghibli Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Studio Ghibli Movies.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D23E9C8F264CEB1500312A56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D23E9C91264CEB1500312A56 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D23E9C93264CEB1500312A56 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		D23E9C96264CEB1500312A56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D23E9C99264CEB1500312A56 /* Studio_Ghibli_Movies.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Studio_Ghibli_Movies.xcdatamodel; sourceTree = "<group>"; };
 		D23E9C9B264CEB2100312A56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D23E9C9E264CEB2100312A56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D23E9CA0264CEB2100312A56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -35,7 +35,7 @@
 		D23E9CB6264EBFF900312A56 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		D23E9CE3265084A700312A56 /* MoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
 		D2D8211226546A18004328C3 /* APIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHandler.swift; sourceTree = "<group>"; };
-		D2D8211426546AE3004328C3 /* DataBaseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseHandler.swift; sourceTree = "<group>"; };
+		D2D8211426546AE3004328C3 /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,17 +43,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60165CF4AAE6DC94E2777BDF /* Pods_Studio_Ghibli_Movies.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A15976AFF1B2BBDE1117BD19 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BAB65E4BED664886EC859F61 /* Pods-Studio Ghibli Movies.debug.xcconfig */,
+				CB6325ED92742E895322AC53 /* Pods-Studio Ghibli Movies.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BEFB132CE86462F0755D77B8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				819D9C0DB4D311270FD910EE /* Pods_Studio_Ghibli_Movies.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D23E9C83264CEB1500312A56 = {
 			isa = PBXGroup;
 			children = (
 				D23E9C8E264CEB1500312A56 /* Studio Ghibli Movies */,
 				D23E9C8D264CEB1500312A56 /* Products */,
+				A15976AFF1B2BBDE1117BD19 /* Pods */,
+				BEFB132CE86462F0755D77B8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,7 +103,6 @@
 		D23E9CA9264DD58D00312A56 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D23E9C93264CEB1500312A56 /* WelcomeViewController.swift */,
 				D23E9CE3265084A700312A56 /* MoviesViewController.swift */,
 				D23E9CB6264EBFF900312A56 /* DetailsViewController.swift */,
 			);
@@ -101,9 +120,8 @@
 		D23E9CAF264DDA4D00312A56 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D23E9C98264CEB1500312A56 /* Studio_Ghibli_Movies.xcdatamodeld */,
 				D23E9CB0264E04E000312A56 /* MovieServerModel.swift */,
-				D2D8211426546AE3004328C3 /* DataBaseHandler.swift */,
+				D2D8211426546AE3004328C3 /* DataBase.swift */,
 				D2D8211226546A18004328C3 /* APIHandler.swift */,
 			);
 			path = Models;
@@ -116,9 +134,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D23E9CA3264CEB2100312A56 /* Build configuration list for PBXNativeTarget "Studio Ghibli Movies" */;
 			buildPhases = (
+				68DDF7A7BA698DB02A2329F7 /* [CP] Check Pods Manifest.lock */,
 				D23E9C88264CEB1500312A56 /* Sources */,
 				D23E9C89264CEB1500312A56 /* Frameworks */,
 				D23E9C8A264CEB1500312A56 /* Resources */,
+				E8AA82E045420C49EF56F6E3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -174,20 +194,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		68DDF7A7BA698DB02A2329F7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Studio Ghibli Movies-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E8AA82E045420C49EF56F6E3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Studio Ghibli Movies/Pods-Studio Ghibli Movies-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Studio Ghibli Movies/Pods-Studio Ghibli Movies-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Studio Ghibli Movies/Pods-Studio Ghibli Movies-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D23E9C88264CEB1500312A56 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				D23E9CE4265084A700312A56 /* MoviesViewController.swift in Sources */,
-				D23E9C94264CEB1500312A56 /* WelcomeViewController.swift in Sources */,
 				D23E9C90264CEB1500312A56 /* AppDelegate.swift in Sources */,
 				D2D8211326546A18004328C3 /* APIHandler.swift in Sources */,
 				D23E9CB7264EBFF900312A56 /* DetailsViewController.swift in Sources */,
-				D2D8211526546AE3004328C3 /* DataBaseHandler.swift in Sources */,
+				D2D8211526546AE3004328C3 /* DataBase.swift in Sources */,
 				D23E9C92264CEB1500312A56 /* SceneDelegate.swift in Sources */,
 				D23E9CB1264E04E000312A56 /* MovieServerModel.swift in Sources */,
-				D23E9C9A264CEB1500312A56 /* Studio_Ghibli_Movies.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,6 +391,7 @@
 		};
 		D23E9CA4264CEB2100312A56 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BAB65E4BED664886EC859F61 /* Pods-Studio Ghibli Movies.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -350,6 +411,7 @@
 		};
 		D23E9CA5264CEB2100312A56 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB6325ED92742E895322AC53 /* Pods-Studio Ghibli Movies.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -389,19 +451,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		D23E9C98264CEB1500312A56 /* Studio_Ghibli_Movies.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				D23E9C99264CEB1500312A56 /* Studio_Ghibli_Movies.xcdatamodel */,
-			);
-			currentVersion = D23E9C99264CEB1500312A56 /* Studio_Ghibli_Movies.xcdatamodel */;
-			path = Studio_Ghibli_Movies.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = D23E9C84264CEB1500312A56 /* Project object */;
 }

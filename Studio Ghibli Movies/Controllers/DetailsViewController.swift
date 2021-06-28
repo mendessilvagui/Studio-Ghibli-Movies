@@ -5,7 +5,7 @@
 //  Created by Guilherme Mendes on 14/05/21.
 
 import UIKit
-import CoreData
+import Parse
 
 class DetailsViewController: UIViewController {
     
@@ -20,58 +20,67 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var rtScoreLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var commentBox: UILabel!
-    
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
-    let database = DataBaseHandler.shared
-    
-    var selectedMovie: Movie? {
-        didSet {
-            loadFavorites()
-        }
-    }
-    
-    var favoriteArray = [Favorite]()
-    
+
+    let database = DataBase()
     var isFavorited: Bool = false
+    
+	var selectedMovie = PFObject(className: "Movie")
+	var details = PFObject(className:"Detail")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        titleLabel.text = selectedMovie?.title!.uppercased()
+		showMovieData()
+        
+        database.loadDetails(selectedMovie: selectedMovie) { object in
+            if let object = object {
+                self.details = object
+            }
+            self.updateDetails()
+        }
+    }
+    
+    //MARK: - Show Movie data on screen
+    
+    func showMovieData() {
+        
+        titleLabel.text = selectedMovie["title"] as? String
         titleLabel.numberOfLines = 0
-        originalTitleLabel.text = selectedMovie?.original_title
-        originalTitleRomanLabel.text = selectedMovie?.original_title_romanised
-        directorLabel.text = selectedMovie?.director
-        producerLabel.text = selectedMovie?.producer
+        originalTitleLabel.text =  selectedMovie["original_title"] as? String
+        originalTitleRomanLabel.text = selectedMovie["original_title_romanised"] as? String
+        directorLabel.text = selectedMovie["director"] as? String
+        producerLabel.text = selectedMovie["producer"] as? String
         producerLabel.numberOfLines = 0
         producerLabel.sizeToFit()
-        releaseDateLabel.text = selectedMovie?.release_date
-        durationLabel.text = "\(selectedMovie?.running_time ?? "") min"
-        rtScoreLabel.text = selectedMovie?.rt_score
-        descriptionLabel.text = selectedMovie?.more_info
+        releaseDateLabel.text = selectedMovie["release_date"] as? String
+        durationLabel.text = "\(selectedMovie["running_time"] as? String ?? "") min"
+        rtScoreLabel.text = selectedMovie["rt_score"] as? String
+        descriptionLabel.text = selectedMovie["more_info"] as? String
         descriptionLabel.numberOfLines = 0
         descriptionLabel.sizeToFit()
-        imageView.image = UIImage(named: "\(selectedMovie?.id ?? "").png")
+        imageView.image = UIImage(named: "\(selectedMovie["movie_id"] as? String ?? "").png")
+    }
+
+//MARK: - Update details to DetailsViewController
+
+	func updateDetails() {
         
-        self.isFavorited = ((favoriteArray.last?.selected) != nil)
-        self.updateRighBarButton(isFavorite: self.isFavorited)
-        commentBox.text = favoriteArray.last?.comment
-    }
-    
-    override open var shouldAutorotate: Bool {
-        return false
-    }
-    
+        if let selected = details["selected"] as? Bool {
+            self.isFavorited = selected
+        }
+        commentBox.text = details["comment"] as? String
+        self.updateRightBarButton()
+	}
+
 // MARK: - Updatade favorite button on touch
 
-    func updateRighBarButton(isFavorite : Bool){
+    func updateRightBarButton(){
         let favButton = UIButton()
         favButton.addTarget(self, action: #selector(favButtonDidTap), for: .touchUpInside)
 
-        if isFavorite {
+        if self.isFavorited {
             favButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-        }else{
+		} else {
             favButton.setImage(UIImage(systemName: "heart"), for: .normal)
         }
         let rightButton = UIBarButtonItem(customView: favButton)
@@ -85,86 +94,62 @@ class DetailsViewController: UIViewController {
         } else {
             self.unfavorite();
         }
-        self.updateRighBarButton(isFavorite: self.isFavorited);
+        self.updateRightBarButton();
     }
-    
+
 // MARK: - Add favorite and comment to database
 
     func favorite() {
-        
+
         var textField = UITextField()
-        
+
         let addAlert = UIAlertController(title: "Add to favorites", message: "", preferredStyle: .alert)
-        
+
         addAlert.addAction(UIAlertAction(title: "Add", style: .default, handler: { (action: UIAlertAction!) in
             
-            let newFavorite = Favorite(context: self.context)
-            newFavorite.comment = textField.text
-            newFavorite.selected = true
-            newFavorite.parentMovie = self.selectedMovie
-            
-            self.favoriteArray.append(newFavorite)
-            self.database.save()
-            self.commentBox.text = self.favoriteArray.last?.comment
-            
+			self.details["selected"] = true
+			self.details["comment"] = textField.text
+			self.details["parentMovie"] = self.selectedMovie
+            self.database.save(object: self.details)
+            self.database.updateMovie(selectedMovie: self.selectedMovie, details: self.details)
+            self.commentBox.text = self.details["comment"] as? String
         }))
 
         addAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
             addAlert.dismiss(animated: true, completion: nil)
-            self.updateRighBarButton(isFavorite: false)
             self.isFavorited = false
+            self.updateRightBarButton()
         }))
-        
+
         addAlert.addTextField { (alertTextField) in
             alertTextField.placeholder = "Leave a comment"
             textField = alertTextField
         }
-    
+
         present(addAlert, animated: true, completion: nil)
     }
 
 // MARK: - Delete favorite and comment from database
 
     func unfavorite() {
-        
+
         let deleteAlert = UIAlertController(title: "Delete from favorites?", message: "", preferredStyle: .alert)
-        
+
         deleteAlert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (action: UIAlertAction!) in
-            
-            self.database.delete(object: self.favoriteArray.last!)
-            self.database.save()
-            self.commentBox.text = self.favoriteArray.last?.comment
+
+            self.database.delete(object: self.details)
+            self.details = PFObject(className: "Detail")
+            self.database.deleteChildDetail(selectedMovie: self.selectedMovie)
+            self.updateDetails()
         }))
 
         deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
             deleteAlert.dismiss(animated: true, completion: nil)
-            self.updateRighBarButton(isFavorite: true)
+            
             self.isFavorited = true
+            self.updateRightBarButton()
         }))
-        
+
         present(deleteAlert, animated: true, completion: nil)
     }
-
-//MARK: - Load favorite to view according to selected movie
-
-    func loadFavorites(with request: NSFetchRequest<Favorite> = Favorite.fetchRequest(), predicate: NSPredicate? = nil) {
-
-        let moviePredicate = NSPredicate(format: "parentMovie.title MATCHES %@", selectedMovie!.title!)
-
-        print(moviePredicate)
-
-        if let additionalPredicate = predicate {
-            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [moviePredicate, additionalPredicate])
-        } else {
-            request.predicate = moviePredicate
-        }
-
-        do {
-            favoriteArray = try context.fetch(request)
-            print(favoriteArray)
-        } catch {
-            print("Error fetching dara from context \(error)")
-        }
-    }
 }
-
