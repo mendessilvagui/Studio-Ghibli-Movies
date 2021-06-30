@@ -9,32 +9,38 @@ import Parse
 
 class DetailsViewController: UIViewController, UINavigationControllerDelegate {
 
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var originalTitleLabel: UILabel!
-    @IBOutlet weak var originalTitleRomanLabel: UILabel!
-    @IBOutlet weak var releaseDateLabel: UILabel!
-    @IBOutlet weak var durationLabel: UILabel!
-    @IBOutlet weak var rtScoreLabel: UILabel!
-    @IBOutlet weak var directorLabel: UILabel!
-    @IBOutlet weak var producerLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var commentBoxLabel: UILabel!
+    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var originalTitleLabel: UILabel!
+    @IBOutlet private weak var originalTitleRomanLabel: UILabel!
+    @IBOutlet private weak var releaseDateLabel: UILabel!
+    @IBOutlet private weak var durationLabel: UILabel!
+    @IBOutlet private weak var rtScoreLabel: UILabel!
+    @IBOutlet private weak var directorLabel: UILabel!
+    @IBOutlet private weak var producerLabel: UILabel!
+    @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var commentBoxLabel: UILabel!
     
-    let database = DataBase()
-    var isFavorited: Bool = false
+    private let database = DataBase()
+    private var isFavorited: Bool = false
     var selectedMovie = PFObject(className: "Movie")
-    var details = PFObject(className:"Detail")
-//    let moviesVC = MoviesViewController()
+    private var details = PFObject(className:"Detail")
+    var moviesVC = MoviesViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "Details"
         self.view.backgroundColor = UIColor(named: "totoro")
+        
+//        navigationController?.delegate = self
     
         showMovieData()
     }
+    
+//    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+//            moviesVC.reloadFavoriteList()
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
         database.loadDetails(selectedMovie: selectedMovie) { object in
@@ -45,17 +51,13 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
         }
     }
     
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//
-//        if self.isMovingFromParent {
-//            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
-//        }
-//    }
+    override func viewWillDisappear(_ animated: Bool) {
+        
+    }
     
     //MARK: - Show Movie data on screen
     
-    func showMovieData() {
+    private func showMovieData() {
         
         titleLabel.text = selectedMovie["title"] as? String
         titleLabel.backgroundColor = UIColor(named: "navBar")
@@ -77,7 +79,7 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
 
 //MARK: - Update details to DetailsViewController
 
-    func updateDetails() {
+    private func updateDetails() {
         
         if let selected = details["selected"] as? Bool {
             self.isFavorited = selected
@@ -88,7 +90,7 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
 
 // MARK: - Updatade favorite button on touch
 
-    func updateRightBarButton(){
+    private func updateRightBarButton(){
         let favButton = UIButton()
         favButton.addTarget(self, action: #selector(favButtonDidTap), for: .touchUpInside)
 
@@ -101,7 +103,7 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
         self.navigationItem.setRightBarButtonItems([rightButton], animated: true)
     }
 
-    @objc func favButtonDidTap() {
+    @objc private func favButtonDidTap() {
         self.isFavorited = !self.isFavorited;
         if self.isFavorited {
             self.favorite();
@@ -113,7 +115,7 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
 
 // MARK: - Add favorite and comment to database
 
-    func favorite() {
+    private func favorite() {
 
         var textField = UITextField()
 
@@ -132,7 +134,6 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
             }
             
             self.commentBoxLabel.text = self.details["comment"] as? String
-        
         }))
 
         addAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
@@ -151,7 +152,7 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
 
 // MARK: - Delete favorite and comment from database
 
-    func unfavorite() {
+    private func unfavorite() {
 
         let deleteAlert = UIAlertController(title: "Delete from favorites?", message: "", preferredStyle: .alert)
 
@@ -164,8 +165,9 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
                 object?.remove(forKey: "childDetail")
                 object?.saveInBackground()
             }
-            
             self.updateDetails()
+            self.moviesVC.tableView.reloadData()
+//            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
         }))
 
         deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
@@ -176,5 +178,7 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
         }))
 
         present(deleteAlert, animated: true, completion: nil)
+        
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "reloadFavoriteList"), object: nil)
     }
 }

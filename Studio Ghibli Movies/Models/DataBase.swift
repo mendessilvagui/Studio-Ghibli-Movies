@@ -8,6 +8,10 @@ import UIKit
 import Parse
 
 struct DataBase {
+    
+    var api = APIHandler()
+    
+    
 
     func save(object: PFObject) {
         object.saveInBackground { (succeeded, error)  in

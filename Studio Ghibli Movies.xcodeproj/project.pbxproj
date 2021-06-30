@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0374E03A268C878000E535B6 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0374E038268C878000E535B6 /* CustomTableViewCell.swift */; };
+		0374E03B268C878000E535B6 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0374E039268C878000E535B6 /* CustomTableViewCell.xib */; };
 		03D1599F268A533A001E3144 /* MoviesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03D1599E268A533A001E3144 /* MoviesView.xib */; };
 		03D159A1268A5341001E3144 /* DetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03D159A0268A5341001E3144 /* DetailsView.xib */; };
 		60165CF4AAE6DC94E2777BDF /* Pods_Studio_Ghibli_Movies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 819D9C0DB4D311270FD910EE /* Pods_Studio_Ghibli_Movies.framework */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0374E038268C878000E535B6 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		0374E039268C878000E535B6 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 		03D1599E268A533A001E3144 /* MoviesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoviesView.xib; sourceTree = "<group>"; };
 		03D159A0268A5341001E3144 /* DetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailsView.xib; sourceTree = "<group>"; };
 		819D9C0DB4D311270FD910EE /* Pods_Studio_Ghibli_Movies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Studio_Ghibli_Movies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +111,7 @@
 			children = (
 				D23E9CE3265084A700312A56 /* MoviesViewController.swift */,
 				D23E9CB6264EBFF900312A56 /* DetailsViewController.swift */,
+				0374E038268C878000E535B6 /* CustomTableViewCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -116,6 +121,7 @@
 			children = (
 				03D1599E268A533A001E3144 /* MoviesView.xib */,
 				03D159A0268A5341001E3144 /* DetailsView.xib */,
+				0374E039268C878000E535B6 /* CustomTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -190,6 +196,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D23E9C9F264CEB2100312A56 /* LaunchScreen.storyboard in Resources */,
+				0374E03B268C878000E535B6 /* CustomTableViewCell.xib in Resources */,
 				03D1599F268A533A001E3144 /* MoviesView.xib in Resources */,
 				D23E9C9C264CEB2100312A56 /* Assets.xcassets in Resources */,
 				03D159A1268A5341001E3144 /* DetailsView.xib in Resources */,
@@ -247,6 +254,7 @@
 			files = (
 				D23E9CE4265084A700312A56 /* MoviesViewController.swift in Sources */,
 				D23E9C90264CEB1500312A56 /* AppDelegate.swift in Sources */,
+				0374E03A268C878000E535B6 /* CustomTableViewCell.swift in Sources */,
 				D2D8211326546A18004328C3 /* APIHandler.swift in Sources */,
 				D23E9CB7264EBFF900312A56 /* DetailsViewController.swift in Sources */,
 				D2D8211526546AE3004328C3 /* DataBase.swift in Sources */,
