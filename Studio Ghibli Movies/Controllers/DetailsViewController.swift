@@ -23,9 +23,12 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
     
     private let database = DataBase()
     private var isFavorited: Bool = false
-    var selectedMovie = PFObject(className: "Movie")
+    public var selectedMovie = PFObject(className: "Movie")
     private var details = PFObject(className:"Detail")
-    var moviesVC = MoviesViewController()
+    public var moviesVC = MoviesViewController()
+    public var delegate: ReloadList?
+    
+//    var canGoBack: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,14 +36,10 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
         self.title = "Details"
         self.view.backgroundColor = UIColor(named: "totoro")
         
-//        navigationController?.delegate = self
+        navigationController?.delegate = self
     
         showMovieData()
     }
-    
-//    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-//            moviesVC.reloadFavoriteList()
-//    }
     
     override func viewWillAppear(_ animated: Bool) {
         database.loadDetails(selectedMovie: selectedMovie) { object in
@@ -50,33 +49,11 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
             self.updateDetails()
         }
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        
-    }
-    
-    //MARK: - Show Movie data on screen
-    
-    private func showMovieData() {
-        
-        titleLabel.text = selectedMovie["title"] as? String
-        titleLabel.backgroundColor = UIColor(named: "navBar")
-        titleLabel.numberOfLines = 0
-        originalTitleLabel.text =  selectedMovie["original_title"] as? String
-        originalTitleRomanLabel.text = selectedMovie["original_title_romanised"] as? String
-        directorLabel.text = selectedMovie["director"] as? String
-        producerLabel.text = selectedMovie["producer"] as? String
-        producerLabel.numberOfLines = 0
-        producerLabel.sizeToFit()
-        releaseDateLabel.text = selectedMovie["release_date"] as? String
-        durationLabel.text = "\(selectedMovie["running_time"] as? String ?? "") min"
-        rtScoreLabel.text = selectedMovie["rt_score"] as? String
-        descriptionLabel.text = selectedMovie["more_info"] as? String
-        descriptionLabel.numberOfLines = 0
-        descriptionLabel.sizeToFit()
-        imageView.image = UIImage(named: "\(selectedMovie["movie_id"] as? String ?? "").png")
-    }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        self.delegate?.reloadList()
+    }
+    
 //MARK: - Update details to DetailsViewController
 
     private func updateDetails() {
@@ -126,13 +103,15 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
             self.details["selected"] = true
             self.details["comment"] = textField.text
             self.details["parentMovie"] = self.selectedMovie
-            self.database.save(object: self.details)
-            
-            self.database.updateMovie(selectedMovie: self.selectedMovie) { object in
-                object?["childDetail"] = self.details
-                object?.saveInBackground()
+            self.database.save(object: self.details) {_ in
+                self.selectedMovie["childDetail"] = self.details
+                self.selectedMovie.saveInBackground() {(succeeded, error)  in
+                    if (succeeded) {
+//                        self.navigationController?.popViewController(animated: true)
+//                        self.dismiss(animated: true, completion: nil)
+                    }
+                }
             }
-            
             self.commentBoxLabel.text = self.details["comment"] as? String
         }))
 
@@ -161,13 +140,14 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
             self.database.delete(object: self.details)
             self.details = PFObject(className: "Detail")
             
-            self.database.updateMovie(selectedMovie: self.selectedMovie) { object in
-                object?.remove(forKey: "childDetail")
-                object?.saveInBackground()
+            self.selectedMovie.remove(forKey: "childDetail")
+            self.selectedMovie.saveInBackground() {(succeeded, error)  in
+                if (succeeded) {
+//                    self.navigationController?.popViewController(animated: true)
+//                    self.dismiss(animated: true, completion: nil)
+                }
             }
             self.updateDetails()
-            self.moviesVC.tableView.reloadData()
-//            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
         }))
 
         deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
@@ -180,5 +160,30 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
         present(deleteAlert, animated: true, completion: nil)
         
         NotificationCenter.default.post(name: Notification.Name(rawValue: "reloadFavoriteList"), object: nil)
+    }
+}
+
+//MARK: - Show Movie data on screen
+
+extension DetailsViewController {
+    
+    private func showMovieData() {
+        
+        titleLabel.text = selectedMovie["title"] as? String
+        titleLabel.backgroundColor = UIColor(named: "navBar")
+        titleLabel.numberOfLines = 0
+        originalTitleLabel.text =  selectedMovie["original_title"] as? String
+        originalTitleRomanLabel.text = selectedMovie["original_title_romanised"] as? String
+        directorLabel.text = selectedMovie["director"] as? String
+        producerLabel.text = selectedMovie["producer"] as? String
+        producerLabel.numberOfLines = 0
+        producerLabel.sizeToFit()
+        releaseDateLabel.text = selectedMovie["release_date"] as? String
+        durationLabel.text = "\(selectedMovie["running_time"] as? String ?? "") min"
+        rtScoreLabel.text = selectedMovie["rt_score"] as? String
+        descriptionLabel.text = selectedMovie["more_info"] as? String
+        descriptionLabel.numberOfLines = 0
+        descriptionLabel.sizeToFit()
+        imageView.image = UIImage(named: "\(selectedMovie["movie_id"] as? String ?? "").png")
     }
 }

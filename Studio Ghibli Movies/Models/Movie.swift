@@ -23,8 +23,7 @@ class Movie: Codable {
 // MARK: - Save new model to database
     
     func store() {
-        
-        let database = DataBase()
+
 		let movie = PFObject(className:"Movie")
 
 		movie["movie_id"] = id
@@ -37,6 +36,12 @@ class Movie: Codable {
 		movie["release_date"] = release_date
 		movie["running_time"] = running_time
 		movie["rt_score"] = rt_score
-        database.save(object: movie)
+        movie.saveInBackground() { (succeeded, error)  in
+            if (succeeded) {
+            
+            } else {
+                print(error!.localizedDescription)
+            }
+        }
     }
 }

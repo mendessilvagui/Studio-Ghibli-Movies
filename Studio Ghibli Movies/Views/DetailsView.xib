@@ -9,18 +9,18 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailsViewController" customModule="Studio_Ghibli_Movies" customModuleProvider="target">
             <connections>
-                <outlet property="commentBoxLabel" destination="Bir-Tb-JMs" id="eTu-eV-XTN"/>
-                <outlet property="descriptionLabel" destination="fFz-k4-sci" id="qvC-EQ-oRw"/>
-                <outlet property="directorLabel" destination="TrV-WX-WLJ" id="i5H-6L-JVL"/>
-                <outlet property="durationLabel" destination="4Le-6X-o8s" id="Wst-3J-NZn"/>
-                <outlet property="imageView" destination="0a0-GC-rn9" id="Eb0-LH-1Tc"/>
-                <outlet property="originalTitleLabel" destination="FLU-9b-FgQ" id="RQp-I7-ouQ"/>
-                <outlet property="originalTitleRomanLabel" destination="2Ai-vQ-5Im" id="UYk-OM-jPW"/>
-                <outlet property="producerLabel" destination="V5N-A7-kje" id="72Z-E9-7ER"/>
-                <outlet property="releaseDateLabel" destination="2o8-cj-HHE" id="w5X-6p-9bl"/>
-                <outlet property="rtScoreLabel" destination="YtR-ye-ijh" id="Re4-w1-w97"/>
-                <outlet property="titleLabel" destination="8p9-gY-ZMv" id="NE1-q9-4ER"/>
-                <outlet property="view" destination="Xcd-bh-Cvs" id="p6V-t3-cNl"/>
+                <outlet property="commentBoxLabel" destination="Bir-Tb-JMs" id="RXZ-Zg-ErC"/>
+                <outlet property="descriptionLabel" destination="fFz-k4-sci" id="zbq-iZ-Spa"/>
+                <outlet property="directorLabel" destination="TrV-WX-WLJ" id="d6w-Sp-6oS"/>
+                <outlet property="durationLabel" destination="4Le-6X-o8s" id="iID-wd-v5w"/>
+                <outlet property="imageView" destination="0a0-GC-rn9" id="Vay-BH-iNd"/>
+                <outlet property="originalTitleLabel" destination="FLU-9b-FgQ" id="pJt-br-FQD"/>
+                <outlet property="originalTitleRomanLabel" destination="2Ai-vQ-5Im" id="dmI-8w-Knm"/>
+                <outlet property="producerLabel" destination="V5N-A7-kje" id="u1A-V3-78E"/>
+                <outlet property="releaseDateLabel" destination="2o8-cj-HHE" id="gTX-LH-D58"/>
+                <outlet property="rtScoreLabel" destination="YtR-ye-ijh" id="vKT-B6-CTt"/>
+                <outlet property="titleLabel" destination="8p9-gY-ZMv" id="4rd-0P-isE"/>
+                <outlet property="view" destination="Xcd-bh-Cvs" id="22f-P9-b7i"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

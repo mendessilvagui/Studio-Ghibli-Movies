@@ -9,14 +9,10 @@ import Parse
 
 struct DataBase {
     
-    var api = APIHandler()
-    
-    
-
-    func save(object: PFObject) {
+    func save(object: PFObject, completion: @escaping (PFObject?) -> Void) {
         object.saveInBackground { (succeeded, error)  in
             if (succeeded) {
-                // The object has been saved.
+                completion(object)
             } else {
                 print(error!.localizedDescription)
             }
@@ -49,18 +45,6 @@ struct DataBase {
         query.getFirstObjectInBackground { object, error in
             if error == nil && object != nil {
                 completion(object!)
-            } else {
-                completion(nil)
-            }
-        }
-    }
-    
-    func updateMovie(selectedMovie: PFObject, completion: @escaping (PFObject?) -> Void) {
-        let query = PFQuery(className: "Movie")
-        query.whereKey("objectId", equalTo: selectedMovie.objectId!)
-        query.getFirstObjectInBackground { object, error in
-            if error == nil && object != nil {
-                completion(object)
             } else {
                 completion(nil)
             }
