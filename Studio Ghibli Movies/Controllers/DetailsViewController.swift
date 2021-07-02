@@ -28,8 +28,6 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
     public var moviesVC = MoviesViewController()
     public var delegate: ReloadList?
     
-//    var canGoBack: Bool = true
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -107,8 +105,7 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
                 self.selectedMovie["childDetail"] = self.details
                 self.selectedMovie.saveInBackground() {(succeeded, error)  in
                     if (succeeded) {
-//                        self.navigationController?.popViewController(animated: true)
-//                        self.dismiss(animated: true, completion: nil)
+                        // Succeeded to save data.
                     }
                 }
             }
@@ -125,7 +122,6 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
             alertTextField.placeholder = "Leave a comment"
             textField = alertTextField
         }
-
         present(addAlert, animated: true, completion: nil)
     }
 
@@ -136,15 +132,16 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
         let deleteAlert = UIAlertController(title: "Delete from favorites?", message: "", preferredStyle: .alert)
 
         deleteAlert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (action: UIAlertAction!) in
-
+            
             self.database.delete(object: self.details)
             self.details = PFObject(className: "Detail")
             
             self.selectedMovie.remove(forKey: "childDetail")
             self.selectedMovie.saveInBackground() {(succeeded, error)  in
                 if (succeeded) {
-//                    self.navigationController?.popViewController(animated: true)
-//                    self.dismiss(animated: true, completion: nil)
+                    self.navigationController?.popViewController(animated: true)
+                    self.dismiss(animated: true, completion: nil)
+                    
                 }
             }
             self.updateDetails()
@@ -155,11 +152,9 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
             
             self.isFavorited = true
             self.updateRightBarButton()
+            
         }))
-
         present(deleteAlert, animated: true, completion: nil)
-        
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "reloadFavoriteList"), object: nil)
     }
 }
 
