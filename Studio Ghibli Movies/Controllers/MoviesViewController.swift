@@ -170,7 +170,7 @@ extension MoviesViewController: UITableViewDataSource, UITableViewDelegate {
             
             let movie = isFiltering() ? filteredMovies[indexPath.row] : movies[indexPath.row]
         
-            detailVC.selectedMovie = movie
+            detailVC.presenter.selectedMovie = movie
             tableView.deselectRow(at: (tableView.indexPathForSelectedRow)!, animated: false)
             
             self.show(detailVC, sender: self)

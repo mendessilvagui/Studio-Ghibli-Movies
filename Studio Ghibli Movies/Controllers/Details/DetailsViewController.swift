@@ -20,13 +20,12 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet private weak var producerLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var commentBoxLabel: UILabel!
-    
-    private let database = DataBase()
+
     private var isFavorited: Bool = false
-    public var selectedMovie = PFObject(className: "Movie")
-    private var details = PFObject(className:"Detail")
     public var moviesVC = MoviesViewController()
     public var delegate: ReloadList?
+
+    let presenter = DetailsPresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,32 +34,18 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
         self.view.backgroundColor = UIColor(named: "totoro")
         
         navigationController?.delegate = self
+
+        presenter.setView(view: self)
     
         showMovieData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        database.loadDetails(selectedMovie: selectedMovie) { object in
-            if let object = object {
-                self.details = object
-            }
-            self.updateDetails()
-        }
+        presenter.loadMovieDetails()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         self.delegate?.reloadList()
-    }
-    
-//MARK: - Update details to DetailsViewController
-
-    private func updateDetails() {
-        
-        if let selected = details["selected"] as? Bool {
-            self.isFavorited = selected
-        }
-        commentBoxLabel.text = details["comment"] as? String
-        self.updateRightBarButton()
     }
 
 // MARK: - Updatade favorite button on touch
@@ -98,18 +83,18 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
 
         addAlert.addAction(UIAlertAction(title: "Add", style: .default, handler: { (action: UIAlertAction!) in
             
-            self.details["selected"] = true
-            self.details["comment"] = textField.text
-            self.details["parentMovie"] = self.selectedMovie
-            self.database.save(object: self.details) {_ in
-                self.selectedMovie["childDetail"] = self.details
-                self.selectedMovie.saveInBackground() {(succeeded, error)  in
+            self.presenter.details["selected"] = true
+            self.presenter.details["comment"] = textField.text
+            self.presenter.details["parentMovie"] = self.presenter.selectedMovie
+            self.presenter.database.save(object: self.presenter.details) {_ in
+                self.presenter.selectedMovie["childDetail"] = self.presenter.details
+                self.presenter.selectedMovie.saveInBackground() {(succeeded, error)  in
                     if (succeeded) {
                         // Succeeded to save data.
                     }
                 }
             }
-            self.commentBoxLabel.text = self.details["comment"] as? String
+            self.commentBoxLabel.text = self.presenter.details["comment"] as? String
         }))
 
         addAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
@@ -133,18 +118,18 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
 
         deleteAlert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (action: UIAlertAction!) in
             
-            self.database.delete(object: self.details)
-            self.details = PFObject(className: "Detail")
+            self.presenter.database.delete(object: self.presenter.details)
+            self.presenter.details = PFObject(className: "Detail")
             
-            self.selectedMovie.remove(forKey: "childDetail")
-            self.selectedMovie.saveInBackground() {(succeeded, error)  in
+            self.presenter.selectedMovie.remove(forKey: "childDetail")
+            self.presenter.selectedMovie.saveInBackground() {(succeeded, error)  in
                 if (succeeded) {
                     self.navigationController?.popViewController(animated: true)
                     self.dismiss(animated: true, completion: nil)
                     
                 }
             }
-            self.updateDetails()
+            self.updateDetails(details: self.presenter.details)
         }))
 
         deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
@@ -164,21 +149,32 @@ extension DetailsViewController {
     
     private func showMovieData() {
         
-        titleLabel.text = selectedMovie["title"] as? String
+        titleLabel.text = presenter.selectedMovie["title"] as? String
         titleLabel.backgroundColor = UIColor(named: "navBar")
         titleLabel.numberOfLines = 0
-        originalTitleLabel.text =  selectedMovie["original_title"] as? String
-        originalTitleRomanLabel.text = selectedMovie["original_title_romanised"] as? String
-        directorLabel.text = selectedMovie["director"] as? String
-        producerLabel.text = selectedMovie["producer"] as? String
+        originalTitleLabel.text =  presenter.selectedMovie["original_title"] as? String
+        originalTitleRomanLabel.text = presenter.selectedMovie["original_title_romanised"] as? String
+        directorLabel.text = presenter.selectedMovie["director"] as? String
+        producerLabel.text = presenter.selectedMovie["producer"] as? String
         producerLabel.numberOfLines = 0
         producerLabel.sizeToFit()
-        releaseDateLabel.text = selectedMovie["release_date"] as? String
-        durationLabel.text = "\(selectedMovie["running_time"] as? String ?? "") min"
-        rtScoreLabel.text = selectedMovie["rt_score"] as? String
-        descriptionLabel.text = selectedMovie["more_info"] as? String
+        releaseDateLabel.text = presenter.selectedMovie["release_date"] as? String
+        durationLabel.text = "\(presenter.selectedMovie["running_time"] as? String ?? "") min"
+        rtScoreLabel.text = presenter.selectedMovie["rt_score"] as? String
+        descriptionLabel.text = presenter.selectedMovie["more_info"] as? String
         descriptionLabel.numberOfLines = 0
         descriptionLabel.sizeToFit()
-        imageView.image = UIImage(named: "\(selectedMovie["movie_id"] as? String ?? "").png")
+        imageView.image = UIImage(named: "\(presenter.selectedMovie["movie_id"] as? String ?? "").png")
+    }
+}
+
+extension DetailsViewController: DetailsView {
+
+    func updateDetails(details: PFObject) {
+        if let selected = details["selected"] as? Bool {
+            self.isFavorited = selected
+        }
+        commentBoxLabel.text = details["comment"] as? String
+        self.updateRightBarButton()
     }
 }
