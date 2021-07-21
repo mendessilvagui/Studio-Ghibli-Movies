@@ -20,14 +20,26 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet private weak var producerLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var commentBoxLabel: UILabel!
-    
-    private let database = DataBase()
+
     private var isFavorited: Bool = false
-    public var selectedMovie = PFObject(className: "Movie")
-    private var details = PFObject(className:"Detail")
     public var moviesVC = MoviesViewController()
     public var delegate: ReloadList?
-    
+
+    private let presenter: DetailsPresenter
+
+    // MARK: - Init
+
+    init(selectedMovie: PFObject) {
+        presenter = DetailsPresenter(selectedMovie: selectedMovie)
+        super.init(nibName: "DetailsView", bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - UIViewController lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,32 +47,17 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
         self.view.backgroundColor = UIColor(named: "totoro")
         
         navigationController?.delegate = self
-    
-        showMovieData()
+
+        presenter.setView(view: self)
+        presenter.start()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        database.loadDetails(selectedMovie: selectedMovie) { object in
-            if let object = object {
-                self.details = object
-            }
-            self.updateDetails()
-        }
+        presenter.loadMovieDetails()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         self.delegate?.reloadList()
-    }
-    
-//MARK: - Update details to DetailsViewController
-
-    private func updateDetails() {
-        
-        if let selected = details["selected"] as? Bool {
-            self.isFavorited = selected
-        }
-        commentBoxLabel.text = details["comment"] as? String
-        self.updateRightBarButton()
     }
 
 // MARK: - Updatade favorite button on touch
@@ -97,19 +94,7 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
         let addAlert = UIAlertController(title: "Add to favorites", message: "", preferredStyle: .alert)
 
         addAlert.addAction(UIAlertAction(title: "Add", style: .default, handler: { (action: UIAlertAction!) in
-            
-            self.details["selected"] = true
-            self.details["comment"] = textField.text
-            self.details["parentMovie"] = self.selectedMovie
-            self.database.save(object: self.details) {_ in
-                self.selectedMovie["childDetail"] = self.details
-                self.selectedMovie.saveInBackground() {(succeeded, error)  in
-                    if (succeeded) {
-                        // Succeeded to save data.
-                    }
-                }
-            }
-            self.commentBoxLabel.text = self.details["comment"] as? String
+            self.presenter.favorite(withComment: textField.text ?? "")
         }))
 
         addAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
@@ -132,19 +117,7 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
         let deleteAlert = UIAlertController(title: "Delete from favorites?", message: "", preferredStyle: .alert)
 
         deleteAlert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (action: UIAlertAction!) in
-            
-            self.database.delete(object: self.details)
-            self.details = PFObject(className: "Detail")
-            
-            self.selectedMovie.remove(forKey: "childDetail")
-            self.selectedMovie.saveInBackground() {(succeeded, error)  in
-                if (succeeded) {
-                    self.navigationController?.popViewController(animated: true)
-                    self.dismiss(animated: true, completion: nil)
-                    
-                }
-            }
-            self.updateDetails()
+            self.presenter.unfavorite()
         }))
 
         deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
@@ -158,12 +131,9 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
     }
 }
 
-//MARK: - Show Movie data on screen
+extension DetailsViewController: DetailsView {
 
-extension DetailsViewController {
-    
-    private func showMovieData() {
-        
+    func showMovieData(_ selectedMovie: PFObject) {
         titleLabel.text = selectedMovie["title"] as? String
         titleLabel.backgroundColor = UIColor(named: "navBar")
         titleLabel.numberOfLines = 0
@@ -180,5 +150,21 @@ extension DetailsViewController {
         descriptionLabel.numberOfLines = 0
         descriptionLabel.sizeToFit()
         imageView.image = UIImage(named: "\(selectedMovie["movie_id"] as? String ?? "").png")
+    }
+
+    func updateDetails(details: PFObject) {
+        if let selected = details["selected"] as? Bool {
+            self.isFavorited = selected
+        }
+        commentBoxLabel.text = details["comment"] as? String
+        self.updateRightBarButton()
+    }
+
+    func updateComment(_ comment: String) {
+        self.commentBoxLabel.text = comment
+    }
+
+    func dismissScreen() {
+        self.navigationController?.popViewController(animated: true)
     }
 }

@@ -163,14 +163,12 @@ extension MoviesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if let indexPath = tableView.indexPathForSelectedRow {
-    
-            let detailVC = DetailsViewController()
+
+            let movie = isFiltering() ? filteredMovies[indexPath.row] : movies[indexPath.row]
+
+            let detailVC = DetailsViewController(selectedMovie: movie)
             detailVC.moviesVC = self
             detailVC.delegate = self
-            
-            let movie = isFiltering() ? filteredMovies[indexPath.row] : movies[indexPath.row]
-        
-            detailVC.selectedMovie = movie
             tableView.deselectRow(at: (tableView.indexPathForSelectedRow)!, animated: false)
             
             self.show(detailVC, sender: self)
