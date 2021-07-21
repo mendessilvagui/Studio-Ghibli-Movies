@@ -25,8 +25,21 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
     public var moviesVC = MoviesViewController()
     public var delegate: ReloadList?
 
-    let presenter = DetailsPresenter()
-    
+    private let presenter: DetailsPresenter
+
+    // MARK: - Init
+
+    init(selectedMovie: PFObject) {
+        presenter = DetailsPresenter(selectedMovie: selectedMovie)
+        super.init(nibName: "DetailsView", bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - UIViewController lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,8 +49,7 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
         navigationController?.delegate = self
 
         presenter.setView(view: self)
-    
-        showMovieData()
+        presenter.start()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -82,19 +94,7 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
         let addAlert = UIAlertController(title: "Add to favorites", message: "", preferredStyle: .alert)
 
         addAlert.addAction(UIAlertAction(title: "Add", style: .default, handler: { (action: UIAlertAction!) in
-            
-            self.presenter.details["selected"] = true
-            self.presenter.details["comment"] = textField.text
-            self.presenter.details["parentMovie"] = self.presenter.selectedMovie
-            self.presenter.database.save(object: self.presenter.details) {_ in
-                self.presenter.selectedMovie["childDetail"] = self.presenter.details
-                self.presenter.selectedMovie.saveInBackground() {(succeeded, error)  in
-                    if (succeeded) {
-                        // Succeeded to save data.
-                    }
-                }
-            }
-            self.commentBoxLabel.text = self.presenter.details["comment"] as? String
+            self.presenter.favorite(withComment: textField.text ?? "")
         }))
 
         addAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
@@ -117,19 +117,7 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
         let deleteAlert = UIAlertController(title: "Delete from favorites?", message: "", preferredStyle: .alert)
 
         deleteAlert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (action: UIAlertAction!) in
-            
-            self.presenter.database.delete(object: self.presenter.details)
-            self.presenter.details = PFObject(className: "Detail")
-            
-            self.presenter.selectedMovie.remove(forKey: "childDetail")
-            self.presenter.selectedMovie.saveInBackground() {(succeeded, error)  in
-                if (succeeded) {
-                    self.navigationController?.popViewController(animated: true)
-                    self.dismiss(animated: true, completion: nil)
-                    
-                }
-            }
-            self.updateDetails(details: self.presenter.details)
+            self.presenter.unfavorite()
         }))
 
         deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
@@ -143,32 +131,26 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
     }
 }
 
-//MARK: - Show Movie data on screen
+extension DetailsViewController: DetailsView {
 
-extension DetailsViewController {
-    
-    private func showMovieData() {
-        
-        titleLabel.text = presenter.selectedMovie["title"] as? String
+    func showMovieData(_ selectedMovie: PFObject) {
+        titleLabel.text = selectedMovie["title"] as? String
         titleLabel.backgroundColor = UIColor(named: "navBar")
         titleLabel.numberOfLines = 0
-        originalTitleLabel.text =  presenter.selectedMovie["original_title"] as? String
-        originalTitleRomanLabel.text = presenter.selectedMovie["original_title_romanised"] as? String
-        directorLabel.text = presenter.selectedMovie["director"] as? String
-        producerLabel.text = presenter.selectedMovie["producer"] as? String
+        originalTitleLabel.text =  selectedMovie["original_title"] as? String
+        originalTitleRomanLabel.text = selectedMovie["original_title_romanised"] as? String
+        directorLabel.text = selectedMovie["director"] as? String
+        producerLabel.text = selectedMovie["producer"] as? String
         producerLabel.numberOfLines = 0
         producerLabel.sizeToFit()
-        releaseDateLabel.text = presenter.selectedMovie["release_date"] as? String
-        durationLabel.text = "\(presenter.selectedMovie["running_time"] as? String ?? "") min"
-        rtScoreLabel.text = presenter.selectedMovie["rt_score"] as? String
-        descriptionLabel.text = presenter.selectedMovie["more_info"] as? String
+        releaseDateLabel.text = selectedMovie["release_date"] as? String
+        durationLabel.text = "\(selectedMovie["running_time"] as? String ?? "") min"
+        rtScoreLabel.text = selectedMovie["rt_score"] as? String
+        descriptionLabel.text = selectedMovie["more_info"] as? String
         descriptionLabel.numberOfLines = 0
         descriptionLabel.sizeToFit()
-        imageView.image = UIImage(named: "\(presenter.selectedMovie["movie_id"] as? String ?? "").png")
+        imageView.image = UIImage(named: "\(selectedMovie["movie_id"] as? String ?? "").png")
     }
-}
-
-extension DetailsViewController: DetailsView {
 
     func updateDetails(details: PFObject) {
         if let selected = details["selected"] as? Bool {
@@ -176,5 +158,13 @@ extension DetailsViewController: DetailsView {
         }
         commentBoxLabel.text = details["comment"] as? String
         self.updateRightBarButton()
+    }
+
+    func updateComment(_ comment: String) {
+        self.commentBoxLabel.text = comment
+    }
+
+    func dismissScreen() {
+        self.navigationController?.popViewController(animated: true)
     }
 }
