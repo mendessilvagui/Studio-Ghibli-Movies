@@ -6,6 +6,6 @@ target 'Studio Ghibli Movies' do
   use_frameworks!
 
   # Pods for Studio Ghibli Movies
-  pod 'Parse'
+  pod 'Parse', '1.19.2'
 
 end
