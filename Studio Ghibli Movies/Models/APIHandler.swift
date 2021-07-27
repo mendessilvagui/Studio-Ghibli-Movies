@@ -24,7 +24,7 @@ class APIHandler {
         let task = session.dataTask(with: req, completionHandler: { data, response, error -> Void in
            
             do {
-                let model = try JSONDecoder().decode([Movie].self, from: data!)
+                let model = try JSONDecoder().decode([MovieData].self, from: data!)
                 if !self.firstRun {
                     model.forEach { $0.store() }
                     UserDefaults.standard.set(true, forKey: "firstRun")

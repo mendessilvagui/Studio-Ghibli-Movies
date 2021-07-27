@@ -29,7 +29,7 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
 
     // MARK: - Init
 
-    init(selectedMovie: PFObject) {
+    init(selectedMovie: Movie) {
         presenter = DetailsPresenter(selectedMovie: selectedMovie)
         super.init(nibName: "DetailsView", bundle: nil)
     }
@@ -133,34 +133,34 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
 
 extension DetailsViewController: DetailsView {
 
-    func showMovieData(_ selectedMovie: PFObject) {
-        titleLabel.text = selectedMovie["title"] as? String
+    func showMovieData(_ selectedMovie: Movie) {
+        titleLabel.text = selectedMovie.title
         titleLabel.backgroundColor = UIColor(named: "navBar")
         titleLabel.numberOfLines = 0
-        originalTitleLabel.text =  selectedMovie["original_title"] as? String
-        originalTitleRomanLabel.text = selectedMovie["original_title_romanised"] as? String
-        directorLabel.text = selectedMovie["director"] as? String
-        producerLabel.text = selectedMovie["producer"] as? String
+        originalTitleLabel.text =  selectedMovie.original_title
+        originalTitleRomanLabel.text = selectedMovie.original_title_romanised
+        directorLabel.text = selectedMovie.director
+        producerLabel.text = selectedMovie.producer
         producerLabel.numberOfLines = 0
         producerLabel.sizeToFit()
-        releaseDateLabel.text = selectedMovie["release_date"] as? String
-        durationLabel.text = "\(selectedMovie["running_time"] as? String ?? "") min"
-        rtScoreLabel.text = selectedMovie["rt_score"] as? String
-        descriptionLabel.text = selectedMovie["more_info"] as? String
+        releaseDateLabel.text = selectedMovie.release_date
+        durationLabel.text = "\(selectedMovie.running_time) min"
+        rtScoreLabel.text = selectedMovie.rt_score
+        descriptionLabel.text = selectedMovie.more_info
         descriptionLabel.numberOfLines = 0
         descriptionLabel.sizeToFit()
-        imageView.image = UIImage(named: "\(selectedMovie["movie_id"] as? String ?? "").png")
+        imageView.image = UIImage(named: "\(selectedMovie.movie_id).png")
     }
 
-    func updateDetails(details: PFObject) {
-        if let selected = details["selected"] as? Bool {
+    func updateDetails(details: Detail) {
+        if let selected = details["selected"] as? Bool { // TODO: refactor this line
             self.isFavorited = selected
         }
-        commentBoxLabel.text = details["comment"] as? String
+        commentBoxLabel.text = details.comment
         self.updateRightBarButton()
     }
 
-    func updateComment(_ comment: String) {
+    func updateComment(_ comment: String?) {
         self.commentBoxLabel.text = comment
     }
 

@@ -15,8 +15,8 @@ class MoviesPresenter {
     private var api = APIHandler()
     private var database = DataBase()
     
-    var movies = [PFObject]()
-    var filteredMovies = [PFObject]()
+    var movies = [Movie]()
+    var filteredMovies = [Movie]()
     
     var searchController = UISearchController(searchResultsController: nil)
     
@@ -31,8 +31,8 @@ class MoviesPresenter {
     
     func loadMoviesList() {
         api.fetchMovie {
-            self.database.loadMovies { objects in
-                self.movies = objects
+            self.database.loadMovies { movies in
+                self.movies = movies!
                 self.view?.reloadTableView()
             }
         }
@@ -52,17 +52,17 @@ class MoviesPresenter {
         currentText = searchText
         currentScope = scope
         
-        filteredMovies = movies.filter({ (movie: PFObject) -> Bool in
+        filteredMovies = movies.filter({ (movie: Movie) -> Bool in
             
-            let childDetailIExists = movie["childDetail"] != nil
+            let childDetailIExists = movie.childDetail != nil
             
             if isSearchBarEmpty() {
                 return childDetailIExists
             } else {
                 if scope == "All" {
-                    return (movie["title"] as! String).lowercased().contains(searchText.lowercased())
+                    return (movie.title).lowercased().contains(searchText.lowercased())
                 } else {
-                    return childDetailIExists && (movie["title"] as! String).lowercased().contains(searchText.lowercased())
+                    return childDetailIExists && (movie.title).lowercased().contains(searchText.lowercased())
                 }
             }
         })

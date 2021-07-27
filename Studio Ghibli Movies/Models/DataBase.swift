@@ -29,24 +29,24 @@ struct DataBase {
         }
     }
     
-    func loadMovies(completion: @escaping ([PFObject]) -> Void) {
+    func loadMovies(fetchComplete: @escaping (_ movies: [Movie]?) -> Void) {
         let query = PFQuery(className: "Movie")
         query.order(byAscending: "release_date")
         query.findObjectsInBackground { objects , error in
             if error == nil {
-                completion(objects!)
+                fetchComplete(objects as? [Movie])
             }
         }
     }
     
-    func loadDetails(selectedMovie: PFObject, completion: @escaping (PFObject?) -> Void) {
+    func loadDetails(selectedMovie: PFObject, fetchComplete: @escaping (_ detail: Detail?) -> Void) {
         let query = PFQuery(className:"Detail")
         query.whereKey("parentMovie", equalTo: selectedMovie)
         query.getFirstObjectInBackground { object, error in
             if error == nil && object != nil {
-                completion(object!)
+                fetchComplete(object as? Detail)
             } else {
-                completion(nil)
+                fetchComplete(nil)
             }
         }
     }

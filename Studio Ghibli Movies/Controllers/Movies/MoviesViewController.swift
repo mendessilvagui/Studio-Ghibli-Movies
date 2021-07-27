@@ -88,7 +88,7 @@ extension MoviesViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let movie: PFObject
+        let movie: Movie
         
         if presenter.isFiltering() {
             movie = presenter.filteredMovies[indexPath.row]
@@ -96,9 +96,9 @@ extension MoviesViewController: UITableViewDataSource, UITableViewDelegate {
             movie = presenter.movies[indexPath.row]
         }
         
-        let title = movie["title"] as! String
-        let subTitle = movie["original_title"] as! String
-        let id = movie["movie_id"] as! String
+        let title = movie.title
+        let subTitle = movie.original_title
+        let id = movie.movie_id
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell") as? CustomTableViewCell {
             

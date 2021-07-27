@@ -13,10 +13,10 @@ class DetailsPresenter {
     private weak var view: DetailsView?
 
     private let database = DataBase()
-    private var selectedMovie: PFObject
-    private var details = PFObject(className: "Detail")
+    private var selectedMovie = Movie()
+    private var details = Detail()
 
-    init(selectedMovie: PFObject) {
+    init(selectedMovie: Movie) {
         self.selectedMovie = selectedMovie
     }
 
@@ -31,22 +31,23 @@ class DetailsPresenter {
     }
 
     func loadMovieDetails() {
-        database.loadDetails(selectedMovie: selectedMovie) { object in
-            if let object = object {
-                self.details = object
+        database.loadDetails(selectedMovie: selectedMovie) { detail in
+            if let detail = detail {
+                self.details = detail
             }
             self.view?.updateDetails(details: self.details)
         }
     }
 
     func favorite(withComment comment: String) {
-        details["selected"] = true
-        details["comment"] = comment
-        details["parentMovie"] = selectedMovie
+
+        self.details.selected = true
+        self.details.comment = comment
+        self.details.parentMovie = selectedMovie
 
         // TODO: show loader
         database.save(object: details) { _ in
-            self.selectedMovie["childDetail"] = self.details
+            self.selectedMovie.childDetail = self.details
             self.selectedMovie.saveInBackground() {(succeeded, error)  in
                 // TODO: hide loader
                 if (succeeded) {
