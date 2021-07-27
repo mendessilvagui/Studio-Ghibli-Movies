@@ -22,15 +22,7 @@ class MoviesPresenter {
     
     var currentScope = "All"
     var currentText = ""
-    
-//    var movies: [PFObject]
-//    var filteredMovies: [PFObject]
-    
-//    init(movies: [PFObject], filteredMovies: [PFObject]) {
-//        self.movies = movies
-//        self.filteredMovies = filteredMovies
-//    }
-    
+
     func setView(view: MoviesView) {
         self.view = view
     }

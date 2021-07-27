@@ -23,7 +23,7 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
 
     private var isFavorited: Bool = false
     public var moviesVC = MoviesViewController()
-    public var delegate: MoviesView?
+    public var delegate: ReloadList?
 
     private let presenter: DetailsPresenter
 

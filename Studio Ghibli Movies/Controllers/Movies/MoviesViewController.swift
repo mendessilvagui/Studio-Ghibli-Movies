@@ -12,21 +12,9 @@ class MoviesViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     
     private let presenter = MoviesPresenter()
-    
-//    private let presenter: MoviesPresenter
 
-    //MARK: - Init
-    
-//    init(_ presenter: MoviesPresenter) {
-//        self.presenter = presenter
-//        super.init(nibName: "MoviesView", bundle: nil)
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-    
     //MARK: - UIViewController lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,44 +47,6 @@ class MoviesViewController: UIViewController {
         presenter.searchController.searchBar.searchTextField.attributedPlaceholder = NSAttributedString(string: "Search Movie", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
     }
 }
-
-//MARK: - Filter favorite movies from all
-
-/*
-extension MoviesViewController {
-
-    private func isSearchBarEmpty() -> Bool {
-        return searchController.searchBar.text?.isEmpty ?? true
-    }
-    
-    private func isFiltering() -> Bool {
-        let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
-        return searchController.isActive && (!isSearchBarEmpty() || searchBarScopeIsFiltering)
-    }
-    
-    private func filterContentForSearchText(searchText: String, scope: String) {
-        
-        currentText = searchText
-        currentScope = scope
-        
-        presenter.filteredMovies = presenter.movies.filter({ (movie: PFObject) -> Bool in
-            
-            let childDetailIExists = movie["childDetail"] != nil
-            
-            if isSearchBarEmpty() {
-                return childDetailIExists
-            } else {
-                if scope == "All" {
-                    return (movie["title"] as! String).lowercased().contains(searchText.lowercased())
-                } else {
-                    return childDetailIExists && (movie["title"] as! String).lowercased().contains(searchText.lowercased())
-                }
-            }
-        })
-        tableView.reloadData()
-    }
-}
-*/
 
 //MARK: - SearchBar Results and Delegate Methods
 
@@ -206,14 +156,23 @@ extension MoviesViewController: MoviesView {
         tableView.separatorStyle = .none
     }
     
-    func reloadList() {
-        presenter.filterContentForSearchText(searchText: presenter.currentText, scope: presenter.currentScope)
-    }
-    
     func reloadTableView() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
+    }
+}
+
+//MARK: - Protocol to reload filtered movies list when coming back from DetailViewController
+
+protocol ReloadList {
+    func reloadList()
+}
+
+extension MoviesViewController: ReloadList {
+
+    func reloadList() {
+        presenter.filterContentForSearchText(searchText: presenter.currentText, scope: presenter.currentScope)
     }
 }
 
