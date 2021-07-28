@@ -9,26 +9,26 @@ import Foundation
 import Parse
 
 class MoviesPresenter {
-    
+
     private weak var view: MoviesView?
-    
+
     private var api = APIHandler.shared
     private var database = DataBase()
-    
+
     var movies = [Movie]()
     var filteredMovies = [Movie]()
-    
+
     var searchController = UISearchController(searchResultsController: nil)
-    
+
     var currentScope = "All"
     var currentText = ""
 
     func setView(view: MoviesView) {
         self.view = view
     }
-    
+
     //MARK: - Presenter methods
-    
+
     func loadMoviesList() {
         api.fetchMovie {
             self.database.loadMovies { movies in
@@ -37,25 +37,25 @@ class MoviesPresenter {
             }
         }
     }
-    
+
     private func isSearchBarEmpty() -> Bool {
         return searchController.searchBar.text?.isEmpty ?? true
     }
-    
+
     func isFiltering() -> Bool {
         let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
         return searchController.isActive && (!isSearchBarEmpty() || searchBarScopeIsFiltering)
     }
-    
+
     func filterContentForSearchText(searchText: String, scope: String) {
-        
+
         currentText = searchText
         currentScope = scope
-        
+
         filteredMovies = movies.filter({ (movie: Movie) -> Bool in
-            
+
             let childDetailIExists = movie.childDetails != nil
-            
+
             if isSearchBarEmpty() {
                 return childDetailIExists
             } else {

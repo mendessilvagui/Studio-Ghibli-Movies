@@ -8,7 +8,7 @@ import UIKit
 import Parse
 
 struct DataBase {
-    
+
     func save(object: PFObject, completion: @escaping (PFObject?) -> Void) {
         object.saveInBackground { (succeeded, error)  in
             if (succeeded) {
@@ -18,7 +18,7 @@ struct DataBase {
             }
         }
     }
-    
+
     func delete(object: PFObject) {
         object.deleteInBackground() { (succeeded, error)  in
             if (succeeded) {
@@ -28,7 +28,7 @@ struct DataBase {
             }
         }
     }
-    
+
     func loadMovies(fetchComplete: @escaping (_ movies: [Movie]?) -> Void) {
         let query = PFQuery(className: "Movie")
         query.order(byAscending: "releaseDate")
@@ -38,7 +38,7 @@ struct DataBase {
             }
         }
     }
-    
+
     func loadDetails(selectedMovie: PFObject, fetchComplete: @escaping (_ details: Details?) -> Void) {
         let query = PFQuery(className:"Details")
         query.whereKey("parentMovie", equalTo: selectedMovie)

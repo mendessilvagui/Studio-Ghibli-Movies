@@ -16,14 +16,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let windowScene:UIWindowScene = scene as! UIWindowScene
         self.window = UIWindow(windowScene: windowScene)
-        
+
         let mainVC = MoviesViewController()
         let nav = UINavigationController(rootViewController: mainVC)
         nav.navigationBar.titleTextAttributes =  [NSAttributedString.Key.foregroundColor:UIColor.white]
-    
+
         self.window!.rootViewController = nav
         self.window!.makeKeyAndVisible()
-        
+
         guard let _ = (scene as? UIWindowScene) else { return }
     }
 }

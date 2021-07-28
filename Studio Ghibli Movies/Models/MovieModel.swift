@@ -6,7 +6,7 @@
 //
 
 class MovieModel {
-    
+
     var title : String
     var original_title : String
     var original_title_romanised: String
@@ -16,7 +16,7 @@ class MovieModel {
     var release_date : String
     var running_time : String
     var rt_score : String
-    
+
     init(title : String, original_title : String, original_title_romanised: String, description : String, director : String, producer : String, release_date : String, running_time : String, rt_score : String) {
         self.title = title
         self.original_title = original_title

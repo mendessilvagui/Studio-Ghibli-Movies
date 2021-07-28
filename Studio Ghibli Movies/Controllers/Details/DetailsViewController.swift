@@ -42,16 +42,16 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.title = "Details"
         self.view.backgroundColor = UIColor(named: "totoro")
-        
+
         navigationController?.delegate = self
 
         presenter.setView(view: self)
         presenter.start()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         presenter.loadMovieDetails()
     }
@@ -122,10 +122,10 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
 
         deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
             deleteAlert.dismiss(animated: true, completion: nil)
-            
+
             self.isFavorited = true
             self.updateRightBarButton()
-            
+
         }))
         present(deleteAlert, animated: true, completion: nil)
     }
@@ -153,9 +153,7 @@ extension DetailsViewController: DetailsView {
     }
 
     func updateDetails(details: Details) {
-        if let selected = details["selected"] as? Bool { // TODO: refactor this line
-            self.isFavorited = selected
-        }
+        self.isFavorited = details.selected
         commentBoxLabel.text = details.comment
         self.updateRightBarButton()
     }

@@ -8,7 +8,7 @@ import Foundation
 import Parse
 
 class MovieData: Codable {
-    
+
     let id: String
     var title : String
     let original_title : String
@@ -19,9 +19,9 @@ class MovieData: Codable {
     let release_date : String
     let running_time : String
     let rt_score : String
-    
+
 // MARK: - Save new model to database
-    
+
     func store() {
 
 		let movie = Movie()
@@ -38,7 +38,7 @@ class MovieData: Codable {
         movie.rtScore = rt_score
         movie.saveInBackground() { (succeeded, error)  in
             if (succeeded) {
-            
+
             } else {
                 print(error!.localizedDescription)
             }
