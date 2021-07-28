@@ -97,8 +97,8 @@ extension MoviesViewController: UITableViewDataSource, UITableViewDelegate {
         }
         
         let title = movie.title
-        let subTitle = movie.original_title
-        let id = movie.movie_id
+        let subTitle = movie.originalTitle
+        let id = movie.movieID
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell") as? CustomTableViewCell {
             
@@ -119,7 +119,7 @@ extension MoviesViewController: UITableViewDataSource, UITableViewDelegate {
 
             let detailVC = DetailsViewController(selectedMovie: movie)
             detailVC.moviesVC = self
-            detailVC.delegate = self
+            detailVC.moviesVCDelegate = self
             tableView.deselectRow(at: (tableView.indexPathForSelectedRow)!, animated: false)
             
             self.show(detailVC, sender: self)

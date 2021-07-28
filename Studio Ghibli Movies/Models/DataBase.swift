@@ -31,7 +31,7 @@ struct DataBase {
     
     func loadMovies(fetchComplete: @escaping (_ movies: [Movie]?) -> Void) {
         let query = PFQuery(className: "Movie")
-        query.order(byAscending: "release_date")
+        query.order(byAscending: "releaseDate")
         query.findObjectsInBackground { objects , error in
             if error == nil {
                 fetchComplete(objects as? [Movie])
@@ -39,12 +39,12 @@ struct DataBase {
         }
     }
     
-    func loadDetails(selectedMovie: PFObject, fetchComplete: @escaping (_ detail: Detail?) -> Void) {
-        let query = PFQuery(className:"Detail")
+    func loadDetails(selectedMovie: PFObject, fetchComplete: @escaping (_ details: Details?) -> Void) {
+        let query = PFQuery(className:"Details")
         query.whereKey("parentMovie", equalTo: selectedMovie)
         query.getFirstObjectInBackground { object, error in
             if error == nil && object != nil {
-                fetchComplete(object as? Detail)
+                fetchComplete(object as? Details)
             } else {
                 fetchComplete(nil)
             }

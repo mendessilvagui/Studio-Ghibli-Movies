@@ -23,7 +23,7 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
 
     private var isFavorited: Bool = false
     public var moviesVC = MoviesViewController()
-    public var delegate: ReloadList?
+    public var moviesVCDelegate: ReloadList?
 
     private let presenter: DetailsPresenter
 
@@ -57,7 +57,7 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        self.delegate?.reloadList()
+        self.moviesVCDelegate?.reloadList()
     }
 
 // MARK: - Updatade favorite button on touch
@@ -137,22 +137,22 @@ extension DetailsViewController: DetailsView {
         titleLabel.text = selectedMovie.title
         titleLabel.backgroundColor = UIColor(named: "navBar")
         titleLabel.numberOfLines = 0
-        originalTitleLabel.text =  selectedMovie.original_title
-        originalTitleRomanLabel.text = selectedMovie.original_title_romanised
+        originalTitleLabel.text =  selectedMovie.originalTitle
+        originalTitleRomanLabel.text = selectedMovie.originalTitleRomanised
         directorLabel.text = selectedMovie.director
         producerLabel.text = selectedMovie.producer
         producerLabel.numberOfLines = 0
         producerLabel.sizeToFit()
-        releaseDateLabel.text = selectedMovie.release_date
-        durationLabel.text = "\(selectedMovie.running_time) min"
-        rtScoreLabel.text = selectedMovie.rt_score
-        descriptionLabel.text = selectedMovie.more_info
+        releaseDateLabel.text = selectedMovie.releaseDate
+        durationLabel.text = "\(selectedMovie.runningTime) min"
+        rtScoreLabel.text = selectedMovie.rtScore
+        descriptionLabel.text = selectedMovie.moreInfo
         descriptionLabel.numberOfLines = 0
         descriptionLabel.sizeToFit()
-        imageView.image = UIImage(named: "\(selectedMovie.movie_id).png")
+        imageView.image = UIImage(named: "\(selectedMovie.movieID).png")
     }
 
-    func updateDetails(details: Detail) {
+    func updateDetails(details: Details) {
         if let selected = details["selected"] as? Bool { // TODO: refactor this line
             self.isFavorited = selected
         }

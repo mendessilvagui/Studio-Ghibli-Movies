@@ -1,5 +1,5 @@
 //
-//  Detail.swift
+//  Details.swift
 //  Studio Ghibli Movies
 //
 //  Created by Guilherme on 27/07/21.
@@ -8,10 +8,10 @@
 import Foundation
 import Parse
 
-class Detail: PFObject, PFSubclassing {
+class Details: PFObject, PFSubclassing {
 
     public static func parseClassName() -> String {
-        return "Detail"
+        return "Details"
     }
 
     @NSManaged var selected: Bool

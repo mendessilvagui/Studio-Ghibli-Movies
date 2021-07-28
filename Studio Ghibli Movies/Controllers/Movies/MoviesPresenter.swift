@@ -12,7 +12,7 @@ class MoviesPresenter {
     
     private weak var view: MoviesView?
     
-    private var api = APIHandler()
+    private var api = APIHandler.shared
     private var database = DataBase()
     
     var movies = [Movie]()
@@ -54,7 +54,7 @@ class MoviesPresenter {
         
         filteredMovies = movies.filter({ (movie: Movie) -> Bool in
             
-            let childDetailIExists = movie.childDetail != nil
+            let childDetailIExists = movie.childDetails != nil
             
             if isSearchBarEmpty() {
                 return childDetailIExists

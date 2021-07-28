@@ -10,7 +10,7 @@ import Parse
 
 protocol DetailsView: NSObject {
     func showMovieData(_ selectedMovie: Movie)
-    func updateDetails(details: Detail)
+    func updateDetails(details: Details)
     func updateComment(_ comment: String?)
     func dismissScreen()
 }

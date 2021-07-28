@@ -24,18 +24,18 @@ class MovieData: Codable {
     
     func store() {
 
-		let movie = PFObject(className:"Movie")
+		let movie = Movie()
 
-		movie["movie_id"] = id
-		movie["title"] = title
-		movie["original_title"] = original_title
-		movie["original_title_romanised"] = original_title_romanised
-		movie["more_info"] = description
-		movie["director"] = director
-		movie["producer"] = producer
-		movie["release_date"] = release_date
-		movie["running_time"] = running_time
-		movie["rt_score"] = rt_score
+        movie.movieID = id
+        movie.title = title
+        movie.originalTitle = original_title
+        movie.originalTitleRomanised = original_title_romanised
+        movie.moreInfo = description
+        movie.director = director
+        movie.producer = producer
+        movie.releaseDate = release_date
+        movie.runningTime = running_time
+        movie.rtScore = rt_score
         movie.saveInBackground() { (succeeded, error)  in
             if (succeeded) {
             

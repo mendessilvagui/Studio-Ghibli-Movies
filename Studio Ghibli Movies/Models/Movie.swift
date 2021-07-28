@@ -14,15 +14,15 @@ class Movie: PFObject, PFSubclassing {
         return "Movie"
     }
 
-    @NSManaged var movie_id: String
+    @NSManaged var movieID: String
     @NSManaged var title: String
-    @NSManaged var original_title: String
-    @NSManaged var original_title_romanised: String
-    @NSManaged var more_info: String
+    @NSManaged var originalTitle: String
+    @NSManaged var originalTitleRomanised: String
+    @NSManaged var moreInfo: String
     @NSManaged var director: String
     @NSManaged var producer: String
-    @NSManaged var release_date: String
-    @NSManaged var running_time: String
-    @NSManaged var rt_score: String
-    @NSManaged var childDetail: Detail?
+    @NSManaged var releaseDate: String
+    @NSManaged var runningTime: String
+    @NSManaged var rtScore: String
+    @NSManaged var childDetails: Details?
 }

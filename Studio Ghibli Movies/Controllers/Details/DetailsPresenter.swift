@@ -14,7 +14,7 @@ class DetailsPresenter {
 
     private let database = DataBase()
     private var selectedMovie = Movie()
-    private var details = Detail()
+    private var details = Details()
 
     init(selectedMovie: Movie) {
         self.selectedMovie = selectedMovie
@@ -31,9 +31,9 @@ class DetailsPresenter {
     }
 
     func loadMovieDetails() {
-        database.loadDetails(selectedMovie: selectedMovie) { detail in
-            if let detail = detail {
-                self.details = detail
+        database.loadDetails(selectedMovie: selectedMovie) { details in
+            if let details = details {
+                self.details = details
             }
             self.view?.updateDetails(details: self.details)
         }
@@ -47,7 +47,7 @@ class DetailsPresenter {
 
         // TODO: show loader
         database.save(object: details) { _ in
-            self.selectedMovie.childDetail = self.details
+            self.selectedMovie.childDetails = self.details
             self.selectedMovie.saveInBackground() {(succeeded, error)  in
                 // TODO: hide loader
                 if (succeeded) {
@@ -63,7 +63,7 @@ class DetailsPresenter {
         database.delete(object: details)
 
         // TODO: show loader
-        selectedMovie.remove(forKey: "childDetail")
+        selectedMovie.remove(forKey: "childDetails")
         selectedMovie.saveInBackground() {(succeeded, error)  in
             if (succeeded) {
                 self.view?.dismissScreen()
