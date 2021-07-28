@@ -6,11 +6,10 @@
 //
 
 import Foundation
-
 import Parse
 
 protocol MoviesView: NSObject {
     func styleTableViewBackground()
     func reloadTableView()
-    func reloadList()
+    func setUpSearchController()
 }

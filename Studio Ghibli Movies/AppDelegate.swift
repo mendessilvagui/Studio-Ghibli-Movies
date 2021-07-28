@@ -10,9 +10,9 @@ import Parse
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+
         Thread.sleep(forTimeInterval: 2.0)
 
         let parseConfig = ParseClientConfiguration {

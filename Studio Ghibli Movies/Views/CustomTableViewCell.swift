@@ -13,7 +13,7 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var cellView: UIView!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -23,15 +23,15 @@ class CustomTableViewCell: UITableViewCell {
 
         self.backgroundColor = .clear
         self.selectionStyle = .none
-        
+
         let containerHeightAnchor = self.contentView.heightAnchor.constraint(equalToConstant: 130)
         containerHeightAnchor.isActive = true
         self.cellView.layer.cornerRadius = 30
         self.cellView.backgroundColor = UIColor(named: "totoro")?.withAlphaComponent(0.8)
-        
+
         self.titleLabel.textColor = UIColor.black
         self.subTitleLabel.textColor = UIColor.darkGray
         self.cellImageView.layer.cornerRadius = 10
     }
-    
+
 }

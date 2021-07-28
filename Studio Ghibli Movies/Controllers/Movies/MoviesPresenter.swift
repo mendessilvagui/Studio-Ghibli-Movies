@@ -9,68 +9,60 @@ import Foundation
 import Parse
 
 class MoviesPresenter {
-    
+
     private weak var view: MoviesView?
-    
-    private var api = APIHandler()
+
+    private var api = APIHandler.shared
     private var database = DataBase()
-    
-    var movies = [PFObject]()
-    var filteredMovies = [PFObject]()
-    
+
+    var movies = [Movie]()
+    var filteredMovies = [Movie]()
+
     var searchController = UISearchController(searchResultsController: nil)
-    
+
     var currentScope = "All"
     var currentText = ""
-    
-//    var movies: [PFObject]
-//    var filteredMovies: [PFObject]
-    
-//    init(movies: [PFObject], filteredMovies: [PFObject]) {
-//        self.movies = movies
-//        self.filteredMovies = filteredMovies
-//    }
-    
+
     func setView(view: MoviesView) {
         self.view = view
     }
-    
+
     //MARK: - Presenter methods
-    
+
     func loadMoviesList() {
         api.fetchMovie {
-            self.database.loadMovies { objects in
-                self.movies = objects
+            self.database.loadMovies { movies in
+                self.movies = movies!
                 self.view?.reloadTableView()
             }
         }
     }
-    
+
     private func isSearchBarEmpty() -> Bool {
         return searchController.searchBar.text?.isEmpty ?? true
     }
-    
+
     func isFiltering() -> Bool {
         let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
         return searchController.isActive && (!isSearchBarEmpty() || searchBarScopeIsFiltering)
     }
-    
+
     func filterContentForSearchText(searchText: String, scope: String) {
-        
+
         currentText = searchText
         currentScope = scope
-        
-        filteredMovies = movies.filter({ (movie: PFObject) -> Bool in
-            
-            let childDetailIExists = movie["childDetail"] != nil
-            
+
+        filteredMovies = movies.filter({ (movie: Movie) -> Bool in
+
+            let childDetailIExists = movie.childDetails != nil
+
             if isSearchBarEmpty() {
                 return childDetailIExists
             } else {
                 if scope == "All" {
-                    return (movie["title"] as! String).lowercased().contains(searchText.lowercased())
+                    return (movie.title).lowercased().contains(searchText.lowercased())
                 } else {
-                    return childDetailIExists && (movie["title"] as! String).lowercased().contains(searchText.lowercased())
+                    return childDetailIExists && (movie.title).lowercased().contains(searchText.lowercased())
                 }
             }
         })

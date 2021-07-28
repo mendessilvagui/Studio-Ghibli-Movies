@@ -1,47 +1,28 @@
 //
-//  MoviesData.swift
+//  Movie.swift
 //  Studio Ghibli Movies
 //
-//  Created by Guilherme Mendes on 13/05/21.
+//  Created by Guilherme on 27/07/21.
+//
 
 import Foundation
 import Parse
 
-class Movie: Codable {
-    
-    let id: String
-    var title : String
-    let original_title : String
-    let original_title_romanised: String
-    let description : String
-    let director : String
-    let producer : String
-    let release_date : String
-    let running_time : String
-    let rt_score : String
-    
-// MARK: - Save new model to database
-    
-    func store() {
+class Movie: PFObject, PFSubclassing {
 
-		let movie = PFObject(className:"Movie")
-
-		movie["movie_id"] = id
-		movie["title"] = title
-		movie["original_title"] = original_title
-		movie["original_title_romanised"] = original_title_romanised
-		movie["more_info"] = description
-		movie["director"] = director
-		movie["producer"] = producer
-		movie["release_date"] = release_date
-		movie["running_time"] = running_time
-		movie["rt_score"] = rt_score
-        movie.saveInBackground() { (succeeded, error)  in
-            if (succeeded) {
-            
-            } else {
-                print(error!.localizedDescription)
-            }
-        }
+    public static func parseClassName() -> String {
+        return "Movie"
     }
+
+    @NSManaged var movieID: String
+    @NSManaged var title: String
+    @NSManaged var originalTitle: String
+    @NSManaged var originalTitleRomanised: String
+    @NSManaged var moreInfo: String
+    @NSManaged var director: String
+    @NSManaged var producer: String
+    @NSManaged var releaseDate: String
+    @NSManaged var runningTime: String
+    @NSManaged var rtScore: String
+    @NSManaged var childDetails: Details?
 }

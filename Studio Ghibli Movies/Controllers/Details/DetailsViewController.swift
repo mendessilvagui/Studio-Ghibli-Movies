@@ -23,13 +23,13 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
 
     private var isFavorited: Bool = false
     public var moviesVC = MoviesViewController()
-    public var delegate: MoviesView?
+    public var moviesVCDelegate: ReloadList?
 
     private let presenter: DetailsPresenter
 
     // MARK: - Init
 
-    init(selectedMovie: PFObject) {
+    init(selectedMovie: Movie) {
         presenter = DetailsPresenter(selectedMovie: selectedMovie)
         super.init(nibName: "DetailsView", bundle: nil)
     }
@@ -42,22 +42,22 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.title = "Details"
         self.view.backgroundColor = UIColor(named: "totoro")
-        
+
         navigationController?.delegate = self
 
         presenter.setView(view: self)
         presenter.start()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         presenter.loadMovieDetails()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        self.delegate?.reloadList()
+        self.moviesVCDelegate?.reloadList()
     }
 
 // MARK: - Updatade favorite button on touch
@@ -122,10 +122,10 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
 
         deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
             deleteAlert.dismiss(animated: true, completion: nil)
-            
+
             self.isFavorited = true
             self.updateRightBarButton()
-            
+
         }))
         present(deleteAlert, animated: true, completion: nil)
     }
@@ -133,34 +133,32 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
 
 extension DetailsViewController: DetailsView {
 
-    func showMovieData(_ selectedMovie: PFObject) {
-        titleLabel.text = selectedMovie["title"] as? String
+    func showMovieData(_ selectedMovie: Movie) {
+        titleLabel.text = selectedMovie.title
         titleLabel.backgroundColor = UIColor(named: "navBar")
         titleLabel.numberOfLines = 0
-        originalTitleLabel.text =  selectedMovie["original_title"] as? String
-        originalTitleRomanLabel.text = selectedMovie["original_title_romanised"] as? String
-        directorLabel.text = selectedMovie["director"] as? String
-        producerLabel.text = selectedMovie["producer"] as? String
+        originalTitleLabel.text =  selectedMovie.originalTitle
+        originalTitleRomanLabel.text = selectedMovie.originalTitleRomanised
+        directorLabel.text = selectedMovie.director
+        producerLabel.text = selectedMovie.producer
         producerLabel.numberOfLines = 0
         producerLabel.sizeToFit()
-        releaseDateLabel.text = selectedMovie["release_date"] as? String
-        durationLabel.text = "\(selectedMovie["running_time"] as? String ?? "") min"
-        rtScoreLabel.text = selectedMovie["rt_score"] as? String
-        descriptionLabel.text = selectedMovie["more_info"] as? String
+        releaseDateLabel.text = selectedMovie.releaseDate
+        durationLabel.text = "\(selectedMovie.runningTime) min"
+        rtScoreLabel.text = selectedMovie.rtScore
+        descriptionLabel.text = selectedMovie.moreInfo
         descriptionLabel.numberOfLines = 0
         descriptionLabel.sizeToFit()
-        imageView.image = UIImage(named: "\(selectedMovie["movie_id"] as? String ?? "").png")
+        imageView.image = UIImage(named: "\(selectedMovie.movieID).png")
     }
 
-    func updateDetails(details: PFObject) {
-        if let selected = details["selected"] as? Bool {
-            self.isFavorited = selected
-        }
-        commentBoxLabel.text = details["comment"] as? String
+    func updateDetails(details: Details) {
+        self.isFavorited = details.selected
+        commentBoxLabel.text = details.comment
         self.updateRightBarButton()
     }
 
-    func updateComment(_ comment: String) {
+    func updateComment(_ comment: String?) {
         self.commentBoxLabel.text = comment
     }
 
