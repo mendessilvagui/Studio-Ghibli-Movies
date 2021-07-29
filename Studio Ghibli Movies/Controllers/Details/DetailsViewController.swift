@@ -11,6 +11,7 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
 
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var originalTitleLabel: UILabel!
     @IBOutlet private weak var originalTitleRomanLabel: UILabel!
     @IBOutlet private weak var releaseDateLabel: UILabel!
@@ -150,6 +151,9 @@ extension DetailsViewController: DetailsView {
         descriptionLabel.numberOfLines = 0
         descriptionLabel.sizeToFit()
         imageView.image = UIImage(named: "\(selectedMovie.movieID).png")
+
+        imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+
     }
 
     func updateDetails(details: Details) {
