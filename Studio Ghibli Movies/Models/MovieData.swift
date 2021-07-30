@@ -36,10 +36,12 @@ class MovieData: Codable {
         movie.releaseDate = release_date
         movie.runningTime = running_time
         movie.rtScore = rt_score
+
         movie.saveInBackground() { (succeeded, error)  in
             if (succeeded) {
-
-            } else {
+                // The object has been saved.
+            }
+            else {
                 print(error!.localizedDescription)
             }
         }

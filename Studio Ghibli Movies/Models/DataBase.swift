@@ -9,6 +9,8 @@ import Parse
 
 struct DataBase {
 
+    private var api = APIHandler.shared
+
     func save(object: PFObject, completion: @escaping (PFObject?) -> Void) {
         object.saveInBackground { (succeeded, error)  in
             if (succeeded) {
@@ -33,7 +35,11 @@ struct DataBase {
         let query = PFQuery(className: "Movie")
         query.order(byAscending: "releaseDate")
         query.findObjectsInBackground { objects , error in
-            if error == nil {
+            if objects?.count == 0 {
+                api.fetchMovie()
+                fetchComplete(objects as? [Movie])
+
+            } else if error == nil && objects != nil {
                 fetchComplete(objects as? [Movie])
             }
         }

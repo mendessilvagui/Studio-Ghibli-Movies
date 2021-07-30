@@ -13,9 +13,11 @@ class APIHandler {
 
     static let shared = APIHandler()
 
-    let firstRun = UserDefaults.standard.bool(forKey: "firstRun") as Bool
+    public var delegate: ReloadList?
 
-    func fetchMovie(completion: @escaping (() -> Void)) {
+//    let firstRun = UserDefaults.standard.bool(forKey: "firstRun") as Bool
+
+    func fetchMovie() {
 
         var req = URLRequest(url: URL(string: "https://ghibliapi.herokuapp.com/films")!)
         req.httpMethod = "GET"
@@ -25,17 +27,22 @@ class APIHandler {
 
             do {
                 let model = try JSONDecoder().decode([MovieData].self, from: data!)
+                /*
                 if !self.firstRun {
                     model.forEach { $0.store() }
                     UserDefaults.standard.set(true, forKey: "firstRun")
                 }
-                completion()
+                */
+                model.forEach { $0.store() }
+                self.delegate?.reloadList()
+                //completion()
 
             } catch {
                 print(error.localizedDescription)
-                completion()
+                //completion()
             }
         })
         task.resume()
     }
 }
+
