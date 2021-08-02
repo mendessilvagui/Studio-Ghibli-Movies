@@ -36,9 +36,9 @@ struct DataBase {
         query.order(byAscending: "releaseDate")
         query.findObjectsInBackground { objects , error in
             if objects?.count == 0 {
-                api.fetchMovie()
-                fetchComplete(objects as? [Movie])
-
+                api.fetchMovie { movies in
+                    fetchComplete(movies)
+                }
             } else if error == nil && objects != nil {
                 fetchComplete(objects as? [Movie])
             }

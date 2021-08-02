@@ -12,7 +12,6 @@ class MoviesPresenter {
 
     private weak var view: MoviesView?
 
-//    private var api = APIHandler.shared
     private var database = DataBase()
 
     var movies = [Movie]()
@@ -30,22 +29,13 @@ class MoviesPresenter {
     //MARK: - Presenter methods
 
     func loadMoviesList() {
-        /*
-        api.fetchMovie {
-            self.database.loadMovies { movies in
-                self.movies = movies!
-                self.view?.reloadTableView()
-            }
-        }
-         */
         if movies.count == 0 {
             self.database.loadMovies { movies in
                 self.movies = movies!
                 self.view?.reloadTableView()
             }
-            print("Movie list fetched")
         } else {
-            print("Error loading movie list")
+            self.view?.reloadTableView()
         }
     }
 

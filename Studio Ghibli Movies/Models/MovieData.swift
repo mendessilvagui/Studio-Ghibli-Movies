@@ -22,7 +22,7 @@ class MovieData: Codable {
 
 // MARK: - Save new model to database
 
-    func store() {
+    func mapToPFMovie() -> Movie {
 
 		let movie = Movie()
 
@@ -37,13 +37,6 @@ class MovieData: Codable {
         movie.runningTime = running_time
         movie.rtScore = rt_score
 
-        movie.saveInBackground() { (succeeded, error)  in
-            if (succeeded) {
-                // The object has been saved.
-            }
-            else {
-                print(error!.localizedDescription)
-            }
-        }
+        return movie
     }
 }

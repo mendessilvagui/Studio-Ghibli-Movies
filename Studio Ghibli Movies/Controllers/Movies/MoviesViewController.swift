@@ -32,10 +32,6 @@ class MoviesViewController: UIViewController {
         tableView.dataSource = self
         registerTableViewCells()
 
-        if presenter.movies.count != 0 {
-            return
-        }
-
         presenter.setView(view: self)
     }
 
