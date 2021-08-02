@@ -32,27 +32,29 @@ struct DataBase {
     }
 
     func loadMovies(fetchComplete: @escaping (_ movies: [Movie]?) -> Void) {
-        let query = PFQuery(className: "Movie")
-        query.order(byAscending: "releaseDate")
-        query.findObjectsInBackground { objects , error in
-            if objects?.count == 0 {
-                api.fetchMovie { movies in
-                    fetchComplete(movies)
+        if let query = Movie.query() {
+            query.order(byAscending: "releaseDate")
+            query.findObjectsInBackground { objects , error in
+                if objects?.count == 0 {
+                    api.fetchMovie { movies in
+                        fetchComplete(movies)
+                    }
+                } else if error == nil && objects != nil {
+                    fetchComplete(objects as? [Movie])
                 }
-            } else if error == nil && objects != nil {
-                fetchComplete(objects as? [Movie])
             }
         }
     }
 
     func loadDetails(selectedMovie: PFObject, fetchComplete: @escaping (_ details: Details?) -> Void) {
-        let query = PFQuery(className:"Details")
-        query.whereKey("parentMovie", equalTo: selectedMovie)
-        query.getFirstObjectInBackground { object, error in
-            if error == nil && object != nil {
-                fetchComplete(object as? Details)
-            } else {
-                fetchComplete(nil)
+        if let query = Details.query() {
+            query.whereKey("parentMovie", equalTo: selectedMovie)
+            query.getFirstObjectInBackground { object, error in
+                if error == nil && object != nil {
+                    fetchComplete(object as? Details)
+                } else {
+                    fetchComplete(nil)
+                }
             }
         }
     }
