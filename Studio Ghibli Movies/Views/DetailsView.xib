@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -34,7 +33,7 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YmT-x9-A88" userLabel="Content View">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="665"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="685"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0a0-GC-rn9">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="240"/>
@@ -282,7 +281,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" name="totoro"/>
                             <constraints>
                                 <constraint firstItem="0a0-GC-rn9" firstAttribute="leading" secondItem="8p9-gY-ZMv" secondAttribute="leading" id="0tC-fE-pNV"/>
                                 <constraint firstItem="0a0-GC-rn9" firstAttribute="trailing" secondItem="8p9-gY-ZMv" secondAttribute="trailing" id="5Nw-VX-KG3"/>
@@ -291,7 +290,7 @@
                                 <constraint firstAttribute="trailing" secondItem="8p9-gY-ZMv" secondAttribute="trailing" id="JAN-kt-OyS"/>
                                 <constraint firstItem="0a0-GC-rn9" firstAttribute="top" secondItem="YmT-x9-A88" secondAttribute="top" id="KbV-5Z-VMr"/>
                                 <constraint firstAttribute="trailing" secondItem="pSE-iH-TKv" secondAttribute="trailing" id="SN3-tu-RGN"/>
-                                <constraint firstAttribute="bottom" secondItem="pSE-iH-TKv" secondAttribute="bottom" id="hcm-ez-fzK"/>
+                                <constraint firstAttribute="bottom" secondItem="pSE-iH-TKv" secondAttribute="bottom" constant="20" id="hcm-ez-fzK"/>
                                 <constraint firstItem="pSE-iH-TKv" firstAttribute="top" secondItem="8p9-gY-ZMv" secondAttribute="bottom" id="pWb-Hq-Pfa"/>
                                 <constraint firstItem="8p9-gY-ZMv" firstAttribute="leading" secondItem="YmT-x9-A88" secondAttribute="leading" id="ysT-lX-MO5"/>
                             </constraints>
@@ -323,8 +322,5 @@
         <namedColor name="totoro">
             <color red="0.60784313725490191" green="0.70588235294117652" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>
