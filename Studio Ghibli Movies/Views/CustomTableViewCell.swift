@@ -34,5 +34,4 @@ final class CustomTableViewCell: UITableViewCell, NibReusable {
         self.subTitleLabel.textColor = UIColor.darkGray
         self.cellImageView.layer.cornerRadius = 10
     }
-
 }

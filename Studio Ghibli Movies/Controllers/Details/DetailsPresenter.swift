@@ -59,7 +59,7 @@ class DetailsPresenter {
 
     func unfavorite() {
         database.delete(object: details)
-        
+
         selectedMovie.remove(forKey: "childDetails")
         selectedMovie.saveInBackground() {(succeeded, error)  in
             if (succeeded) {

@@ -30,7 +30,6 @@ class MoviesViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(cellType: CustomTableViewCell.self)
-//        registerTableViewCells()
 
         if presenter.movies.count != 0 {
             return
@@ -69,13 +68,6 @@ extension MoviesViewController: UISearchBarDelegate {
 
 extension MoviesViewController: UITableViewDataSource, UITableViewDelegate {
 
-//    private func registerTableViewCells() {
-//        let customCell = UINib(nibName: "CustomTableViewCell",
-//                                  bundle: nil)
-//        self.tableView.register(customCell,
-//                                forCellReuseIdentifier: "CustomTableViewCell")
-//    }
-
     internal func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         presenter.searchController.searchBar.endEditing(true)
     }
@@ -97,19 +89,14 @@ extension MoviesViewController: UITableViewDataSource, UITableViewDelegate {
             movie = presenter.movies[indexPath.row]
         }
 
-        let title = movie.title
-        let subTitle = movie.originalTitle
-        let id = movie.movieID
-
         let cell = tableView.dequeueReusableCell(for: indexPath) as CustomTableViewCell
 
-        cell.titleLabel.text = title
-        cell.subTitleLabel.text = subTitle
-        cell.cellImageView.image = UIImage(named: "poster-\(id)")
+        cell.titleLabel.text = movie.title
+        cell.subTitleLabel.text = movie.originalTitle
+        cell.cellImageView.image = UIImage(named: "poster-\(movie.movieID)")
 
         return cell
     }
-
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
