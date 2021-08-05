@@ -1,22 +1,34 @@
 PODS:
   - Bolts/Tasks (1.9.1)
+  - MBProgressHUD (1.2.0)
   - Parse (1.19.2):
     - Parse/Core (= 1.19.2)
   - Parse/Core (1.19.2):
     - Bolts/Tasks (= 1.9.1)
+  - Reusable (4.1.1):
+    - Reusable/Storyboard (= 4.1.1)
+    - Reusable/View (= 4.1.1)
+  - Reusable/Storyboard (4.1.1)
+  - Reusable/View (4.1.1)
 
 DEPENDENCIES:
+  - MBProgressHUD (= 1.2.0)
   - Parse (= 1.19.2)
+  - Reusable (= 4.1.1)
 
 SPEC REPOS:
   trunk:
     - Bolts
+    - MBProgressHUD
     - Parse
+    - Reusable
 
 SPEC CHECKSUMS:
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   Parse: 081fb8755c3000fd11df817eec235def233d0af3
+  Reusable: 53a9acf5c536f229b31b5865782414b508252ddb
 
-PODFILE CHECKSUM: 091671e4c8c700df561d5326e72684d2e7abd66b
+PODFILE CHECKSUM: fc012552faa35d2a2dc38ca55d9041d208efdf13
 
 COCOAPODS: 1.10.1

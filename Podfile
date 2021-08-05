@@ -7,5 +7,7 @@ target 'Studio Ghibli Movies' do
 
   # Pods for Studio Ghibli Movies
   pod 'Parse', '1.19.2'
+  pod 'Reusable', '4.1.1'
+  pod 'MBProgressHUD', '1.2.0'
 
 end

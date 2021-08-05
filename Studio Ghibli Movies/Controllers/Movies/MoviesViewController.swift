@@ -29,7 +29,8 @@ class MoviesViewController: UIViewController {
         styleTableViewBackground()
         tableView.delegate = self
         tableView.dataSource = self
-        registerTableViewCells()
+        tableView.register(cellType: CustomTableViewCell.self)
+//        registerTableViewCells()
 
         if presenter.movies.count != 0 {
             return
@@ -68,12 +69,12 @@ extension MoviesViewController: UISearchBarDelegate {
 
 extension MoviesViewController: UITableViewDataSource, UITableViewDelegate {
 
-    private func registerTableViewCells() {
-        let customCell = UINib(nibName: "CustomTableViewCell",
-                                  bundle: nil)
-        self.tableView.register(customCell,
-                                forCellReuseIdentifier: "CustomTableViewCell")
-    }
+//    private func registerTableViewCells() {
+//        let customCell = UINib(nibName: "CustomTableViewCell",
+//                                  bundle: nil)
+//        self.tableView.register(customCell,
+//                                forCellReuseIdentifier: "CustomTableViewCell")
+//    }
 
     internal func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         presenter.searchController.searchBar.endEditing(true)
@@ -100,14 +101,13 @@ extension MoviesViewController: UITableViewDataSource, UITableViewDelegate {
         let subTitle = movie.originalTitle
         let id = movie.movieID
 
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell") as? CustomTableViewCell {
+        let cell = tableView.dequeueReusableCell(for: indexPath) as CustomTableViewCell
 
-            cell.titleLabel.text = title
-            cell.subTitleLabel.text = subTitle
-            cell.cellImageView.image = UIImage(named: "poster-\(id)")
-            return cell
-        }
-        return UITableViewCell()
+        cell.titleLabel.text = title
+        cell.subTitleLabel.text = subTitle
+        cell.cellImageView.image = UIImage(named: "poster-\(id)")
+
+        return cell
     }
 
 

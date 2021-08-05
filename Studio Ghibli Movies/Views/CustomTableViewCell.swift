@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import Reusable
 
-class CustomTableViewCell: UITableViewCell {
+final class CustomTableViewCell: UITableViewCell, NibReusable {
 
     @IBOutlet weak var cellImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
