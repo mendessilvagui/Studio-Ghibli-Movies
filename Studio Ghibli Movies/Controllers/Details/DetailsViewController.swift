@@ -11,6 +11,7 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
 
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var originalTitleLabel: UILabel!
     @IBOutlet private weak var originalTitleRomanLabel: UILabel!
     @IBOutlet private weak var releaseDateLabel: UILabel!
@@ -136,20 +137,18 @@ extension DetailsViewController: DetailsView {
     func showMovieData(_ selectedMovie: Movie) {
         titleLabel.text = selectedMovie.title
         titleLabel.backgroundColor = UIColor(named: "navBar")
-        titleLabel.numberOfLines = 0
         originalTitleLabel.text =  selectedMovie.originalTitle
         originalTitleRomanLabel.text = selectedMovie.originalTitleRomanised
         directorLabel.text = selectedMovie.director
         producerLabel.text = selectedMovie.producer
-        producerLabel.numberOfLines = 0
         producerLabel.sizeToFit()
         releaseDateLabel.text = selectedMovie.releaseDate
         durationLabel.text = "\(selectedMovie.runningTime) min"
         rtScoreLabel.text = selectedMovie.rtScore
         descriptionLabel.text = selectedMovie.moreInfo
-        descriptionLabel.numberOfLines = 0
         descriptionLabel.sizeToFit()
         imageView.image = UIImage(named: "\(selectedMovie.movieID).png")
+
     }
 
     func updateDetails(details: Details) {

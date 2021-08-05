@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,7 +21,7 @@
                 <outlet property="releaseDateLabel" destination="2o8-cj-HHE" id="gTX-LH-D58"/>
                 <outlet property="rtScoreLabel" destination="YtR-ye-ijh" id="vKT-B6-CTt"/>
                 <outlet property="titleLabel" destination="8p9-gY-ZMv" id="4rd-0P-isE"/>
-                <outlet property="view" destination="Xcd-bh-Cvs" id="22f-P9-b7i"/>
+                <outlet property="view" destination="Xcd-bh-Cvs" id="6s4-SA-xCJ"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -28,147 +29,298 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0a0-GC-rn9">
-                    <rect key="frame" x="0.0" y="83" width="414" height="240"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8p9-gY-ZMv">
-                    <rect key="frame" x="0.0" y="323" width="414" height="70"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Kanji" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a2N-bJ-xzW">
-                    <rect key="frame" x="20" y="409" width="115" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
-                    <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Original Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FLU-9b-FgQ">
-                    <rect key="frame" x="145" y="409" width="249" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
-                    <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rômanji" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DFK-Rs-rzE">
-                    <rect key="frame" x="20" y="434" width="115" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
-                    <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Original Title Romanized" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ai-vQ-5Im">
-                    <rect key="frame" x="145" y="434" width="249" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
-                    <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Release date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dtB-d4-Qha">
-                    <rect key="frame" x="20" y="459" width="115" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
-                    <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Release Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2o8-cj-HHE">
-                    <rect key="frame" x="145" y="459" width="249" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
-                    <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Runtime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QUN-h8-wga">
-                    <rect key="frame" x="20" y="484" width="115" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
-                    <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Le-6X-o8s">
-                    <rect key="frame" x="145" y="484" width="249" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
-                    <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rotten Tomato Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fdt-3K-ues">
-                    <rect key="frame" x="20" y="509" width="115" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
-                    <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RT Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YtR-ye-ijh">
-                    <rect key="frame" x="145" y="509" width="249" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
-                    <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Directed by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ecu-eO-zTw">
-                    <rect key="frame" x="20" y="534" width="115" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
-                    <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Director" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TrV-WX-WLJ">
-                    <rect key="frame" x="145" y="534" width="249" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
-                    <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Produced by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3cq-lM-AcZ">
-                    <rect key="frame" x="20" y="559" width="115" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
-                    <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Producer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5N-A7-kje">
-                    <rect key="frame" x="145" y="559" width="249" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
-                    <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="More info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5z-8y-Mfd">
-                    <rect key="frame" x="20" y="584" width="115" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
-                    <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFz-k4-sci">
-                    <rect key="frame" x="20" y="609" width="374" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
-                    <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Comment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l8I-6p-eYX">
-                    <rect key="frame" x="20" y="769" width="115" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
-                    <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bir-Tb-JMs">
-                    <rect key="frame" x="20" y="794" width="374" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
-                    <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cpq-m0-OoW">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YmT-x9-A88" userLabel="Content View">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="685"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0a0-GC-rn9">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="240"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="0a0-GC-rn9" secondAttribute="height" multiplier="69:40" id="EDP-x0-aOZ"/>
+                                        <constraint firstAttribute="width" secondItem="0a0-GC-rn9" secondAttribute="height" multiplier="69:40" id="elr-Ev-xsq"/>
+                                    </constraints>
+                                </imageView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pSE-iH-TKv">
+                                    <rect key="frame" x="0.0" y="310" width="414" height="355"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="e9S-Lo-G0j">
+                                            <rect key="frame" x="20" y="20" width="374" height="214.5"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="cci-QY-uVJ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="13.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" text="Kanji" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a2N-bJ-xzW">
+                                                            <rect key="frame" x="0.0" y="0.0" width="115" height="13.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="115" id="vw8-qa-GNU"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
+                                                            <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" text="Original Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FLU-9b-FgQ">
+                                                            <rect key="frame" x="137" y="0.0" width="237" height="13.5"/>
+                                                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
+                                                            <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="FLU-9b-FgQ" secondAttribute="trailing" id="Q4O-sI-LrS"/>
+                                                    </constraints>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="NUW-Dj-lzV">
+                                                    <rect key="frame" x="0.0" y="33.5" width="374" height="13.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Rômanji" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DFK-Rs-rzE">
+                                                            <rect key="frame" x="0.0" y="0.0" width="115" height="13.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="115" id="lwT-e3-wON"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
+                                                            <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Original Title Romanized" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ai-vQ-5Im">
+                                                            <rect key="frame" x="137" y="0.0" width="237" height="13.5"/>
+                                                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
+                                                            <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="2Ai-vQ-5Im" secondAttribute="trailing" id="4aY-iB-Yeg"/>
+                                                    </constraints>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="oJL-N5-Sd9">
+                                                    <rect key="frame" x="0.0" y="67" width="374" height="13.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" text="Release date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dtB-d4-Qha">
+                                                            <rect key="frame" x="0.0" y="0.0" width="115" height="13.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="115" id="flu-Fk-2bY"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
+                                                            <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Release Date" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2o8-cj-HHE">
+                                                            <rect key="frame" x="137" y="0.0" width="237" height="13.5"/>
+                                                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
+                                                            <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="2o8-cj-HHE" secondAttribute="trailing" id="Obc-QP-Yjj"/>
+                                                    </constraints>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="m4A-n3-Cqy">
+                                                    <rect key="frame" x="0.0" y="100.5" width="374" height="13.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" text="Runtime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QUN-h8-wga">
+                                                            <rect key="frame" x="0.0" y="0.0" width="115" height="13.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="115" id="qJY-2u-MXf"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
+                                                            <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" text="Duration" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Le-6X-o8s">
+                                                            <rect key="frame" x="137" y="0.0" width="237" height="13.5"/>
+                                                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
+                                                            <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="4Le-6X-o8s" secondAttribute="trailing" id="mJk-F9-r6N"/>
+                                                    </constraints>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="os0-8v-yeH">
+                                                    <rect key="frame" x="0.0" y="134" width="374" height="13.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Rotten Tomato Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fdt-3K-ues">
+                                                            <rect key="frame" x="0.0" y="0.0" width="115" height="13.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="115" id="ZWG-I3-yoA"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
+                                                            <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RT Score" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YtR-ye-ijh">
+                                                            <rect key="frame" x="137" y="0.0" width="237" height="13.5"/>
+                                                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
+                                                            <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="YtR-ye-ijh" secondAttribute="trailing" id="iM3-oz-U9s"/>
+                                                    </constraints>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="rZX-he-Vg7">
+                                                    <rect key="frame" x="0.0" y="167.5" width="374" height="13.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Directed by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ecu-eO-zTw">
+                                                            <rect key="frame" x="0.0" y="0.0" width="115" height="13.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="115" id="bOU-ml-U4V"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
+                                                            <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Director" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TrV-WX-WLJ">
+                                                            <rect key="frame" x="137" y="0.0" width="237" height="13.5"/>
+                                                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
+                                                            <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="TrV-WX-WLJ" secondAttribute="trailing" id="1cE-Ma-4ln"/>
+                                                    </constraints>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="Bmj-Xq-eRa">
+                                                    <rect key="frame" x="0.0" y="201" width="374" height="13.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Produced by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3cq-lM-AcZ">
+                                                            <rect key="frame" x="0.0" y="0.0" width="115" height="13.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="115" id="v7O-x9-OSV"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
+                                                            <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Producer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5N-A7-kje">
+                                                            <rect key="frame" x="137" y="0.0" width="237" height="13.5"/>
+                                                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
+                                                            <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="V5N-A7-kje" secondAttribute="trailing" id="5pq-e1-wPt"/>
+                                                        <constraint firstAttribute="trailing" secondItem="V5N-A7-kje" secondAttribute="trailing" id="6T2-ft-qT2"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="cci-QY-uVJ" secondAttribute="trailing" id="3CD-vb-sF1"/>
+                                                <constraint firstItem="m4A-n3-Cqy" firstAttribute="leading" secondItem="e9S-Lo-G0j" secondAttribute="leading" id="3L3-4o-Mau"/>
+                                                <constraint firstAttribute="trailing" secondItem="os0-8v-yeH" secondAttribute="trailing" id="3d3-yO-ioI"/>
+                                                <constraint firstItem="Bmj-Xq-eRa" firstAttribute="leading" secondItem="e9S-Lo-G0j" secondAttribute="leading" id="DpS-oT-qjg"/>
+                                                <constraint firstAttribute="trailing" secondItem="Bmj-Xq-eRa" secondAttribute="trailing" id="DuQ-nc-7r5"/>
+                                                <constraint firstItem="rZX-he-Vg7" firstAttribute="leading" secondItem="e9S-Lo-G0j" secondAttribute="leading" id="GA9-Qz-7BJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="m4A-n3-Cqy" secondAttribute="trailing" id="HuB-eF-gKa"/>
+                                                <constraint firstItem="NUW-Dj-lzV" firstAttribute="leading" secondItem="e9S-Lo-G0j" secondAttribute="leading" id="LtX-ZF-4C8"/>
+                                                <constraint firstItem="cci-QY-uVJ" firstAttribute="leading" secondItem="e9S-Lo-G0j" secondAttribute="leading" id="PRO-um-nKl"/>
+                                                <constraint firstAttribute="trailing" secondItem="NUW-Dj-lzV" secondAttribute="trailing" id="S4L-uP-Cox"/>
+                                                <constraint firstAttribute="trailing" secondItem="rZX-he-Vg7" secondAttribute="trailing" id="ZIg-kf-3HF"/>
+                                                <constraint firstItem="oJL-N5-Sd9" firstAttribute="leading" secondItem="e9S-Lo-G0j" secondAttribute="leading" id="e1c-5s-G6y"/>
+                                                <constraint firstItem="os0-8v-yeH" firstAttribute="leading" secondItem="e9S-Lo-G0j" secondAttribute="leading" id="kWo-Gw-kAN"/>
+                                                <constraint firstAttribute="trailing" secondItem="oJL-N5-Sd9" secondAttribute="trailing" id="wV0-6y-8Wk"/>
+                                            </constraints>
+                                        </stackView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="More info" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5z-8y-Mfd">
+                                            <rect key="frame" x="20" y="254.5" width="50.5" height="13.5"/>
+                                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
+                                            <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Description" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFz-k4-sci">
+                                            <rect key="frame" x="20" y="288" width="374" height="13.5"/>
+                                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
+                                            <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l8I-6p-eYX">
+                                            <rect key="frame" x="20" y="321.5" width="52.5" height="13.5"/>
+                                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
+                                            <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bir-Tb-JMs">
+                                            <rect key="frame" x="20" y="355" width="374" height="0.0"/>
+                                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
+                                            <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" name="totoro"/>
+                                    <constraints>
+                                        <constraint firstItem="Bir-Tb-JMs" firstAttribute="leading" secondItem="pSE-iH-TKv" secondAttribute="leading" constant="20" id="3bX-p1-BH1"/>
+                                        <constraint firstItem="fFz-k4-sci" firstAttribute="leading" secondItem="pSE-iH-TKv" secondAttribute="leading" constant="20" id="B3n-i8-4tG"/>
+                                        <constraint firstItem="V5z-8y-Mfd" firstAttribute="leading" secondItem="pSE-iH-TKv" secondAttribute="leading" constant="20" id="N5a-gX-Fbz"/>
+                                        <constraint firstItem="V5z-8y-Mfd" firstAttribute="top" secondItem="e9S-Lo-G0j" secondAttribute="bottom" constant="20" id="N7u-a7-TJc"/>
+                                        <constraint firstItem="fFz-k4-sci" firstAttribute="top" secondItem="V5z-8y-Mfd" secondAttribute="bottom" constant="20" id="R75-cI-T2k"/>
+                                        <constraint firstItem="Bir-Tb-JMs" firstAttribute="top" secondItem="l8I-6p-eYX" secondAttribute="bottom" constant="20" id="USB-j5-OgP"/>
+                                        <constraint firstItem="l8I-6p-eYX" firstAttribute="leading" secondItem="pSE-iH-TKv" secondAttribute="leading" constant="20" id="YCS-Q0-aRG"/>
+                                        <constraint firstItem="e9S-Lo-G0j" firstAttribute="leading" secondItem="pSE-iH-TKv" secondAttribute="leading" constant="20" id="cEF-af-hDg"/>
+                                        <constraint firstItem="e9S-Lo-G0j" firstAttribute="top" secondItem="pSE-iH-TKv" secondAttribute="top" constant="20" id="csg-Hb-Gef"/>
+                                        <constraint firstItem="l8I-6p-eYX" firstAttribute="top" secondItem="fFz-k4-sci" secondAttribute="bottom" constant="20" id="gyg-Nw-Ofl"/>
+                                        <constraint firstAttribute="trailing" secondItem="e9S-Lo-G0j" secondAttribute="trailing" constant="20" id="mFD-SD-68g"/>
+                                        <constraint firstAttribute="trailing" secondItem="Bir-Tb-JMs" secondAttribute="trailing" constant="20" id="qT2-Es-wIO"/>
+                                        <constraint firstAttribute="trailing" secondItem="fFz-k4-sci" secondAttribute="trailing" constant="20" id="sQh-io-y00"/>
+                                        <constraint firstAttribute="bottom" secondItem="Bir-Tb-JMs" secondAttribute="bottom" id="syj-sp-09d"/>
+                                    </constraints>
+                                </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8p9-gY-ZMv">
+                                    <rect key="frame" x="0.0" y="240" width="414" height="70"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="70" id="equ-OC-FUJ"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" name="totoro"/>
+                            <constraints>
+                                <constraint firstItem="0a0-GC-rn9" firstAttribute="leading" secondItem="8p9-gY-ZMv" secondAttribute="leading" id="0tC-fE-pNV"/>
+                                <constraint firstItem="0a0-GC-rn9" firstAttribute="trailing" secondItem="8p9-gY-ZMv" secondAttribute="trailing" id="5Nw-VX-KG3"/>
+                                <constraint firstItem="pSE-iH-TKv" firstAttribute="leading" secondItem="YmT-x9-A88" secondAttribute="leading" id="A7V-E1-cGt"/>
+                                <constraint firstItem="8p9-gY-ZMv" firstAttribute="top" secondItem="0a0-GC-rn9" secondAttribute="bottom" id="Ipq-f1-KO6"/>
+                                <constraint firstAttribute="trailing" secondItem="8p9-gY-ZMv" secondAttribute="trailing" id="JAN-kt-OyS"/>
+                                <constraint firstItem="0a0-GC-rn9" firstAttribute="top" secondItem="YmT-x9-A88" secondAttribute="top" id="KbV-5Z-VMr"/>
+                                <constraint firstAttribute="trailing" secondItem="pSE-iH-TKv" secondAttribute="trailing" id="SN3-tu-RGN"/>
+                                <constraint firstAttribute="bottom" secondItem="pSE-iH-TKv" secondAttribute="bottom" constant="20" id="hcm-ez-fzK"/>
+                                <constraint firstItem="pSE-iH-TKv" firstAttribute="top" secondItem="8p9-gY-ZMv" secondAttribute="bottom" id="pWb-Hq-Pfa"/>
+                                <constraint firstItem="8p9-gY-ZMv" firstAttribute="leading" secondItem="YmT-x9-A88" secondAttribute="leading" id="ysT-lX-MO5"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="YmT-x9-A88" firstAttribute="width" secondItem="cpq-m0-OoW" secondAttribute="width" id="MTW-Hg-o2d"/>
+                        <constraint firstItem="YmT-x9-A88" firstAttribute="top" secondItem="cpq-m0-OoW" secondAttribute="top" id="c2x-ex-pFa"/>
+                        <constraint firstItem="YmT-x9-A88" firstAttribute="bottom" secondItem="cpq-m0-OoW" secondAttribute="bottom" id="kqr-ni-cJc"/>
+                        <constraint firstItem="YmT-x9-A88" firstAttribute="trailing" secondItem="cpq-m0-OoW" secondAttribute="trailing" id="q3e-Ba-DlG"/>
+                        <constraint firstItem="YmT-x9-A88" firstAttribute="leading" secondItem="cpq-m0-OoW" secondAttribute="leading" id="sAd-9p-cTm"/>
+                    </constraints>
+                    <viewLayoutGuide key="contentLayoutGuide" id="Nvn-bN-gRL"/>
+                    <viewLayoutGuide key="frameLayoutGuide" id="SHb-5c-hYW"/>
+                </scrollView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Xxq-vb-xZF"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-            <point key="canvasLocation" x="1220" y="16"/>
+            <constraints>
+                <constraint firstItem="Xxq-vb-xZF" firstAttribute="bottom" secondItem="cpq-m0-OoW" secondAttribute="bottom" id="0lk-zv-qlU"/>
+                <constraint firstItem="cpq-m0-OoW" firstAttribute="leading" secondItem="Xcd-bh-Cvs" secondAttribute="leading" id="36X-EO-rnE"/>
+                <constraint firstAttribute="trailing" secondItem="cpq-m0-OoW" secondAttribute="trailing" id="rb1-y9-BAg"/>
+                <constraint firstItem="cpq-m0-OoW" firstAttribute="top" secondItem="Xxq-vb-xZF" secondAttribute="top" id="s8b-2s-z4V"/>
+            </constraints>
+            <point key="canvasLocation" x="779.71014492753625" y="20.758928571428569"/>
         </view>
     </objects>
+    <resources>
+        <namedColor name="totoro">
+            <color red="0.60784313725490191" green="0.70588235294117652" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
