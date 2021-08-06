@@ -4,12 +4,29 @@
 //
 //  Created by Guilherme Mendes on 18/05/21.
 
-import UIKit
+import Foundation
 import Parse
+import RxSwift
 
 struct DataBase {
 
     private var api = APIHandler.shared
+
+    func save(object: PFObject) -> Single<PFObject> {
+        let single: Single<PFObject> = Single.create { observer in
+            let disposable = Disposables.create {}
+            object.saveInBackground { (succeeded, error) in
+                if disposable.isDisposed { return }
+                if succeeded {
+                    observer(.success(object))
+                } else if let error = error {
+                    observer(.failure(error))
+                }
+            }
+            return disposable
+        }
+        return single
+    }
 
     func save(object: PFObject, completion: @escaping (PFObject?) -> Void) {
         object.saveInBackground { (succeeded, error)  in
