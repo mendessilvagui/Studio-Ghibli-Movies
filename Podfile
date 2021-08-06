@@ -9,5 +9,6 @@ target 'Studio Ghibli Movies' do
   pod 'Parse', '1.19.2'
   pod 'Reusable', '4.1.1'
   pod 'MBProgressHUD', '1.2.0'
+  pod 'Alamofire'
 
 end

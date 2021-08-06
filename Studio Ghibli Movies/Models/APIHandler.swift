@@ -6,6 +6,7 @@
 
 import Foundation
 import Parse
+import Alamofire
 
 //MARK: - Fetch data from API and save to database
 
@@ -13,34 +14,24 @@ class APIHandler {
 
     static let shared = APIHandler()
 
-    public var delegate: ReloadList?
-
     func fetchMovie(completion: @escaping (_ movies: [Movie]?) -> Void) {
 
-        var req = URLRequest(url: URL(string: "https://ghibliapi.herokuapp.com/films")!)
-        req.httpMethod = "GET"
-        let session = URLSession.shared
+        let url = "https://ghibliapi.herokuapp.com/films"
+        let request = AF.request(url)
 
-        let task = session.dataTask(with: req, completionHandler: { data, response, error -> Void in
+        request.responseDecodable(of: [MovieData].self) { response in
+            
+            guard let response = response.value else { return }
 
-            do {
-                if let data = data {
-                    let models = try JSONDecoder().decode([MovieData].self, from: data)
-
-                    let movies = models.map { movieData in
-                        movieData.mapToPFMovie()
-                    }
-                    PFObject.saveAll(inBackground: movies) { isSaved, error in
-                        if error == nil {
-                            completion(movies)
-                        }
-                    }
-                }
-            } catch {
-                print(error.localizedDescription)
+            let movies = response.map { movieData in
+                movieData.mapToPFMovie()
             }
-        })
-        task.resume()
+            PFObject.saveAll(inBackground: movies) { isSaved, error in
+                if error == nil {
+                    completion(movies)
+                }
+            }
+        }
     }
 }
 

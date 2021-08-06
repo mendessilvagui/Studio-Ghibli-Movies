@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (5.4.3)
   - Bolts/Tasks (1.9.1)
   - MBProgressHUD (1.2.0)
   - Parse (1.19.2):
@@ -12,23 +13,26 @@ PODS:
   - Reusable/View (4.1.1)
 
 DEPENDENCIES:
+  - Alamofire
   - MBProgressHUD (= 1.2.0)
   - Parse (= 1.19.2)
   - Reusable (= 4.1.1)
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - Bolts
     - MBProgressHUD
     - Parse
     - Reusable
 
 SPEC CHECKSUMS:
+  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   Parse: 081fb8755c3000fd11df817eec235def233d0af3
   Reusable: 53a9acf5c536f229b31b5865782414b508252ddb
 
-PODFILE CHECKSUM: fc012552faa35d2a2dc38ca55d9041d208efdf13
+PODFILE CHECKSUM: 2f619c44f7c54ce2739ca765324b315984269692
 
 COCOAPODS: 1.10.1
