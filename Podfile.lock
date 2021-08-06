@@ -11,12 +11,26 @@ PODS:
     - Reusable/View (= 4.1.1)
   - Reusable/Storyboard (4.1.1)
   - Reusable/View (4.1.1)
+  - RxAlamofire (6.1.1):
+    - RxAlamofire/Core (= 6.1.1)
+  - RxAlamofire/Core (6.1.1):
+    - Alamofire (~> 5.4)
+    - RxSwift (~> 6.0)
+  - RxCocoa (6.2.0):
+    - RxRelay (= 6.2.0)
+    - RxSwift (= 6.2.0)
+  - RxRelay (6.2.0):
+    - RxSwift (= 6.2.0)
+  - RxSwift (6.2.0)
 
 DEPENDENCIES:
   - Alamofire
   - MBProgressHUD (= 1.2.0)
   - Parse (= 1.19.2)
   - Reusable (= 4.1.1)
+  - RxAlamofire
+  - RxCocoa
+  - RxSwift
 
 SPEC REPOS:
   trunk:
@@ -25,6 +39,10 @@ SPEC REPOS:
     - MBProgressHUD
     - Parse
     - Reusable
+    - RxAlamofire
+    - RxCocoa
+    - RxRelay
+    - RxSwift
 
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
@@ -32,7 +50,11 @@ SPEC CHECKSUMS:
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   Parse: 081fb8755c3000fd11df817eec235def233d0af3
   Reusable: 53a9acf5c536f229b31b5865782414b508252ddb
+  RxAlamofire: beb75a1c452d0de225651db4903f5d29d034a620
+  RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
+  RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
+  RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
 
-PODFILE CHECKSUM: 2f619c44f7c54ce2739ca765324b315984269692
+PODFILE CHECKSUM: 46635687b21bd55ea17a115ba48c028fd4f3e253
 
 COCOAPODS: 1.10.1

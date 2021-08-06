@@ -20,7 +20,7 @@ class APIHandler {
         let request = AF.request(url)
 
         request.responseDecodable(of: [MovieData].self) { response in
-            
+
             guard let response = response.value else { return }
 
             let movies = response.map { movieData in
@@ -34,4 +34,3 @@ class APIHandler {
         }
     }
 }
-

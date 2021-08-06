@@ -10,5 +10,8 @@ target 'Studio Ghibli Movies' do
   pod 'Reusable', '4.1.1'
   pod 'MBProgressHUD', '1.2.0'
   pod 'Alamofire'
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'RxAlamofire'
 
 end
