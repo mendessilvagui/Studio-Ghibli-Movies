@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import Reusable
 
-class CustomTableViewCell: UITableViewCell {
+final class CustomTableViewCell: UITableViewCell, NibReusable {
 
     @IBOutlet weak var cellImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -33,5 +34,4 @@ class CustomTableViewCell: UITableViewCell {
         self.subTitleLabel.textColor = UIColor.darkGray
         self.cellImageView.layer.cornerRadius = 10
     }
-
 }

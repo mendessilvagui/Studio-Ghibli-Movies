@@ -6,12 +6,12 @@
 
 import UIKit
 import Parse
+import MBProgressHUD
 
 class DetailsViewController: UIViewController, UINavigationControllerDelegate {
 
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var originalTitleLabel: UILabel!
     @IBOutlet private weak var originalTitleRomanLabel: UILabel!
     @IBOutlet private weak var releaseDateLabel: UILabel!
@@ -95,8 +95,11 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
         let addAlert = UIAlertController(title: "Add to favorites", message: "", preferredStyle: .alert)
 
         addAlert.addAction(UIAlertAction(title: "Add", style: .default, handler: { (action: UIAlertAction!) in
+            self.showIndicator("Saving")
             self.presenter.favorite(withComment: textField.text ?? "")
+            self.hideIndicator()
         }))
+
 
         addAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
             addAlert.dismiss(animated: true, completion: nil)
@@ -118,7 +121,9 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
         let deleteAlert = UIAlertController(title: "Delete from favorites?", message: "", preferredStyle: .alert)
 
         deleteAlert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (action: UIAlertAction!) in
+            self.showIndicator("Deleting")
             self.presenter.unfavorite()
+            self.hideIndicator()
         }))
 
         deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
@@ -161,7 +166,13 @@ extension DetailsViewController: DetailsView {
         self.commentBoxLabel.text = comment
     }
 
-    func dismissScreen() {
-        self.navigationController?.popViewController(animated: true)
+    func showIndicator(_ title: String) {
+        let indicator = MBProgressHUD.showAdded(to: self.view, animated: true)
+        indicator.label.text = title
+        indicator.minShowTime = 1
+    }
+
+    func hideIndicator() {
+        MBProgressHUD.hide(for: self.view, animated: true)
     }
 }

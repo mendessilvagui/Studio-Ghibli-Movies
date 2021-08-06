@@ -45,15 +45,13 @@ class DetailsPresenter {
         self.details.comment = comment
         self.details.parentMovie = selectedMovie
 
-        // TODO: show loader
         database.save(object: details) { _ in
             self.selectedMovie.childDetails = self.details
             self.selectedMovie.saveInBackground() {(succeeded, error)  in
-                // TODO: hide loader
                 if (succeeded) {
                     self.view?.updateComment(comment)
-                } else {
-                    // TODO: show error
+                } else if let error = error {
+                    print(error)
                 }
             }
         }
@@ -62,13 +60,12 @@ class DetailsPresenter {
     func unfavorite() {
         database.delete(object: details)
 
-        // TODO: show loader
         selectedMovie.remove(forKey: "childDetails")
         selectedMovie.saveInBackground() {(succeeded, error)  in
             if (succeeded) {
-                self.view?.dismissScreen()
-            } else {
-                // TODO: show error
+                // Detail successfully deleted
+            } else if let error = error {
+                print(error)
             }
         }
     }
