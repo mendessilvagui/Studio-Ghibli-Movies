@@ -13,9 +13,9 @@ class APIHandler {
 
     static let shared = APIHandler()
 
-    let firstRun = UserDefaults.standard.bool(forKey: "firstRun") as Bool
+    public var delegate: ReloadList?
 
-    func fetchMovie(completion: @escaping (() -> Void)) {
+    func fetchMovie(completion: @escaping (_ movies: [Movie]?) -> Void) {
 
         var req = URLRequest(url: URL(string: "https://ghibliapi.herokuapp.com/films")!)
         req.httpMethod = "GET"
@@ -24,18 +24,23 @@ class APIHandler {
         let task = session.dataTask(with: req, completionHandler: { data, response, error -> Void in
 
             do {
-                let model = try JSONDecoder().decode([MovieData].self, from: data!)
-                if !self.firstRun {
-                    model.forEach { $0.store() }
-                    UserDefaults.standard.set(true, forKey: "firstRun")
-                }
-                completion()
+                if let data = data {
+                    let models = try JSONDecoder().decode([MovieData].self, from: data)
 
+                    let movies = models.map { movieData in
+                        movieData.mapToPFMovie()
+                    }
+                    PFObject.saveAll(inBackground: movies) { isSaved, error in
+                        if error == nil {
+                            completion(movies)
+                        }
+                    }
+                }
             } catch {
                 print(error.localizedDescription)
-                completion()
             }
         })
         task.resume()
     }
 }
+
