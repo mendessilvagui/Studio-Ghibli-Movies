@@ -10,26 +10,22 @@ import RxSwift
 
 struct DataBase {
 
-    private var api = APIHandler.shared
-
-    func save(object: PFObject) -> Single<PFObject> {
-        let single: Single<PFObject> = Single.create { observer in
+    static func save<T>(object: T) -> Single<T> where T: PFObject {
+        Single.create { observer in
             let disposable = Disposables.create {}
-            object.saveInBackground { (succeeded, error) in
-                if disposable.isDisposed { return }
-                if succeeded {
-                    observer(.success(object))
-                } else if let error = error {
+            object.saveInBackground { (succeeded: Bool, error: Error?) in
+                guard !disposable.isDisposed else { return }
+                if let error = error {
                     observer(.failure(error))
                 }
+                observer(.success(object))
             }
             return disposable
         }
-        return single
     }
 
-    func save(object: PFObject, completion: @escaping (PFObject?) -> Void) {
-        object.saveInBackground { (succeeded, error)  in
+    static func save(object: PFObject, completion: @escaping (PFObject?) -> Void) {
+        object.saveInBackground { (succeeded: Bool, error: Error?)  in
             if (succeeded) {
                 completion(object)
             } else {
@@ -38,8 +34,22 @@ struct DataBase {
         }
     }
 
-    func delete(object: PFObject) {
-        object.deleteInBackground() { (succeeded, error)  in
+//    static func delete<T>(object:T) -> Completable where T: PFObject {
+//        Completable.create { observer in
+//            let disposable = Disposables.create {}
+//            object.deleteInBackground { (succeeded: Bool, error: Error?) in
+//                guard !disposable.isDisposed else { return }
+//                if let error = error {
+//                    observer(.error(error))
+//                }
+//                observer(.completed)
+//            }
+//            return disposable
+//        }
+//    }
+
+    static func delete(object: PFObject) {
+        object.deleteInBackground() { (succeeded: Bool, error: Error?)  in
             if (succeeded) {
                 // The object has been saved.
             } else {
@@ -48,12 +58,36 @@ struct DataBase {
         }
     }
 
-    func loadMovies(fetchComplete: @escaping (_ movies: [Movie]?) -> Void) {
-        if let query = Movie.query() {
-            query.order(byAscending: "releaseDate")
-            query.findObjectsInBackground { objects , error in
+//    static func loadMovies() -> Single<[Movie]> {
+//        Single.create { observer in
+//            let disposable = Disposables.create {}
+//
+//            if let query = Movie.query()?
+//                .addAscendingOrder("releaseDate") {
+//                query.findObjectsInBackground { (fetchedObjects: [PFObject]?, error: Error?) in
+//                    guard !disposable.isDisposed else { return }
+//                    if let error = error {
+//                        observer(.failure(error))
+//                    } else if let fetchedObjects = fetchedObjects as? [Movie] {
+//                        if fetchedObjects.count == 0 {
+//                            APIHandler.fetchMovie { _ in
+//                                observer(.success(fetchedObjects))
+//                            }
+//                        }
+//                        observer(.success(fetchedObjects))
+//                    }
+//                }
+//            }
+//            return disposable
+//        }
+//    }
+
+    static func loadMovies(fetchComplete: @escaping (_ movies: [Movie]?) -> Void) {
+        if let query = Movie.query()?
+            .addAscendingOrder("releaseDate") {
+            query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
                 if objects?.count == 0 {
-                    api.fetchMovie { movies in
+                    APIHandler.fetchMovie { movies in
                         fetchComplete(movies)
                     }
                 } else if error == nil && objects != nil {
@@ -63,10 +97,29 @@ struct DataBase {
         }
     }
 
-    func loadDetails(selectedMovie: PFObject, fetchComplete: @escaping (_ details: Details?) -> Void) {
-        if let query = Details.query() {
-            query.whereKey("parentMovie", equalTo: selectedMovie)
-            query.getFirstObjectInBackground { object, error in
+//    static func loadDetails(selectedMovie: PFObject) -> Single<Details> {
+//        Single.create { observer in
+//            let disposable = Disposables.create {}
+//
+//            if let query = Details.query()?
+//                .whereKey("parentMovie", equalTo: selectedMovie) {
+//                query.getFirstObjectInBackground { (fetchedObject: PFObject?, error: Error?) in
+//                    guard !disposable.isDisposed else { return }
+//                    if let error = error {
+//                        observer(.failure(error))
+//                    } else if let fetchedObject = fetchedObject as? Details {
+//                        observer(.success(fetchedObject))
+//                    }
+//                }
+//            }
+//            return disposable
+//        }
+//    }
+
+    static func loadDetails(selectedMovie: PFObject, fetchComplete: @escaping (_ details: Details?) -> Void) {
+        if let query = Details.query()?
+            .whereKey("parentMovie", equalTo: selectedMovie) {
+            query.getFirstObjectInBackground { (object: PFObject?, error: Error?) in
                 if error == nil && object != nil {
                     fetchComplete(object as? Details)
                 } else {

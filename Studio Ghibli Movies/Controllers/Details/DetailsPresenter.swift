@@ -12,7 +12,6 @@ class DetailsPresenter {
 
     private weak var view: DetailsView?
 
-    private let database = DataBase()
     private var selectedMovie = Movie()
     private var details = Details()
 
@@ -31,7 +30,7 @@ class DetailsPresenter {
     }
 
     func loadMovieDetails() {
-        database.loadDetails(selectedMovie: selectedMovie) { details in
+        DataBase.loadDetails(selectedMovie: selectedMovie) { details in
             if let details = details {
                 self.details = details
             }
@@ -39,13 +38,31 @@ class DetailsPresenter {
         }
     }
 
+//    func favorite(withComment comment: String) {
+//
+//        self.details.selected = true
+//        self.details.comment = comment
+//        self.details.parentMovie = selectedMovie
+//
+//        DataBase.save(object: details) { _ in
+//            self.selectedMovie.childDetails = self.details
+//            self.selectedMovie.saveInBackground() {(succeeded, error)  in
+//                if (succeeded) {
+//                    self.view?.updateComment(comment)
+//                } else if let error = error {
+//                    print(error)
+//                }
+//            }
+//        }
+//    }
+
     func favorite(withComment comment: String) {
 
         self.details.selected = true
         self.details.comment = comment
         self.details.parentMovie = selectedMovie
 
-        database.save(object: details) { _ in
+        DataBase.save(object: details) { _ in
             self.selectedMovie.childDetails = self.details
             self.selectedMovie.saveInBackground() {(succeeded, error)  in
                 if (succeeded) {
@@ -58,7 +75,7 @@ class DetailsPresenter {
     }
 
     func unfavorite() {
-        database.delete(object: details)
+        DataBase.delete(object: details)
 
         selectedMovie.remove(forKey: "childDetails")
         selectedMovie.saveInBackground() {(succeeded, error)  in

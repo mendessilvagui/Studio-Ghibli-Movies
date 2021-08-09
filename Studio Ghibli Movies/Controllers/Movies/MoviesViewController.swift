@@ -12,7 +12,6 @@ class MoviesViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
 
     private let presenter = MoviesPresenter()
-    private let api = APIHandler.shared
 
     //MARK: - UIViewController lifecycle
 

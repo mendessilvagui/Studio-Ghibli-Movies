@@ -12,9 +12,7 @@ import Alamofire
 
 class APIHandler {
 
-    static let shared = APIHandler()
-
-    func fetchMovie(completion: @escaping (_ movies: [Movie]?) -> Void) {
+    final class func fetchMovie(completion: @escaping (_ movies: [Movie]?) -> Void) {
 
         let url = "https://ghibliapi.herokuapp.com/films"
         let request = AF.request(url)

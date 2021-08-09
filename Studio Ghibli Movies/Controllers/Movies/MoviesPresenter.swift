@@ -12,8 +12,6 @@ class MoviesPresenter {
 
     private weak var view: MoviesView?
 
-    private var database = DataBase()
-
     var movies = [Movie]()
     var filteredMovies = [Movie]()
 
@@ -30,7 +28,7 @@ class MoviesPresenter {
 
     func loadMoviesList() {
         if movies.count == 0 {
-            self.database.loadMovies { movies in
+            DataBase.loadMovies { movies in
                 self.movies = movies!
                 self.view?.reloadTableView()
             }
