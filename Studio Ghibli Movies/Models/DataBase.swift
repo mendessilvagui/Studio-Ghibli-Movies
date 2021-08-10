@@ -24,39 +24,39 @@ struct DataBase {
         }
     }
 
-    static func save(object: PFObject, completion: @escaping (PFObject?) -> Void) {
-        object.saveInBackground { (succeeded: Bool, error: Error?)  in
-            if (succeeded) {
-                completion(object)
-            } else {
-                print(error!.localizedDescription)
-            }
-        }
-    }
-
-//    static func delete<T>(object:T) -> Completable where T: PFObject {
-//        Completable.create { observer in
-//            let disposable = Disposables.create {}
-//            object.deleteInBackground { (succeeded: Bool, error: Error?) in
-//                guard !disposable.isDisposed else { return }
-//                if let error = error {
-//                    observer(.error(error))
-//                }
-//                observer(.completed)
+//    static func save(object: PFObject, completion: @escaping (PFObject?) -> Void) {
+//        object.saveInBackground { (succeeded: Bool, error: Error?)  in
+//            if (succeeded) {
+//                completion(object)
+//            } else {
+//                print(error!.localizedDescription)
 //            }
-//            return disposable
 //        }
 //    }
 
-    static func delete(object: PFObject) {
-        object.deleteInBackground() { (succeeded: Bool, error: Error?)  in
-            if (succeeded) {
-                // The object has been saved.
-            } else {
-                print(error!.localizedDescription)
+    static func delete<T>(object:T) -> Completable where T: PFObject {
+        Completable.create { observer in
+            let disposable = Disposables.create {}
+            object.deleteInBackground { (succeeded: Bool, error: Error?) in
+                guard !disposable.isDisposed else { return }
+                if let error = error {
+                    observer(.error(error))
+                }
+                observer(.completed)
             }
+            return disposable
         }
     }
+
+//    static func delete(object: PFObject) {
+//        object.deleteInBackground() { (succeeded: Bool, error: Error?)  in
+//            if (succeeded) {
+//                // The object has been saved.
+//            } else {
+//                print(error!.localizedDescription)
+//            }
+//        }
+//    }
 
 //    static func loadMovies() -> Single<[Movie]> {
 //        Single.create { observer in

@@ -7,10 +7,13 @@
 
 import Foundation
 import Parse
+import RxSwift
 
 class MoviesPresenter {
 
     private weak var view: MoviesView?
+
+    private let disposeBag = DisposeBag()
 
     var movies = [Movie]()
     var filteredMovies = [Movie]()
@@ -36,6 +39,19 @@ class MoviesPresenter {
             self.view?.reloadTableView()
         }
     }
+
+//    func loadMoviesList() {
+//        if movies.count == 0 {
+//            DataBase.loadMovies()
+//                .subscribe(onSuccess: { (movies: Movie?) in
+//                    self.movies = movies!
+//                    self.view?.reloadTableView()
+//                })
+//                .disposed(by: disposeBag)
+//        } else {
+//            self.view?.reloadTableView()
+//        }
+//    }
 
     private func isSearchBarEmpty() -> Bool {
         return searchController.searchBar.text?.isEmpty ?? true
