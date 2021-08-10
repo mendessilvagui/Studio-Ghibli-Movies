@@ -11,12 +11,13 @@ import RxSwift
 struct DataBase {
 
     static func save<T>(object: T) -> Single<T> where T: PFObject {
-        Single.create { observer in
+        Single.create { observer -> Disposable in
             let disposable = Disposables.create {}
             object.saveInBackground { (succeeded: Bool, error: Error?) in
                 guard !disposable.isDisposed else { return }
                 if let error = error {
                     observer(.failure(error))
+                    return
                 }
                 observer(.success(object))
             }
@@ -35,12 +36,13 @@ struct DataBase {
 //    }
 
     static func delete<T>(object:T) -> Completable where T: PFObject {
-        Completable.create { observer in
+        Completable.create { observer -> Disposable in
             let disposable = Disposables.create {}
             object.deleteInBackground { (succeeded: Bool, error: Error?) in
                 guard !disposable.isDisposed else { return }
                 if let error = error {
                     observer(.error(error))
+                    return
                 }
                 observer(.completed)
             }
@@ -59,7 +61,7 @@ struct DataBase {
 //    }
 
 //    static func loadMovies() -> Single<[Movie]> {
-//        Single.create { observer in
+//        Single.create { observer -> Disposable in
 //            let disposable = Disposables.create {}
 //
 //            if let query = Movie.query()?
@@ -68,6 +70,7 @@ struct DataBase {
 //                    guard !disposable.isDisposed else { return }
 //                    if let error = error {
 //                        observer(.failure(error))
+//                        return
 //                    } else if let fetchedObjects = fetchedObjects as? [Movie] {
 //                        if fetchedObjects.count == 0 {
 //                            APIHandler.fetchMovie { _ in
@@ -98,7 +101,7 @@ struct DataBase {
     }
 
 //    static func loadDetails(selectedMovie: PFObject) -> Single<Details> {
-//        Single.create { observer in
+//        Single.create { observer -> Disposable in
 //            let disposable = Disposables.create {}
 //
 //            if let query = Details.query()?
@@ -107,6 +110,7 @@ struct DataBase {
 //                    guard !disposable.isDisposed else { return }
 //                    if let error = error {
 //                        observer(.failure(error))
+//                        return
 //                    } else if let fetchedObject = fetchedObject as? Details {
 //                        observer(.success(fetchedObject))
 //                    }
