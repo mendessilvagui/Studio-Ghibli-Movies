@@ -32,25 +32,25 @@ class DetailsPresenter {
         view?.showMovieData(selectedMovie)
     }
 
-    func loadMovieDetails() {
-        DataBase.loadDetails(selectedMovie: selectedMovie) { details in
-            if let details = details {
-                self.details = details
-            }
-            self.view?.updateDetails(details: self.details)
-        }
-    }
-
 //    func loadMovieDetails() {
-//        DataBase.loadDetails(selectedMovie: selectedMovie)
-//            .subscribe(onSuccess: { (details: Details?) in
-//                if let details = details {
-//                    self.details = details
-//                    self.view?.updateDetails(details: self.details)
-//                }
-//            })
-//            .disposed(by: disposeBag)
+//        DataBase.loadDetails(selectedMovie: selectedMovie) { details in
+//            if let details = details {
+//                self.details = details
+//            }
+//            self.view?.updateDetails(details: self.details)
+//        }
 //    }
+
+    func loadMovieDetails() {
+        DataBase.loadDetails(selectedMovie: selectedMovie)
+            .subscribe(onSuccess: { (detailsReturned: Details?) in
+                if let detailsReturned = detailsReturned {
+                    self.details = detailsReturned
+                }
+                self.view?.updateDetails(details: self.details)
+            })
+            .disposed(by: disposeBag)
+    }
 
 //    func favorite(withComment comment: String) {
 //

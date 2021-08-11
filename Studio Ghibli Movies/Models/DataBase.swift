@@ -60,14 +60,14 @@ struct DataBase {
 //        }
 //    }
 
-//    static func loadMovies() -> Single<[Movie]> {
-//        Single.create { observer -> Disposable in
-//            let disposable = Disposables.create {}
-//
-//            if let query = Movie.query()?
-//                .addAscendingOrder("releaseDate") {
-//                query.findObjectsInBackground { (fetchedObjects: [PFObject]?, error: Error?) in
-//                    guard !disposable.isDisposed else { return }
+    static func loadMovies() -> Single<[Movie]?> {
+        Single.create { observer -> Disposable in
+            let disposable = Disposables.create {}
+
+            if let query = Movie.query()?
+                .addAscendingOrder("releaseDate") {
+                query.findObjectsInBackground { (fetchedObjects: [PFObject]?, error: Error?) in
+                    guard !disposable.isDisposed else { return }
 //                    if let error = error {
 //                        observer(.failure(error))
 //                        return
@@ -79,58 +79,78 @@ struct DataBase {
 //                        }
 //                        observer(.success(fetchedObjects))
 //                    }
-//                }
-//            }
-//            return disposable
-//        }
-//    }
+                    if fetchedObjects?.count == 0 {
+                        APIHandler.fetchMovie { movies in
+                            observer(.success(movies))
+                        }
+//                        APIHandler.fetchMovie()
+//                            .observe(on: MainScheduler.instance)
+//                            .subscribe(onSuccess: { movies in
+//                                observer(.success(movies as? [Movie]))
+//                            })
+//                            .disposed(by: DisposeBag())
 
-    static func loadMovies(fetchComplete: @escaping (_ movies: [Movie]?) -> Void) {
-        if let query = Movie.query()?
-            .addAscendingOrder("releaseDate") {
-            query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
-                if objects?.count == 0 {
-                    APIHandler.fetchMovie { movies in
-                        fetchComplete(movies)
+                    } else if error == nil && fetchedObjects != nil {
+                        observer(.success(fetchedObjects as? [Movie]))
                     }
-                } else if error == nil && objects != nil {
-                    fetchComplete(objects as? [Movie])
                 }
             }
+            return disposable
         }
     }
 
-//    static func loadDetails(selectedMovie: PFObject) -> Single<Details> {
-//        Single.create { observer -> Disposable in
-//            let disposable = Disposables.create {}
-//
-//            if let query = Details.query()?
-//                .whereKey("parentMovie", equalTo: selectedMovie) {
-//                query.getFirstObjectInBackground { (fetchedObject: PFObject?, error: Error?) in
-//                    guard !disposable.isDisposed else { return }
+//    static func loadMovies(fetchComplete: @escaping (_ movies: [Movie]?) -> Void) {
+//        if let query = Movie.query()?
+//            .addAscendingOrder("releaseDate") {
+//            query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
+//                if objects?.count == 0 {
+//                    APIHandler.fetchMovie { movies in
+//                        fetchComplete(movies)
+//                    }
+//                } else if error == nil && objects != nil {
+//                    fetchComplete(objects as? [Movie])
+//                }
+//            }
+//        }
+//    }
+
+    static func loadDetails(selectedMovie: PFObject) -> Single<Details?> {
+        Single.create { observer -> Disposable in
+            let disposable = Disposables.create {}
+
+            if let query = Details.query()?
+                .whereKey("parentMovie", equalTo: selectedMovie) {
+                query.getFirstObjectInBackground { (fetchedObject: PFObject?, error: Error?) in
+                    guard !disposable.isDisposed else { return }
 //                    if let error = error {
 //                        observer(.failure(error))
 //                        return
 //                    } else if let fetchedObject = fetchedObject as? Details {
 //                        observer(.success(fetchedObject))
 //                    }
-//                }
-//            }
-//            return disposable
-//        }
-//    }
-
-    static func loadDetails(selectedMovie: PFObject, fetchComplete: @escaping (_ details: Details?) -> Void) {
-        if let query = Details.query()?
-            .whereKey("parentMovie", equalTo: selectedMovie) {
-            query.getFirstObjectInBackground { (object: PFObject?, error: Error?) in
-                if error == nil && object != nil {
-                    fetchComplete(object as? Details)
-                } else {
-                    fetchComplete(nil)
+//                    observer(.success(nil))
+                    if error == nil && fetchedObject != nil {
+                        observer(.success(fetchedObject as? Details))
+                    } else {
+                        observer(.success(nil))
+                    }
                 }
             }
+            return disposable
         }
     }
+
+//    static func loadDetails(selectedMovie: PFObject, fetchComplete: @escaping (_ details: Details?) -> Void) {
+//        if let query = Details.query()?
+//            .whereKey("parentMovie", equalTo: selectedMovie) {
+//            query.getFirstObjectInBackground { (object: PFObject?, error: Error?) in
+//                if error == nil && object != nil {
+//                    fetchComplete(object as? Details)
+//                } else {
+//                    fetchComplete(nil)
+//                }
+//            }
+//        }
+//    }
 }
 

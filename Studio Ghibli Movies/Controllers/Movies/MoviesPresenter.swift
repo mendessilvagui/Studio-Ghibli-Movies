@@ -29,29 +29,30 @@ class MoviesPresenter {
 
     //MARK: - Presenter methods
 
-    func loadMoviesList() {
-        if movies.count == 0 {
-            DataBase.loadMovies { movies in
-                self.movies = movies!
-                self.view?.reloadTableView()
-            }
-        } else {
-            self.view?.reloadTableView()
-        }
-    }
-
 //    func loadMoviesList() {
 //        if movies.count == 0 {
-//            DataBase.loadMovies()
-//                .subscribe(onSuccess: { (movies: Movie?) in
-//                    self.movies = movies!
-//                    self.view?.reloadTableView()
-//                })
-//                .disposed(by: disposeBag)
+//            DataBase.loadMovies { movies in
+//                self.movies = movies!
+//                self.view?.reloadTableView()
+//            }
 //        } else {
 //            self.view?.reloadTableView()
 //        }
 //    }
+
+    func loadMoviesList() {
+        if movies.count == 0 {
+            DataBase.loadMovies()
+                .subscribe(onSuccess: { (movies: [Movie]?) in
+                    guard let movies = movies else { return }
+                    self.movies = movies
+                    self.view?.reloadTableView()
+                })
+                .disposed(by: disposeBag)
+        } else {
+            self.view?.reloadTableView()
+        }
+    }
 
     private func isSearchBarEmpty() -> Bool {
         return searchController.searchBar.text?.isEmpty ?? true

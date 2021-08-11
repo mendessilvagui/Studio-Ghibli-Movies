@@ -14,12 +14,12 @@ import Alamofire
 
 class APIHandler {
 
-    enum Error: Swift.Error {
-        case invalidResponse(URLResponse?)
-        case emptyData
-        case invalidJSON(Swift.Error)
-        case network(Swift.Error)
-    }
+//    enum Error: Swift.Error {
+//        case invalidResponse(URLResponse?)
+//        case emptyData
+//        case invalidJSON(Swift.Error)
+//        case network(Swift.Error)
+//    }
 
     final class func fetchMovie(completion: @escaping (_ movies: [Movie]?) -> Void) {
 
@@ -67,7 +67,7 @@ class APIHandler {
     }
 
 //    final class func fetchMovie() -> Single<[MovieData]> {
-//        Single<[MovieData]>.create { single in
+//        Single.create { single in
 //
 //            let url =  URL(string: "https://ghibliapi.herokuapp.com/films")!
 //
