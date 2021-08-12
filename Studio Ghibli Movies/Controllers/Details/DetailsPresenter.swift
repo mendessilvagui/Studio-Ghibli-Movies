@@ -12,9 +12,7 @@ import RxSwift
 class DetailsPresenter {
 
     private weak var view: DetailsView?
-
     private let disposeBag = DisposeBag()
-
     private var selectedMovie = Movie()
     private var details = Details()
 
@@ -71,7 +69,6 @@ class DetailsPresenter {
 //    }
 
     func favorite(withComment comment: String) {
-
         self.details.selected = true
         self.details.comment = comment
         self.details.parentMovie = selectedMovie

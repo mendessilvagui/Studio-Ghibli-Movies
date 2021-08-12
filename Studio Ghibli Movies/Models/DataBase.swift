@@ -59,39 +59,29 @@ struct DataBase {
 //            }
 //        }
 //    }
+    static let disposeBag = DisposeBag()
 
     static func loadMovies() -> Single<[Movie]?> {
         Single.create { observer -> Disposable in
             let disposable = Disposables.create {}
-
             if let query = Movie.query()?
                 .addAscendingOrder("releaseDate") {
                 query.findObjectsInBackground { (fetchedObjects: [PFObject]?, error: Error?) in
                     guard !disposable.isDisposed else { return }
-//                    if let error = error {
-//                        observer(.failure(error))
-//                        return
-//                    } else if let fetchedObjects = fetchedObjects as? [Movie] {
-//                        if fetchedObjects.count == 0 {
-//                            APIHandler.fetchMovie { _ in
-//                                observer(.success(fetchedObjects))
-//                            }
-//                        }
-//                        observer(.success(fetchedObjects))
-//                    }
                     if fetchedObjects?.count == 0 {
                         APIHandler.fetchMovie { movies in
                             observer(.success(movies))
                         }
 //                        APIHandler.fetchMovie()
 //                            .observe(on: MainScheduler.instance)
-//                            .subscribe(onSuccess: { movies in
-//                                observer(.success(movies as? [Movie]))
+//                            .subscribe(onSuccess: { _ in
+//                                observer(.success(fetchedObjects as? [Movie]))
 //                            })
-//                            .disposed(by: DisposeBag())
-
-                    } else if error == nil && fetchedObjects != nil {
-                        observer(.success(fetchedObjects as? [Movie]))
+//                            .disposed(by: disposeBag)
+                    } else if let fetchedObjects = fetchedObjects as? [Movie] {
+                        observer(.success(fetchedObjects))
+                    } else {
+                        observer(.failure(error!))
                     }
                 }
             }
@@ -117,22 +107,16 @@ struct DataBase {
     static func loadDetails(selectedMovie: PFObject) -> Single<Details?> {
         Single.create { observer -> Disposable in
             let disposable = Disposables.create {}
-
             if let query = Details.query()?
                 .whereKey("parentMovie", equalTo: selectedMovie) {
                 query.getFirstObjectInBackground { (fetchedObject: PFObject?, error: Error?) in
                     guard !disposable.isDisposed else { return }
-//                    if let error = error {
-//                        observer(.failure(error))
-//                        return
-//                    } else if let fetchedObject = fetchedObject as? Details {
-//                        observer(.success(fetchedObject))
-//                    }
-//                    observer(.success(nil))
-                    if error == nil && fetchedObject != nil {
-                        observer(.success(fetchedObject as? Details))
-                    } else {
+                    if fetchedObject == nil {
                         observer(.success(nil))
+                    } else if let fetchedObject = fetchedObject as? Details {
+                        observer(.success(fetchedObject))
+                    } else {
+                        observer(.failure(error!))
                     }
                 }
             }

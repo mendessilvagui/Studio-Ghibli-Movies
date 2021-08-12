@@ -12,14 +12,11 @@ import RxSwift
 class MoviesPresenter {
 
     private weak var view: MoviesView?
-
     private let disposeBag = DisposeBag()
-
     var movies = [Movie]()
     var filteredMovies = [Movie]()
 
     var searchController = UISearchController(searchResultsController: nil)
-
     var currentScope = "All"
     var currentText = ""
 
