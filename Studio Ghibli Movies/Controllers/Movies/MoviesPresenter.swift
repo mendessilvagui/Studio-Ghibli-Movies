@@ -40,8 +40,7 @@ class MoviesPresenter {
     func loadMoviesList() {
         if movies.count == 0 {
             DataBase.loadMovies()
-                .subscribe(onSuccess: { (movies: [Movie]?) in
-                    guard let movies = movies else { return }
+                .subscribe(onSuccess: { (movies: [Movie]) in
                     self.movies = movies
                     self.view?.reloadTableView()
                 })

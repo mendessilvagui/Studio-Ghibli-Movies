@@ -61,33 +61,47 @@ struct DataBase {
 //    }
     static let disposeBag = DisposeBag()
 
-    static func loadMovies() -> Single<[Movie]?> {
-        Single.create { observer -> Disposable in
-            let disposable = Disposables.create {}
-            if let query = Movie.query()?
-                .addAscendingOrder("releaseDate") {
-                query.findObjectsInBackground { (fetchedObjects: [PFObject]?, error: Error?) in
-                    guard !disposable.isDisposed else { return }
-                    if fetchedObjects?.count == 0 {
-                        APIHandler.fetchMovie { movies in
-                            observer(.success(movies))
-                        }
-//                        APIHandler.fetchMovie()
+    static func loadMovies() -> Single<[Movie]> {
+        guard let query = Movie.query()?
+                .addAscendingOrder("releaseDate") else {
+            return Single.error(APIHandler.Error.generic)
+        }
+        return RxParse.findObjects(query).flatMap { (movies: [Movie]) in
+            if movies.count == 0 {
+                return APIHandler.fetchMovies()
+            } else {
+                return Single.just(movies)
+            }
+        }
+    }
+
+//    static func loadMovies() -> Single<[Movie]?> {
+//        Single.create { observer -> Disposable in
+//            let disposable = Disposables.create {}
+//            if let query = Movie.query()?
+//                .addAscendingOrder("releaseDate") {
+//                query.findObjectsInBackground { (fetchedObjects: [PFObject]?, error: Error?) in
+//                    guard !disposable.isDisposed else { return }
+//                    if fetchedObjects?.count == 0 {
+////                        APIHandler.fetchMovie { movies in
+////                            observer(.success(movies))
+////                        }
+//                        APIHandler.fetchMovies()
 //                            .observe(on: MainScheduler.instance)
 //                            .subscribe(onSuccess: { _ in
 //                                observer(.success(fetchedObjects as? [Movie]))
 //                            })
 //                            .disposed(by: disposeBag)
-                    } else if let fetchedObjects = fetchedObjects as? [Movie] {
-                        observer(.success(fetchedObjects))
-                    } else {
-                        observer(.failure(error!))
-                    }
-                }
-            }
-            return disposable
-        }
-    }
+//                    } else if let fetchedObjects = fetchedObjects as? [Movie] {
+//                        observer(.success(fetchedObjects))
+//                    } else {
+//                        observer(.failure(error!))
+//                    }
+//                }
+//            }
+//            return disposable
+//        }
+//    }
 
 //    static func loadMovies(fetchComplete: @escaping (_ movies: [Movie]?) -> Void) {
 //        if let query = Movie.query()?
