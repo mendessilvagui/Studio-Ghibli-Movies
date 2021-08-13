@@ -26,17 +26,6 @@ class MoviesPresenter {
 
     //MARK: - Presenter methods
 
-//    func loadMoviesList() {
-//        if movies.count == 0 {
-//            DataBase.loadMovies { movies in
-//                self.movies = movies!
-//                self.view?.reloadTableView()
-//            }
-//        } else {
-//            self.view?.reloadTableView()
-//        }
-//    }
-
     func loadMoviesList() {
         if movies.count == 0 {
             DataBase.loadMovies()

@@ -30,15 +30,6 @@ class DetailsPresenter {
         view?.showMovieData(selectedMovie)
     }
 
-//    func loadMovieDetails() {
-//        DataBase.loadDetails(selectedMovie: selectedMovie) { details in
-//            if let details = details {
-//                self.details = details
-//            }
-//            self.view?.updateDetails(details: self.details)
-//        }
-//    }
-
     func loadMovieDetails() {
         DataBase.loadDetails(selectedMovie: selectedMovie)
             .subscribe(onSuccess: { (detailsReturned: Details?) in
@@ -50,30 +41,12 @@ class DetailsPresenter {
             .disposed(by: disposeBag)
     }
 
-//    func favorite(withComment comment: String) {
-//
-//        self.details.selected = true
-//        self.details.comment = comment
-//        self.details.parentMovie = selectedMovie
-//
-//        DataBase.save(object: details) { _ in
-//            self.selectedMovie.childDetails = self.details
-//            self.selectedMovie.saveInBackground() {(succeeded, error)  in
-//                if (succeeded) {
-//                    self.view?.updateComment(comment)
-//                } else if let error = error {
-//                    print(error)
-//                }
-//            }
-//        }
-//    }
-
     func favorite(withComment comment: String) {
         self.details.selected = true
         self.details.comment = comment
         self.details.parentMovie = selectedMovie
 
-        DataBase.save(object: details)
+		RxParse.saveObject(object: details)
             .subscribe(onSuccess: { _ in
                 self.selectedMovie.childDetails = self.details
                 self.selectedMovie.saveInBackground() {(succeeded, error)  in
@@ -87,21 +60,8 @@ class DetailsPresenter {
             .disposed(by: disposeBag)
     }
 
-//    func unfavorite() {
-//        DataBase.delete(object: details)
-//
-//        selectedMovie.remove(forKey: "childDetails")
-//        selectedMovie.saveInBackground() {(succeeded, error)  in
-//            if (succeeded) {
-//                // Detail successfully deleted
-//            } else if let error = error {
-//                print(error)
-//            }
-//        }
-//    }
-
     func unfavorite() {
-        DataBase.delete(object: details)
+		RxParse.deleteObject(object: details)
             .subscribe(onCompleted: {
                 self.selectedMovie.remove(forKey: "childDetails")
                 self.selectedMovie.saveInBackground() {(succeeded, error)  in
