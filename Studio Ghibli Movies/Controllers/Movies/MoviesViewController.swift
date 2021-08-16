@@ -113,7 +113,7 @@ extension MoviesViewController: UITableViewDataSource, UITableViewDelegate {
 
 //MARK: - Set up SearchController and TableView background
 
-extension MoviesViewController: MoviesView, ReloadTableView {
+extension MoviesViewController: MoviesView {
 
     func setUpSearchController() {
         navigationItem.searchController = presenter.searchController
@@ -138,16 +138,21 @@ extension MoviesViewController: MoviesView, ReloadTableView {
         tableView.backgroundView = imageView
         tableView.separatorStyle = .none
     }
+}
+
+//MARK: - Protocol to reload tableview
+
+protocol ReloadTableView {
+    func reloadTableView()
+}
+
+extension MoviesViewController: ReloadTableView {
 
     func reloadTableView() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
-}
-
-protocol ReloadTableView {
-    func reloadTableView()
 }
 
 //MARK: - Protocol to reload filtered movies list when coming back from DetailViewController

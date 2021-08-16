@@ -8,6 +8,7 @@
 import Foundation
 
 enum ErrorType: Error {
+
 	case invalidResponse(URLResponse?)
 	case emptyData
 	case invalidJSON(Error)
@@ -24,6 +25,5 @@ enum ErrorType: Error {
 		case .generic:
 			return "An error occurred. Please try again."
 		}
-
 	}
 }

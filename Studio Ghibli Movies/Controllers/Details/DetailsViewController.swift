@@ -100,7 +100,6 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
             self.hideIndicator()
         }))
 
-
         addAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
             addAlert.dismiss(animated: true, completion: nil)
             self.isFavorited = false
@@ -131,7 +130,6 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
 
             self.isFavorited = true
             self.updateRightBarButton()
-
         }))
         present(deleteAlert, animated: true, completion: nil)
     }
@@ -153,7 +151,6 @@ extension DetailsViewController: DetailsView {
         descriptionLabel.text = selectedMovie.moreInfo
         descriptionLabel.sizeToFit()
         imageView.image = UIImage(named: "\(selectedMovie.movieID).png")
-
     }
 
     func updateDetails(details: Details) {
