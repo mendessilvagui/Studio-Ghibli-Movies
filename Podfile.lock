@@ -16,6 +16,7 @@ PODS:
   - RxRelay (6.2.0):
     - RxSwift (= 6.2.0)
   - RxSwift (6.2.0)
+  - SwiftGen (6.4.0)
 
 DEPENDENCIES:
   - MBProgressHUD (= 1.2.0)
@@ -23,6 +24,7 @@ DEPENDENCIES:
   - Reusable (= 4.1.1)
   - RxCocoa (= 6.2.0)
   - RxSwift (= 6.2.0)
+  - SwiftGen (= 6.4.0)
 
 SPEC REPOS:
   trunk:
@@ -33,6 +35,7 @@ SPEC REPOS:
     - RxCocoa
     - RxRelay
     - RxSwift
+    - SwiftGen
 
 SPEC CHECKSUMS:
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
@@ -42,7 +45,8 @@ SPEC CHECKSUMS:
   RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
   RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
   RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
+  SwiftGen: 67860cc7c3cfc2ed25b9b74cfd55495fc89f9108
 
-PODFILE CHECKSUM: e6c20c261d510a61f0c5c3b64ebfeea48ac73dff
+PODFILE CHECKSUM: 8f3d3dcffbb233078215e8d2e8690705017b36bb
 
 COCOAPODS: 1.10.1

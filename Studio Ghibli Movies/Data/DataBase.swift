@@ -12,7 +12,7 @@ struct DataBase {
 
     static func loadMovies() -> Single<[Movie]> {
         guard let query = Movie.query()?
-                .addAscendingOrder("releaseDate") else {
+				.addAscendingOrder(L10n.releaseDate) else {
             return Single.error(ErrorType.generic)
         }
         return RxParse.findObjects(query).flatMap { (movies: [Movie]) in
@@ -26,7 +26,7 @@ struct DataBase {
 
 	static func loadDetails(selectedMovie: PFObject) -> Single<Details?> {
 		guard let query = Details.query()?
-				.whereKey("parentMovie", equalTo: selectedMovie) else {
+				.whereKey(L10n.parentMovie, equalTo: selectedMovie) else {
 			return Single.error(ErrorType.generic)
 		}
 		return RxParse.getObject(query).flatMap { (details: Details?) in

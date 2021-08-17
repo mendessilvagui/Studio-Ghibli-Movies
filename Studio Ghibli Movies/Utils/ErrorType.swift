@@ -17,13 +17,13 @@ enum ErrorType: Error {
 	var localizedDescription: String {
 		switch self {
 		case .invalidResponse:
-			return "Error connecting to API"
+			return L10n.invalidResponse
 		case .emptyData:
-			return "Couldn't fetch data from API."
+			return L10n.emptyData
 		case .invalidJSON:
-			return "Couldn't get JSON data"
+			return L10n.invalidJson
 		case .generic:
-			return "An error occurred. Please try again."
+			return L10n.generic
 		}
 	}
 }

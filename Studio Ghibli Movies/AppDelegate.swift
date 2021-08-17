@@ -16,9 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Thread.sleep(forTimeInterval: 2.0)
 
         let parseConfig = ParseClientConfiguration {
-            $0.applicationId = "d2frdirPKmh2OC5STRU4AdRYHkHKelZZB1UiBwEC"
-            $0.clientKey = "bgUpLtYqHwES7ZWyOMtXXbI92ZspcKkXanuzKTSt"
-            $0.server = "https://parseapi.back4app.com/"
+			$0.applicationId = L10n.applicationId
+			$0.clientKey = L10n.clientKey
+			$0.server = L10n.server
         }
         Parse.initialize(with: parseConfig)
 

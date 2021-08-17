@@ -11,7 +11,7 @@ import Parse
 class Details: PFObject, PFSubclassing {
 
     public static func parseClassName() -> String {
-        return "Details"
+		return L10n.details
     }
 
     @NSManaged var selected: Bool

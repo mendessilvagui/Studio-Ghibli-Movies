@@ -18,8 +18,8 @@ class MoviesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "Movies"
-        self.navigationController?.navigationBar.barTintColor = UIColor(named: "navBar")
+		self.title = L10n.movies
+		self.navigationController?.navigationBar.barTintColor = UIColor(named: L10n.navBarColor)
         navigationController?.navigationBar.tintColor = UIColor.white
 
         setUpSearchController()
@@ -40,7 +40,7 @@ class MoviesViewController: UIViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        presenter.searchController.searchBar.searchTextField.attributedPlaceholder = NSAttributedString(string: "Search Movie", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+		presenter.searchController.searchBar.searchTextField.attributedPlaceholder = NSAttributedString(string: L10n.searchMovie, attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
     }
 }
 
@@ -89,7 +89,7 @@ extension MoviesViewController: UITableViewDataSource, UITableViewDelegate {
 
         cell.titleLabel.text = movie.title
         cell.subTitleLabel.text = movie.originalTitle
-        cell.cellImageView.image = UIImage(named: "poster-\(movie.movieID)")
+		cell.cellImageView.image = UIImage(named: L10n.poster+"\(movie.movieID)")
 
         return cell
     }
@@ -121,13 +121,13 @@ extension MoviesViewController: MoviesView {
         presenter.searchController.obscuresBackgroundDuringPresentation = false
         presenter.searchController.searchBar.sizeToFit()
         presenter.searchController.searchBar.searchBarStyle = .minimal
-        presenter.searchController.searchBar.scopeButtonTitles = ["All", "Favorites"]
+		presenter.searchController.searchBar.scopeButtonTitles = [L10n.all, L10n.favorites]
         presenter.searchController.searchBar.searchTextField.textColor = UIColor.white
     }
 
     func styleTableViewBackground() {
 
-        let image = UIImage(named: "TOTORO")
+		let image = UIImage(named: L10n.totoroImage)
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFill
 

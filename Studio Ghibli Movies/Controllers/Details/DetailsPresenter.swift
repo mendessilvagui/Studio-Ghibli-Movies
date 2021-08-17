@@ -63,7 +63,7 @@ class DetailsPresenter {
     func unfavorite() {
 		RxParse.deleteObject(object: details)
             .subscribe(onCompleted: {
-                self.selectedMovie.remove(forKey: "childDetails")
+				self.selectedMovie.remove(forKey: L10n.childDetails)
                 self.selectedMovie.saveInBackground() {(succeeded, error)  in
                     if (succeeded) {
                         // Detail successfully deleted

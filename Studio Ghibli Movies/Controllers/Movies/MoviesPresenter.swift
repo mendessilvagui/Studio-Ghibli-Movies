@@ -17,7 +17,7 @@ class MoviesPresenter {
     var filteredMovies = [Movie]()
 
     var searchController = UISearchController(searchResultsController: nil)
-    var currentScope = "All"
+	var currentScope = L10n.all
     var currentText = ""
 
     func setView(view: MoviesView) {
@@ -60,7 +60,7 @@ class MoviesPresenter {
             if isSearchBarEmpty() {
                 return childDetailIExists
             } else {
-                if scope == "All" {
+				if scope == L10n.all {
                     return (movie.title).lowercased().contains(searchText.lowercased())
                 } else {
                     return childDetailIExists && (movie.title).lowercased().contains(searchText.lowercased())

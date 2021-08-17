@@ -11,7 +11,7 @@ import Parse
 class Movie: PFObject, PFSubclassing {
 
     public static func parseClassName() -> String {
-        return "Movie"
+		return L10n.movie
     }
 
     @NSManaged var movieID: String

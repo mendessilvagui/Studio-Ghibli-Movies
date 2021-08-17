@@ -16,7 +16,7 @@ class RxRequest {
     final class func fetchMovies() -> Single<[Movie]> {
         Single.create { single in
 
-            let url =  URL(string: "https://ghibliapi.herokuapp.com/films")!
+			let url =  URL(string: L10n.url)!
 
 			let task = URLSession.shared.dataTask(with: url) { (data: Data?, response: URLResponse?, error: Error?)  in
 

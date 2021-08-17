@@ -1,0 +1,51 @@
+/* 
+  Localizable.strings
+  Studio Ghibli Movies
+
+  Created by Guilherme Mendes on 17/08/21.
+  
+*/
+
+"applicationId" = "d2frdirPKmh2OC5STRU4AdRYHkHKelZZB1UiBwEC";
+"clientKey" = "bgUpLtYqHwES7ZWyOMtXXbI92ZspcKkXanuzKTSt";
+"server" = "https://parseapi.back4app.com/";
+"movie" = "Movie";
+"movies" = "Movies";
+"details" = "Details";
+"url" = "https://ghibliapi.herokuapp.com/films";
+"totoro_color" = "totoro";
+"nav_bar_color" = "navBar";
+"totoro_image" = "TOTORO";
+"release_date" = "releaseDate";
+"parent_movie" = "parentMovie";
+"child_details" = "childDetails";
+"all" = "All";
+"favorites" = "Favorites";
+"search_movie" = "Search Movie";
+"poster" = "poster-";
+"init_error" = "init(coder:) has not been implemented";
+"heart_fill" = "heart.fill";
+"heart" = "heart";
+"add_to_favorites" = "Add to favorites";
+"add" = "Add";
+"saving" = "Saving";
+"cancel" = "Cancel";
+"leave_a_comment" = "Leave a comment";
+"delete_from_favorites" = "Delete from favorites?";
+"delete" = "Delete";
+"deleting" = "Deleting";
+"details_view" = "DetailsView";
+"invalid_response" = "Error connecting to API";
+"empty_data" = "Couldn't fetch data from API";
+"invalid_json" = "Couldn't get JSON data";
+"generic" = "An error occurred. Please try again";
+
+
+
+
+
+
+
+
+
+

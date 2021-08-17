@@ -11,5 +11,6 @@ target 'Studio Ghibli Movies' do
   pod 'MBProgressHUD', '1.2.0'
   pod 'RxSwift', '6.2.0'
   pod 'RxCocoa', '6.2.0'
+  pod 'SwiftGen', '6.4.0'
 
 end
