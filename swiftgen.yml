@@ -1,0 +1,6 @@
+strings:
+  inputs: Studio Ghibli Movies/Base.lproj
+  filter: .+\.strings$
+  outputs:
+    - templateName: structured-swift5
+      output: Studio Ghibli Movies/Generated/Strings.swift

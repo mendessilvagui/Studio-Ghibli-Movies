@@ -7,12 +7,12 @@
 
 import Foundation
 import Parse
+import RxSwift
 
 class DetailsPresenter {
 
     private weak var view: DetailsView?
-
-    private let database = DataBase()
+    private let disposeBag = DisposeBag()
     private var selectedMovie = Movie()
     private var details = Details()
 
@@ -31,42 +31,47 @@ class DetailsPresenter {
     }
 
     func loadMovieDetails() {
-        database.loadDetails(selectedMovie: selectedMovie) { details in
-            if let details = details {
-                self.details = details
-            }
-            self.view?.updateDetails(details: self.details)
-        }
+        DataBase.loadDetails(selectedMovie: selectedMovie)
+            .subscribe(onSuccess: { (detailsReturned: Details?) in
+                if let detailsReturned = detailsReturned {
+                    self.details = detailsReturned
+                }
+                self.view?.updateDetails(details: self.details)
+            })
+            .disposed(by: disposeBag)
     }
 
     func favorite(withComment comment: String) {
-
         self.details.selected = true
         self.details.comment = comment
         self.details.parentMovie = selectedMovie
 
-        database.save(object: details) { _ in
-            self.selectedMovie.childDetails = self.details
-            self.selectedMovie.saveInBackground() {(succeeded, error)  in
-                if (succeeded) {
-                    self.view?.updateComment(comment)
-                } else if let error = error {
-                    print(error)
+		RxParse.saveObject(object: details)
+            .subscribe(onSuccess: { _ in
+                self.selectedMovie.childDetails = self.details
+                self.selectedMovie.saveInBackground() {(succeeded, error)  in
+                    if (succeeded) {
+                        self.view?.updateComment(comment)
+                    } else if let error = error {
+                        print(error)
+                    }
                 }
-            }
-        }
+            })
+            .disposed(by: disposeBag)
     }
 
     func unfavorite() {
-        database.delete(object: details)
-
-        selectedMovie.remove(forKey: "childDetails")
-        selectedMovie.saveInBackground() {(succeeded, error)  in
-            if (succeeded) {
-                // Detail successfully deleted
-            } else if let error = error {
-                print(error)
-            }
-        }
+		RxParse.deleteObject(object: details)
+            .subscribe(onCompleted: {
+				self.selectedMovie.remove(forKey: L10n.childDetails)
+                self.selectedMovie.saveInBackground() {(succeeded, error)  in
+                    if (succeeded) {
+                        // Detail successfully deleted
+                    } else if let error = error {
+                        print(error)
+                    }
+                }
+            })
+            .disposed(by: disposeBag)
     }
 }

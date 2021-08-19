@@ -32,11 +32,11 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
 
     init(selectedMovie: Movie) {
         presenter = DetailsPresenter(selectedMovie: selectedMovie)
-        super.init(nibName: "DetailsView", bundle: nil)
+		super.init(nibName: L10n.detailsView, bundle: nil)
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+		fatalError(L10n.initError)
     }
 
     // MARK: - UIViewController lifecycle
@@ -44,8 +44,8 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "Details"
-        self.view.backgroundColor = UIColor(named: "totoro")
+		self.title = L10n.details
+		self.view.backgroundColor = UIColor(named: L10n.totoroColor)
 
         navigationController?.delegate = self
 
@@ -68,9 +68,9 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
         favButton.addTarget(self, action: #selector(favButtonDidTap), for: .touchUpInside)
 
         if self.isFavorited {
-            favButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+			favButton.setImage(UIImage(systemName: L10n.heartFill), for: .normal)
         } else {
-            favButton.setImage(UIImage(systemName: "heart"), for: .normal)
+			favButton.setImage(UIImage(systemName: L10n.heart), for: .normal)
         }
         let rightButton = UIBarButtonItem(customView: favButton)
         self.navigationItem.setRightBarButtonItems([rightButton], animated: true)
@@ -92,23 +92,22 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
 
         var textField = UITextField()
 
-        let addAlert = UIAlertController(title: "Add to favorites", message: "", preferredStyle: .alert)
+		let addAlert = UIAlertController(title: L10n.addToFavorites, message: "", preferredStyle: .alert)
 
-        addAlert.addAction(UIAlertAction(title: "Add", style: .default, handler: { (action: UIAlertAction!) in
-            self.showIndicator("Saving")
+		addAlert.addAction(UIAlertAction(title: L10n.add, style: .default, handler: { (action: UIAlertAction!) in
+			self.showIndicator(L10n.saving)
             self.presenter.favorite(withComment: textField.text ?? "")
             self.hideIndicator()
         }))
 
-
-        addAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+		addAlert.addAction(UIAlertAction(title: L10n.cancel, style: .cancel, handler: { (action: UIAlertAction!) in
             addAlert.dismiss(animated: true, completion: nil)
             self.isFavorited = false
             self.updateRightBarButton()
         }))
 
         addAlert.addTextField { (alertTextField) in
-            alertTextField.placeholder = "Leave a comment"
+			alertTextField.placeholder = L10n.leaveAComment
             textField = alertTextField
         }
         present(addAlert, animated: true, completion: nil)
@@ -118,20 +117,19 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
 
     private func unfavorite() {
 
-        let deleteAlert = UIAlertController(title: "Delete from favorites?", message: "", preferredStyle: .alert)
+		let deleteAlert = UIAlertController(title: L10n.deleteFromFavorites, message: "", preferredStyle: .alert)
 
-        deleteAlert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (action: UIAlertAction!) in
-            self.showIndicator("Deleting")
+		deleteAlert.addAction(UIAlertAction(title: L10n.delete, style: .destructive, handler: { (action: UIAlertAction!) in
+			self.showIndicator(L10n.deleting)
             self.presenter.unfavorite()
             self.hideIndicator()
         }))
 
-        deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+		deleteAlert.addAction(UIAlertAction(title: L10n.cancel, style: .cancel, handler: { (action: UIAlertAction!) in
             deleteAlert.dismiss(animated: true, completion: nil)
 
             self.isFavorited = true
             self.updateRightBarButton()
-
         }))
         present(deleteAlert, animated: true, completion: nil)
     }
@@ -141,7 +139,7 @@ extension DetailsViewController: DetailsView {
 
     func showMovieData(_ selectedMovie: Movie) {
         titleLabel.text = selectedMovie.title
-        titleLabel.backgroundColor = UIColor(named: "navBar")
+		titleLabel.backgroundColor = UIColor(named: L10n.navBarColor)
         originalTitleLabel.text =  selectedMovie.originalTitle
         originalTitleRomanLabel.text = selectedMovie.originalTitleRomanised
         directorLabel.text = selectedMovie.director
@@ -153,7 +151,6 @@ extension DetailsViewController: DetailsView {
         descriptionLabel.text = selectedMovie.moreInfo
         descriptionLabel.sizeToFit()
         imageView.image = UIImage(named: "\(selectedMovie.movieID).png")
-
     }
 
     func updateDetails(details: Details) {

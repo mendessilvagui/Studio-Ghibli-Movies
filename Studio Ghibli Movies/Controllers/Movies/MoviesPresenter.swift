@@ -7,19 +7,17 @@
 
 import Foundation
 import Parse
+import RxSwift
 
 class MoviesPresenter {
 
     private weak var view: MoviesView?
-
-    private var database = DataBase()
-
+    private let disposeBag = DisposeBag()
     var movies = [Movie]()
     var filteredMovies = [Movie]()
 
     var searchController = UISearchController(searchResultsController: nil)
-
-    var currentScope = "All"
+	var currentScope = L10n.all
     var currentText = ""
 
     func setView(view: MoviesView) {
@@ -30,10 +28,12 @@ class MoviesPresenter {
 
     func loadMoviesList() {
         if movies.count == 0 {
-            self.database.loadMovies { movies in
-                self.movies = movies!
-                self.view?.reloadTableView()
-            }
+            DataBase.loadMovies()
+                .subscribe(onSuccess: { (movies: [Movie]) in
+                    self.movies = movies
+                    self.view?.reloadTableView()
+                })
+                .disposed(by: disposeBag)
         } else {
             self.view?.reloadTableView()
         }
@@ -60,7 +60,7 @@ class MoviesPresenter {
             if isSearchBarEmpty() {
                 return childDetailIExists
             } else {
-                if scope == "All" {
+				if scope == L10n.all {
                     return (movie.title).lowercased().contains(searchText.lowercased())
                 } else {
                     return childDetailIExists && (movie.title).lowercased().contains(searchText.lowercased())

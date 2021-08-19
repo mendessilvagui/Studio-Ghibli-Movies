@@ -23,8 +23,13 @@
 		D23E9CB1264E04E000312A56 /* MovieData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9CB0264E04E000312A56 /* MovieData.swift */; };
 		D23E9CB7264EBFF900312A56 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9CB6264EBFF900312A56 /* DetailsViewController.swift */; };
 		D23E9CE4265084A700312A56 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9CE3265084A700312A56 /* MoviesViewController.swift */; };
-		D2D8211326546A18004328C3 /* APIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D8211226546A18004328C3 /* APIHandler.swift */; };
+		D2742CED26C6F7E800F0D962 /* ErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2742CEC26C6F7E800F0D962 /* ErrorType.swift */; };
+		D2742D0D26CC2E2F00F0D962 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2742D0C26CC2E2F00F0D962 /* Strings.swift */; };
+		D2742D1026CC2E4B00F0D962 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2742D0E26CC2E4B00F0D962 /* Localizable.strings */; };
+		D2742D1226CC322800F0D962 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2742CFE26CC282700F0D962 /* Info.plist */; };
+		D2D8211326546A18004328C3 /* RxRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D8211226546A18004328C3 /* RxRequest.swift */; };
 		D2D8211526546AE3004328C3 /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D8211426546AE3004328C3 /* DataBase.swift */; };
+		E96E7FD926C6DCF900099E09 /* RxParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96E7FD826C6DCF900099E09 /* RxParse.swift */; };
 		E9C8726726A5E04D0064234E /* DetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C8726626A5E04D0064234E /* DetailsPresenter.swift */; };
 		E9C8726926A5E2BC0064234E /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C8726826A5E2BC0064234E /* DetailsView.swift */; };
 /* End PBXBuildFile section */
@@ -46,12 +51,16 @@
 		D23E9C91264CEB1500312A56 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D23E9C9B264CEB2100312A56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D23E9C9E264CEB2100312A56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		D23E9CA0264CEB2100312A56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D23E9CB0264E04E000312A56 /* MovieData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieData.swift; sourceTree = "<group>"; };
 		D23E9CB6264EBFF900312A56 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		D23E9CE3265084A700312A56 /* MoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
-		D2D8211226546A18004328C3 /* APIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHandler.swift; sourceTree = "<group>"; };
+		D2742CEC26C6F7E800F0D962 /* ErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorType.swift; sourceTree = "<group>"; };
+		D2742CFD26CC282700F0D962 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/Info.plist; sourceTree = "<group>"; };
+		D2742D0C26CC2E2F00F0D962 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		D2742D0F26CC2E4B00F0D962 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D2D8211226546A18004328C3 /* RxRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxRequest.swift; sourceTree = "<group>"; };
 		D2D8211426546AE3004328C3 /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
+		E96E7FD826C6DCF900099E09 /* RxParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxParse.swift; sourceTree = "<group>"; };
 		E9C8726626A5E04D0064234E /* DetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
 		E9C8726826A5E2BC0064234E /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,14 +125,18 @@
 		D23E9C8E264CEB1500312A56 /* Studio Ghibli Movies */ = {
 			isa = PBXGroup;
 			children = (
+				D2742CF026CC1FEB00F0D962 /* Generated */,
 				D23E9C8F264CEB1500312A56 /* AppDelegate.swift */,
 				D23E9C91264CEB1500312A56 /* SceneDelegate.swift */,
 				D23E9CAF264DDA4D00312A56 /* Models */,
+				E96E7FD726C6DCD000099E09 /* Data */,
 				D23E9CAA264DD5B900312A56 /* Views */,
 				D23E9CA9264DD58D00312A56 /* Controllers */,
+				D2742CEB26C6F76500F0D962 /* Utils */,
 				D23E9C9B264CEB2100312A56 /* Assets.xcassets */,
 				D23E9C9D264CEB2100312A56 /* LaunchScreen.storyboard */,
-				D23E9CA0264CEB2100312A56 /* Info.plist */,
+				D2742CFE26CC282700F0D962 /* Info.plist */,
+				D2742D0E26CC2E4B00F0D962 /* Localizable.strings */,
 			);
 			path = "Studio Ghibli Movies";
 			sourceTree = "<group>";
@@ -152,12 +165,36 @@
 			isa = PBXGroup;
 			children = (
 				D23E9CB0264E04E000312A56 /* MovieData.swift */,
-				D2D8211426546AE3004328C3 /* DataBase.swift */,
-				D2D8211226546A18004328C3 /* APIHandler.swift */,
 				038B82AC26B072410094375D /* Movie.swift */,
 				038B82AE26B0724F0094375D /* Details.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		D2742CEB26C6F76500F0D962 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D2742CEC26C6F7E800F0D962 /* ErrorType.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		D2742CF026CC1FEB00F0D962 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				D2742D0C26CC2E2F00F0D962 /* Strings.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
+		E96E7FD726C6DCD000099E09 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				D2D8211426546AE3004328C3 /* DataBase.swift */,
+				D2D8211226546A18004328C3 /* RxRequest.swift */,
+				E96E7FD826C6DCF900099E09 /* RxParse.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		E9C8726526A5E02C0064234E /* Details */ = {
@@ -178,6 +215,7 @@
 			buildConfigurationList = D23E9CA3264CEB2100312A56 /* Build configuration list for PBXNativeTarget "Studio Ghibli Movies" */;
 			buildPhases = (
 				68DDF7A7BA698DB02A2329F7 /* [CP] Check Pods Manifest.lock */,
+				D2742D1126CC2FB100F0D962 /* SwiftGen */,
 				D23E9C88264CEB1500312A56 /* Sources */,
 				D23E9C89264CEB1500312A56 /* Frameworks */,
 				D23E9C8A264CEB1500312A56 /* Resources */,
@@ -230,10 +268,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D23E9C9F264CEB2100312A56 /* LaunchScreen.storyboard in Resources */,
+				D2742D1026CC2E4B00F0D962 /* Localizable.strings in Resources */,
 				0374E03B268C878000E535B6 /* CustomTableViewCell.xib in Resources */,
 				03D1599F268A533A001E3144 /* MoviesView.xib in Resources */,
 				D23E9C9C264CEB2100312A56 /* Assets.xcassets in Resources */,
 				03D159A1268A5341001E3144 /* DetailsView.xib in Resources */,
+				D2742D1226CC322800F0D962 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +301,24 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		D2742D1126CC2FB100F0D962 /* SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftGen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [[ -f \"${PODS_ROOT}/SwiftGen/bin/swiftgen\" ]]; then\n  \"${PODS_ROOT}/SwiftGen/bin/swiftgen\"\nelse\n  echo \"warning: SwiftGen is not installed. Run 'pod install --repo-update' to install it.\"\nfi\n";
 		};
 		E8AA82E045420C49EF56F6E3 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -291,11 +349,14 @@
 				E9C8726926A5E2BC0064234E /* DetailsView.swift in Sources */,
 				D23E9C90264CEB1500312A56 /* AppDelegate.swift in Sources */,
 				0374E03A268C878000E535B6 /* CustomTableViewCell.swift in Sources */,
-				D2D8211326546A18004328C3 /* APIHandler.swift in Sources */,
+				E96E7FD926C6DCF900099E09 /* RxParse.swift in Sources */,
+				D2742CED26C6F7E800F0D962 /* ErrorType.swift in Sources */,
+				D2D8211326546A18004328C3 /* RxRequest.swift in Sources */,
 				038B82AF26B0724F0094375D /* Details.swift in Sources */,
 				D23E9CB7264EBFF900312A56 /* DetailsViewController.swift in Sources */,
 				D2D8211526546AE3004328C3 /* DataBase.swift in Sources */,
 				038B82AD26B072410094375D /* Movie.swift in Sources */,
+				D2742D0D26CC2E2F00F0D962 /* Strings.swift in Sources */,
 				D23E9C92264CEB1500312A56 /* SceneDelegate.swift in Sources */,
 				D23E9CB1264E04E000312A56 /* MovieData.swift in Sources */,
 				E9C8726726A5E04D0064234E /* DetailsPresenter.swift in Sources */,
@@ -312,6 +373,22 @@
 				D23E9C9E264CEB2100312A56 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		D2742CFE26CC282700F0D962 /* Info.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2742CFD26CC282700F0D962 /* Base */,
+			);
+			name = Info.plist;
+			sourceTree = "<group>";
+		};
+		D2742D0E26CC2E4B00F0D962 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2742D0F26CC2E4B00F0D962 /* Base */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
