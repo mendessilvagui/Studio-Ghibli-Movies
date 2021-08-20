@@ -97,7 +97,7 @@ class MaxLengthCheck: CustomCheck {
     }
 }
 
-class FullnameCheck: CustomCheck {
+class FullNameCheck: CustomCheck {
     convenience init() {
         self.init(
             closure: { (text: String) in
@@ -105,6 +105,15 @@ class FullnameCheck: CustomCheck {
                 return array.count >= 2
             },
             error: FormError.name
+        )
+    }
+}
+
+class PasswordCheck: CustomCheck {
+    convenience init(minLength: Int) {
+        self.init(
+            closure: { (text: String) in text.count >= minLength },
+            error: FormError.password
         )
     }
 }

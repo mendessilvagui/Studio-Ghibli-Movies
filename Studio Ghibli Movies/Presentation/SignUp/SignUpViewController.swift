@@ -6,39 +6,27 @@
 //
 
 import UIKit
+import MBProgressHUD
 
-class SignUpViewController: UIViewController, SignUpView {
-    
-    func showError(_ error: Error) {
-    }
-
-    func showProgress() {
-
-    }
-
-    func close(success: Bool) {
-
-    }
-
-    func updateView(withResponse: SignupViewResponse) {
-      
-    }
-
+class SignUpViewController: UIViewController{
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var formView: UIView!
-    @IBOutlet weak var nameView: UIView!
-    @IBOutlet weak var emailView: UIView!
-    @IBOutlet weak var passwordView: UIView!
-    @IBOutlet weak var confirmPasswordView: UIView!
+    @IBOutlet weak var nameHolder: UIView!
+    @IBOutlet weak var emailHolder: UIView!
+    @IBOutlet weak var passwordHolder: UIView!
+    @IBOutlet weak var confirmPasswordHolder: UIView!
     @IBOutlet weak var signUpButton: UIButton!
 
-    @IBOutlet weak var nameTextFiled: UITextField!
+    @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
 
     private let presenter: SignUpPresenter
+    weak var delegate: SignupViewControllerDelegate?
+
     init() {
         presenter = SignUpPresenter()
         super.init(nibName: "SignUpViewController", bundle: nil)
@@ -56,15 +44,90 @@ class SignUpViewController: UIViewController, SignUpView {
 
         presenter.setView(view: self)
         stylePage()
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(textFieldDidChange(notification:)),
+            name: UITextField.textDidChangeNotification,
+            object: nil
+        )
     }
 
     func stylePage() {
+        errorLabel.text = ""
         Style.styleViewBackground(imageView: imageView)
         Style.styleForm(view: formView, button: signUpButton)
     }
     
     @IBAction func signUpPressed(_ sender: UIButton) {
+        presenter.registerUser(withRequest: createViewRequest())
         self.show(MoviesViewController(), sender: self)
         navigationController?.navigationBar.isHidden = false
     }
+
+    @objc func textFieldDidChange(notification: Notification) {
+        presenter.checkFieldsValidity(withRequest: createViewRequest())
+    }
+
+    private func createViewRequest() -> SignupViewRequest {
+        return SignupViewRequest(
+            name: nameTextField.textOrEmpty,
+            email: emailTextField.textOrEmpty,
+            password: passwordTextField.textOrEmpty,
+            passwordConfirmation: confirmPasswordTextField.textOrEmpty
+        )
+    }
+}
+
+extension SignUpViewController: SignUpView {
+
+    func showError(_ error: Error) {
+        let alertController = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
+            alertController.dismiss(animated: true, completion: nil)
+        }))
+        present(alertController, animated: true, completion: nil)
+    }
+
+    func showProgress() {
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+    }
+
+    func close(success: Bool) {
+        self.navigationController?.dismiss(animated: true) {
+            if success {
+                self.delegate?.userRegistered()
+            }
+        }
+    }
+
+    func updateView(withResponse viewResponse: SignupViewResponse) {
+
+        nameHolder.setTextFieldValidity(viewResponse.nameValidity)
+        emailHolder.setTextFieldValidity(viewResponse.emailValidity)
+        passwordHolder.setTextFieldValidity(viewResponse.passwordValidity)
+        confirmPasswordHolder.setTextFieldValidity(viewResponse.passwordConfirmationValidity)
+
+        errorLabel.text = ""
+        signUpButton.isEnabled = viewResponse.submitButtonIsEnabled
+        updateFormError(for: viewResponse.nameValidity)
+        updateFormError(for: viewResponse.emailValidity)
+        updateFormError(for: viewResponse.passwordValidity)
+        updateFormError(for: viewResponse.passwordConfirmationValidity)
+
+    }
+
+    private func updateFormError(for validity: InputValidity) {
+        switch validity {
+        case .invalid(error: let error):
+            errorLabel.text = error.localizedDescription
+
+        default:
+            break
+        }
+    }
+}
+
+protocol SignupViewControllerDelegate: AnyObject {
+    func userRegistered()
 }

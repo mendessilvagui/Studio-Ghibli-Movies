@@ -38,7 +38,7 @@ class SignUpPresenter {
 
     func checkFieldsValidity(withRequest viewRequest: SignupViewRequest) {
         let nameValidity = InputValidator.validateInput(
-            rules: [FullnameCheck()],
+            rules: [FullNameCheck()],
             input: viewRequest.name
         )
         let emailValidity = InputValidator.validateInput(
@@ -46,11 +46,11 @@ class SignUpPresenter {
             input: viewRequest.email
         )
         let passwordValidity = InputValidator.validateInput(
-            rules: [MinLengthCheck(minLength: 6)],
+            rules: [PasswordCheck(minLength: 6)],
             input: viewRequest.password
         )
         let passwordConfirmValidity = InputValidator.validateInput(
-            rules: [MinLengthCheck(minLength: 6), PasswordConfirmationCheck(field: viewRequest.password)],
+            rules: [PasswordConfirmationCheck(field: viewRequest.password)],
             input: viewRequest.passwordConfirmation
         )
         switch (nameValidity, emailValidity, passwordValidity, passwordConfirmValidity) {
