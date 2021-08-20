@@ -11,7 +11,17 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignUpViewController" customModule="Studio_Ghibli_Movies" customModuleProvider="target">
             <connections>
+                <outlet property="confirmPasswordTextField" destination="JHH-yo-2Hb" id="U2d-YE-0Um"/>
+                <outlet property="confirmPasswordView" destination="VE9-OP-PNl" id="Sdj-AN-PVP"/>
+                <outlet property="emailTextField" destination="qEc-CD-AVl" id="VFg-cY-3qd"/>
+                <outlet property="emailView" destination="L2w-FG-cct" id="G3O-sO-CKr"/>
+                <outlet property="formView" destination="JKu-G6-p5S" id="PbR-rM-agk"/>
                 <outlet property="imageView" destination="uur-Gd-mCA" id="Cys-XK-Dia"/>
+                <outlet property="nameTextFiled" destination="eqV-l0-NNF" id="8Ao-WM-o1y"/>
+                <outlet property="nameView" destination="XiD-gl-KWR" id="g6Y-1i-sZV"/>
+                <outlet property="passwordTextField" destination="mRF-d3-HbL" id="toI-Dw-mwf"/>
+                <outlet property="passwordView" destination="MWg-H7-Inl" id="wTi-7z-HjQ"/>
+                <outlet property="signUpButton" destination="ypn-kc-OXG" id="NJ7-Q9-qp0"/>
                 <outlet property="view" destination="hum-gw-lxX" id="gua-Ri-d3l"/>
             </connections>
         </placeholder>
@@ -51,7 +61,7 @@
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="eqV-l0-NNF" firstAttribute="leading" secondItem="XiD-gl-KWR" secondAttribute="leading" id="Um4-oD-D7C"/>
                                         <constraint firstAttribute="bottom" secondItem="eqV-l0-NNF" secondAttribute="bottom" id="XEB-Td-sX7"/>
@@ -69,7 +79,7 @@
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="qEc-CD-AVl" firstAttribute="top" secondItem="L2w-FG-cct" secondAttribute="top" id="8qo-qs-1Wu"/>
                                         <constraint firstAttribute="trailing" secondItem="qEc-CD-AVl" secondAttribute="trailing" id="MXw-3t-Urm"/>
@@ -86,7 +96,7 @@
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="mRF-d3-HbL" secondAttribute="trailing" id="OID-AQ-OCb"/>
                                         <constraint firstItem="mRF-d3-HbL" firstAttribute="top" secondItem="MWg-H7-Inl" secondAttribute="top" id="TnL-Um-vVw"/>
@@ -103,7 +113,7 @@
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="JHH-yo-2Hb" secondAttribute="bottom" id="9Fc-wZ-Wkd"/>
                                         <constraint firstItem="JHH-yo-2Hb" firstAttribute="top" secondItem="VE9-OP-PNl" secondAttribute="top" id="Bl0-L0-61n"/>
@@ -118,6 +128,9 @@
                                     <state key="normal" title="Sign up">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
+                                    <connections>
+                                        <action selector="signUpPressed:" destination="-1" eventType="touchUpInside" id="Kvi-VP-kw9"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" name="navBar"/>

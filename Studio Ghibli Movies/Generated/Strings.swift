@@ -39,7 +39,7 @@ internal enum L10n {
   /// Favorites
   internal static let favorites = L10n.tr("Localizable", "favorites")
   /// An error occurred. Please try again
-  internal static let generic = L10n.tr("Localizable", "generic")
+  internal static let genericError = L10n.tr("Localizable", "generic_error")
   /// heart
   internal static let heart = L10n.tr("Localizable", "heart")
   /// heart.fill
@@ -62,8 +62,20 @@ internal enum L10n {
   internal static let parentMovie = L10n.tr("Localizable", "parent_movie")
   /// poster-
   internal static let poster = L10n.tr("Localizable", "poster")
+  /// Both passwords must be the same
+  internal static let registerErrorDifferentPasswords = L10n.tr("Localizable", "register_error_different_passwords")
+  /// All fields must be filled
+  internal static let registerErrorEmptyFields = L10n.tr("Localizable", "register_error_empty_fields")
+  /// Invalid email
+  internal static let registerErrorInvalidEmail = L10n.tr("Localizable", "register_error_invalid_email")
+  /// Password must be at least 6 characters
+  internal static let registerErrorInvalidPassword = L10n.tr("Localizable", "register_error_invalid_password")
+  /// Please type your full name
+  internal static let registerErrorNameFull = L10n.tr("Localizable", "register_error_name_full")
   /// releaseDate
   internal static let releaseDate = L10n.tr("Localizable", "release_date")
+  /// Current password is incorrect
+  internal static let resetpasswordMessageWrongCurrentPassword = L10n.tr("Localizable", "resetpassword_message_wrong_current_password")
   /// Saving
   internal static let saving = L10n.tr("Localizable", "saving")
   /// Search Movie

@@ -8,10 +8,37 @@
 import UIKit
 
 class SignUpViewController: UIViewController, SignUpView {
+    
+    func showError(_ error: Error) {
+    }
+
+    func showProgress() {
+
+    }
+
+    func close(success: Bool) {
+
+    }
+
+    func updateView(withResponse: SignupViewResponse) {
+      
+    }
+
 
     @IBOutlet weak var imageView: UIImageView!
-    private let presenter: SignUpPresenter
+    @IBOutlet weak var formView: UIView!
+    @IBOutlet weak var nameView: UIView!
+    @IBOutlet weak var emailView: UIView!
+    @IBOutlet weak var passwordView: UIView!
+    @IBOutlet weak var confirmPasswordView: UIView!
+    @IBOutlet weak var signUpButton: UIButton!
 
+    @IBOutlet weak var nameTextFiled: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var confirmPasswordTextField: UITextField!
+
+    private let presenter: SignUpPresenter
     init() {
         presenter = SignUpPresenter()
         super.init(nibName: "SignUpViewController", bundle: nil)
@@ -24,10 +51,20 @@ class SignUpViewController: UIViewController, SignUpView {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        overrideUserInterfaceStyle = .light
         navigationController?.navigationBar.isHidden = true
 
         presenter.setView(view: self)
+        stylePage()
+    }
 
-        StyleBackground.styleViewBackground(imageView: imageView)
+    func stylePage() {
+        Style.styleViewBackground(imageView: imageView)
+        Style.styleForm(view: formView, button: signUpButton)
+    }
+    
+    @IBAction func signUpPressed(_ sender: UIButton) {
+        self.show(MoviesViewController(), sender: self)
+        navigationController?.navigationBar.isHidden = false
     }
 }

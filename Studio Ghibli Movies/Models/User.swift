@@ -11,4 +11,5 @@ import Parse
 class User: PFUser {
 
     @NSManaged var name: String?
+    @NSManaged var detailsPointer: Details?
 }

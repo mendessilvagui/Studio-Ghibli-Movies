@@ -11,7 +11,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LogInViewController" customModule="Studio_Ghibli_Movies" customModuleProvider="target">
             <connections>
+                <outlet property="createAccountButton" destination="mbI-DD-KlR" id="NMS-bb-pXJ"/>
+                <outlet property="emailTextField" destination="TFx-bO-hYM" id="Wcm-Hp-mMk"/>
+                <outlet property="emailView" destination="NbD-gY-L9X" id="ysf-WO-se2"/>
+                <outlet property="forgotPasswordButton" destination="boj-SN-ELd" id="wtZ-ib-Z4b"/>
+                <outlet property="formView" destination="4vp-tg-UT1" id="kJl-De-bwF"/>
                 <outlet property="imageView" destination="51c-yJ-FTg" id="1q7-qY-Gfs"/>
+                <outlet property="logInButton" destination="Un2-f2-cM7" id="95R-M3-b3m"/>
+                <outlet property="passwordTextField" destination="3QF-d7-e3N" id="WSM-lt-N7o"/>
+                <outlet property="passwordView" destination="hYj-Id-W38" id="c9w-6v-x8x"/>
                 <outlet property="view" destination="dFk-Wd-11z" id="CeV-Wo-vPg"/>
             </connections>
         </placeholder>
@@ -51,7 +59,7 @@
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="TFx-bO-hYM" firstAttribute="top" secondItem="NbD-gY-L9X" secondAttribute="top" id="DzF-uS-NmH"/>
                                         <constraint firstAttribute="bottom" secondItem="TFx-bO-hYM" secondAttribute="bottom" id="ICx-hJ-QGD"/>
@@ -68,7 +76,7 @@
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="3QF-d7-e3N" secondAttribute="trailing" id="1sc-Vh-WZz"/>
                                         <constraint firstAttribute="bottom" secondItem="3QF-d7-e3N" secondAttribute="bottom" id="3iR-TG-Py5"/>
@@ -83,6 +91,9 @@
                                     <state key="normal" title="Log in">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
+                                    <connections>
+                                        <action selector="logInPressed:" destination="-1" eventType="touchUpInside" id="INA-VW-Alp"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mbI-DD-KlR">
                                     <rect key="frame" x="99.5" y="198" width="155" height="30"/>
@@ -91,6 +102,9 @@
                                     <state key="normal" title="Sign up for an account">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
+                                    <connections>
+                                        <action selector="signUpPressed:" destination="-1" eventType="touchUpInside" id="2bQ-Tz-kfC"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="boj-SN-ELd">
                                     <rect key="frame" x="98.5" y="238" width="157" height="30"/>
@@ -99,6 +113,9 @@
                                     <state key="normal" title="Forgot your password?">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
+                                    <connections>
+                                        <action selector="forgotPasswordPressed:" destination="-1" eventType="touchUpInside" id="q2t-yu-09s"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" name="navBar"/>

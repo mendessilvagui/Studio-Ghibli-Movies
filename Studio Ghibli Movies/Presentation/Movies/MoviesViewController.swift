@@ -21,6 +21,8 @@ class MoviesViewController: UIViewController {
 		self.title = L10n.movies
 		self.navigationController?.navigationBar.barTintColor = UIColor(named: L10n.navBarColor)
         navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationItem.setHidesBackButton(true, animated: true)
+
 
         setUpSearchController()
         presenter.searchController.searchBar.delegate = self
@@ -131,7 +133,7 @@ extension MoviesViewController: MoviesView {
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFill
 
-        StyleBackground.styleViewBackground(imageView: imageView)
+        Style.styleViewBackground(imageView: imageView)
 
         tableView.backgroundView = imageView
         tableView.separatorStyle = .none

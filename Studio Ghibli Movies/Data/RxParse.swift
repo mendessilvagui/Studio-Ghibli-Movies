@@ -13,6 +13,21 @@ class RxParse {
 
     //MARK: - Object operations
 
+    static func fetchObject<T>(_ object: T) -> Single<T> where T: PFObject {
+        Single.create { observer -> Disposable in
+            let disposable = Disposables.create {}
+            object.fetchInBackground { (_: PFObject?, error: Error?) in
+                guard !disposable.isDisposed else { return }
+                if let error = error {
+                    observer(.failure(error))
+                    return
+                }
+                observer(.success(object))
+            }
+            return disposable
+        }
+    }
+
 	static func saveObject<T>(object: T) -> Single<T> where T: PFObject {
 		Single.create { observer -> Disposable in
 			let disposable = Disposables.create {}

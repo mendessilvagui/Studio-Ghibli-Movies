@@ -17,9 +17,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let windowScene:UIWindowScene = scene as! UIWindowScene
         self.window = UIWindow(windowScene: windowScene)
 
-        let mainVC = MoviesViewController()
+        let mainVC = LogInViewController()
         let nav = UINavigationController(rootViewController: mainVC)
-        nav.navigationBar.titleTextAttributes =  [NSAttributedString.Key.foregroundColor:UIColor.white]
+        nav.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
 
         self.window!.rootViewController = nav
         self.window!.makeKeyAndVisible()

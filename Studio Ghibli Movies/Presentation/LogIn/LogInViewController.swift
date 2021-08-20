@@ -10,6 +10,17 @@ import UIKit
 class LogInViewController: UIViewController, LogInView {
 
     @IBOutlet weak var imageView: UIImageView!
+
+    @IBOutlet weak var formView: UIView!
+    @IBOutlet weak var emailView: UIView!
+    @IBOutlet weak var passwordView: UIView!
+    @IBOutlet weak var logInButton: UIButton!
+    @IBOutlet weak var createAccountButton: UIButton!
+    @IBOutlet weak var forgotPasswordButton: UIButton!
+
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+
     private let presenter: LogInPresenter
 
     init() {
@@ -24,9 +35,29 @@ class LogInViewController: UIViewController, LogInView {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationController?.navigationBar.isHidden = true
+        overrideUserInterfaceStyle = .light
         presenter.setView(view: self)
+        stylePage()
+    }
 
-        StyleBackground.styleViewBackground(imageView: imageView)
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
+    }
+
+    func stylePage() {
+        Style.styleViewBackground(imageView: imageView)
+        Style.styleForm(view: formView, button: logInButton)
+    }
+
+    @IBAction func logInPressed(_ sender: UIButton) {
+        self.show(MoviesViewController(), sender: self)
+        navigationController?.navigationBar.isHidden = false
+    }
+
+    @IBAction func signUpPressed(_ sender: UIButton) {
+        self.show(SignUpViewController(), sender: self)
+    }
+
+    @IBAction func forgotPasswordPressed(_ sender: UIButton) {
     }
 }

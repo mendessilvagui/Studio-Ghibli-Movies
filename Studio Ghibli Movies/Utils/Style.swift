@@ -7,11 +7,16 @@
 
 import UIKit
 
-class StyleBackground {
+class Style {
 
     static func styleViewBackground(imageView: UIImageView) {
         let backView = UIView(frame: imageView.bounds)
         backView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
         imageView.addSubview(backView)
+    }
+
+    static func styleForm(view: UIView, button: UIButton) {
+        view.layer.cornerRadius = 10
+        button.layer.cornerRadius = 10
     }
 }
