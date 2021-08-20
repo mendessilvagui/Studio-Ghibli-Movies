@@ -131,9 +131,7 @@ extension MoviesViewController: MoviesView {
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFill
 
-        let backView = UIView(frame: imageView.bounds)
-        backView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
-        imageView.addSubview(backView)
+        StyleBackground.styleViewBackground(imageView: imageView)
 
         tableView.backgroundView = imageView
         tableView.separatorStyle = .none

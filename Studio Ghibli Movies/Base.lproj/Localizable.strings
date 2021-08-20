@@ -34,7 +34,7 @@
 "delete_from_favorites" = "Delete from favorites?";
 "delete" = "Delete";
 "deleting" = "Deleting";
-"details_view" = "DetailsView";
+"details_view_controller" = "DetailsViewController";
 "invalid_response" = "Error connecting to API";
 "empty_data" = "Couldn't fetch data from API";
 "invalid_json" = "Couldn't get JSON data";

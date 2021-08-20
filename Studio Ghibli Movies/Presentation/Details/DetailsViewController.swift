@@ -32,7 +32,7 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
 
     init(selectedMovie: Movie) {
         presenter = DetailsPresenter(selectedMovie: selectedMovie)
-		super.init(nibName: L10n.detailsView, bundle: nil)
+		super.init(nibName: L10n.detailsViewController, bundle: nil)
     }
 
     required init?(coder: NSCoder) {

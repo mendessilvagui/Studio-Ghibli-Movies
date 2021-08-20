@@ -7,14 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0300D23826CE86A4009A5127 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0300D23726CE86A4009A5127 /* SignUpViewController.xib */; };
+		0300D23A26CE8902009A5127 /* LogInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0300D23926CE8902009A5127 /* LogInViewController.xib */; };
+		0300D23C26CE96AC009A5127 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0300D23B26CE96AC009A5127 /* User.swift */; };
+		0300D24126CEC775009A5127 /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0300D24026CEC775009A5127 /* DetailsViewController.xib */; };
+		0300D24526CECCC3009A5127 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0300D24426CECCC3009A5127 /* SignUpViewController.swift */; };
+		0300D24726CECCD1009A5127 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0300D24626CECCD1009A5127 /* LogInViewController.swift */; };
+		0300D24926CECD1B009A5127 /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0300D24826CECD1B009A5127 /* SignUpPresenter.swift */; };
+		0300D24B26CECD2E009A5127 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0300D24A26CECD2E009A5127 /* SignUpView.swift */; };
+		0300D24D26CECD40009A5127 /* LogInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0300D24C26CECD40009A5127 /* LogInPresenter.swift */; };
+		0300D24F26CECD4E009A5127 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0300D24E26CECD4E009A5127 /* LogInView.swift */; };
 		0374E03A268C878000E535B6 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0374E038268C878000E535B6 /* CustomTableViewCell.swift */; };
 		0374E03B268C878000E535B6 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0374E039268C878000E535B6 /* CustomTableViewCell.xib */; };
 		038B82AD26B072410094375D /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038B82AC26B072410094375D /* Movie.swift */; };
 		038B82AF26B0724F0094375D /* Details.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038B82AE26B0724F0094375D /* Details.swift */; };
 		03C07DE726A8B4DA00F68D2C /* MoviesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C07DE626A8B4DA00F68D2C /* MoviesPresenter.swift */; };
 		03C07DE926A8B4E800F68D2C /* MoviesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C07DE826A8B4E800F68D2C /* MoviesView.swift */; };
-		03D1599F268A533A001E3144 /* MoviesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03D1599E268A533A001E3144 /* MoviesView.xib */; };
-		03D159A1268A5341001E3144 /* DetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03D159A0268A5341001E3144 /* DetailsView.xib */; };
+		03D1599F268A533A001E3144 /* MoviesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03D1599E268A533A001E3144 /* MoviesViewController.xib */; };
+		03D486F126CFC9A5002E3769 /* StyleBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D486F026CFC9A5002E3769 /* StyleBackground.swift */; };
 		60165CF4AAE6DC94E2777BDF /* Pods_Studio_Ghibli_Movies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 819D9C0DB4D311270FD910EE /* Pods_Studio_Ghibli_Movies.framework */; };
 		D23E9C90264CEB1500312A56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9C8F264CEB1500312A56 /* AppDelegate.swift */; };
 		D23E9C92264CEB1500312A56 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9C91264CEB1500312A56 /* SceneDelegate.swift */; };
@@ -35,14 +45,24 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0300D23726CE86A4009A5127 /* SignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
+		0300D23926CE8902009A5127 /* LogInViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogInViewController.xib; sourceTree = "<group>"; };
+		0300D23B26CE96AC009A5127 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0300D24026CEC775009A5127 /* DetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
+		0300D24426CECCC3009A5127 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		0300D24626CECCD1009A5127 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		0300D24826CECD1B009A5127 /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
+		0300D24A26CECD2E009A5127 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		0300D24C26CECD40009A5127 /* LogInPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInPresenter.swift; sourceTree = "<group>"; };
+		0300D24E26CECD4E009A5127 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		0374E038268C878000E535B6 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		0374E039268C878000E535B6 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 		038B82AC26B072410094375D /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		038B82AE26B0724F0094375D /* Details.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Details.swift; sourceTree = "<group>"; };
 		03C07DE626A8B4DA00F68D2C /* MoviesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesPresenter.swift; sourceTree = "<group>"; };
 		03C07DE826A8B4E800F68D2C /* MoviesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesView.swift; sourceTree = "<group>"; };
-		03D1599E268A533A001E3144 /* MoviesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoviesView.xib; sourceTree = "<group>"; };
-		03D159A0268A5341001E3144 /* DetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailsView.xib; sourceTree = "<group>"; };
+		03D1599E268A533A001E3144 /* MoviesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoviesViewController.xib; sourceTree = "<group>"; };
+		03D486F026CFC9A5002E3769 /* StyleBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleBackground.swift; sourceTree = "<group>"; };
 		819D9C0DB4D311270FD910EE /* Pods_Studio_Ghibli_Movies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Studio_Ghibli_Movies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAB65E4BED664886EC859F61 /* Pods-Studio Ghibli Movies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Studio Ghibli Movies.debug.xcconfig"; path = "Target Support Files/Pods-Studio Ghibli Movies/Pods-Studio Ghibli Movies.debug.xcconfig"; sourceTree = "<group>"; };
 		CB6325ED92742E895322AC53 /* Pods-Studio Ghibli Movies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Studio Ghibli Movies.release.xcconfig"; path = "Target Support Files/Pods-Studio Ghibli Movies/Pods-Studio Ghibli Movies.release.xcconfig"; sourceTree = "<group>"; };
@@ -77,9 +97,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0300D23D26CEBD43009A5127 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				0374E039268C878000E535B6 /* CustomTableViewCell.xib */,
+				0374E038268C878000E535B6 /* CustomTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		0300D24226CECC8F009A5127 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				0300D23726CE86A4009A5127 /* SignUpViewController.xib */,
+				0300D24426CECCC3009A5127 /* SignUpViewController.swift */,
+				0300D24826CECD1B009A5127 /* SignUpPresenter.swift */,
+				0300D24A26CECD2E009A5127 /* SignUpView.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		0300D24326CECC9D009A5127 /* LogIn */ = {
+			isa = PBXGroup;
+			children = (
+				0300D23926CE8902009A5127 /* LogInViewController.xib */,
+				0300D24626CECCD1009A5127 /* LogInViewController.swift */,
+				0300D24C26CECD40009A5127 /* LogInPresenter.swift */,
+				0300D24E26CECD4E009A5127 /* LogInView.swift */,
+			);
+			path = LogIn;
+			sourceTree = "<group>";
+		};
 		03C07DE526A8B4C100F68D2C /* Movies */ = {
 			isa = PBXGroup;
 			children = (
+				03D1599E268A533A001E3144 /* MoviesViewController.xib */,
 				D23E9CE3265084A700312A56 /* MoviesViewController.swift */,
 				03C07DE626A8B4DA00F68D2C /* MoviesPresenter.swift */,
 				03C07DE826A8B4E800F68D2C /* MoviesView.swift */,
@@ -125,14 +177,14 @@
 		D23E9C8E264CEB1500312A56 /* Studio Ghibli Movies */ = {
 			isa = PBXGroup;
 			children = (
-				D2742CF026CC1FEB00F0D962 /* Generated */,
 				D23E9C8F264CEB1500312A56 /* AppDelegate.swift */,
 				D23E9C91264CEB1500312A56 /* SceneDelegate.swift */,
 				D23E9CAF264DDA4D00312A56 /* Models */,
 				E96E7FD726C6DCD000099E09 /* Data */,
 				D23E9CAA264DD5B900312A56 /* Views */,
-				D23E9CA9264DD58D00312A56 /* Controllers */,
+				D23E9CA9264DD58D00312A56 /* Presentation */,
 				D2742CEB26C6F76500F0D962 /* Utils */,
+				D2742CF026CC1FEB00F0D962 /* Generated */,
 				D23E9C9B264CEB2100312A56 /* Assets.xcassets */,
 				D23E9C9D264CEB2100312A56 /* LaunchScreen.storyboard */,
 				D2742CFE26CC282700F0D962 /* Info.plist */,
@@ -141,22 +193,21 @@
 			path = "Studio Ghibli Movies";
 			sourceTree = "<group>";
 		};
-		D23E9CA9264DD58D00312A56 /* Controllers */ = {
+		D23E9CA9264DD58D00312A56 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				0300D24226CECC8F009A5127 /* SignUp */,
+				0300D24326CECC9D009A5127 /* LogIn */,
 				E9C8726526A5E02C0064234E /* Details */,
 				03C07DE526A8B4C100F68D2C /* Movies */,
 			);
-			path = Controllers;
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		D23E9CAA264DD5B900312A56 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				03D1599E268A533A001E3144 /* MoviesView.xib */,
-				03D159A0268A5341001E3144 /* DetailsView.xib */,
-				0374E039268C878000E535B6 /* CustomTableViewCell.xib */,
-				0374E038268C878000E535B6 /* CustomTableViewCell.swift */,
+				0300D23D26CEBD43009A5127 /* Cell */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -167,6 +218,7 @@
 				D23E9CB0264E04E000312A56 /* MovieData.swift */,
 				038B82AC26B072410094375D /* Movie.swift */,
 				038B82AE26B0724F0094375D /* Details.swift */,
+				0300D23B26CE96AC009A5127 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -175,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				D2742CEC26C6F7E800F0D962 /* ErrorType.swift */,
+				03D486F026CFC9A5002E3769 /* StyleBackground.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -200,6 +253,7 @@
 		E9C8726526A5E02C0064234E /* Details */ = {
 			isa = PBXGroup;
 			children = (
+				0300D24026CEC775009A5127 /* DetailsViewController.xib */,
 				D23E9CB6264EBFF900312A56 /* DetailsViewController.swift */,
 				E9C8726626A5E04D0064234E /* DetailsPresenter.swift */,
 				E9C8726826A5E2BC0064234E /* DetailsView.swift */,
@@ -267,13 +321,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0300D23826CE86A4009A5127 /* SignUpViewController.xib in Resources */,
 				D23E9C9F264CEB2100312A56 /* LaunchScreen.storyboard in Resources */,
 				D2742D1026CC2E4B00F0D962 /* Localizable.strings in Resources */,
 				0374E03B268C878000E535B6 /* CustomTableViewCell.xib in Resources */,
-				03D1599F268A533A001E3144 /* MoviesView.xib in Resources */,
+				03D1599F268A533A001E3144 /* MoviesViewController.xib in Resources */,
+				0300D23A26CE8902009A5127 /* LogInViewController.xib in Resources */,
 				D23E9C9C264CEB2100312A56 /* Assets.xcassets in Resources */,
-				03D159A1268A5341001E3144 /* DetailsView.xib in Resources */,
 				D2742D1226CC322800F0D962 /* Info.plist in Resources */,
+				0300D24126CEC775009A5127 /* DetailsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,15 +406,23 @@
 				D23E9C90264CEB1500312A56 /* AppDelegate.swift in Sources */,
 				0374E03A268C878000E535B6 /* CustomTableViewCell.swift in Sources */,
 				E96E7FD926C6DCF900099E09 /* RxParse.swift in Sources */,
+				0300D24F26CECD4E009A5127 /* LogInView.swift in Sources */,
 				D2742CED26C6F7E800F0D962 /* ErrorType.swift in Sources */,
+				0300D24526CECCC3009A5127 /* SignUpViewController.swift in Sources */,
+				0300D24726CECCD1009A5127 /* LogInViewController.swift in Sources */,
 				D2D8211326546A18004328C3 /* RxRequest.swift in Sources */,
 				038B82AF26B0724F0094375D /* Details.swift in Sources */,
 				D23E9CB7264EBFF900312A56 /* DetailsViewController.swift in Sources */,
+				03D486F126CFC9A5002E3769 /* StyleBackground.swift in Sources */,
 				D2D8211526546AE3004328C3 /* DataBase.swift in Sources */,
 				038B82AD26B072410094375D /* Movie.swift in Sources */,
 				D2742D0D26CC2E2F00F0D962 /* Strings.swift in Sources */,
 				D23E9C92264CEB1500312A56 /* SceneDelegate.swift in Sources */,
+				0300D24D26CECD40009A5127 /* LogInPresenter.swift in Sources */,
+				0300D24B26CECD2E009A5127 /* SignUpView.swift in Sources */,
+				0300D23C26CE96AC009A5127 /* User.swift in Sources */,
 				D23E9CB1264E04E000312A56 /* MovieData.swift in Sources */,
+				0300D24926CECD1B009A5127 /* SignUpPresenter.swift in Sources */,
 				E9C8726726A5E04D0064234E /* DetailsPresenter.swift in Sources */,
 				03C07DE726A8B4DA00F68D2C /* MoviesPresenter.swift in Sources */,
 			);

@@ -32,8 +32,8 @@ internal enum L10n {
   internal static let deleting = L10n.tr("Localizable", "deleting")
   /// Details
   internal static let details = L10n.tr("Localizable", "details")
-  /// DetailsView
-  internal static let detailsView = L10n.tr("Localizable", "details_view")
+  /// DetailsViewController
+  internal static let detailsViewController = L10n.tr("Localizable", "details_view_controller")
   /// Couldn't fetch data from API
   internal static let emptyData = L10n.tr("Localizable", "empty_data")
   /// Favorites
