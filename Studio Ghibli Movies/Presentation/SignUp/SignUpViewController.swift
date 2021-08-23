@@ -61,8 +61,6 @@ class SignUpViewController: UIViewController{
     
     @IBAction func signUpPressed(_ sender: UIButton) {
         presenter.registerUser(withRequest: createViewRequest())
-        self.show(MoviesViewController(), sender: self)
-        navigationController?.navigationBar.isHidden = false
     }
 
     @objc func textFieldDidChange(notification: Notification) {
@@ -89,16 +87,11 @@ extension SignUpViewController: SignUpView {
         present(alertController, animated: true, completion: nil)
     }
 
-    func showProgress() {
-        MBProgressHUD.showAdded(to: self.view, animated: true)
-    }
 
     func close(success: Bool) {
-        self.navigationController?.dismiss(animated: true) {
-            if success {
-                self.delegate?.userRegistered()
-            }
-        }
+        self.show(MoviesViewController(), sender: self)
+        navigationController?.navigationBar.isHidden = false
+        self.delegate?.userRegistered()
     }
 
     func updateView(withResponse viewResponse: SignupViewResponse) {

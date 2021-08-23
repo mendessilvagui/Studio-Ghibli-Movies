@@ -17,7 +17,7 @@ extension UIView {
         case .default:
             self.layer.borderColor = ColorCompat.defaultFieldBorderColor.cgColor
         case .valid:
-            self.layer.borderColor = ColorCompat.primaryColor.cgColor
+            self.layer.borderColor = ColorCompat.validFieldColor.cgColor
         case .invalid:
             self.layer.borderColor = ColorCompat.invalidFieldColor.cgColor
         }

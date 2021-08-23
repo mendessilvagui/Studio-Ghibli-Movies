@@ -45,6 +45,7 @@ class DetailsPresenter {
         self.details.selected = true
         self.details.comment = comment
         self.details.parentMovie = selectedMovie
+        self.details.user = PFUser.current() as! User
 
 		RxParse.saveObject(object: details)
             .subscribe(onSuccess: { _ in

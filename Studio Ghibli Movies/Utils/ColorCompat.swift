@@ -8,22 +8,16 @@
 import UIKit
 
 class ColorCompat {
-    static var primaryColor: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.systemIndigo
-        } else {
-            return UIColor(named: "defaultField")!
-        }
+    static var validFieldColor: UIColor {
+            return UIColor(named: "validField")!
     }
 
     // MARK: - TextFields
 
     static var defaultFieldBorderColor: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor.separator
-        } else {
-            return UIColor(named: "defaultField")!
-        }
+
+            return UIColor(named: "navBar")!
+
     }
 
     static var invalidFieldColor: UIColor {

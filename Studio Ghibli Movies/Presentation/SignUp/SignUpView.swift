@@ -11,7 +11,6 @@ import Parse
 protocol SignUpView: NSObject {
 
     func showError(_ error: Error)
-    func showProgress()
     func close(success: Bool)
     func updateView(withResponse: SignupViewResponse)
 }

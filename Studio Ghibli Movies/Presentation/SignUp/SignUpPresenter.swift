@@ -50,7 +50,7 @@ class SignUpPresenter {
             input: viewRequest.password
         )
         let passwordConfirmValidity = InputValidator.validateInput(
-            rules: [PasswordConfirmationCheck(field: viewRequest.password)],
+            rules: [PasswordCheck(minLength: 6), PasswordConfirmationCheck(field: viewRequest.password)],
             input: viewRequest.passwordConfirmation
         )
         switch (nameValidity, emailValidity, passwordValidity, passwordConfirmValidity) {
@@ -82,7 +82,6 @@ class SignUpPresenter {
         user.email = viewRequest.email
         user.detailsPointer = nil
 
-        view?.showProgress()
         RxParse.signUp(user)
             .do(onSuccess: onSignUpSuccess(_:), onError: onSignUpError(_:))
             .subscribe()
