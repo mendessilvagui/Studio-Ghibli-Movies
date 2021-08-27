@@ -24,12 +24,16 @@ struct DataBase {
         }
     }
 
-	static func loadDetails(selectedMovie: PFObject) -> Single<Details?> {
+    static func loadDetails(selectedMovie: PFObject) -> Single<Details?> {
 		guard let query = Details.query()?
 				.whereKey(L10n.parentMovie, equalTo: selectedMovie) else {
 			return Single.error(ErrorType.generic)
 		}
-		return RxParse.getObject(query).flatMap { (details: Details?) in
+        guard let currentUserId = RxParse.getCurrentUser()?.objectId else {
+            return Single.error(ErrorType.generic)
+        }
+
+        return RxParse.getObject(withId: currentUserId, query).flatMap { (details: Details?) in
 			return Single.just(details)
 		}
 	}

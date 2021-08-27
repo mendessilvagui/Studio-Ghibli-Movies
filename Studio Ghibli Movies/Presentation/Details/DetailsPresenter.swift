@@ -15,9 +15,11 @@ class DetailsPresenter {
     private let disposeBag = DisposeBag()
     private var selectedMovie = Movie()
     private var details = Details()
+    private var user = User()
 
-    init(selectedMovie: Movie) {
+    init(selectedMovie: Movie, user: User) {
         self.selectedMovie = selectedMovie
+        self.user = user
     }
 
     func setView(view: DetailsView) {
@@ -45,11 +47,12 @@ class DetailsPresenter {
         self.details.selected = true
         self.details.comment = comment
         self.details.parentMovie = selectedMovie
-        self.details.user = PFUser.current() as! User
+        self.details.user = RxParse.getCurrentUser()!
 
 		RxParse.saveObject(object: details)
             .subscribe(onSuccess: { _ in
                 self.selectedMovie.childDetails = self.details
+                self.user.detailsPointer = self.details
                 self.selectedMovie.saveInBackground() {(succeeded, error)  in
                     if (succeeded) {
                         self.view?.updateComment(comment)

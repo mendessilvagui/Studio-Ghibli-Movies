@@ -30,8 +30,8 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
 
     // MARK: - Init
 
-    init(selectedMovie: Movie) {
-        presenter = DetailsPresenter(selectedMovie: selectedMovie)
+    init(selectedMovie: Movie, user: User) {
+        presenter = DetailsPresenter(selectedMovie: selectedMovie, user: user)
 		super.init(nibName: L10n.detailsViewController, bundle: nil)
     }
 

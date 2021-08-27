@@ -29,6 +29,7 @@ class SignUpPresenter {
     private weak var view: SignUpView?
     private var allFieldsValid = false
     private let disposeBag = DisposeBag()
+    private let details = Details()
 
     func setView(view: SignUpView) {
         self.view = view
@@ -80,7 +81,7 @@ class SignUpPresenter {
         user.password = viewRequest.password
         user.name = viewRequest.name
         user.email = viewRequest.email
-        user.detailsPointer = nil
+//        user.detailsPointer = details
 
         RxParse.signUp(user)
             .do(onSuccess: onSignUpSuccess(_:), onError: onSignUpError(_:))

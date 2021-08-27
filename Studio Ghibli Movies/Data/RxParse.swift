@@ -60,22 +60,40 @@ class RxParse {
 
     //MARK: - Query objects
 
-	static func getObject<T>(_ query: PFQuery<PFObject>) -> Single<T?> where T: PFObject {
-		Single.create { observer -> Disposable in
-			let disposable = Disposables.create {}
-			query.getFirstObjectInBackground() { (fetchedObject: PFObject?, error: Error?) in
-				guard !disposable.isDisposed else { return }
-				if fetchedObject == nil {
-					observer(.success(nil))
-				} else if let fetchedObject = fetchedObject as? T {
-					observer(.success(fetchedObject))
-				} else {
-					observer(.failure(ErrorType.generic))
-				}
-			}
-			return disposable
-		}
-	}
+//	static func getObject<T>(_ query: PFQuery<PFObject>) -> Single<T?> where T: PFObject {
+//		Single.create { observer -> Disposable in
+//			let disposable = Disposables.create {}
+//			query.getFirstObjectInBackground() { (fetchedObject: PFObject?, error: Error?) in
+//				guard !disposable.isDisposed else { return }
+//				if fetchedObject == nil {
+//					observer(.success(nil))
+//				} else if let fetchedObject = fetchedObject as? T {
+//					observer(.success(fetchedObject))
+//				} else {
+//					observer(.failure(ErrorType.generic))
+//				}
+//			}
+//			return disposable
+//		}
+//	}
+
+    static func getObject<T>(withId objectId: String, _ query: PFQuery<PFObject>) -> Single<T> where T: PFObject {
+        Single.create { observer -> Disposable in
+            let disposable = Disposables.create {}
+            query.getObjectInBackground(withId: objectId) { (fetchedObject: PFObject?, error: Error?) in
+                guard !disposable.isDisposed else { return }
+                if let error = error {
+                    observer(.failure(error))
+                    return
+                } else if let fetchedObject = fetchedObject as? T {
+                    observer(.success(fetchedObject))
+                } else {
+                    observer(.failure(ErrorType.generic))
+                }
+            }
+            return disposable
+        }
+    }
 
     static func findObjects<T>(_ query: PFQuery<PFObject>) -> Single<[T]> where T: PFObject {
         Single.create { observer -> Disposable in
@@ -145,5 +163,12 @@ class RxParse {
             }
             return disposable
         }
+    }
+
+    static func getCurrentUser() -> User? {
+        if let currentUser = User.current() {
+            return currentUser
+        }
+        return nil
     }
 }
