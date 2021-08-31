@@ -9,5 +9,6 @@ import Foundation
 import Parse
 
 protocol LogInView: NSObject {
-
+    func showError(_ error: Error)
+    func close(success: Bool)
 }

@@ -17,9 +17,8 @@ class DetailsPresenter {
     private var details = Details()
     private var user = User()
 
-    init(selectedMovie: Movie, user: User) {
+    init(selectedMovie: Movie) {
         self.selectedMovie = selectedMovie
-        self.user = user
     }
 
     func setView(view: DetailsView) {
@@ -47,7 +46,7 @@ class DetailsPresenter {
         self.details.selected = true
         self.details.comment = comment
         self.details.parentMovie = selectedMovie
-        self.details.user = RxParse.getCurrentUser()!
+        self.details.user = User.current()
 
 		RxParse.saveObject(object: details)
             .subscribe(onSuccess: { _ in

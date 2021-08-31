@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LogInViewController: UIViewController, LogInView {
+class LogInViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
 
@@ -50,8 +50,8 @@ class LogInViewController: UIViewController, LogInView {
     }
 
     @IBAction func logInPressed(_ sender: UIButton) {
-        self.show(MoviesViewController(), sender: self)
-        navigationController?.navigationBar.isHidden = false
+        guard let username = emailTextField.text, let password = passwordTextField.text else { return }
+        presenter.loginUser(username: username, password: password)
     }
 
     @IBAction func signUpPressed(_ sender: UIButton) {
@@ -59,5 +59,20 @@ class LogInViewController: UIViewController, LogInView {
     }
 
     @IBAction func forgotPasswordPressed(_ sender: UIButton) {
+    }
+}
+
+extension LogInViewController: LogInView {
+    func showError(_ error: Error) {
+        let alertController = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
+            alertController.dismiss(animated: true, completion: nil)
+        }))
+        present(alertController, animated: true, completion: nil)
+    }
+
+    func close(success: Bool) {
+        self.show(MoviesViewController(), sender: self)
+        navigationController?.navigationBar.isHidden = false
     }
 }

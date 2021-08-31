@@ -101,9 +101,8 @@ extension MoviesViewController: UITableViewDataSource, UITableViewDelegate {
         if let indexPath = tableView.indexPathForSelectedRow {
 
             let movie = presenter.isFiltering() ? presenter.filteredMovies[indexPath.row] : presenter.movies[indexPath.row]
-            guard let currentUser = RxParse.getCurrentUser() else { return }
 
-            let detailVC = DetailsViewController(selectedMovie: movie, user: currentUser)
+            let detailVC = DetailsViewController(selectedMovie: movie)
             detailVC.moviesVC = self
             detailVC.moviesVCDelegate = self
             tableView.deselectRow(at: (tableView.indexPathForSelectedRow)!, animated: false)
