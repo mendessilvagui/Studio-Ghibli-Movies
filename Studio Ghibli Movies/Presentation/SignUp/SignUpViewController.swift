@@ -30,6 +30,8 @@ class SignUpViewController: UIViewController{
     private let presenter: SignUpPresenter
     weak var delegate: SignupViewControllerDelegate?
 
+    // MARK: - Init
+
     init() {
         presenter = SignUpPresenter()
         super.init(nibName: "SignUpViewController", bundle: nil)
@@ -38,6 +40,8 @@ class SignUpViewController: UIViewController{
     required init?(coder: NSCoder) {
         fatalError(L10n.initError)
     }
+
+    //MARK: - UIViewController lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +62,8 @@ class SignUpViewController: UIViewController{
             object: nil
         )
     }
+
+    // MARK: - SetUp methods
 
     private func stylePage() {
         Style.styleForm(view: formView, button: signUpButton)
@@ -108,15 +114,7 @@ class SignUpViewController: UIViewController{
         confirmPasswordTextField.delegate = self
     }
 
-    @objc func showPasswordTapped() {
-        passwordTextField.togglePasswordVisibility(for: passwordEyeButton)
-        passwordTextField.becomeFirstResponder()
-    }
-
-    @objc func showConfirmPasswordTapped() {
-        confirmPasswordTextField.togglePasswordVisibility(for: confirmPaswwordEyeButton)
-        confirmPasswordTextField.becomeFirstResponder()
-    }
+    //MARK: - IBAction methods
 
     @IBAction func dismissRegisterWindow(_ sender: UIButton) {
         self.dismissAsAlert(nil)
@@ -128,6 +126,18 @@ class SignUpViewController: UIViewController{
 
     @IBAction func signUpPressed(_ sender: UIButton) {
         presenter.registerUser(withRequest: createViewRequest())
+    }
+
+    //MARK: - Helper methods
+
+    @objc func showPasswordTapped() {
+        passwordTextField.togglePasswordVisibility(for: passwordEyeButton)
+        passwordTextField.becomeFirstResponder()
+    }
+
+    @objc func showConfirmPasswordTapped() {
+        confirmPasswordTextField.togglePasswordVisibility(for: confirmPaswwordEyeButton)
+        confirmPasswordTextField.becomeFirstResponder()
     }
 
     @objc func textFieldDidChange(notification: Notification) {
@@ -142,7 +152,20 @@ class SignUpViewController: UIViewController{
             passwordConfirmation: confirmPasswordTextField.textOrEmpty
         )
     }
+
+    private func updateFormError(textField: MDCOutlinedTextField, for validity: InputValidity) {
+        switch validity {
+        case .default:
+            textField.leadingAssistiveLabel.text = ""
+        case .valid:
+            textField.leadingAssistiveLabel.text = ""
+        case .invalid(error: let error):
+            textField.leadingAssistiveLabel.text = error.localizedDescription
+        }
+    }
 }
+
+//MARK: - Textfields delegate
 
 extension SignUpViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange,
@@ -161,6 +184,8 @@ extension SignUpViewController: UITextFieldDelegate {
     }
 }
 
+//MARK: - SignUpView protocol extension
+
 extension SignUpViewController: SignUpView {
 
     func showError(_ error: Error) {
@@ -171,10 +196,13 @@ extension SignUpViewController: SignUpView {
         present(alertController, animated: true, completion: nil)
     }
 
-
-    func close(success: Bool) {
+    func close(success: Bool, email: String?, password: String?) {
+        for textField in allTextFields {
+            textField.text = ""
+        }
+        delegate?.userRegistered(email: email, password: password)
+        presenter.checkFieldsValidity(withRequest: createViewRequest())
         self.dismissAsAlert(nil)
-        self.delegate?.userRegistered()
     }
 
     func updateView(withResponse viewResponse: SignupViewResponse) {
@@ -196,19 +224,4 @@ extension SignUpViewController: SignUpView {
             signUpButton.backgroundColor = .lightGray
         }
     }
-
-    private func updateFormError(textField: MDCOutlinedTextField, for validity: InputValidity) {
-        switch validity {
-        case .default:
-            textField.leadingAssistiveLabel.text = ""
-        case .valid:
-            textField.leadingAssistiveLabel.text = ""
-        case .invalid(error: let error):
-            textField.leadingAssistiveLabel.text = error.localizedDescription
-        }
-    }
-}
-
-protocol SignupViewControllerDelegate: AnyObject {
-    func userRegistered()
 }

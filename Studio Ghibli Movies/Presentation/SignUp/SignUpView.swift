@@ -9,8 +9,7 @@ import Foundation
 import Parse
 
 protocol SignUpView: NSObject {
-
     func showError(_ error: Error)
-    func close(success: Bool)
+    func close(success: Bool, email: String?, password: String?)
     func updateView(withResponse: SignupViewResponse)
 }

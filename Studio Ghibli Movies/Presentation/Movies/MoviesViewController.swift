@@ -40,7 +40,7 @@ class MoviesViewController: UIViewController {
 		presenter.searchController.searchBar.searchTextField.attributedPlaceholder = NSAttributedString(string: L10n.searchMovie, attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
     }
 
-    // MARK: Private methods
+    // MARK: - Private methods
 
     private func setUpNavBar() {
         self.title = L10n.movies
@@ -115,7 +115,7 @@ extension MoviesViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-//MARK: - Set up SearchController and TableView background
+//MARK: - MoviesView protocol extension
 
 extension MoviesViewController: MoviesView {
 

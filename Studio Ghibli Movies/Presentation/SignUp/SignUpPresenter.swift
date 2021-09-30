@@ -87,8 +87,10 @@ class SignUpPresenter {
             .disposed(by: disposeBag)
     }
 
+    //MARK: - Private methods
+
     private func onSignUpSuccess(_ user: User) throws {
-        self.view?.close(success: true)
+        self.view?.close(success: true, email: user.username, password: user.password)
     }
 
     private func onSignUpError(_ error: Error) throws {

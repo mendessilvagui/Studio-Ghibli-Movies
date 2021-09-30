@@ -16,7 +16,7 @@ class Style {
     }
 
     static func styleForm(view: UIView, button: UIButton) {
-        view.layer.cornerRadius = 10
-        button.layer.cornerRadius = 10
+        view.layer.cornerRadius = 15
+        button.layer.cornerRadius = 20
     }
 }

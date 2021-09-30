@@ -28,8 +28,8 @@ extension MDCOutlinedTextField {
         self.setTextColor(textColor, for: .editing)
     }
 
-    func styleLoginTextFiels(text: String, iconName: String) {
-        self.label.text = text
+    func styleLoginTextFiels(labelText: String, iconName: String) {
+        self.label.text = labelText
         self.styleTextField(fieldColor: .white, textColor: .white)
 
         let icon = UIImage(systemName: iconName)

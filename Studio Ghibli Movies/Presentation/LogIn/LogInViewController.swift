@@ -26,6 +26,8 @@ class LogInViewController: UIViewController {
     private let presenter: LogInPresenter
     private let signUpViewController = SignUpViewController()
 
+    // MARK: - Init
+
     init() {
         presenter = LogInPresenter()
         super.init(nibName: "LogInViewController", bundle: nil)
@@ -35,33 +37,37 @@ class LogInViewController: UIViewController {
         fatalError(L10n.initError)
     }
 
+    // MARK: - UIViewController lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         presenter.setView(view: self)
-        self.dismissKeyboard()
+        dismissKeyboard()
         stylePage()
         styleTextFields()
         setUpHidePasswordButton()
 
+        signUpViewController.delegate = self
         emailTextField.delegate = self
         passwordTextField.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        overrideUserInterfaceStyle = .light
         navigationController?.navigationBar.isHidden = true
     }
 
-    func stylePage() {
+    //MARK: - SetUp methods
+
+    private func stylePage() {
         Style.styleViewBackground(imageView: imageView)
         Style.styleForm(view: formView, button: logInButton)
     }
 
-    func styleTextFields() {
+    private func styleTextFields() {
         emailTextField.clearButtonTintColor = .white
-        emailTextField.styleLoginTextFiels(text: "E-mail", iconName: "envelope.fill")
-        passwordTextField.styleLoginTextFiels(text: "Password", iconName: "lock.fill")
+        emailTextField.styleLoginTextFiels(labelText: "E-mail", iconName: "envelope.fill")
+        passwordTextField.styleLoginTextFiels(labelText: "Password", iconName: "lock.fill")
     }
 
     private func setUpHidePasswordButton() {
@@ -77,6 +83,8 @@ class LogInViewController: UIViewController {
         passwordTextField.togglePasswordVisibility(for: passwordEyeButton)
         passwordTextField.becomeFirstResponder()
     }
+
+    //MARK: - IBAction methods
 
     @IBAction func textFieldDoneEditing(_ sender: UITextField) {
         sender.resignFirstResponder()
@@ -94,13 +102,14 @@ class LogInViewController: UIViewController {
     }
 
     @IBAction func signUpPressed(_ sender: UIButton) {
-
-        self.signUpViewController.showAsAlert(holderView: self)
+        self.present(signUpViewController, animated: true)
     }
 
     @IBAction func forgotPasswordPressed(_ sender: UIButton) {
     }
 }
+
+//MARK: - Texfields delegate
 
 extension LogInViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -114,6 +123,8 @@ extension LogInViewController: UITextFieldDelegate {
     }
 }
 
+//MARK: - LogInView protocol extension
+
 extension LogInViewController: LogInView {
     func showError() {
         let alertController = UIAlertController(title: nil, message: L10n.registerErrorInvalidEmailOrPassword, preferredStyle: .alert)
@@ -126,5 +137,20 @@ extension LogInViewController: LogInView {
     func close(success: Bool) {
         self.show(MoviesViewController(), sender: self)
         navigationController?.navigationBar.isHidden = false
+    }
+}
+
+//MARK: - SingupViewControllerDelegate protocol and extension
+
+protocol SignupViewControllerDelegate: AnyObject {
+    func userRegistered(email: String?, password: String?)
+}
+
+extension LogInViewController: SignupViewControllerDelegate {
+    func userRegistered(email: String?, password: String?) {
+        emailTextField.text = email
+        emailTextField.leftViewMode = .never
+        passwordTextField.text = password
+        passwordTextField.leftViewMode = .never
     }
 }
