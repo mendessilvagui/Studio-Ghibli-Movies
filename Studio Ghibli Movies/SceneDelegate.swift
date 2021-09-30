@@ -19,10 +19,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let mainVC = LogInViewController()
         let nav = UINavigationController(rootViewController: mainVC)
-        nav.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor(named: L10n.navBarColor)
+        appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white,
+                                          NSAttributedString.Key.font: UIFont.systemFont(ofSize: 25)]
+        nav.navigationBar.tintColor = UIColor.white
+        nav.navigationBar.standardAppearance = appearance;
+        nav.navigationBar.scrollEdgeAppearance = nav.navigationBar.standardAppearance
 
         self.window!.rootViewController = nav
         self.window!.makeKeyAndVisible()
+
+        if #available(iOS 13.0, *) {
+            window?.overrideUserInterfaceStyle = .dark
+        }
 
         guard let _ = (scene as? UIWindowScene) else { return }
     }
