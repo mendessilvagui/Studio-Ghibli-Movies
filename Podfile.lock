@@ -1,6 +1,44 @@
 PODS:
   - Bolts/Tasks (1.9.1)
+  - MaterialComponents/AnimationTiming (124.2.0)
+  - MaterialComponents/Availability (124.2.0)
+  - MaterialComponents/private/Math (124.2.0)
+  - "MaterialComponents/private/TextControlsPrivate+BaseStyle (124.2.0)":
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/private/Math
+    - "MaterialComponents/private/TextControlsPrivate+Shared"
+  - "MaterialComponents/private/TextControlsPrivate+OutlinedStyle (124.2.0)":
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/Availability
+    - MaterialComponents/private/Math
+    - "MaterialComponents/private/TextControlsPrivate+Shared"
+  - "MaterialComponents/private/TextControlsPrivate+Shared (124.2.0)":
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/private/Math
+    - "MaterialComponents/TextControls+Enums"
+  - "MaterialComponents/private/TextControlsPrivate+TextFields (124.2.0)":
+    - MaterialComponents/private/Math
+    - "MaterialComponents/private/TextControlsPrivate+Shared"
+  - "MaterialComponents/TextControls+BaseTextAreas (124.2.0)":
+    - "MaterialComponents/private/TextControlsPrivate+BaseStyle"
+    - "MaterialComponents/private/TextControlsPrivate+Shared"
+    - MDFInternationalization
+  - "MaterialComponents/TextControls+BaseTextFields (124.2.0)":
+    - "MaterialComponents/private/TextControlsPrivate+BaseStyle"
+    - "MaterialComponents/private/TextControlsPrivate+Shared"
+    - "MaterialComponents/private/TextControlsPrivate+TextFields"
+    - MDFInternationalization
+  - "MaterialComponents/TextControls+Enums (124.2.0)"
+  - "MaterialComponents/TextControls+OutlinedTextAreas (124.2.0)":
+    - MaterialComponents/Availability
+    - "MaterialComponents/private/TextControlsPrivate+OutlinedStyle"
+    - "MaterialComponents/TextControls+BaseTextAreas"
+  - "MaterialComponents/TextControls+OutlinedTextFields (124.2.0)":
+    - MaterialComponents/Availability
+    - "MaterialComponents/private/TextControlsPrivate+OutlinedStyle"
+    - "MaterialComponents/TextControls+BaseTextFields"
   - MBProgressHUD (1.2.0)
+  - MDFInternationalization (3.0.0)
   - Parse (1.19.2):
     - Parse/Core (= 1.19.2)
   - Parse/Core (1.19.2):
@@ -19,6 +57,8 @@ PODS:
   - SwiftGen (6.4.0)
 
 DEPENDENCIES:
+  - "MaterialComponents/TextControls+OutlinedTextAreas (= 124.2.0)"
+  - "MaterialComponents/TextControls+OutlinedTextFields (= 124.2.0)"
   - MBProgressHUD (= 1.2.0)
   - Parse (= 1.19.2)
   - Reusable (= 4.1.1)
@@ -29,7 +69,9 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Bolts
+    - MaterialComponents
     - MBProgressHUD
+    - MDFInternationalization
     - Parse
     - Reusable
     - RxCocoa
@@ -39,7 +81,9 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
+  MaterialComponents: 1a9b2d9d45b1601ae544de85089adc4c464306d4
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  MDFInternationalization: d697c55307816222a55685c4ccb1044ffb030c12
   Parse: 081fb8755c3000fd11df817eec235def233d0af3
   Reusable: 53a9acf5c536f229b31b5865782414b508252ddb
   RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
@@ -47,6 +91,6 @@ SPEC CHECKSUMS:
   RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
   SwiftGen: 67860cc7c3cfc2ed25b9b74cfd55495fc89f9108
 
-PODFILE CHECKSUM: 8f3d3dcffbb233078215e8d2e8690705017b36bb
+PODFILE CHECKSUM: c6310191595a4d117cacd463614fe8519de2ab73
 
 COCOAPODS: 1.10.1

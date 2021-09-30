@@ -27,9 +27,10 @@
 		03D486F126CFC9A5002E3769 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D486F026CFC9A5002E3769 /* Style.swift */; };
 		03D486F326D015B1002E3769 /* InputValidity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D486F226D015B1002E3769 /* InputValidity.swift */; };
 		03D486F526D01617002E3769 /* InputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D486F426D01617002E3769 /* InputValidator.swift */; };
-		03D486F826D02DC1002E3769 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D486F726D02DC1002E3769 /* UIViewExtension.swift */; };
 		03D486FA26D02DF7002E3769 /* ColorCompat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D486F926D02DF7002E3769 /* ColorCompat.swift */; };
 		03D486FC26D0319F002E3769 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D486FB26D0319F002E3769 /* UITextFieldExtension.swift */; };
+		03D8327727023EA300FD2305 /* MDCOutlinedTextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D8327627023EA300FD2305 /* MDCOutlinedTextFieldExtension.swift */; };
+		03D832792702431500FD2305 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D832782702431500FD2305 /* UIViewControllerExtension.swift */; };
 		60165CF4AAE6DC94E2777BDF /* Pods_Studio_Ghibli_Movies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 819D9C0DB4D311270FD910EE /* Pods_Studio_Ghibli_Movies.framework */; };
 		D23E9C90264CEB1500312A56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9C8F264CEB1500312A56 /* AppDelegate.swift */; };
 		D23E9C92264CEB1500312A56 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E9C91264CEB1500312A56 /* SceneDelegate.swift */; };
@@ -70,9 +71,10 @@
 		03D486F026CFC9A5002E3769 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		03D486F226D015B1002E3769 /* InputValidity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputValidity.swift; sourceTree = "<group>"; };
 		03D486F426D01617002E3769 /* InputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputValidator.swift; sourceTree = "<group>"; };
-		03D486F726D02DC1002E3769 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		03D486F926D02DF7002E3769 /* ColorCompat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCompat.swift; sourceTree = "<group>"; };
 		03D486FB26D0319F002E3769 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
+		03D8327627023EA300FD2305 /* MDCOutlinedTextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDCOutlinedTextFieldExtension.swift; sourceTree = "<group>"; };
+		03D832782702431500FD2305 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		819D9C0DB4D311270FD910EE /* Pods_Studio_Ghibli_Movies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Studio_Ghibli_Movies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAB65E4BED664886EC859F61 /* Pods-Studio Ghibli Movies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Studio Ghibli Movies.debug.xcconfig"; path = "Target Support Files/Pods-Studio Ghibli Movies/Pods-Studio Ghibli Movies.debug.xcconfig"; sourceTree = "<group>"; };
 		CB6325ED92742E895322AC53 /* Pods-Studio Ghibli Movies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Studio Ghibli Movies.release.xcconfig"; path = "Target Support Files/Pods-Studio Ghibli Movies/Pods-Studio Ghibli Movies.release.xcconfig"; sourceTree = "<group>"; };
@@ -152,8 +154,9 @@
 		03D486F626D02D5D002E3769 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				03D486F726D02DC1002E3769 /* UIViewExtension.swift */,
 				03D486FB26D0319F002E3769 /* UITextFieldExtension.swift */,
+				03D832782702431500FD2305 /* UIViewControllerExtension.swift */,
+				03D8327627023EA300FD2305 /* MDCOutlinedTextFieldExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -441,13 +444,14 @@
 				D2D8211526546AE3004328C3 /* DataBase.swift in Sources */,
 				038B82AD26B072410094375D /* Movie.swift in Sources */,
 				D2742D0D26CC2E2F00F0D962 /* Strings.swift in Sources */,
-				03D486F826D02DC1002E3769 /* UIViewExtension.swift in Sources */,
 				D23E9C92264CEB1500312A56 /* SceneDelegate.swift in Sources */,
+				03D832792702431500FD2305 /* UIViewControllerExtension.swift in Sources */,
 				0300D24D26CECD40009A5127 /* LogInPresenter.swift in Sources */,
 				0300D24B26CECD2E009A5127 /* SignUpView.swift in Sources */,
 				0300D23C26CE96AC009A5127 /* User.swift in Sources */,
 				03D486F526D01617002E3769 /* InputValidator.swift in Sources */,
 				03D486FA26D02DF7002E3769 /* ColorCompat.swift in Sources */,
+				03D8327727023EA300FD2305 /* MDCOutlinedTextFieldExtension.swift in Sources */,
 				03D486FC26D0319F002E3769 /* UITextFieldExtension.swift in Sources */,
 				D23E9CB1264E04E000312A56 /* MovieData.swift in Sources */,
 				0300D24926CECD1B009A5127 /* SignUpPresenter.swift in Sources */,

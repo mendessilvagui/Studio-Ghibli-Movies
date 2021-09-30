@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 extension UITextField {
 
@@ -15,5 +16,24 @@ extension UITextField {
 
     var textOrEmpty: String {
         return text ?? ""
+    }
+
+    var clearButton: UIButton? {
+        return value(forKey: "clearButton") as? UIButton
+    }
+
+    var clearButtonTintColor: UIColor? {
+        get {
+            return clearButton?.tintColor
+        }
+        set {
+            _ = rx.observe(UIImage.self, "clearButton.imageView.image")
+                .take(until: rx.deallocating)
+                .subscribe(onNext: { [weak self] _ in
+                    let image = self?.clearButton?.imageView?.image?.withRenderingMode(.alwaysTemplate)
+                    self?.clearButton?.setImage(image, for: .normal)
+                })
+            clearButton?.tintColor = newValue
+        }
     }
 }
