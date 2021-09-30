@@ -9,8 +9,8 @@ import UIKit
 
 class ColorCompat {
 
-    static var defaultFieldBorderColor: UIColor {
-        return UIColor(named: "navBar")!
+    static var defaultFieldColor: UIColor {
+        return UIColor(named: L10n.navBarColor)!
     }
 
     static var validFieldColor: UIColor {

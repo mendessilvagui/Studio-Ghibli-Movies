@@ -23,6 +23,7 @@ class LogInPresenter {
     // MARK: - Presenter methods
 
     func loginUser(username: String, password: String) {
+
         RxParse.logIn(withUsername: username, password: password)
             .subscribe(onSuccess: { _ in
                 guard let currentUser = User.current() else { return }
@@ -30,7 +31,7 @@ class LogInPresenter {
                 PFInstallation.current()?.saveInBackground()
                 self.view?.close(success: true)
             }, onFailure: { error in
-                self.view?.showError(error)
+                self.view?.showError()
             })
             .disposed(by: disposeBag)
     }

@@ -45,6 +45,9 @@
 "register_error_different_passwords" = "Both passwords must be the same";
 "resetpassword_message_wrong_current_password" = "Current password is incorrect";
 "register_error_empty_fields" = "All fields must be filled";
+"register_error_invalid_email_or_password" = "Invalid e-mail or password";
+"ok" = "OK";
+"error" = "Error";
 
 
 

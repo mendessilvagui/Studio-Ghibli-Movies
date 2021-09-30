@@ -36,6 +36,8 @@ internal enum L10n {
   internal static let detailsViewController = L10n.tr("Localizable", "details_view_controller")
   /// Couldn't fetch data from API
   internal static let emptyData = L10n.tr("Localizable", "empty_data")
+  /// Error
+  internal static let error = L10n.tr("Localizable", "error")
   /// Favorites
   internal static let favorites = L10n.tr("Localizable", "favorites")
   /// An error occurred. Please try again
@@ -58,6 +60,8 @@ internal enum L10n {
   internal static let movies = L10n.tr("Localizable", "movies")
   /// navBar
   internal static let navBarColor = L10n.tr("Localizable", "nav_bar_color")
+  /// OK
+  internal static let ok = L10n.tr("Localizable", "ok")
   /// parentMovie
   internal static let parentMovie = L10n.tr("Localizable", "parent_movie")
   /// poster-
@@ -68,6 +72,8 @@ internal enum L10n {
   internal static let registerErrorEmptyFields = L10n.tr("Localizable", "register_error_empty_fields")
   /// Invalid email
   internal static let registerErrorInvalidEmail = L10n.tr("Localizable", "register_error_invalid_email")
+  /// Invalid e-mail or password
+  internal static let registerErrorInvalidEmailOrPassword = L10n.tr("Localizable", "register_error_invalid_email_or_password")
   /// Password must be at least 6 characters
   internal static let registerErrorInvalidPassword = L10n.tr("Localizable", "register_error_invalid_password")
   /// Please type your full name
