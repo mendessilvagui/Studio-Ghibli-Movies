@@ -21,6 +21,10 @@
 		0374E03B268C878000E535B6 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0374E039268C878000E535B6 /* CustomTableViewCell.xib */; };
 		038B82AD26B072410094375D /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038B82AC26B072410094375D /* Movie.swift */; };
 		038B82AF26B0724F0094375D /* Details.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038B82AE26B0724F0094375D /* Details.swift */; };
+		03BF3AD427072D600063953B /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BF3AD227072D600063953B /* ResetPasswordViewController.swift */; };
+		03BF3AD527072D600063953B /* ResetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03BF3AD327072D600063953B /* ResetPasswordViewController.xib */; };
+		03BF3AD727072EEF0063953B /* ResetPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BF3AD627072EEF0063953B /* ResetPasswordPresenter.swift */; };
+		03BF3AD927072EFE0063953B /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BF3AD827072EFE0063953B /* ResetPasswordView.swift */; };
 		03C07DE726A8B4DA00F68D2C /* MoviesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C07DE626A8B4DA00F68D2C /* MoviesPresenter.swift */; };
 		03C07DE926A8B4E800F68D2C /* MoviesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C07DE826A8B4E800F68D2C /* MoviesView.swift */; };
 		03D1599F268A533A001E3144 /* MoviesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03D1599E268A533A001E3144 /* MoviesViewController.xib */; };
@@ -65,6 +69,10 @@
 		0374E039268C878000E535B6 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 		038B82AC26B072410094375D /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		038B82AE26B0724F0094375D /* Details.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Details.swift; sourceTree = "<group>"; };
+		03BF3AD227072D600063953B /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		03BF3AD327072D600063953B /* ResetPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResetPasswordViewController.xib; sourceTree = "<group>"; };
+		03BF3AD627072EEF0063953B /* ResetPasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordPresenter.swift; sourceTree = "<group>"; };
+		03BF3AD827072EFE0063953B /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		03C07DE626A8B4DA00F68D2C /* MoviesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesPresenter.swift; sourceTree = "<group>"; };
 		03C07DE826A8B4E800F68D2C /* MoviesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesView.swift; sourceTree = "<group>"; };
 		03D1599E268A533A001E3144 /* MoviesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoviesViewController.xib; sourceTree = "<group>"; };
@@ -138,6 +146,17 @@
 				0300D24E26CECD4E009A5127 /* LogInView.swift */,
 			);
 			path = LogIn;
+			sourceTree = "<group>";
+		};
+		03BF3AD127072D3A0063953B /* ResetPassword */ = {
+			isa = PBXGroup;
+			children = (
+				03BF3AD327072D600063953B /* ResetPasswordViewController.xib */,
+				03BF3AD227072D600063953B /* ResetPasswordViewController.swift */,
+				03BF3AD627072EEF0063953B /* ResetPasswordPresenter.swift */,
+				03BF3AD827072EFE0063953B /* ResetPasswordView.swift */,
+			);
+			path = ResetPassword;
 			sourceTree = "<group>";
 		};
 		03C07DE526A8B4C100F68D2C /* Movies */ = {
@@ -219,6 +238,7 @@
 		D23E9CA9264DD58D00312A56 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				03BF3AD127072D3A0063953B /* ResetPassword */,
 				0300D24226CECC8F009A5127 /* SignUp */,
 				0300D24326CECC9D009A5127 /* LogIn */,
 				E9C8726526A5E02C0064234E /* Details */,
@@ -348,6 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0300D23826CE86A4009A5127 /* SignUpViewController.xib in Resources */,
+				03BF3AD527072D600063953B /* ResetPasswordViewController.xib in Resources */,
 				D23E9C9F264CEB2100312A56 /* LaunchScreen.storyboard in Resources */,
 				D2742D1026CC2E4B00F0D962 /* Localizable.strings in Resources */,
 				0374E03B268C878000E535B6 /* CustomTableViewCell.xib in Resources */,
@@ -445,6 +466,7 @@
 				038B82AD26B072410094375D /* Movie.swift in Sources */,
 				D2742D0D26CC2E2F00F0D962 /* Strings.swift in Sources */,
 				D23E9C92264CEB1500312A56 /* SceneDelegate.swift in Sources */,
+				03BF3AD427072D600063953B /* ResetPasswordViewController.swift in Sources */,
 				03D832792702431500FD2305 /* UIViewControllerExtension.swift in Sources */,
 				0300D24D26CECD40009A5127 /* LogInPresenter.swift in Sources */,
 				0300D24B26CECD2E009A5127 /* SignUpView.swift in Sources */,
@@ -457,6 +479,8 @@
 				0300D24926CECD1B009A5127 /* SignUpPresenter.swift in Sources */,
 				E9C8726726A5E04D0064234E /* DetailsPresenter.swift in Sources */,
 				03C07DE726A8B4DA00F68D2C /* MoviesPresenter.swift in Sources */,
+				03BF3AD727072EEF0063953B /* ResetPasswordPresenter.swift in Sources */,
+				03BF3AD927072EFE0063953B /* ResetPasswordView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

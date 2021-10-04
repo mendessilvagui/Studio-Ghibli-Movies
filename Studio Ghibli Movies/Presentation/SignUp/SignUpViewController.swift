@@ -50,10 +50,10 @@ class SignUpViewController: UIViewController{
         navigationController?.navigationBar.isHidden = true
 
         presenter.setView(view: self)
-        self.dismissKeyboard()
         stylePage()
         styleTextFields()
         setUpHidePasswordsButton()
+        self.addKeyboardOberserver()
 
         NotificationCenter.default.addObserver(
             self,
@@ -61,6 +61,10 @@ class SignUpViewController: UIViewController{
             name: MDCOutlinedTextField.textDidChangeNotification,
             object: nil
         )
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 
     // MARK: - SetUp methods
@@ -75,7 +79,7 @@ class SignUpViewController: UIViewController{
         allTextFields = [nameTextField, emailTextField, passwordTextField, confirmPasswordTextField]
 
         for textField in allTextFields {
-            textField.styleTextField(fieldColor: UIColor(named: L10n.navBarColor)!, textColor: .black)
+            textField.styleTextField(fieldColor: .darkGray, textColor: .darkGray)
             textField.leadingAssistiveLabel.text = ""
 
             switch textField {
@@ -92,15 +96,15 @@ class SignUpViewController: UIViewController{
             }
         }
 
-        nameTextField.clearButtonTintColor = UIColor(named: L10n.navBarColor)
-        emailTextField.clearButtonTintColor = UIColor(named: L10n.navBarColor)
+        nameTextField.clearButtonTintColor = UIColor.darkGray
+        emailTextField.clearButtonTintColor = UIColor.darkGray
     }
 
     private func setUpHidePasswordsButton() {
         passwordTextField.addButtonToRightView(
             button: passwordEyeButton,
             selector: #selector(showPasswordTapped),
-            color: UIColor(named: L10n.navBarColor)!,
+            color: .darkGray,
             target: self
         )
         passwordTextField.delegate = self
@@ -108,7 +112,7 @@ class SignUpViewController: UIViewController{
         confirmPasswordTextField.addButtonToRightView(
             button: confirmPaswwordEyeButton,
             selector: #selector(showConfirmPasswordTapped),
-            color: UIColor(named: L10n.navBarColor)!,
+            color: .darkGray,
             target: self
         )
         confirmPasswordTextField.delegate = self
@@ -219,7 +223,7 @@ extension SignUpViewController: SignUpView {
         updateFormError(textField: confirmPasswordTextField, for: viewResponse.passwordConfirmationValidity)
 
         if signUpButton.isEnabled {
-            signUpButton.backgroundColor = UIColor(named: L10n.navBarColor)
+            signUpButton.backgroundColor = .darkGray
         } else {
             signUpButton.backgroundColor = .lightGray
         }

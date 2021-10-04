@@ -24,12 +24,15 @@ class LogInViewController: UIViewController {
     private var passwordEyeButton = UIButton(type: .custom)
 
     private let presenter: LogInPresenter
-    private let signUpViewController = SignUpViewController()
+    private let signUpViewController: SignUpViewController
+    private let resetPasswordViewController: ResetPasswordViewController
 
     // MARK: - Init
 
     init() {
         presenter = LogInPresenter()
+        signUpViewController = SignUpViewController()
+        resetPasswordViewController = ResetPasswordViewController()
         super.init(nibName: "LogInViewController", bundle: nil)
     }
 
@@ -43,7 +46,6 @@ class LogInViewController: UIViewController {
         super.viewDidLoad()
         
         presenter.setView(view: self)
-        dismissKeyboard()
         stylePage()
         styleTextFields()
         setUpHidePasswordButton()
@@ -51,10 +53,20 @@ class LogInViewController: UIViewController {
         signUpViewController.delegate = self
         emailTextField.delegate = self
         passwordTextField.delegate = self
+
+        self.addKeyboardOberserver()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        self.removeKeyboardObserver()
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 
     //MARK: - SetUp methods
@@ -65,7 +77,7 @@ class LogInViewController: UIViewController {
     }
 
     private func styleTextFields() {
-        emailTextField.clearButtonTintColor = .white
+        emailTextField.clearButtonTintColor = .darkGray
         emailTextField.styleLoginTextFiels(labelText: "E-mail", iconName: "envelope.fill")
         passwordTextField.styleLoginTextFiels(labelText: "Password", iconName: "lock.fill")
     }
@@ -74,7 +86,7 @@ class LogInViewController: UIViewController {
         passwordTextField.addButtonToRightView(
             button: passwordEyeButton,
             selector: #selector(showPasswordTapped),
-            color: .white,
+            color: .darkGray,
             target: self
         )
     }
@@ -102,10 +114,11 @@ class LogInViewController: UIViewController {
     }
 
     @IBAction func signUpPressed(_ sender: UIButton) {
-        self.present(signUpViewController, animated: true)
+        self.signUpViewController.showAsAlert(holderView: self)
     }
 
     @IBAction func forgotPasswordPressed(_ sender: UIButton) {
+        self.resetPasswordViewController.showAsAlert(holderView: self)
     }
 }
 

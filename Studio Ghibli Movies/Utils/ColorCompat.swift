@@ -10,7 +10,7 @@ import UIKit
 class ColorCompat {
 
     static var defaultFieldColor: UIColor {
-        return UIColor(named: L10n.navBarColor)!
+        return UIColor.darkGray
     }
 
     static var validFieldColor: UIColor {

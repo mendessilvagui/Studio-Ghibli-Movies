@@ -30,11 +30,11 @@ extension MDCOutlinedTextField {
 
     func styleLoginTextFiels(labelText: String, iconName: String) {
         self.label.text = labelText
-        self.styleTextField(fieldColor: .white, textColor: .white)
+        self.styleTextField(fieldColor: .darkGray, textColor: .darkGray)
 
         let icon = UIImage(systemName: iconName)
         self.leftView = UIImageView(image: icon)
-        self.leftView?.tintColor = .white
+        self.leftView?.tintColor = .darkGray
         self.leftViewMode = .unlessEditing
     }
 
@@ -59,7 +59,6 @@ extension MDCOutlinedTextField {
             selectedTextRange = nil
             selectedTextRange = existingSelectedTextRange
         }
-        self.resignFirstResponder()
     }
 
     func addButtonToRightView(button: UIButton, selector: Selector, color: UIColor, target: UIViewController) {

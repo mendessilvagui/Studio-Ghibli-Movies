@@ -76,15 +76,31 @@ extension UIViewController {
         return UIAlertAction(title: L10n.ok, style: .default, handler: nil)
     }
 
-    // MARK: Dismiss keyboard
+    // MARK: Add/remove keyboard observer
 
-    func dismissKeyboard() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboardTouchOutside))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
+    func addKeyboardOberserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
-    @objc private func dismissKeyboardTouchOutside() {
-        view.endEditing(true)
+    func removeKeyboardObserver() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height/2
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
     }
 }

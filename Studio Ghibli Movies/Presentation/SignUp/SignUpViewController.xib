@@ -6,7 +6,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -27,80 +26,53 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JKu-G6-p5S" userLabel="Form View">
-                    <rect key="frame" x="20" y="84" width="374" height="348"/>
+                    <rect key="frame" x="20" y="249.5" width="374" height="323"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Register" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UQM-7c-88Y">
                             <rect key="frame" x="140" y="20" width="94.5" height="30"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
-                            <color key="textColor" name="navBar"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SED-G0-JcY" userLabel="Close">
+                            <rect key="frame" x="334" y="20.5" width="25" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="25" id="11u-c7-CtO"/>
+                                <constraint firstAttribute="width" constant="25" id="Pqg-wl-xLS"/>
+                            </constraints>
+                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" backgroundImage="xmark.circle.fill" catalog="system"/>
+                            <connections>
+                                <action selector="dismissRegisterWindow:" destination="-1" eventType="touchUpInside" id="vFC-hi-BaV"/>
+                            </connections>
+                        </button>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="eqV-l0-NNF" userLabel="Name Text Field" customClass="MDCOutlinedTextField">
-                            <rect key="frame" x="15" y="70" width="344" height="34"/>
+                            <rect key="frame" x="15" y="65" width="344" height="34"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="name"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" textContentType="one-time-code"/>
                             <connections>
                                 <action selector="textFieldDoneEditing:" destination="-1" eventType="editingDidEndOnExit" id="14v-JT-zXJ"/>
                             </connections>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="qEc-CD-AVl" userLabel="E-mail Text Field" customClass="MDCOutlinedTextField">
-                            <rect key="frame" x="15" y="124" width="344" height="34"/>
+                            <rect key="frame" x="15" y="114" width="344" height="34"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" textContentType="email"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" textContentType="one-time-code"/>
                             <connections>
                                 <action selector="textFieldDoneEditing:" destination="-1" eventType="editingDidEndOnExit" id="Agx-3i-Dhj"/>
                             </connections>
                         </textField>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QSZ-Vl-Yvi" userLabel="Password View">
-                            <rect key="frame" x="15" y="178" width="344" height="34"/>
-                            <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mRF-d3-HbL" userLabel="Password Text Field" customClass="MDCOutlinedTextField">
-                                    <rect key="frame" x="0.0" y="0.0" width="344" height="34"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
-                                    <connections>
-                                        <action selector="textFieldDoneEditing:" destination="-1" eventType="editingDidEndOnExit" id="TKn-2G-XeV"/>
-                                    </connections>
-                                </textField>
-                            </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <constraints>
-                                <constraint firstItem="mRF-d3-HbL" firstAttribute="leading" secondItem="QSZ-Vl-Yvi" secondAttribute="leading" id="AC0-n1-IzL"/>
-                                <constraint firstAttribute="bottom" secondItem="mRF-d3-HbL" secondAttribute="bottom" id="Nv4-d0-ROp"/>
-                                <constraint firstAttribute="trailing" secondItem="mRF-d3-HbL" secondAttribute="trailing" id="p3b-Qr-5Ne"/>
-                                <constraint firstItem="mRF-d3-HbL" firstAttribute="top" secondItem="QSZ-Vl-Yvi" secondAttribute="top" id="yYv-H9-hQs"/>
-                            </constraints>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cd2-yd-S4n" userLabel="Confirm Password View">
-                            <rect key="frame" x="15" y="232" width="344" height="34"/>
-                            <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JHH-yo-2Hb" userLabel="Confirm Password Text Field" customClass="MDCOutlinedTextField">
-                                    <rect key="frame" x="0.0" y="0.0" width="344" height="34"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
-                                    <connections>
-                                        <action selector="textFieldDoneEditing:" destination="-1" eventType="editingDidEndOnExit" id="NAq-n3-vDE"/>
-                                    </connections>
-                                </textField>
-                            </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <constraints>
-                                <constraint firstItem="JHH-yo-2Hb" firstAttribute="top" secondItem="cd2-yd-S4n" secondAttribute="top" id="2dO-zq-6eB"/>
-                                <constraint firstItem="JHH-yo-2Hb" firstAttribute="leading" secondItem="cd2-yd-S4n" secondAttribute="leading" id="BVY-LA-lP4"/>
-                                <constraint firstAttribute="trailing" secondItem="JHH-yo-2Hb" secondAttribute="trailing" id="bac-Aw-aDJ"/>
-                                <constraint firstAttribute="bottom" secondItem="JHH-yo-2Hb" secondAttribute="bottom" id="qlR-Hl-tdS"/>
-                                <constraint firstAttribute="trailing" secondItem="JHH-yo-2Hb" secondAttribute="trailing" id="rv7-S5-CSG"/>
-                            </constraints>
-                        </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="close" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SED-G0-JcY" userLabel="Close">
-                            <rect key="frame" x="324" y="15" width="30" height="30"/>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JHH-yo-2Hb" userLabel="Confirm Password Text Field" customClass="MDCOutlinedTextField">
+                            <rect key="frame" x="15" y="212" width="344" height="34"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES" textContentType="one-time-code"/>
                             <connections>
-                                <action selector="dismissRegisterWindow:" destination="-1" eventType="touchUpInside" id="vFC-hi-BaV"/>
+                                <action selector="textFieldDoneEditing:" destination="-1" eventType="editingDidEndOnExit" id="NAq-n3-vDE"/>
                             </connections>
-                        </button>
+                        </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ypn-kc-OXG">
-                            <rect key="frame" x="80" y="286" width="214" height="42"/>
-                            <color key="backgroundColor" name="navBar"/>
+                            <rect key="frame" x="15" y="261" width="344" height="42"/>
+                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="system" pointSize="25"/>
                             <state key="normal" title="Sign up">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -109,36 +81,44 @@
                                 <action selector="signUpPressed:" destination="-1" eventType="touchUpInside" id="Kvi-VP-kw9"/>
                             </connections>
                         </button>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mRF-d3-HbL" userLabel="Password Text Field" customClass="MDCOutlinedTextField">
+                            <rect key="frame" x="15" y="163" width="344" height="34"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES" textContentType="one-time-code"/>
+                            <connections>
+                                <action selector="textFieldDoneEditing:" destination="-1" eventType="editingDidEndOnExit" id="TKn-2G-XeV"/>
+                            </connections>
+                        </textField>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" name="formGray"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="QSZ-Vl-Yvi" secondAttribute="trailing" constant="15" id="4IK-C2-nme"/>
+                        <constraint firstAttribute="trailing" secondItem="mRF-d3-HbL" secondAttribute="trailing" constant="15" id="3BG-44-d4D"/>
                         <constraint firstItem="qEc-CD-AVl" firstAttribute="leading" secondItem="JKu-G6-p5S" secondAttribute="leading" constant="15" id="4il-cw-Rvg"/>
-                        <constraint firstItem="qEc-CD-AVl" firstAttribute="top" secondItem="eqV-l0-NNF" secondAttribute="bottom" constant="20" id="64W-vz-LaG"/>
-                        <constraint firstItem="ypn-kc-OXG" firstAttribute="leading" secondItem="JKu-G6-p5S" secondAttribute="leading" constant="80" id="GbI-Dw-efq"/>
-                        <constraint firstItem="ypn-kc-OXG" firstAttribute="top" secondItem="cd2-yd-S4n" secondAttribute="bottom" constant="20" id="GjZ-B4-fHt"/>
-                        <constraint firstAttribute="trailing" secondItem="cd2-yd-S4n" secondAttribute="trailing" constant="15" id="NQa-Iu-bt9"/>
-                        <constraint firstItem="QSZ-Vl-Yvi" firstAttribute="top" secondItem="qEc-CD-AVl" secondAttribute="bottom" constant="20" id="Odd-zp-3yJ"/>
+                        <constraint firstItem="qEc-CD-AVl" firstAttribute="top" secondItem="eqV-l0-NNF" secondAttribute="bottom" constant="15" id="64W-vz-LaG"/>
+                        <constraint firstAttribute="trailing" secondItem="JHH-yo-2Hb" secondAttribute="trailing" constant="15" id="FIh-rd-rtR"/>
+                        <constraint firstItem="ypn-kc-OXG" firstAttribute="leading" secondItem="JKu-G6-p5S" secondAttribute="leading" constant="15" id="GbI-Dw-efq"/>
+                        <constraint firstItem="ypn-kc-OXG" firstAttribute="top" secondItem="JHH-yo-2Hb" secondAttribute="bottom" constant="15" id="IW7-sg-1qb"/>
+                        <constraint firstItem="mRF-d3-HbL" firstAttribute="top" secondItem="qEc-CD-AVl" secondAttribute="bottom" constant="15" id="Ian-Xp-H2M"/>
                         <constraint firstItem="UQM-7c-88Y" firstAttribute="top" secondItem="JKu-G6-p5S" secondAttribute="top" constant="20" id="U7C-8I-RP3"/>
                         <constraint firstAttribute="trailing" secondItem="qEc-CD-AVl" secondAttribute="trailing" constant="15" id="UEI-3h-DpA"/>
                         <constraint firstAttribute="bottom" secondItem="ypn-kc-OXG" secondAttribute="bottom" constant="20" id="azf-O7-14s"/>
-                        <constraint firstItem="cd2-yd-S4n" firstAttribute="leading" secondItem="JKu-G6-p5S" secondAttribute="leading" constant="15" id="duV-sW-D3z"/>
+                        <constraint firstItem="JHH-yo-2Hb" firstAttribute="top" secondItem="mRF-d3-HbL" secondAttribute="bottom" constant="15" id="euJ-4a-Abj"/>
                         <constraint firstItem="UQM-7c-88Y" firstAttribute="centerX" secondItem="JKu-G6-p5S" secondAttribute="centerX" id="gcu-8e-BgJ"/>
-                        <constraint firstAttribute="trailing" secondItem="SED-G0-JcY" secondAttribute="trailing" constant="20" id="lfV-CT-6GN"/>
-                        <constraint firstItem="SED-G0-JcY" firstAttribute="top" secondItem="JKu-G6-p5S" secondAttribute="top" constant="15" id="nbU-ex-bF1"/>
+                        <constraint firstAttribute="trailing" secondItem="SED-G0-JcY" secondAttribute="trailing" constant="15" id="lfV-CT-6GN"/>
+                        <constraint firstItem="SED-G0-JcY" firstAttribute="top" secondItem="JKu-G6-p5S" secondAttribute="top" constant="20" id="nbU-ex-bF1"/>
                         <constraint firstItem="eqV-l0-NNF" firstAttribute="leading" secondItem="JKu-G6-p5S" secondAttribute="leading" constant="15" id="q6m-sZ-47H"/>
-                        <constraint firstAttribute="trailing" secondItem="ypn-kc-OXG" secondAttribute="trailing" constant="80" id="tsS-x2-ZnE"/>
-                        <constraint firstItem="eqV-l0-NNF" firstAttribute="top" secondItem="UQM-7c-88Y" secondAttribute="bottom" constant="20" id="wb3-lT-h0K"/>
+                        <constraint firstItem="JHH-yo-2Hb" firstAttribute="leading" secondItem="JKu-G6-p5S" secondAttribute="leading" constant="15" id="rma-HL-5eh"/>
+                        <constraint firstAttribute="trailing" secondItem="ypn-kc-OXG" secondAttribute="trailing" constant="15" id="tsS-x2-ZnE"/>
+                        <constraint firstItem="eqV-l0-NNF" firstAttribute="top" secondItem="UQM-7c-88Y" secondAttribute="bottom" constant="15" id="wb3-lT-h0K"/>
                         <constraint firstAttribute="trailing" secondItem="eqV-l0-NNF" secondAttribute="trailing" constant="15" id="wrT-4E-NOe"/>
-                        <constraint firstItem="QSZ-Vl-Yvi" firstAttribute="leading" secondItem="JKu-G6-p5S" secondAttribute="leading" constant="15" id="xra-uF-Zb3"/>
-                        <constraint firstItem="cd2-yd-S4n" firstAttribute="top" secondItem="QSZ-Vl-Yvi" secondAttribute="bottom" constant="20" id="zPg-xe-1IM"/>
+                        <constraint firstItem="mRF-d3-HbL" firstAttribute="leading" secondItem="JKu-G6-p5S" secondAttribute="leading" constant="15" id="ztb-Ae-r4I"/>
                     </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="q99-7I-FyC"/>
             <constraints>
+                <constraint firstItem="JKu-G6-p5S" firstAttribute="centerY" secondItem="hum-gw-lxX" secondAttribute="centerY" id="9Ex-O8-gHh"/>
                 <constraint firstItem="JKu-G6-p5S" firstAttribute="leading" secondItem="hum-gw-lxX" secondAttribute="leading" constant="20" id="NEH-km-QFx"/>
-                <constraint firstItem="JKu-G6-p5S" firstAttribute="top" secondItem="q99-7I-FyC" secondAttribute="top" constant="40" id="YzP-or-0R0"/>
                 <constraint firstAttribute="trailing" secondItem="JKu-G6-p5S" secondAttribute="trailing" constant="20" id="oX8-y9-Yyw"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -146,11 +126,9 @@
         </view>
     </objects>
     <resources>
-        <namedColor name="navBar">
-            <color red="0.3843137254901961" green="0.5490196078431373" blue="0.77647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
+        <namedColor name="formGray">
+            <color red="0.84203571079999995" green="0.85228508709999995" blue="0.85219615699999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>
