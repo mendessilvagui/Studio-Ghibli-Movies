@@ -46,11 +46,11 @@ class SignUpPresenter {
             input: viewRequest.email
         )
         let passwordValidity = InputValidator.validateInput(
-            rules: [PasswordCheck(minLength: 6)],
+            rules: [PasswordCheck()],
             input: viewRequest.password
         )
         let passwordConfirmValidity = InputValidator.validateInput(
-            rules: [PasswordCheck(minLength: 6), PasswordConfirmationCheck(field: viewRequest.password)],
+            rules: [PasswordConfirmationCheck(field: viewRequest.password)],
             input: viewRequest.passwordConfirmation
         )
         switch (nameValidity, emailValidity, passwordValidity, passwordConfirmValidity) {

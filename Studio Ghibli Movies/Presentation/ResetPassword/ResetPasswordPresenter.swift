@@ -20,16 +20,17 @@ class ResetPasswordPresenter {
         self.view = view
     }
 
-    func isValidEmail(_ email: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-
-        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailPred.evaluate(with: email)
+    private func checkEmailValidity(_ email: String) -> InputValidity {
+        let emailValidity = InputValidator.validateInput(
+            rules: [EmailCheck()],
+            input: email
+        )
+        return emailValidity
     }
 
     func sendResetPasswordEmail(email: String) {
 
-        if isValidEmail(email) == true {
+        if checkEmailValidity(email) == .valid {
             self.view?.onValidEmail()
             RxParse.resetPassword(for: email)
                 .do(onError:{ error in

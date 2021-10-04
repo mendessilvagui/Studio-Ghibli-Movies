@@ -17,6 +17,7 @@
 		0300D24B26CECD2E009A5127 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0300D24A26CECD2E009A5127 /* SignUpView.swift */; };
 		0300D24D26CECD40009A5127 /* LogInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0300D24C26CECD40009A5127 /* LogInPresenter.swift */; };
 		0300D24F26CECD4E009A5127 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0300D24E26CECD4E009A5127 /* LogInView.swift */; };
+		03584418270B976C00BEB803 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03584417270B976C00BEB803 /* Validation.swift */; };
 		0374E03A268C878000E535B6 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0374E038268C878000E535B6 /* CustomTableViewCell.swift */; };
 		0374E03B268C878000E535B6 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0374E039268C878000E535B6 /* CustomTableViewCell.xib */; };
 		038B82AD26B072410094375D /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038B82AC26B072410094375D /* Movie.swift */; };
@@ -29,8 +30,6 @@
 		03C07DE926A8B4E800F68D2C /* MoviesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C07DE826A8B4E800F68D2C /* MoviesView.swift */; };
 		03D1599F268A533A001E3144 /* MoviesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03D1599E268A533A001E3144 /* MoviesViewController.xib */; };
 		03D486F126CFC9A5002E3769 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D486F026CFC9A5002E3769 /* Style.swift */; };
-		03D486F326D015B1002E3769 /* InputValidity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D486F226D015B1002E3769 /* InputValidity.swift */; };
-		03D486F526D01617002E3769 /* InputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D486F426D01617002E3769 /* InputValidator.swift */; };
 		03D486FA26D02DF7002E3769 /* ColorCompat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D486F926D02DF7002E3769 /* ColorCompat.swift */; };
 		03D486FC26D0319F002E3769 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D486FB26D0319F002E3769 /* UITextFieldExtension.swift */; };
 		03D8327727023EA300FD2305 /* MDCOutlinedTextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D8327627023EA300FD2305 /* MDCOutlinedTextFieldExtension.swift */; };
@@ -65,6 +64,7 @@
 		0300D24A26CECD2E009A5127 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		0300D24C26CECD40009A5127 /* LogInPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInPresenter.swift; sourceTree = "<group>"; };
 		0300D24E26CECD4E009A5127 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
+		03584417270B976C00BEB803 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		0374E038268C878000E535B6 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		0374E039268C878000E535B6 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 		038B82AC26B072410094375D /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
@@ -77,8 +77,6 @@
 		03C07DE826A8B4E800F68D2C /* MoviesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesView.swift; sourceTree = "<group>"; };
 		03D1599E268A533A001E3144 /* MoviesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoviesViewController.xib; sourceTree = "<group>"; };
 		03D486F026CFC9A5002E3769 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
-		03D486F226D015B1002E3769 /* InputValidity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputValidity.swift; sourceTree = "<group>"; };
-		03D486F426D01617002E3769 /* InputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputValidator.swift; sourceTree = "<group>"; };
 		03D486F926D02DF7002E3769 /* ColorCompat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCompat.swift; sourceTree = "<group>"; };
 		03D486FB26D0319F002E3769 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		03D8327627023EA300FD2305 /* MDCOutlinedTextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDCOutlinedTextFieldExtension.swift; sourceTree = "<group>"; };
@@ -271,9 +269,8 @@
 			children = (
 				D2742CEC26C6F7E800F0D962 /* ErrorType.swift */,
 				03D486F026CFC9A5002E3769 /* Style.swift */,
-				03D486F226D015B1002E3769 /* InputValidity.swift */,
-				03D486F426D01617002E3769 /* InputValidator.swift */,
 				03D486F926D02DF7002E3769 /* ColorCompat.swift */,
+				03584417270B976C00BEB803 /* Validation.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -457,9 +454,9 @@
 				D2742CED26C6F7E800F0D962 /* ErrorType.swift in Sources */,
 				0300D24526CECCC3009A5127 /* SignUpViewController.swift in Sources */,
 				0300D24726CECCD1009A5127 /* LogInViewController.swift in Sources */,
-				03D486F326D015B1002E3769 /* InputValidity.swift in Sources */,
 				D2D8211326546A18004328C3 /* RxRequest.swift in Sources */,
 				038B82AF26B0724F0094375D /* Details.swift in Sources */,
+				03584418270B976C00BEB803 /* Validation.swift in Sources */,
 				D23E9CB7264EBFF900312A56 /* DetailsViewController.swift in Sources */,
 				03D486F126CFC9A5002E3769 /* Style.swift in Sources */,
 				D2D8211526546AE3004328C3 /* DataBase.swift in Sources */,
@@ -471,7 +468,6 @@
 				0300D24D26CECD40009A5127 /* LogInPresenter.swift in Sources */,
 				0300D24B26CECD2E009A5127 /* SignUpView.swift in Sources */,
 				0300D23C26CE96AC009A5127 /* User.swift in Sources */,
-				03D486F526D01617002E3769 /* InputValidator.swift in Sources */,
 				03D486FA26D02DF7002E3769 /* ColorCompat.swift in Sources */,
 				03D8327727023EA300FD2305 /* MDCOutlinedTextFieldExtension.swift in Sources */,
 				03D486FC26D0319F002E3769 /* UITextFieldExtension.swift in Sources */,

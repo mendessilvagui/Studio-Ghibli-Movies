@@ -41,7 +41,7 @@
 "generic_error" = "An error occurred. Please try again";
 "register_error_name_full" = "Please type your full name";
 "register_error_invalid_email" = "Invalid email";
-"register_error_invalid_password" = "Password must be at least 6 characters";
+"register_error_invalid_password" = "Password must be between 8 and 16 characters, with at least one capital and one lowercase letter";
 "register_error_different_passwords" = "Both passwords must be the same";
 "resetpassword_message_wrong_current_password" = "Current password is incorrect";
 "register_error_empty_fields" = "All fields must be filled";

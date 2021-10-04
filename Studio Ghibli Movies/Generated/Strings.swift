@@ -74,7 +74,7 @@ internal enum L10n {
   internal static let registerErrorInvalidEmail = L10n.tr("Localizable", "register_error_invalid_email")
   /// Invalid e-mail or password
   internal static let registerErrorInvalidEmailOrPassword = L10n.tr("Localizable", "register_error_invalid_email_or_password")
-  /// Password must be at least 6 characters
+  /// Password must be between 8 and 16 characters, with at least one capital and one lowercase letter
   internal static let registerErrorInvalidPassword = L10n.tr("Localizable", "register_error_invalid_password")
   /// Please type your full name
   internal static let registerErrorNameFull = L10n.tr("Localizable", "register_error_name_full")
