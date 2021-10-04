@@ -7,6 +7,7 @@
 
 import UIKit
 import MaterialComponents
+import MBProgressHUD
 
 class ResetPasswordViewController: UIViewController {
     
@@ -28,8 +29,11 @@ class ResetPasswordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        presenter.setView(view: self)
         stylePage()
         styleTextFields()
+
+        emailTextField.delegate = self
 
         self.addKeyboardOberserver()
     }
@@ -52,7 +56,50 @@ class ResetPasswordViewController: UIViewController {
         self.dismissAsAlert(nil)
     }
 
+    @IBAction func textFieldDoneEditing(_ sender: UITextField) {
+        sender.resignFirstResponder()
+    }
+
     @IBAction func sendEmailPressed(_ sender: UIButton) {
-        
+        let typedEmail = emailTextField.textOrEmpty
+
+        if typedEmail.isEmpty {
+            displaySimpleMessage("Please enter your e-mail.")
+        } else {
+            presenter.sendResetPasswordEmail(email: typedEmail)
+        }
+    }
+}
+
+//MARK: - Textfields delegate
+
+extension ResetPasswordViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        true
+    }
+}
+
+//MARK: - ResetPasswordView protocol extension
+
+extension ResetPasswordViewController: ResetPasswordView {
+
+    func showError(_ error: Error) {
+        displayErrorMessage(error)
+    }
+
+    func onInvalidEmail() {
+        displaySimpleMessage(FormError.email.localizedDescription)
+    }
+
+    func onValidEmail() {
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+    }
+
+    func onEmailSent() {
+        MBProgressHUD.hide(for: self.view, animated: true)
+        self.showAlert(title: "", message: "An email was sent with the necessary steps to change your password!", buttonTitle: L10n.ok) {
+            self.emailTextField.text = ""
+            self.dismissAsAlert(nil)
+        }
     }
 }

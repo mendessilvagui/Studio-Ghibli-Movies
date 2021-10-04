@@ -82,7 +82,8 @@ class SignUpPresenter {
         user.email = viewRequest.email
 
         RxParse.signUp(user)
-            .do(onSuccess: onSignUpSuccess(_:), onError: onSignUpError(_:))
+            .do(onSuccess: onSignUpSuccess(_:),
+                onError: onSignUpError(_:))
             .subscribe()
             .disposed(by: disposeBag)
     }
@@ -90,7 +91,7 @@ class SignUpPresenter {
     //MARK: - Private methods
 
     private func onSignUpSuccess(_ user: User) throws {
-        self.view?.close(success: true, email: user.username, password: user.password)
+        self.view?.close(email: user.username, password: user.password)
     }
 
     private func onSignUpError(_ error: Error) throws {

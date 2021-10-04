@@ -8,7 +8,9 @@
 import Foundation
 import Parse
 
-protocol ResetPasswordView {
+protocol ResetPasswordView: NSObject {
     func showError(_ error: Error)
-    func close(success: Bool)
+    func onInvalidEmail()
+    func onValidEmail()
+    func onEmailSent()
 }

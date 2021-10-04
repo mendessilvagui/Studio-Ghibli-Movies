@@ -46,7 +46,6 @@ class SignUpViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        overrideUserInterfaceStyle = .light
         navigationController?.navigationBar.isHidden = true
 
         presenter.setView(view: self)
@@ -193,14 +192,10 @@ extension SignUpViewController: UITextFieldDelegate {
 extension SignUpViewController: SignUpView {
 
     func showError(_ error: Error) {
-        let alertController = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
-            alertController.dismiss(animated: true, completion: nil)
-        }))
-        present(alertController, animated: true, completion: nil)
+        displayErrorMessage(error)
     }
 
-    func close(success: Bool, email: String?, password: String?) {
+    func close(email: String?, password: String?) {
         for textField in allTextFields {
             textField.text = ""
         }

@@ -139,12 +139,8 @@ extension LogInViewController: UITextFieldDelegate {
 //MARK: - LogInView protocol extension
 
 extension LogInViewController: LogInView {
-    func showError() {
-        let alertController = UIAlertController(title: nil, message: L10n.registerErrorInvalidEmailOrPassword, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: L10n.ok, style: .default, handler: { (action: UIAlertAction!) in
-            alertController.dismiss(animated: true, completion: nil)
-        }))
-        present(alertController, animated: true, completion: nil)
+    func showError(_ error: Error) {
+        displayErrorMessage(error)
     }
 
     func close(success: Bool) {

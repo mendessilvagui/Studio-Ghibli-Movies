@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 enum InputValidity: Equatable {
     case `default`
     case valid

@@ -164,4 +164,19 @@ class RxParse {
             return disposable
         }
     }
+
+    static func resetPassword(for email: String) -> Completable {
+        Completable.create { observer -> Disposable in
+            let disposable = Disposables.create {}
+            User.requestPasswordResetForEmail(inBackground: email) {(_, error: Error?) -> Void in
+                guard !disposable.isDisposed else { return }
+                if let error = error {
+                    observer(.error(FormError.email))
+                    return
+                }
+                observer(.completed)
+            }
+            return disposable
+        }
+    }
 }

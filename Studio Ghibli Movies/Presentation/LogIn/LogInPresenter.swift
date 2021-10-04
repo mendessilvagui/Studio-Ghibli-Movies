@@ -31,7 +31,7 @@ class LogInPresenter {
                 PFInstallation.current()?.saveInBackground()
                 self.view?.close(success: true)
             }, onFailure: { error in
-                self.view?.showError()
+                self.view?.showError(error)
             })
             .disposed(by: disposeBag)
     }
