@@ -17,4 +17,5 @@ class Details: PFObject, PFSubclassing {
     @NSManaged var selected: Bool
     @NSManaged var comment: String?
     @NSManaged var parentMovie: Movie
+    @NSManaged var user: User?
 }

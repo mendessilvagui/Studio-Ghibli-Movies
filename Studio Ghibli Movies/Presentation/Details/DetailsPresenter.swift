@@ -15,6 +15,7 @@ class DetailsPresenter {
     private let disposeBag = DisposeBag()
     private var selectedMovie = Movie()
     private var details = Details()
+    private var user = User()
 
     init(selectedMovie: Movie) {
         self.selectedMovie = selectedMovie
@@ -45,10 +46,12 @@ class DetailsPresenter {
         self.details.selected = true
         self.details.comment = comment
         self.details.parentMovie = selectedMovie
+        self.details.user = User.current()
 
 		RxParse.saveObject(object: details)
             .subscribe(onSuccess: { _ in
                 self.selectedMovie.childDetails = self.details
+                self.user.detailsPointer = self.details
                 self.selectedMovie.saveInBackground() {(succeeded, error)  in
                     if (succeeded) {
                         self.view?.updateComment(comment)

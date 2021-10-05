@@ -12,5 +12,7 @@ target 'Studio Ghibli Movies' do
   pod 'RxSwift', '6.2.0'
   pod 'RxCocoa', '6.2.0'
   pod 'SwiftGen', '6.4.0'
+  pod 'MaterialComponents/TextControls+OutlinedTextAreas', '124.2.0'
+  pod 'MaterialComponents/TextControls+OutlinedTextFields', '124.2.0'
 
 end

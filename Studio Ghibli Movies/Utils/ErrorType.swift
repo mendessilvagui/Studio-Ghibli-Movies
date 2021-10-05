@@ -7,6 +7,35 @@
 
 import Foundation
 
+enum FormError: Error {
+    case name
+    case email
+    case password
+    case passwordConfirmation
+    case generic
+    case wrongOldPassword
+    case other
+
+    var localizedDescription: String {
+        switch self {
+        case .name:
+            return L10n.registerErrorNameFull
+        case .email:
+            return L10n.registerErrorInvalidEmail
+        case .password:
+            return L10n.registerErrorInvalidPassword
+        case .passwordConfirmation:
+            return L10n.registerErrorDifferentPasswords
+        case .generic:
+            return L10n.genericError
+        case .wrongOldPassword:
+            return L10n.resetpasswordMessageWrongCurrentPassword
+        default:
+            return L10n.genericError
+        }
+    }
+}
+
 enum ErrorType: Error {
 
 	case invalidResponse(URLResponse?)
@@ -23,7 +52,7 @@ enum ErrorType: Error {
 		case .invalidJSON:
 			return L10n.invalidJson
 		case .generic:
-			return L10n.generic
+			return L10n.genericError
 		}
 	}
 }

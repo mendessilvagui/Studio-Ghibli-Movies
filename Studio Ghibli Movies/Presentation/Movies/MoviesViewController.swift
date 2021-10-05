@@ -18,10 +18,7 @@ class MoviesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-		self.title = L10n.movies
-		self.navigationController?.navigationBar.barTintColor = UIColor(named: L10n.navBarColor)
-        navigationController?.navigationBar.tintColor = UIColor.white
-
+        setUpNavBar()
         setUpSearchController()
         presenter.searchController.searchBar.delegate = self
         presenter.searchController.searchResultsUpdater = self
@@ -41,6 +38,13 @@ class MoviesViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
 		presenter.searchController.searchBar.searchTextField.attributedPlaceholder = NSAttributedString(string: L10n.searchMovie, attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+    }
+
+    // MARK: - Private methods
+
+    private func setUpNavBar() {
+        self.title = L10n.movies
+        self.navigationItem.setHidesBackButton(true, animated: true)
     }
 }
 
@@ -111,7 +115,7 @@ extension MoviesViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-//MARK: - Set up SearchController and TableView background
+//MARK: - MoviesView protocol extension
 
 extension MoviesViewController: MoviesView {
 
@@ -122,7 +126,6 @@ extension MoviesViewController: MoviesView {
         presenter.searchController.searchBar.sizeToFit()
         presenter.searchController.searchBar.searchBarStyle = .minimal
 		presenter.searchController.searchBar.scopeButtonTitles = [L10n.all, L10n.favorites]
-        presenter.searchController.searchBar.searchTextField.textColor = UIColor.white
     }
 
     func styleTableViewBackground() {
@@ -131,9 +134,7 @@ extension MoviesViewController: MoviesView {
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFill
 
-        let backView = UIView(frame: imageView.bounds)
-        backView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
-        imageView.addSubview(backView)
+        Style.styleViewBackground(imageView: imageView)
 
         tableView.backgroundView = imageView
         tableView.separatorStyle = .none

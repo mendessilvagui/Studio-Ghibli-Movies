@@ -32,14 +32,16 @@ internal enum L10n {
   internal static let deleting = L10n.tr("Localizable", "deleting")
   /// Details
   internal static let details = L10n.tr("Localizable", "details")
-  /// DetailsView
-  internal static let detailsView = L10n.tr("Localizable", "details_view")
+  /// DetailsViewController
+  internal static let detailsViewController = L10n.tr("Localizable", "details_view_controller")
   /// Couldn't fetch data from API
   internal static let emptyData = L10n.tr("Localizable", "empty_data")
+  /// Error
+  internal static let error = L10n.tr("Localizable", "error")
   /// Favorites
   internal static let favorites = L10n.tr("Localizable", "favorites")
   /// An error occurred. Please try again
-  internal static let generic = L10n.tr("Localizable", "generic")
+  internal static let genericError = L10n.tr("Localizable", "generic_error")
   /// heart
   internal static let heart = L10n.tr("Localizable", "heart")
   /// heart.fill
@@ -58,12 +60,28 @@ internal enum L10n {
   internal static let movies = L10n.tr("Localizable", "movies")
   /// navBar
   internal static let navBarColor = L10n.tr("Localizable", "nav_bar_color")
+  /// OK
+  internal static let ok = L10n.tr("Localizable", "ok")
   /// parentMovie
   internal static let parentMovie = L10n.tr("Localizable", "parent_movie")
   /// poster-
   internal static let poster = L10n.tr("Localizable", "poster")
+  /// Both passwords must be the same
+  internal static let registerErrorDifferentPasswords = L10n.tr("Localizable", "register_error_different_passwords")
+  /// All fields must be filled
+  internal static let registerErrorEmptyFields = L10n.tr("Localizable", "register_error_empty_fields")
+  /// Invalid email
+  internal static let registerErrorInvalidEmail = L10n.tr("Localizable", "register_error_invalid_email")
+  /// Invalid e-mail or password
+  internal static let registerErrorInvalidEmailOrPassword = L10n.tr("Localizable", "register_error_invalid_email_or_password")
+  /// Password must be between 8 and 16 characters, with at least one capital and one lowercase letter
+  internal static let registerErrorInvalidPassword = L10n.tr("Localizable", "register_error_invalid_password")
+  /// Please type your full name
+  internal static let registerErrorNameFull = L10n.tr("Localizable", "register_error_name_full")
   /// releaseDate
   internal static let releaseDate = L10n.tr("Localizable", "release_date")
+  /// Current password is incorrect
+  internal static let resetpasswordMessageWrongCurrentPassword = L10n.tr("Localizable", "resetpassword_message_wrong_current_password")
   /// Saving
   internal static let saving = L10n.tr("Localizable", "saving")
   /// Search Movie

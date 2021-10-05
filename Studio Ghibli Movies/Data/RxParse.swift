@@ -11,6 +11,23 @@ import RxSwift
 
 class RxParse {
 
+    //MARK: - Object operations
+
+    static func fetchObject<T>(_ object: T) -> Single<T> where T: PFObject {
+        Single.create { observer -> Disposable in
+            let disposable = Disposables.create {}
+            object.fetchInBackground { (_: PFObject?, error: Error?) in
+                guard !disposable.isDisposed else { return }
+                if let error = error {
+                    observer(.failure(error))
+                    return
+                }
+                observer(.success(object))
+            }
+            return disposable
+        }
+    }
+
 	static func saveObject<T>(object: T) -> Single<T> where T: PFObject {
 		Single.create { observer -> Disposable in
 			let disposable = Disposables.create {}
@@ -41,6 +58,8 @@ class RxParse {
 		}
 	}
 
+    //MARK: - Query objects
+
 	static func getObject<T>(_ query: PFQuery<PFObject>) -> Single<T?> where T: PFObject {
 		Single.create { observer -> Disposable in
 			let disposable = Disposables.create {}
@@ -58,6 +77,24 @@ class RxParse {
 		}
 	}
 
+    static func getObject<T>(withId objectId: String, _ query: PFQuery<PFObject>) -> Single<T> where T: PFObject {
+        Single.create { observer -> Disposable in
+            let disposable = Disposables.create {}
+            query.getObjectInBackground(withId: objectId) { (fetchedObject: PFObject?, error: Error?) in
+                guard !disposable.isDisposed else { return }
+                if let error = error {
+                    observer(.failure(error))
+                    return
+                } else if let fetchedObject = fetchedObject as? T {
+                    observer(.success(fetchedObject))
+                } else {
+                    observer(.failure(ErrorType.generic))
+                }
+            }
+            return disposable
+        }
+    }
+
     static func findObjects<T>(_ query: PFQuery<PFObject>) -> Single<[T]> where T: PFObject {
         Single.create { observer -> Disposable in
             let disposable = Disposables.create {}
@@ -71,6 +108,73 @@ class RxParse {
                 } else {
                     observer(.failure(ErrorType.generic))
                 }
+            }
+            return disposable
+        }
+    }
+
+    // MARK: - User operations
+
+    static func signUp(_ user: User) -> Single<User> {
+        Single.create { observer -> Disposable in
+            let disposable = Disposables.create {}
+            user.signUpInBackground { (success: Bool, error: Error?) in
+                guard !disposable.isDisposed else {
+                    return
+                }
+                if let error = error {
+                    observer(.failure(error))
+                    return
+                }
+                observer(.success(user))
+            }
+            return disposable
+        }
+    }
+
+    static func logIn(withUsername username: String, password: String) -> Single<User> {
+        Single.create { observer -> Disposable in
+            let disposable = Disposables.create {}
+            User.logInWithUsername(inBackground: username, password: password) { (user: PFUser?, error: Error?) in
+                guard !disposable.isDisposed else { return }
+                if let error = error {
+                    observer(.failure(error))
+                    return
+                } else if let user = user as? User {
+                    observer(.success(user))
+                    return
+                }
+                observer(.failure(ErrorType.generic))
+            }
+            return disposable
+        }
+    }
+
+    static func logOut() -> Completable {
+        Completable.create { observer -> Disposable in
+            let disposable = Disposables.create {}
+            User.logOutInBackground { (error: Error?) in
+                guard !disposable.isDisposed else { return }
+                if let error = error {
+                    observer(.error(error))
+                    return
+                }
+                observer(.completed)
+            }
+            return disposable
+        }
+    }
+
+    static func resetPassword(for email: String) -> Completable {
+        Completable.create { observer -> Disposable in
+            let disposable = Disposables.create {}
+            User.requestPasswordResetForEmail(inBackground: email) {(_, error: Error?) -> Void in
+                guard !disposable.isDisposed else { return }
+                if let error = error {
+                    observer(.error(FormError.email))
+                    return
+                }
+                observer(.completed)
             }
             return disposable
         }

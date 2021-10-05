@@ -34,11 +34,21 @@
 "delete_from_favorites" = "Delete from favorites?";
 "delete" = "Delete";
 "deleting" = "Deleting";
-"details_view" = "DetailsView";
+"details_view_controller" = "DetailsViewController";
 "invalid_response" = "Error connecting to API";
 "empty_data" = "Couldn't fetch data from API";
 "invalid_json" = "Couldn't get JSON data";
-"generic" = "An error occurred. Please try again";
+"generic_error" = "An error occurred. Please try again";
+"register_error_name_full" = "Please type your full name";
+"register_error_invalid_email" = "Invalid email";
+"register_error_invalid_password" = "Password must be between 8 and 16 characters, with at least one capital and one lowercase letter";
+"register_error_different_passwords" = "Both passwords must be the same";
+"resetpassword_message_wrong_current_password" = "Current password is incorrect";
+"register_error_empty_fields" = "All fields must be filled";
+"register_error_invalid_email_or_password" = "Invalid e-mail or password";
+"ok" = "OK";
+"error" = "Error";
+
 
 
 
