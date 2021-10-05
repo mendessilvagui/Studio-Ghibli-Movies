@@ -10,7 +10,7 @@ import RxSwift
 
 struct DataBase {
 
-    static func loadMovies() -> Single<[Movie]> {
+    static func loadAllMovies() -> Single<[Movie]> {
         guard let query = Movie.query()?
 				.addAscendingOrder(L10n.releaseDate) else {
             return Single.error(ErrorType.generic)
@@ -21,6 +21,23 @@ struct DataBase {
             } else {
                 return Single.just(movies)
             }
+        }
+    }
+
+    static func loadFavoriteMovies() -> Single<[Movie]> {
+        guard let currentUser = User.current(), let detailsQuery = Details.query()?
+                .whereKey("user", equalTo: currentUser) else {
+            return Single.error(ErrorType.generic)
+        }
+
+        guard let query = Movie.query()?
+                .whereKey("childDetails", matchesQuery: detailsQuery)
+                .addAscendingOrder(L10n.releaseDate) else {
+            return Single.error(ErrorType.generic)
+        }
+        
+        return RxParse.findObjects(query).flatMap { (movies: [Movie]) in
+            return Single.just(movies)
         }
     }
 

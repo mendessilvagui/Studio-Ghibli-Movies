@@ -144,7 +144,7 @@ extension LogInViewController: LogInView {
     }
 
     func close(success: Bool) {
-        self.show(MoviesViewController(), sender: self)
+        self.show(MenuViewController(), sender: self)
         navigationController?.navigationBar.isHidden = false
     }
 }

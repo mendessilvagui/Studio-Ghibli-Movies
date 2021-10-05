@@ -103,4 +103,18 @@ extension UIViewController {
             self.view.frame.origin.y = 0
         }
     }
+
+    // MARK: Style backbground view
+
+    func styleTableViewBackground(tableView: UITableView) {
+
+        let image = UIImage(named: L10n.totoroImage)
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFill
+
+        Style.styleViewBackground(imageView: imageView)
+
+        tableView.backgroundView = imageView
+        tableView.separatorStyle = .none
+    }
 }

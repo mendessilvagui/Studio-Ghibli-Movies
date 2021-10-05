@@ -128,7 +128,7 @@
     <resources>
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
         <namedColor name="formGray">
-            <color red="0.84203571079999995" green="0.85228508709999995" blue="0.85219615699999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.84200000762939453" green="0.85199999809265137" blue="0.85199999809265137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

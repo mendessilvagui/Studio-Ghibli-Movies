@@ -24,7 +24,8 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
 
     private var isFavorited: Bool = false
     public var moviesVC = MoviesViewController()
-    public var moviesVCDelegate: ReloadList?
+    public var favoriteMoviesVC = FavoriteMoviesViewController()
+    public var favoriteMoviesVCDelegate: ReloadTableView?
 
     private let presenter: DetailsPresenter
 
@@ -47,7 +48,8 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
 		self.title = L10n.details
 		self.view.backgroundColor = UIColor(named: L10n.totoroColor)
 
-        navigationController?.delegate = self
+        self.navigationController?.delegate = self
+        self.navigationItem.largeTitleDisplayMode = .never
 
         presenter.setView(view: self)
         presenter.start()
@@ -56,11 +58,6 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         presenter.loadMovieDetails()
     }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        self.moviesVCDelegate?.reloadList()
-    }
-
 // MARK: - Updatade favorite button on touch
 
     private func updateRightBarButton(){
@@ -171,5 +168,9 @@ extension DetailsViewController: DetailsView {
 
     func hideIndicator() {
         MBProgressHUD.hide(for: self.view, animated: true)
+    }
+
+    func reloadFavoriteMoviesTableView() {
+        self.favoriteMoviesVCDelegate?.reloadTableView()
     }
 }

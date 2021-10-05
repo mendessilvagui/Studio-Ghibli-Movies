@@ -14,4 +14,5 @@ protocol DetailsView: NSObject {
     func updateComment(_ comment: String?)
     func showIndicator(_ title: String)
     func hideIndicator()
+    func reloadFavoriteMoviesTableView()
 }

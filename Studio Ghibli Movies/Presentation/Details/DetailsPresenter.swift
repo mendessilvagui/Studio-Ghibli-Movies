@@ -51,7 +51,6 @@ class DetailsPresenter {
 		RxParse.saveObject(object: details)
             .subscribe(onSuccess: { _ in
                 self.selectedMovie.childDetails = self.details
-                self.user.detailsPointer = self.details
                 self.selectedMovie.saveInBackground() {(succeeded, error)  in
                     if (succeeded) {
                         self.view?.updateComment(comment)
@@ -59,6 +58,7 @@ class DetailsPresenter {
                         print(error)
                     }
                 }
+                self.view?.reloadFavoriteMoviesTableView()
             })
             .disposed(by: disposeBag)
     }
@@ -66,6 +66,7 @@ class DetailsPresenter {
     func unfavorite() {
 		RxParse.deleteObject(object: details)
             .subscribe(onCompleted: {
+                self.view?.reloadFavoriteMoviesTableView()
 				self.selectedMovie.remove(forKey: L10n.childDetails)
                 self.selectedMovie.saveInBackground() {(succeeded, error)  in
                     if (succeeded) {
@@ -74,6 +75,7 @@ class DetailsPresenter {
                         print(error)
                     }
                 }
+                self.view?.reloadFavoriteMoviesTableView()
             })
             .disposed(by: disposeBag)
     }

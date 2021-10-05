@@ -22,6 +22,13 @@
 		0374E03B268C878000E535B6 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0374E039268C878000E535B6 /* CustomTableViewCell.xib */; };
 		038B82AD26B072410094375D /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038B82AC26B072410094375D /* Movie.swift */; };
 		038B82AF26B0724F0094375D /* Details.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038B82AE26B0724F0094375D /* Details.swift */; };
+		03BEE307270C7ED800A24994 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BEE306270C7ED800A24994 /* MenuViewController.swift */; };
+		03BEE30C270C822400A24994 /* FavoriteMoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BEE30A270C822400A24994 /* FavoriteMoviesViewController.swift */; };
+		03BEE30D270C822400A24994 /* FavoriteMoviesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03BEE30B270C822400A24994 /* FavoriteMoviesViewController.xib */; };
+		03BEE310270C823400A24994 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BEE30E270C823400A24994 /* ProfileViewController.swift */; };
+		03BEE311270C823400A24994 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03BEE30F270C823400A24994 /* ProfileViewController.xib */; };
+		03BEE315270CB59400A24994 /* FavoriteMoviesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BEE314270CB59400A24994 /* FavoriteMoviesPresenter.swift */; };
+		03BEE319270CD36A00A24994 /* ReloadTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BEE318270CD36A00A24994 /* ReloadTableView.swift */; };
 		03BF3AD427072D600063953B /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BF3AD227072D600063953B /* ResetPasswordViewController.swift */; };
 		03BF3AD527072D600063953B /* ResetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03BF3AD327072D600063953B /* ResetPasswordViewController.xib */; };
 		03BF3AD727072EEF0063953B /* ResetPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BF3AD627072EEF0063953B /* ResetPasswordPresenter.swift */; };
@@ -69,6 +76,13 @@
 		0374E039268C878000E535B6 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 		038B82AC26B072410094375D /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		038B82AE26B0724F0094375D /* Details.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Details.swift; sourceTree = "<group>"; };
+		03BEE306270C7ED800A24994 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		03BEE30A270C822400A24994 /* FavoriteMoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMoviesViewController.swift; sourceTree = "<group>"; };
+		03BEE30B270C822400A24994 /* FavoriteMoviesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteMoviesViewController.xib; sourceTree = "<group>"; };
+		03BEE30E270C823400A24994 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		03BEE30F270C823400A24994 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		03BEE314270CB59400A24994 /* FavoriteMoviesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMoviesPresenter.swift; sourceTree = "<group>"; };
+		03BEE318270CD36A00A24994 /* ReloadTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadTableView.swift; sourceTree = "<group>"; };
 		03BF3AD227072D600063953B /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		03BF3AD327072D600063953B /* ResetPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResetPasswordViewController.xib; sourceTree = "<group>"; };
 		03BF3AD627072EEF0063953B /* ResetPasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordPresenter.swift; sourceTree = "<group>"; };
@@ -146,6 +160,23 @@
 			path = LogIn;
 			sourceTree = "<group>";
 		};
+		03BEE305270C7E2100A24994 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				03BEE306270C7ED800A24994 /* MenuViewController.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		03BEE309270C80A700A24994 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				03BEE30E270C823400A24994 /* ProfileViewController.swift */,
+				03BEE30F270C823400A24994 /* ProfileViewController.xib */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		03BF3AD127072D3A0063953B /* ResetPassword */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +194,9 @@
 				03D1599E268A533A001E3144 /* MoviesViewController.xib */,
 				D23E9CE3265084A700312A56 /* MoviesViewController.swift */,
 				03C07DE626A8B4DA00F68D2C /* MoviesPresenter.swift */,
+				03BEE30B270C822400A24994 /* FavoriteMoviesViewController.xib */,
+				03BEE30A270C822400A24994 /* FavoriteMoviesViewController.swift */,
+				03BEE314270CB59400A24994 /* FavoriteMoviesPresenter.swift */,
 				03C07DE826A8B4E800F68D2C /* MoviesView.swift */,
 			);
 			path = Movies;
@@ -236,11 +270,13 @@
 		D23E9CA9264DD58D00312A56 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				03BF3AD127072D3A0063953B /* ResetPassword */,
-				0300D24226CECC8F009A5127 /* SignUp */,
 				0300D24326CECC9D009A5127 /* LogIn */,
-				E9C8726526A5E02C0064234E /* Details */,
+				0300D24226CECC8F009A5127 /* SignUp */,
+				03BF3AD127072D3A0063953B /* ResetPassword */,
+				03BEE305270C7E2100A24994 /* Menu */,
 				03C07DE526A8B4C100F68D2C /* Movies */,
+				03BEE309270C80A700A24994 /* Profile */,
+				E9C8726526A5E02C0064234E /* Details */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -271,6 +307,7 @@
 				03D486F026CFC9A5002E3769 /* Style.swift */,
 				03D486F926D02DF7002E3769 /* ColorCompat.swift */,
 				03584417270B976C00BEB803 /* Validation.swift */,
+				03BEE318270CD36A00A24994 /* ReloadTableView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -369,6 +406,8 @@
 				D23E9C9F264CEB2100312A56 /* LaunchScreen.storyboard in Resources */,
 				D2742D1026CC2E4B00F0D962 /* Localizable.strings in Resources */,
 				0374E03B268C878000E535B6 /* CustomTableViewCell.xib in Resources */,
+				03BEE30D270C822400A24994 /* FavoriteMoviesViewController.xib in Resources */,
+				03BEE311270C823400A24994 /* ProfileViewController.xib in Resources */,
 				03D1599F268A533A001E3144 /* MoviesViewController.xib in Resources */,
 				0300D23A26CE8902009A5127 /* LogInViewController.xib in Resources */,
 				D23E9C9C264CEB2100312A56 /* Assets.xcassets in Resources */,
@@ -450,17 +489,21 @@
 				D23E9C90264CEB1500312A56 /* AppDelegate.swift in Sources */,
 				0374E03A268C878000E535B6 /* CustomTableViewCell.swift in Sources */,
 				E96E7FD926C6DCF900099E09 /* RxParse.swift in Sources */,
+				03BEE310270C823400A24994 /* ProfileViewController.swift in Sources */,
 				0300D24F26CECD4E009A5127 /* LogInView.swift in Sources */,
 				D2742CED26C6F7E800F0D962 /* ErrorType.swift in Sources */,
 				0300D24526CECCC3009A5127 /* SignUpViewController.swift in Sources */,
 				0300D24726CECCD1009A5127 /* LogInViewController.swift in Sources */,
 				D2D8211326546A18004328C3 /* RxRequest.swift in Sources */,
+				03BEE307270C7ED800A24994 /* MenuViewController.swift in Sources */,
+				03BEE30C270C822400A24994 /* FavoriteMoviesViewController.swift in Sources */,
 				038B82AF26B0724F0094375D /* Details.swift in Sources */,
 				03584418270B976C00BEB803 /* Validation.swift in Sources */,
 				D23E9CB7264EBFF900312A56 /* DetailsViewController.swift in Sources */,
 				03D486F126CFC9A5002E3769 /* Style.swift in Sources */,
 				D2D8211526546AE3004328C3 /* DataBase.swift in Sources */,
 				038B82AD26B072410094375D /* Movie.swift in Sources */,
+				03BEE319270CD36A00A24994 /* ReloadTableView.swift in Sources */,
 				D2742D0D26CC2E2F00F0D962 /* Strings.swift in Sources */,
 				D23E9C92264CEB1500312A56 /* SceneDelegate.swift in Sources */,
 				03BF3AD427072D600063953B /* ResetPasswordViewController.swift in Sources */,
@@ -474,6 +517,7 @@
 				D23E9CB1264E04E000312A56 /* MovieData.swift in Sources */,
 				0300D24926CECD1B009A5127 /* SignUpPresenter.swift in Sources */,
 				E9C8726726A5E04D0064234E /* DetailsPresenter.swift in Sources */,
+				03BEE315270CB59400A24994 /* FavoriteMoviesPresenter.swift in Sources */,
 				03C07DE726A8B4DA00F68D2C /* MoviesPresenter.swift in Sources */,
 				03BF3AD727072EEF0063953B /* ResetPasswordPresenter.swift in Sources */,
 				03BF3AD927072EFE0063953B /* ResetPasswordView.swift in Sources */,
