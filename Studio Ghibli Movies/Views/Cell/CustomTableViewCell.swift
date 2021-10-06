@@ -17,18 +17,18 @@ final class CustomTableViewCell: UITableViewCell, NibReusable {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        self.backgroundColor = .clear
-        self.selectionStyle = .none
+        backgroundColor = .clear
 
         let containerHeightAnchor = self.contentView.heightAnchor.constraint(equalToConstant: 130)
         containerHeightAnchor.isActive = true
-        self.cellView.layer.cornerRadius = 30
-		self.cellView.backgroundColor = UIColor(named: L10n.totoroColor)?.withAlphaComponent(0.8)
+        self.cellView.layer.cornerRadius = 25
+		self.cellView.backgroundColor = UIColor(named: L10n.totoroColor)?.withAlphaComponent(0.9)
 
         self.titleLabel.textColor = UIColor.black
         self.subTitleLabel.textColor = UIColor.darkGray

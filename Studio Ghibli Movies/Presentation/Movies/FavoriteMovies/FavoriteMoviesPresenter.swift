@@ -11,11 +11,11 @@ import RxSwift
 
 class FavoriteMoviesPresenter {
 
-    private weak var view: MoviesView?
+    private weak var view: FavoriteMoviesView?
     private let disposeBag = DisposeBag()
     var favoritedMovies = [Movie]()
 
-    func setView(view: MoviesView) {
+    func setView(view: FavoriteMoviesView) {
         self.view = view
     }
 
@@ -26,6 +26,7 @@ class FavoriteMoviesPresenter {
             .subscribe(onSuccess: { (movies: [Movie]) in
                 self.favoritedMovies = movies
                 self.view?.reloadTableView()
+                self.view?.checkIfListIsEmpty()
             })
             .disposed(by: disposeBag)
     }

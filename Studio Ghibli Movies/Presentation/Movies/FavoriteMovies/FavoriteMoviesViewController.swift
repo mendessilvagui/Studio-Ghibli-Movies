@@ -72,11 +72,21 @@ extension FavoriteMoviesViewController: UITableViewDataSource, UITableViewDelega
 
 // MARK: - ReloadTableView and MoviesView protocols extension
 
-extension FavoriteMoviesViewController: ReloadTableView, MoviesView {
+extension FavoriteMoviesViewController: ReloadTableView, FavoriteMoviesView {
 
     func reloadTableView() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
+        }
+    }
+
+    func checkIfListIsEmpty() {
+        if presenter.favoritedMovies.count == 0 {
+            let tableHeaderView = HeaderTableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50))
+            tableHeaderView.backgroundColor = UIColor(named: L10n.totoroColor)?.withAlphaComponent(0.90)
+            tableView.tableHeaderView = tableHeaderView
+        } else {
+            tableView.tableHeaderView = nil
         }
     }
 }
