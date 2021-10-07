@@ -97,11 +97,11 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
 extension ProfileViewController: ProfileView {
 
     func redirectToRegisterData() {
-        present(RegisterDataViewController(), animated: true)
+        show(RegisterDataViewController(), sender: self)
     }
 
     func redirectToChangePasswordScreen() {
-        present(ChangePasswordViewController(), animated: true)
+        show(ChangePasswordViewController(), sender: self)
     }
 
     func redirectToLoginScreen() {
