@@ -53,8 +53,11 @@ struct DataBase {
 		}
 	}
 
-    static func logoutCurrentUser() -> Completable {
+    static func fetchUser(_ user: User) -> Single<User> {
+        return RxParse.fetchObject(user)
+    }
 
+    static func logoutCurrentUser() -> Completable {
         return RxParse.logOut()
             .andThen(updateParseInstallation())
     }
