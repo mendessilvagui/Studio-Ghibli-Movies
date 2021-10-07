@@ -170,7 +170,7 @@ class RxParse {
             let disposable = Disposables.create {}
             User.requestPasswordResetForEmail(inBackground: email) {(_, error: Error?) -> Void in
                 guard !disposable.isDisposed else { return }
-                if let error = error {
+                if error != nil {
                     observer(.error(FormError.email))
                     return
                 }

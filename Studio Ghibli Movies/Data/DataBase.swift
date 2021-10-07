@@ -57,6 +57,17 @@ struct DataBase {
         return RxParse.fetchObject(user)
     }
 
+    static func saveUser(_ user: User) -> Single<User> {
+        return RxParse.saveObject(user)
+    }
+
+    static func getCurrentUser() -> User? {
+        if let currentUser = User.current() {
+            return currentUser
+        }
+        return nil
+    }
+
     static func logoutCurrentUser() -> Completable {
         return RxParse.logOut()
             .andThen(updateParseInstallation())

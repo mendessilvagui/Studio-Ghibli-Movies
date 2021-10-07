@@ -155,17 +155,6 @@ class SignUpViewController: UIViewController{
             passwordConfirmation: confirmPasswordTextField.textOrEmpty
         )
     }
-
-    private func updateFormError(textField: MDCOutlinedTextField, for validity: InputValidity) {
-        switch validity {
-        case .default:
-            textField.leadingAssistiveLabel.text = ""
-        case .valid:
-            textField.leadingAssistiveLabel.text = ""
-        case .invalid(error: let error):
-            textField.leadingAssistiveLabel.text = error.localizedDescription
-        }
-    }
 }
 
 //MARK: - Textfields delegate
@@ -212,10 +201,10 @@ extension SignUpViewController: SignUpView {
         confirmPasswordTextField.setTextFieldValidity(viewResponse.passwordConfirmationValidity)
 
         signUpButton.isEnabled = viewResponse.submitButtonIsEnabled
-        updateFormError(textField: nameTextField, for: viewResponse.nameValidity)
-        updateFormError(textField: emailTextField, for: viewResponse.emailValidity)
-        updateFormError(textField: passwordTextField, for: viewResponse.passwordValidity)
-        updateFormError(textField: confirmPasswordTextField, for: viewResponse.passwordConfirmationValidity)
+        Update.formError(textField: nameTextField, for: viewResponse.nameValidity)
+        Update.formError(textField: emailTextField, for: viewResponse.emailValidity)
+        Update.formError(textField: passwordTextField, for: viewResponse.passwordValidity)
+        Update.formError(textField: confirmPasswordTextField, for: viewResponse.passwordConfirmationValidity)
 
         if signUpButton.isEnabled {
             signUpButton.backgroundColor = .darkGray

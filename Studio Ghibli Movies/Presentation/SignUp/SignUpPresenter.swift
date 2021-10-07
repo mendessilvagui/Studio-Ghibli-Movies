@@ -79,7 +79,6 @@ class SignUpPresenter {
         user.username = viewRequest.email
         user.password = viewRequest.password
         user.name = viewRequest.name
-        user.email = viewRequest.email
 
         RxParse.signUp(user)
             .do(onSuccess: onSignUpSuccess(_:),
