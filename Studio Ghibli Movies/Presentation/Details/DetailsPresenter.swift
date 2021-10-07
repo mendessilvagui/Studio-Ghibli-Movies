@@ -48,7 +48,7 @@ class DetailsPresenter {
         self.details.parentMovie = selectedMovie
         self.details.user = User.current()
 
-		RxParse.saveObject(object: details)
+		RxParse.saveObject(details)
             .subscribe(onSuccess: { _ in
                 self.selectedMovie.childDetails = self.details
                 self.selectedMovie.saveInBackground() {(succeeded, error)  in
@@ -64,7 +64,7 @@ class DetailsPresenter {
     }
 
     func unfavorite() {
-		RxParse.deleteObject(object: details)
+		RxParse.deleteObject(details)
             .subscribe(onCompleted: {
                 self.view?.reloadFavoriteMoviesTableView()
 				self.selectedMovie.remove(forKey: L10n.childDetails)

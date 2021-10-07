@@ -28,7 +28,7 @@ class RxParse {
         }
     }
 
-	static func saveObject<T>(object: T) -> Single<T> where T: PFObject {
+	static func saveObject<T>(_ object: T) -> Single<T> where T: PFObject {
 		Single.create { observer -> Disposable in
 			let disposable = Disposables.create {}
 			object.saveInBackground { (succeeded: Bool, error: Error?) in
@@ -43,7 +43,7 @@ class RxParse {
 		}
 	}
 
-	static func deleteObject<T>(object:T) -> Completable where T: PFObject {
+	static func deleteObject<T>(_ object:T) -> Completable where T: PFObject {
 		Completable.create { observer -> Disposable in
 			let disposable = Disposables.create {}
 			object.deleteInBackground { (succeeded: Bool, error: Error?) in

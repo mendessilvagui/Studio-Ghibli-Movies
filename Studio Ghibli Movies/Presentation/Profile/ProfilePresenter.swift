@@ -29,10 +29,10 @@ class ProfilePresenter {
     }
 
     func onSelectLogout() {
-//        authenticationUseCase.logoutCurrentUser()
-//            .subscribe(onCompleted: {
+        DataBase.logoutCurrentUser()
+            .subscribe(onCompleted: {
                 self.view?.redirectToLoginScreen()
-//            })
-//            .disposed(by: disposeBag)
+            })
+            .disposed(by: disposeBag)
     }
 }

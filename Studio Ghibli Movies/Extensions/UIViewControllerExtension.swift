@@ -117,4 +117,29 @@ extension UIViewController {
         tableView.backgroundView = imageView
         tableView.separatorStyle = .none
     }
+
+    public func switchRootViewController(_ rootViewController: UIViewController, animated: Bool,
+                                         transition: UIView.AnimationOptions = .transitionFlipFromLeft,
+                                         completion: (() -> Void)?) {
+        let window: UIWindow! = UIApplication
+                                .shared
+                                .connectedScenes
+                                .compactMap { $0 as? UIWindowScene }
+                                .flatMap { $0.windows }
+                                .first { $0.isKeyWindow }
+        if animated {
+            UIView.transition(with: window, duration: 0.5, options: transition, animations: {
+                let oldState: Bool = UIView.areAnimationsEnabled
+                UIView.setAnimationsEnabled(false)
+                window.rootViewController = rootViewController
+                UIView.setAnimationsEnabled(oldState)
+                }, completion: { _ in
+                    if let completion = completion {
+                        completion()
+                    }
+            })
+        } else {
+            window.rootViewController = rootViewController
+        }
+    }
 }

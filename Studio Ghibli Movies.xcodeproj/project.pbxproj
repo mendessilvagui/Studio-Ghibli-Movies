@@ -236,8 +236,8 @@
 		03A36F84270E13C20040217F /* ChangePassword */ = {
 			isa = PBXGroup;
 			children = (
-				0333F7CD270E187300704CFA /* ChangePasswordViewController.swift */,
 				0333F7CE270E187300704CFA /* ChangePasswordViewController.xib */,
+				0333F7CD270E187300704CFA /* ChangePasswordViewController.swift */,
 				0333F7D1270E188800704CFA /* ChangePasswordPresenter.swift */,
 				0333F7D3270E189700704CFA /* ChangePasswordView.swift */,
 			);

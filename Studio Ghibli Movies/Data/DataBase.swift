@@ -52,5 +52,20 @@ struct DataBase {
 			return Single.just(details)
 		}
 	}
+
+    static func logoutCurrentUser() -> Completable {
+
+        return RxParse.logOut()
+            .andThen(updateParseInstallation())
+    }
+
+    private static func updateParseInstallation() -> Completable {
+        if let parseInstallation = PFInstallation.current() {
+            parseInstallation["user"] = NSNull()
+            return RxParse.saveObject(parseInstallation).asCompletable()
+        } else {
+            return Completable.empty()
+        }
+    }
 }
 

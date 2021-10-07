@@ -105,6 +105,6 @@ extension ProfileViewController: ProfileView {
     }
 
     func redirectToLoginScreen() {
-        show(LogInViewController(), sender: self)
+        switchRootViewController(LogInViewController(), animated: true, completion:  nil)
     }
 }
