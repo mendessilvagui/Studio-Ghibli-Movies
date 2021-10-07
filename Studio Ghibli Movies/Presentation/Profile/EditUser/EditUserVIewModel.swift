@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+struct EditUserViewModel {
+    let name: String
+    let nameValidity: InputValidity
+    let email: String
+    let emailValidity: InputValidity
+    let saveButtonEnabled: Bool
+}

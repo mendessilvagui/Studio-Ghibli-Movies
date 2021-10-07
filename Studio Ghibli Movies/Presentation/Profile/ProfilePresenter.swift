@@ -14,14 +14,13 @@ class ProfilePresenter {
     private weak var view: ProfileView?
     private let disposeBag = DisposeBag()
 
-
     func setView(view: ProfileView) {
         self.view = view
     }
     // MARK: Public methods
 
-    func onSelectRegisterData() {
-        self.view?.redirectToRegisterData()
+    func onSelectEditUser() {
+        self.view?.redirectToEditUser()
     }
 
     func onSelectChangePassword() {

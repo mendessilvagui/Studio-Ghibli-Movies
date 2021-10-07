@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+protocol ChangePasswordView: AnyObject {
+    func showProgress()
+    func hideProgress()
+    func updateView(withViewModel viewModel: ChangePasswordViewModel)
+    func showSuccessMessage()
+    func showError(_ error: Error)
+}

@@ -6,3 +6,15 @@
 //
 
 import Foundation
+import RxSwift
+import Parse
+
+class ChangePasswordPresenter {
+
+    private weak var view: ChangePasswordView?
+    private let disposeBag = DisposeBag()
+
+    func setView(view: ChangePasswordView) {
+        self.view = view
+    }
+}

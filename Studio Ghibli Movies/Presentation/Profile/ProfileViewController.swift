@@ -63,7 +63,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            presenter.onSelectRegisterData()
+            presenter.onSelectEditUser()
         case 1:
             presenter.onSelectChangePassword()
         case 2:
@@ -96,8 +96,8 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension ProfileViewController: ProfileView {
 
-    func redirectToRegisterData() {
-        show(RegisterDataViewController(), sender: self)
+    func redirectToEditUser() {
+        show(EditUserViewController(), sender: self)
     }
 
     func redirectToChangePasswordScreen() {
@@ -105,6 +105,7 @@ extension ProfileViewController: ProfileView {
     }
 
     func redirectToLoginScreen() {
-        switchRootViewController(LogInViewController(), animated: true, completion:  nil)
+        //switchRootViewController(LogInViewController(), animated: true, completion:  nil)
+        show(LogInViewController(), sender: self)
     }
 }

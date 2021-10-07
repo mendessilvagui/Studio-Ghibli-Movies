@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ProfileView: AnyObject {
-    func redirectToRegisterData()
+    func redirectToEditUser()
     func redirectToChangePasswordScreen()
     func redirectToLoginScreen()
 }
