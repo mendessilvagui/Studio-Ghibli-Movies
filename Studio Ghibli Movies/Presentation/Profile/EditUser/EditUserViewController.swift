@@ -58,7 +58,7 @@ class EditUserViewController: UIViewController {
     // MARK: - SetUp methods
 
     private func setUpNavBar() {
-        self.title = "Register Data"
+        self.setNavBarTitle("Register Data", size: 20)
         self.navigationItem.largeTitleDisplayMode = .never
     }
 
@@ -120,6 +120,8 @@ class EditUserViewController: UIViewController {
         )
     }
 }
+
+//MARK: - EditUserView protocol extension
 
 extension EditUserViewController: EditUserView {
 

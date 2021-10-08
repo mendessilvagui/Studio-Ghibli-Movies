@@ -13,7 +13,7 @@ class ProfileTableViewCell: UITableViewCell, NibReusable {
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
 
-    static let height: CGFloat = 80
+    static let height: CGFloat = 60
 
     override func awakeFromNib() {
         super.awakeFromNib()

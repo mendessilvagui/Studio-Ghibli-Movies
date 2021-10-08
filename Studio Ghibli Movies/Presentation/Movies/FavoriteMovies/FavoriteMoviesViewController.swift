@@ -12,7 +12,7 @@ class FavoriteMoviesViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
 
     private let presenter = FavoriteMoviesPresenter()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

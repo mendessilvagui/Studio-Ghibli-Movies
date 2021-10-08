@@ -17,6 +17,8 @@ class EditUserPresenter {
         self.view = view
     }
 
+    // MARK: Public methods
+
     func onStart() {
         fetchUserDataAndFillFields()
     }

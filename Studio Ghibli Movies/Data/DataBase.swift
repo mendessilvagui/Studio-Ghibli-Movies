@@ -73,6 +73,39 @@ struct DataBase {
             .andThen(updateParseInstallation())
     }
 
+    static func changePassword(_ oldPassword: String, _ newPassword: String) -> Completable {
+        guard let currentUser = getCurrentUser(),
+              let username = currentUser.username else {
+            return Completable.error(FormError.userNotLogged)
+        }
+        currentUser.password = newPassword
+        return checkPassword(oldPassword).flatMap({ (oldPasswordMatch: Bool) -> Single<User> in
+            if oldPasswordMatch {
+                return saveUser(currentUser)
+            } else {
+                return Single.error(FormError.wrongOldPassword)
+            }
+        }).flatMapCompletable { (_: User) -> Completable in
+            RxParse.logOut()
+        }
+        .andThen(RxParse.logIn(withUsername: username, password: newPassword))
+        .asCompletable()
+    }
+
+    private static func checkPassword(_ password: String) -> Single<Bool> {
+        guard let currentUser = getCurrentUser() else {
+            return Single.just(false)
+        }
+        let url = "\(L10n.server)login"
+        let params: [String: String] = [
+            "username": currentUser.username ?? "",
+            "password": password
+        ]
+        return RxRequest.getJSON(url: url, parameters: params).map { (result: [String: Any]) -> Bool in
+            return result["objectId"] != nil
+        }
+    }
+
     private static func updateParseInstallation() -> Completable {
         if let parseInstallation = PFInstallation.current() {
             parseInstallation["user"] = NSNull()

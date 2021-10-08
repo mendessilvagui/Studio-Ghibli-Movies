@@ -14,6 +14,7 @@ enum FormError: Error {
     case passwordConfirmation
     case generic
     case wrongOldPassword
+    case userNotLogged
     case other
 
     var localizedDescription: String {
@@ -30,6 +31,8 @@ enum FormError: Error {
             return L10n.genericError
         case .wrongOldPassword:
             return L10n.resetpasswordMessageWrongCurrentPassword
+        case .userNotLogged:
+            return "Please login to change your password"
         default:
             return L10n.genericError
         }

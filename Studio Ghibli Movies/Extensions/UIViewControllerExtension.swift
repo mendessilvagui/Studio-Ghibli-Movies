@@ -118,6 +118,18 @@ extension UIViewController {
         tableView.separatorStyle = .none
     }
 
+    // MARK: Set navbar title size
+
+    func setNavBarTitle(_ title: String, size: CGFloat) {
+        self.title = title
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor(named: L10n.navBarColor)?.withAlphaComponent(0.9)
+        appearance.titleTextAttributes =  [NSAttributedString.Key.font: UIFont.systemFont(ofSize: size)]
+        self.navigationController?.navigationBar.standardAppearance = appearance
+        self.navigationController?.navigationBar.scrollEdgeAppearance = self.navigationController?.navigationBar.standardAppearance
+    }
+
     public func switchRootViewController(_ rootViewController: UIViewController, animated: Bool,
                                          transition: UIView.AnimationOptions = .transitionFlipFromLeft,
                                          completion: (() -> Void)?) {

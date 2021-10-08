@@ -56,3 +56,71 @@ class RxRequest {
         }
     }
 }
+
+extension RxRequest {
+
+    static func get(url: String, parameters: [String: String]) -> Single<Data> {
+        guard let url = URL(string: url + buildQueryString(dictionary: parameters)) else {
+            return Single.error(ErrorType.generic)
+        }
+        var request = URLRequest(url: url)
+        let headers: [String: String] = [
+            "X-Parse-Application-Id": L10n.applicationId,
+            "X-Parse-Client-Key": L10n.clientKey,
+            "X-Parse-Revocable-Session": "1"
+        ]
+        request.httpMethod = "POST"
+        request.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: [])
+        request.allHTTPHeaderFields = headers
+        var task: URLSessionDataTask!
+        var session: URLSession!
+        return Single.create { observer -> Disposable in
+            let disposable = Disposables.create {}
+            let delegateQueue = OperationQueue()
+            delegateQueue.qualityOfService = .userInitiated
+            session = URLSession(configuration: .default, delegate: nil, delegateQueue: delegateQueue)
+            task = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
+                DispatchQueue.main.async {
+                    guard !disposable.isDisposed else { return }
+                    if let error = error {
+                        observer(.failure(error))
+                        return
+                    } else if let data = data {
+                        observer(.success(data))
+                        return
+                    }
+                    observer(.failure(ErrorType.generic))
+                }
+            }
+            task.resume()
+            return disposable
+        }.do(onDispose: {
+            task.cancel()
+            session.finishTasksAndInvalidate()
+        })
+    }
+
+    static func getJSON(url: String, parameters: [String: String]) -> Single<[String: Any]> {
+        return get(url: url, parameters: parameters).flatMap { (data: Data) -> Single<[String: Any]> in
+            guard let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
+                // TODO: create malformed JSON error
+                return Single.error(ErrorType.generic)
+            }
+            return Single.just(json)
+        }
+    }
+
+    // MARK: Private methods
+
+    // Reference: https://stackoverflow.com/a/25225010/1137914
+    private static func buildQueryString(dictionary dict: [String: String]) -> String {
+        var urlVars: [String] = []
+        for (k, value) in dict {
+            let value = value as NSString
+            if let encodedValue = value.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) {
+                urlVars.append(k + "=" + encodedValue)
+            }
+        }
+        return urlVars.isEmpty ? "" : "?" + urlVars.joined(separator: "&")
+    }
+}
