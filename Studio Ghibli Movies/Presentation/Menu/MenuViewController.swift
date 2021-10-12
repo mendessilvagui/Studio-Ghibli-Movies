@@ -34,9 +34,10 @@ class MenuViewController: UITabBarController {
     private func setUpTabBar() {
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = UIColor(named: L10n.navBarColor)?.withAlphaComponent(0.9)
-        appearance.stackedLayoutAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.darkGray]
-        appearance.stackedLayoutAppearance.normal.iconColor = .darkGray
+        //appearance.backgroundColor = UIColor(named: L10n.navBarColor)?.withAlphaComponent(0.9)
+		appearance.backgroundColor = UIColor(named: L10n.totoroGray)?.withAlphaComponent(0.9)
+        appearance.stackedLayoutAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
+		appearance.stackedLayoutAppearance.normal.iconColor = .lightGray
         UITabBar.appearance().tintColor = .white
 
         tabBar.standardAppearance = appearance

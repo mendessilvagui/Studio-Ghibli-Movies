@@ -47,8 +47,8 @@ class ResetPasswordViewController: UIViewController {
     }
 
     private func styleTextFields() {
-        emailTextField.clearButtonTintColor = .darkGray
-        emailTextField.styleTextField(fieldColor: .darkGray, textColor: .darkGray)
+        emailTextField.clearButtonTintColor = UIColor(named: L10n.totoroGray)
+        emailTextField.styleTextField(fieldColor: UIColor(named: L10n.totoroGray), textColor: UIColor(named: L10n.totoroGray))
         emailTextField.label.text = "E-mail"
     }
 

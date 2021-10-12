@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewController" customModule="Studio_Ghibli_Movies" customModuleProvider="target">
             <connections>
+                <outlet property="imageView" destination="Il1-3A-jbc" id="RjP-fM-ITm"/>
                 <outlet property="tableView" destination="GO6-OW-L7d" id="tON-vV-qrA"/>
                 <outlet property="view" destination="SA4-xF-erR" id="vxp-hx-65d"/>
             </connections>
@@ -23,10 +24,6 @@
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TOTORO" translatesAutoresizingMaskIntoConstraints="NO" id="Il1-3A-jbc">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 </imageView>
-                <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y4F-3d-btG">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="GO6-OW-L7d">
                     <rect key="frame" x="25" y="64" width="364" height="180"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -40,15 +37,11 @@
             <constraints>
                 <constraint firstItem="Il1-3A-jbc" firstAttribute="top" secondItem="SA4-xF-erR" secondAttribute="top" id="3HW-If-ydN"/>
                 <constraint firstItem="GO6-OW-L7d" firstAttribute="top" secondItem="zkj-5l-AT5" secondAttribute="top" constant="20" id="AWc-6w-CtQ"/>
-                <constraint firstItem="Y4F-3d-btG" firstAttribute="top" secondItem="SA4-xF-erR" secondAttribute="top" id="FCp-7q-3jk"/>
                 <constraint firstItem="GO6-OW-L7d" firstAttribute="leading" secondItem="zkj-5l-AT5" secondAttribute="leading" constant="25" id="IM3-3o-klc"/>
                 <constraint firstItem="zkj-5l-AT5" firstAttribute="trailing" secondItem="Il1-3A-jbc" secondAttribute="trailing" id="N9c-Vv-M4B"/>
-                <constraint firstAttribute="bottom" secondItem="Y4F-3d-btG" secondAttribute="bottom" id="S6q-4h-9eU"/>
-                <constraint firstItem="Y4F-3d-btG" firstAttribute="leading" secondItem="zkj-5l-AT5" secondAttribute="leading" id="VeG-bS-Acx"/>
                 <constraint firstItem="zkj-5l-AT5" firstAttribute="trailing" secondItem="GO6-OW-L7d" secondAttribute="trailing" constant="25" id="VlY-EO-61h"/>
                 <constraint firstAttribute="bottom" secondItem="Il1-3A-jbc" secondAttribute="bottom" id="kG2-Y0-eel"/>
                 <constraint firstItem="Il1-3A-jbc" firstAttribute="leading" secondItem="zkj-5l-AT5" secondAttribute="leading" id="p1r-KP-TdN"/>
-                <constraint firstItem="Y4F-3d-btG" firstAttribute="trailing" secondItem="zkj-5l-AT5" secondAttribute="trailing" id="tTs-5d-F0A"/>
             </constraints>
             <point key="canvasLocation" x="1266.6666666666667" y="-64.285714285714278"/>
         </view>

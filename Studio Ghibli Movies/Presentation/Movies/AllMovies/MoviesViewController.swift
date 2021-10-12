@@ -49,8 +49,8 @@ extension MoviesViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(for: indexPath) as CustomTableViewCell
 
         cell.titleLabel.text = movie.title
-        cell.subTitleLabel.text = movie.originalTitle
-		cell.cellImageView.image = UIImage(named: L10n.poster+"\(movie.movieID)")
+        //cell.subTitleLabel.text = movie.originalTitle
+		cell.posterImageView.image = UIImage(named: L10n.poster+"\(movie.movieID)")
 
         return cell
     }

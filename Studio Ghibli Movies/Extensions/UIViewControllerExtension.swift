@@ -124,7 +124,8 @@ extension UIViewController {
         self.title = title
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = UIColor(named: L10n.navBarColor)?.withAlphaComponent(0.9)
+        //appearance.backgroundColor = UIColor(named: L10n.navBarColor)?.withAlphaComponent(0.9)
+		appearance.backgroundColor = UIColor(named: L10n.totoroGray)?.withAlphaComponent(0.9)
         appearance.titleTextAttributes =  [NSAttributedString.Key.font: UIFont.systemFont(ofSize: size)]
         self.navigationController?.navigationBar.standardAppearance = appearance
         self.navigationController?.navigationBar.scrollEdgeAppearance = self.navigationController?.navigationBar.standardAppearance

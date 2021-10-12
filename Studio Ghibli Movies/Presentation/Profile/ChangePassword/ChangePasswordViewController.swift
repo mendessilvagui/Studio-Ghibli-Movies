@@ -69,7 +69,7 @@ class ChangePasswordViewController: UIViewController {
         allTextFields = [oldPasswordTextField, newPasswordTextField, confirmNewPasswordTextField]
 
         for textField in allTextFields {
-            textField.styleTextField(fieldColor: .darkGray, textColor: .darkGray)
+            textField.styleTextField(fieldColor: UIColor(named: L10n.totoroGray), textColor: UIColor(named: L10n.totoroGray))
             textField.leadingAssistiveLabel.text = ""
 
             switch textField {
@@ -101,21 +101,21 @@ class ChangePasswordViewController: UIViewController {
         oldPasswordTextField.addButtonToRightView(
             button: oldPasswordEyeButton,
             selector: #selector(showOldPasswordTapped),
-            color: .darkGray,
+            color: UIColor(named: L10n.totoroGray),
             target: self
         )
 
         newPasswordTextField.addButtonToRightView(
             button: newPasswordEyeButton,
             selector: #selector(showNewPasswordTapped),
-            color: .darkGray,
+            color: UIColor(named: L10n.totoroGray),
             target: self
         )
 
         confirmNewPasswordTextField.addButtonToRightView(
             button: confirmNewPaswwordEyeButton,
             selector: #selector(showConfirmNewPasswordTapped),
-            color: .darkGray,
+            color: UIColor(named: L10n.totoroGray),
             target: self
         )
     }

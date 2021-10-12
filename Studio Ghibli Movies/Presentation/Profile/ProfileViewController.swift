@@ -10,11 +10,13 @@ import UIKit
 class ProfileViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
+	@IBOutlet weak var imageView: UIImageView!
 
     private let presenter = ProfilePresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+		styleView()
         setUpTableView()
         presenter.setView(view: self)
     }
@@ -22,6 +24,10 @@ class ProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.navigationItem.title = "Profile"
     }
+
+	private func styleView() {
+		Style.styleViewBackground(imageView: imageView)
+	}
 
     private func setUpTableView() {
         tableView.register(cellType: ProfileTableViewCell.self)
@@ -31,7 +37,7 @@ class ProfileViewController: UIViewController {
         tableView.separatorStyle = .singleLine
         tableView.alwaysBounceVertical = false
         tableView.layer.cornerRadius = 20
-        tableView.tintColor = .darkGray
+        tableView.tintColor = UIColor(named: L10n.totoroGray)
     }
 }
 
@@ -87,7 +93,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         if #available(iOS 13.0, *) {
             if let cell: ProfileTableViewCell = tableView.cellForRow(at: indexPath) as? ProfileTableViewCell {
                 UIView.animate(withDuration: 0.2) {
-                    cell.backgroundColor = UIColor(named: L10n.totoroColor)?.withAlphaComponent(0.9)
+                    cell.backgroundColor = UIColor(named: L10n.totoroBeige)?.withAlphaComponent(0.9)
                 }
             }
         }

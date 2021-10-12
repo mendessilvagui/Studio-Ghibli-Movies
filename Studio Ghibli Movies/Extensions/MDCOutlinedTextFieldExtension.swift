@@ -21,7 +21,8 @@ extension MDCOutlinedTextField {
         }
     }
 
-    func styleTextField(fieldColor: UIColor, textColor: UIColor) {
+    func styleTextField(fieldColor: UIColor?, textColor: UIColor?) {
+		guard let fieldColor = fieldColor, let textColor = textColor else { return }
         self.label.font = UIFont.systemFont(ofSize: 10)
         self.setTextFieldColors(color: fieldColor)
         self.setTextColor(textColor, for: .normal)
@@ -30,11 +31,11 @@ extension MDCOutlinedTextField {
 
     func styleLoginTextFiels(labelText: String, iconName: String) {
         self.label.text = labelText
-        self.styleTextField(fieldColor: .darkGray, textColor: .darkGray)
+        self.styleTextField(fieldColor: UIColor(named: L10n.totoroGray), textColor: UIColor(named: L10n.totoroGray))
 
         let icon = UIImage(systemName: iconName)
         self.leftView = UIImageView(image: icon)
-        self.leftView?.tintColor = .darkGray
+        self.leftView?.tintColor = UIColor(named: L10n.totoroGray)
         self.leftViewMode = .unlessEditing
     }
 
@@ -61,7 +62,7 @@ extension MDCOutlinedTextField {
         }
     }
 
-    func addButtonToRightView(button: UIButton, selector: Selector, color: UIColor, target: UIViewController) {
+    func addButtonToRightView(button: UIButton, selector: Selector, color: UIColor?, target: UIViewController) {
         button.frame = CGRect(x: 0, y: 0, width: CGFloat(30), height: CGFloat(20))
         button.setBackgroundImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
         button.tintColor = color

@@ -10,7 +10,7 @@ import UIKit
 class ColorCompat {
 
     static var defaultFieldColor: UIColor {
-        return UIColor.darkGray
+        return UIColor(named: L10n.totoroGray)!
     }
 
     static var validFieldColor: UIColor {

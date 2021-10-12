@@ -78,7 +78,7 @@ class SignUpViewController: UIViewController{
         allTextFields = [nameTextField, emailTextField, passwordTextField, confirmPasswordTextField]
 
         for textField in allTextFields {
-            textField.styleTextField(fieldColor: .darkGray, textColor: .darkGray)
+            textField.styleTextField(fieldColor: UIColor(named: L10n.totoroGray), textColor: UIColor(named: L10n.totoroGray))
             textField.leadingAssistiveLabel.text = ""
 
             switch textField {
@@ -95,15 +95,15 @@ class SignUpViewController: UIViewController{
             }
         }
 
-        nameTextField.clearButtonTintColor = UIColor.darkGray
-        emailTextField.clearButtonTintColor = UIColor.darkGray
+        nameTextField.clearButtonTintColor = UIColor(named: L10n.totoroGray)
+        emailTextField.clearButtonTintColor = UIColor(named: L10n.totoroGray)
     }
 
     private func setUpHidePasswordsButton() {
         passwordTextField.addButtonToRightView(
             button: passwordEyeButton,
             selector: #selector(showPasswordTapped),
-            color: .darkGray,
+            color: UIColor(named: L10n.totoroGray),
             target: self
         )
         passwordTextField.delegate = self
@@ -111,7 +111,7 @@ class SignUpViewController: UIViewController{
         confirmPasswordTextField.addButtonToRightView(
             button: confirmPaswwordEyeButton,
             selector: #selector(showConfirmPasswordTapped),
-            color: .darkGray,
+            color: UIColor(named: L10n.totoroGray),
             target: self
         )
         confirmPasswordTextField.delegate = self
@@ -207,7 +207,7 @@ extension SignUpViewController: SignUpView {
         Update.formError(textField: confirmPasswordTextField, for: viewResponse.passwordConfirmationValidity)
 
         if signUpButton.isEnabled {
-            signUpButton.backgroundColor = .darkGray
+            signUpButton.backgroundColor = UIColor(named: L10n.totoroGray)
         } else {
             signUpButton.backgroundColor = .lightGray
         }

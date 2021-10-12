@@ -24,10 +24,7 @@ class EditUserPresenter {
     }
 
     func onSaveAction(_ viewModel: EditUserViewModel) {
-        guard let currentUser = DataBase.getCurrentUser() else {
-            self.view?.redirectToLoginScreen()
-            return
-        }
+        guard let currentUser = DataBase.getCurrentUser() else { return }
         currentUser.name = viewModel.name
         currentUser.username = viewModel.email
         view?.showProgress()

@@ -12,6 +12,7 @@ class HeaderTableView: UIView {
     var title : UILabel = {
         let label = UILabel()
         label.text = "Add movies to your favorites"
+		label.textColor = UIColor(named: L10n.totoroGray)
         label.font = .systemFont(ofSize: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

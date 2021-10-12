@@ -41,7 +41,7 @@
                 </textField>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" name="formGray"/>
+            <color key="backgroundColor" name="totoroBeige"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="uY8-Ky-5uA" secondAttribute="trailing" constant="30" id="16e-bn-Ujf"/>
                 <constraint firstItem="EYQ-Ga-m2J" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="bNj-IY-Tgh"/>
@@ -55,8 +55,8 @@
         </view>
     </objects>
     <resources>
-        <namedColor name="formGray">
-            <color red="0.84200000762939453" green="0.85199999809265137" blue="0.85199999809265137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="totoroBeige">
+            <color red="0.81960784313725488" green="0.81568627450980391" blue="0.68235294117647061" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
 </document>

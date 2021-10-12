@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,13 +12,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LogInViewController" customModule="Studio_Ghibli_Movies" customModuleProvider="target">
             <connections>
-                <outlet property="createAccountButton" destination="mbI-DD-KlR" id="NMS-bb-pXJ"/>
-                <outlet property="emailTextField" destination="PtH-4d-Nyp" id="VO2-1r-FQx"/>
-                <outlet property="forgotPasswordButton" destination="boj-SN-ELd" id="wtZ-ib-Z4b"/>
-                <outlet property="formView" destination="4vp-tg-UT1" id="kJl-De-bwF"/>
+                <outlet property="createAccountButton" destination="PDC-FA-oP2" id="b8d-9k-Ph5"/>
+                <outlet property="emailTextField" destination="VCw-mE-N6c" id="Cq6-Ee-yqq"/>
+                <outlet property="forgotPasswordButton" destination="87b-OJ-Ky3" id="Ac9-Yn-8ae"/>
+                <outlet property="formView" destination="YoC-hW-RoF" id="FtA-aF-ak1"/>
                 <outlet property="imageView" destination="51c-yJ-FTg" id="1q7-qY-Gfs"/>
-                <outlet property="logInButton" destination="Un2-f2-cM7" id="95R-M3-b3m"/>
-                <outlet property="passwordTextField" destination="3QF-d7-e3N" id="H9b-da-S67"/>
+                <outlet property="logInButton" destination="ghD-le-yrF" id="YmJ-56-xSw"/>
+                <outlet property="passwordTextField" destination="0TD-C2-p46" id="g7Q-Bl-0Z9"/>
                 <outlet property="view" destination="dFk-Wd-11z" id="CeV-Wo-vPg"/>
             </connections>
         </placeholder>
@@ -30,73 +31,73 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <color key="tintColor" red="0.45273262260000002" green="0.58040875199999997" blue="0.81786376240000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </imageView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4vp-tg-UT1" userLabel="Form View">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YoC-hW-RoF" userLabel="Form View">
                     <rect key="frame" x="20" y="310.5" width="374" height="275"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Un2-f2-cM7">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ghD-le-yrF">
                             <rect key="frame" x="15" y="123" width="344" height="42"/>
-                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" name="totoroGray"/>
                             <fontDescription key="fontDescription" type="system" pointSize="25"/>
                             <state key="normal" title="Log in">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <connections>
-                                <action selector="logInPressed:" destination="-1" eventType="touchUpInside" id="INA-VW-Alp"/>
+                                <action selector="logInPressed:" destination="-1" eventType="touchUpInside" id="dUx-LY-qom"/>
                             </connections>
                         </button>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="PtH-4d-Nyp" userLabel="Email Outlined Text Field" customClass="MDCOutlinedTextField">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="VCw-mE-N6c" userLabel="Email Outlined Text Field" customClass="MDCOutlinedTextField">
                             <rect key="frame" x="15" y="20" width="344" height="34"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" textContentType="one-time-code"/>
                             <connections>
-                                <action selector="textFieldDoneEditing:" destination="-1" eventType="editingDidEndOnExit" id="ELN-iB-FnZ"/>
+                                <action selector="textFieldDoneEditing:" destination="-1" eventType="editingDidEndOnExit" id="bCM-v9-Cux"/>
                             </connections>
                         </textField>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3QF-d7-e3N" userLabel="Password Outlined Text Field" customClass="MDCOutlinedTextField">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0TD-C2-p46" userLabel="Password Outlined Text Field" customClass="MDCOutlinedTextField">
                             <rect key="frame" x="15" y="69" width="344" height="34"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES" textContentType="one-time-code"/>
                             <connections>
-                                <action selector="textFieldDoneEditing:" destination="-1" eventType="editingDidEndOnExit" id="iyq-o9-Mub"/>
+                                <action selector="textFieldDoneEditing:" destination="-1" eventType="editingDidEndOnExit" id="mk5-AA-I8P"/>
                             </connections>
                         </textField>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mbI-DD-KlR">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PDC-FA-oP2">
                             <rect key="frame" x="109.5" y="185" width="155" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" title="Sign up for an account">
-                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="titleColor" name="totoroGray"/>
                             </state>
                             <connections>
-                                <action selector="signUpPressed:" destination="-1" eventType="touchUpInside" id="2bQ-Tz-kfC"/>
+                                <action selector="signUpPressed:" destination="-1" eventType="touchUpInside" id="jt7-5w-LH0"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="boj-SN-ELd">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="87b-OJ-Ky3">
                             <rect key="frame" x="108.5" y="225" width="157" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" title="Forgot your password?">
-                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="titleColor" name="totoroGray"/>
                             </state>
                             <connections>
-                                <action selector="forgotPasswordPressed:" destination="-1" eventType="touchUpInside" id="q2t-yu-09s"/>
+                                <action selector="forgotPasswordPressed:" destination="-1" eventType="touchUpInside" id="WzA-AQ-LzV"/>
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.84203571079999995" green="0.85228508709999995" blue="0.85219615699999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" name="totoroBeige"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="3QF-d7-e3N" secondAttribute="trailing" constant="15" id="0jz-fH-mUj"/>
-                        <constraint firstItem="PtH-4d-Nyp" firstAttribute="top" secondItem="4vp-tg-UT1" secondAttribute="top" constant="20" symbolic="YES" id="1qd-vu-4u6"/>
-                        <constraint firstItem="boj-SN-ELd" firstAttribute="centerX" secondItem="4vp-tg-UT1" secondAttribute="centerX" id="Bcl-p2-EnB"/>
-                        <constraint firstAttribute="bottom" secondItem="boj-SN-ELd" secondAttribute="bottom" constant="20" id="DtF-Pk-CQF"/>
-                        <constraint firstItem="mbI-DD-KlR" firstAttribute="top" secondItem="Un2-f2-cM7" secondAttribute="bottom" constant="20" id="KbM-IP-jCy"/>
-                        <constraint firstAttribute="trailing" secondItem="PtH-4d-Nyp" secondAttribute="trailing" constant="15" id="Ke7-lX-7Dp"/>
-                        <constraint firstItem="Un2-f2-cM7" firstAttribute="leading" secondItem="4vp-tg-UT1" secondAttribute="leading" constant="15" id="TMM-uP-jBe"/>
-                        <constraint firstItem="PtH-4d-Nyp" firstAttribute="leading" secondItem="4vp-tg-UT1" secondAttribute="leading" constant="15" id="Zic-yC-6ge"/>
-                        <constraint firstItem="3QF-d7-e3N" firstAttribute="top" secondItem="PtH-4d-Nyp" secondAttribute="bottom" constant="15" id="ceg-hj-qt4"/>
-                        <constraint firstItem="boj-SN-ELd" firstAttribute="top" secondItem="mbI-DD-KlR" secondAttribute="bottom" constant="10" id="ezj-ni-BMM"/>
-                        <constraint firstItem="Un2-f2-cM7" firstAttribute="top" secondItem="3QF-d7-e3N" secondAttribute="bottom" constant="20" id="qdR-Fa-Tbe"/>
-                        <constraint firstItem="mbI-DD-KlR" firstAttribute="centerX" secondItem="4vp-tg-UT1" secondAttribute="centerX" id="r2Q-Aa-lHX"/>
-                        <constraint firstAttribute="trailing" secondItem="Un2-f2-cM7" secondAttribute="trailing" constant="15" id="uai-9n-qlv"/>
-                        <constraint firstItem="3QF-d7-e3N" firstAttribute="leading" secondItem="4vp-tg-UT1" secondAttribute="leading" constant="15" id="yxt-9K-SZq"/>
+                        <constraint firstAttribute="trailing" secondItem="0TD-C2-p46" secondAttribute="trailing" constant="15" id="3Bu-JZ-jZ8"/>
+                        <constraint firstAttribute="bottom" secondItem="87b-OJ-Ky3" secondAttribute="bottom" constant="20" id="3yz-qM-LXz"/>
+                        <constraint firstAttribute="trailing" secondItem="VCw-mE-N6c" secondAttribute="trailing" constant="15" id="59m-j9-GLv"/>
+                        <constraint firstItem="PDC-FA-oP2" firstAttribute="top" secondItem="ghD-le-yrF" secondAttribute="bottom" constant="20" id="89e-VM-Pbm"/>
+                        <constraint firstItem="ghD-le-yrF" firstAttribute="leading" secondItem="YoC-hW-RoF" secondAttribute="leading" constant="15" id="9mg-TM-kTG"/>
+                        <constraint firstItem="0TD-C2-p46" firstAttribute="leading" secondItem="YoC-hW-RoF" secondAttribute="leading" constant="15" id="IkI-tY-OrI"/>
+                        <constraint firstItem="PDC-FA-oP2" firstAttribute="centerX" secondItem="YoC-hW-RoF" secondAttribute="centerX" id="J87-vJ-Z5U"/>
+                        <constraint firstItem="87b-OJ-Ky3" firstAttribute="top" secondItem="PDC-FA-oP2" secondAttribute="bottom" constant="10" id="JCh-RC-7h8"/>
+                        <constraint firstItem="0TD-C2-p46" firstAttribute="top" secondItem="VCw-mE-N6c" secondAttribute="bottom" constant="15" id="MBL-wK-YOa"/>
+                        <constraint firstItem="VCw-mE-N6c" firstAttribute="top" secondItem="YoC-hW-RoF" secondAttribute="top" constant="20" symbolic="YES" id="UQ9-7Y-YPB"/>
+                        <constraint firstAttribute="trailing" secondItem="ghD-le-yrF" secondAttribute="trailing" constant="15" id="YMH-pr-Yxd"/>
+                        <constraint firstItem="VCw-mE-N6c" firstAttribute="leading" secondItem="YoC-hW-RoF" secondAttribute="leading" constant="15" id="Z4f-pB-RFx"/>
+                        <constraint firstItem="ghD-le-yrF" firstAttribute="top" secondItem="0TD-C2-p46" secondAttribute="bottom" constant="20" id="jr3-UJ-z4A"/>
+                        <constraint firstItem="87b-OJ-Ky3" firstAttribute="centerX" secondItem="YoC-hW-RoF" secondAttribute="centerX" id="vCE-AJ-rsB"/>
                     </constraints>
                 </view>
             </subviews>
@@ -107,15 +108,21 @@
                 <constraint firstAttribute="bottom" secondItem="51c-yJ-FTg" secondAttribute="bottom" id="8Sr-yS-oPM"/>
                 <constraint firstItem="51c-yJ-FTg" firstAttribute="top" secondItem="dFk-Wd-11z" secondAttribute="top" id="8sl-hW-HkH"/>
                 <constraint firstItem="51c-yJ-FTg" firstAttribute="trailing" secondItem="q07-mt-1eV" secondAttribute="trailing" id="94h-pU-uoX"/>
-                <constraint firstItem="4vp-tg-UT1" firstAttribute="leading" secondItem="q07-mt-1eV" secondAttribute="leading" constant="20" id="L8B-Vd-F5r"/>
-                <constraint firstItem="4vp-tg-UT1" firstAttribute="centerY" secondItem="dFk-Wd-11z" secondAttribute="centerY" id="lHe-M3-T9s"/>
-                <constraint firstItem="q07-mt-1eV" firstAttribute="trailing" secondItem="4vp-tg-UT1" secondAttribute="trailing" constant="20" id="mcs-vC-YFQ"/>
+                <constraint firstItem="YoC-hW-RoF" firstAttribute="leading" secondItem="q07-mt-1eV" secondAttribute="leading" constant="20" id="DYF-ZU-j0V"/>
+                <constraint firstItem="q07-mt-1eV" firstAttribute="trailing" secondItem="YoC-hW-RoF" secondAttribute="trailing" constant="20" id="Rli-Fo-tZb"/>
+                <constraint firstItem="YoC-hW-RoF" firstAttribute="centerY" secondItem="dFk-Wd-11z" secondAttribute="centerY" id="g4S-yu-8uj"/>
             </constraints>
             <point key="canvasLocation" x="24.637681159420293" y="-46.205357142857139"/>
         </view>
     </objects>
     <resources>
         <image name="TOTORO" width="528" height="967"/>
+        <namedColor name="totoroBeige">
+            <color red="0.79052495113526933" green="0.7532650783705841" blue="0.62054881667652484" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="totoroGray">
+            <color red="0.41600000858306885" green="0.42399999499320984" blue="0.40799999237060547" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

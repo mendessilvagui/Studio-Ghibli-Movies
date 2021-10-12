@@ -13,7 +13,8 @@
 "movies" = "Movies";
 "details" = "Details";
 "url" = "https://ghibliapi.herokuapp.com/films";
-"totoro_color" = "totoro";
+"totoro_beige" = "totoroBeige";
+"totoro_gray" = "totoroGray";
 "nav_bar_color" = "navBar";
 "totoro_image" = "TOTORO";
 "release_date" = "releaseDate";

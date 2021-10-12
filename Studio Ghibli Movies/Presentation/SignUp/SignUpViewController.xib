@@ -31,7 +31,7 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Register" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UQM-7c-88Y">
                             <rect key="frame" x="140" y="20" width="94.5" height="30"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
-                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="textColor" name="totoroGray"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SED-G0-JcY" userLabel="Close">
@@ -40,7 +40,7 @@
                                 <constraint firstAttribute="height" constant="25" id="11u-c7-CtO"/>
                                 <constraint firstAttribute="width" constant="25" id="Pqg-wl-xLS"/>
                             </constraints>
-                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" name="totoroGray"/>
                             <state key="normal" backgroundImage="xmark.circle.fill" catalog="system"/>
                             <connections>
                                 <action selector="dismissRegisterWindow:" destination="-1" eventType="touchUpInside" id="vFC-hi-BaV"/>
@@ -72,7 +72,7 @@
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ypn-kc-OXG">
                             <rect key="frame" x="15" y="261" width="344" height="42"/>
-                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" name="totoroGray"/>
                             <fontDescription key="fontDescription" type="system" pointSize="25"/>
                             <state key="normal" title="Sign up">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -90,7 +90,7 @@
                             </connections>
                         </textField>
                     </subviews>
-                    <color key="backgroundColor" name="formGray"/>
+                    <color key="backgroundColor" name="totoroBeige"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="mRF-d3-HbL" secondAttribute="trailing" constant="15" id="3BG-44-d4D"/>
                         <constraint firstItem="qEc-CD-AVl" firstAttribute="leading" secondItem="JKu-G6-p5S" secondAttribute="leading" constant="15" id="4il-cw-Rvg"/>
@@ -127,8 +127,11 @@
     </objects>
     <resources>
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
-        <namedColor name="formGray">
-            <color red="0.84200000762939453" green="0.85199999809265137" blue="0.85199999809265137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="totoroBeige">
+            <color red="0.72040951249999996" green="0.69172251220000003" blue="0.58429658409999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="totoroGray">
+            <color red="0.41561496260000003" green="0.42376375199999999" blue="0.40784138440000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
 </document>

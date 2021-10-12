@@ -77,7 +77,7 @@ class LogInViewController: UIViewController {
     }
 
     private func styleTextFields() {
-        emailTextField.clearButtonTintColor = .darkGray
+		emailTextField.clearButtonTintColor = UIColor(named: L10n.totoroGray)
         emailTextField.styleLoginTextFiels(labelText: "E-mail", iconName: "envelope.fill")
         passwordTextField.styleLoginTextFiels(labelText: "Password", iconName: "lock.fill")
     }
@@ -86,7 +86,7 @@ class LogInViewController: UIViewController {
         passwordTextField.addButtonToRightView(
             button: passwordEyeButton,
             selector: #selector(showPasswordTapped),
-            color: .darkGray,
+            color: UIColor(named: L10n.totoroGray),
             target: self
         )
     }

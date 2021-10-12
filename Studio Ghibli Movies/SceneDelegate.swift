@@ -22,7 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = UIColor(named: L10n.navBarColor)?.withAlphaComponent(0.9)
+        //appearance.backgroundColor = UIColor(named: L10n.navBarColor)?.withAlphaComponent(0.9)
+		appearance.backgroundColor = UIColor(named: L10n.totoroGray)?.withAlphaComponent(0.9)
         appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white,
                                           NSAttributedString.Key.font: UIFont.systemFont(ofSize: 25)]
         nav.navigationBar.tintColor = UIColor.white

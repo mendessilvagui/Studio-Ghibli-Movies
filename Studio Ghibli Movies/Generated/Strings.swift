@@ -88,8 +88,10 @@ internal enum L10n {
   internal static let searchMovie = L10n.tr("Localizable", "search_movie")
   /// https://parseapi.back4app.com/
   internal static let server = L10n.tr("Localizable", "server")
-  /// totoro
-  internal static let totoroColor = L10n.tr("Localizable", "totoro_color")
+  /// totoroBeige
+  internal static let totoroBeige = L10n.tr("Localizable", "totoro_beige")
+  /// totoroGray
+  internal static let totoroGray = L10n.tr("Localizable", "totoro_gray")
   /// TOTORO
   internal static let totoroImage = L10n.tr("Localizable", "totoro_image")
   /// https://ghibliapi.herokuapp.com/films

@@ -78,7 +78,7 @@ class EditUserViewController: UIViewController {
 
         for textField in allTextFields {
             textField.setTextFieldValidity(.default)
-            textField.styleTextField(fieldColor: .darkGray, textColor: .darkGray)
+            textField.styleTextField(fieldColor: UIColor(named: L10n.totoroGray), textColor: UIColor(named: L10n.totoroGray))
             textField.leadingAssistiveLabel.text = ""
 
             switch textField {
@@ -90,8 +90,8 @@ class EditUserViewController: UIViewController {
                 textField.label.text = ""
             }
         }
-        nameTextField.clearButtonTintColor = UIColor.darkGray
-        emailTextField.clearButtonTintColor = UIColor.darkGray
+        nameTextField.clearButtonTintColor = UIColor(named: L10n.totoroGray)
+        emailTextField.clearButtonTintColor = UIColor(named: L10n.totoroGray)
     }
 
     //MARK: - Actions
@@ -154,6 +154,7 @@ extension EditUserViewController: EditUserView {
     }
 
     func redirectToLoginScreen() {
-        switchRootViewController(LogInViewController(), animated: true, completion: nil)
+        //switchRootViewController(LogInViewController(), animated: true, completion: nil)
+		show(LogInViewController(), sender: self)
     }
 }

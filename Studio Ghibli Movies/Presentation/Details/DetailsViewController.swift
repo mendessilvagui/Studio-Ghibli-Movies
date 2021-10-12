@@ -10,7 +10,8 @@ import MBProgressHUD
 
 class DetailsViewController: UIViewController, UINavigationControllerDelegate {
 
-    @IBOutlet private weak var imageView: UIImageView!
+	@IBOutlet private weak var backgroundImageView: UIImageView!
+	@IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var originalTitleLabel: UILabel!
     @IBOutlet private weak var originalTitleRomanLabel: UILabel!
@@ -46,7 +47,7 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
         super.viewDidLoad()
 
 		self.title = L10n.details
-		self.view.backgroundColor = UIColor(named: L10n.totoroColor)
+		//self.view.backgroundColor = UIColor(named: L10n.totoroBeige)
 
         self.navigationController?.delegate = self
         self.navigationItem.largeTitleDisplayMode = .never
@@ -136,7 +137,7 @@ extension DetailsViewController: DetailsView {
 
     func showMovieData(_ selectedMovie: Movie) {
         titleLabel.text = selectedMovie.title
-		titleLabel.backgroundColor = UIColor(named: L10n.navBarColor)
+		titleLabel.backgroundColor = UIColor(named: L10n.totoroGray)?.withAlphaComponent(0.9)
         originalTitleLabel.text =  selectedMovie.originalTitle
         originalTitleRomanLabel.text = selectedMovie.originalTitleRomanised
         directorLabel.text = selectedMovie.director
@@ -145,9 +146,11 @@ extension DetailsViewController: DetailsView {
         releaseDateLabel.text = selectedMovie.releaseDate
         durationLabel.text = "\(selectedMovie.runningTime) min"
         rtScoreLabel.text = selectedMovie.rtScore
-        descriptionLabel.text = selectedMovie.moreInfo
         descriptionLabel.sizeToFit()
+		descriptionLabel.text = selectedMovie.moreInfo
         imageView.image = UIImage(named: "\(selectedMovie.movieID).png")
+		backgroundImageView.image = UIImage(named: L10n.poster+"\(selectedMovie.movieID)")
+		Style.styleViewBackground(imageView: backgroundImageView)
     }
 
     func updateDetails(details: Details) {
