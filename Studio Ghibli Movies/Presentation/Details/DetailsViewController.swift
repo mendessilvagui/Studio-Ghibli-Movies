@@ -10,7 +10,8 @@ import MBProgressHUD
 
 class DetailsViewController: UIViewController, UINavigationControllerDelegate {
 
-	@IBOutlet private weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var readMoreButton: UIButton!
+    @IBOutlet private weak var backgroundImageView: UIImageView!
 	@IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var originalTitleLabel: UILabel!
@@ -131,13 +132,32 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
         }))
         present(deleteAlert, animated: true, completion: nil)
     }
+
+    @IBAction func readMorePressed(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+
+        if sender.isSelected {
+            descriptionLabel.numberOfLines = 0
+            readMoreButton.setTitle("Show Less", for: .selected)
+        } else {
+            descriptionLabel.numberOfLines = 2
+            readMoreButton.setTitle("Read More", for: .normal)
+        }
+    }
+}
+
+extension DetailsViewController {
+
 }
 
 extension DetailsViewController: DetailsView {
 
     func showMovieData(_ selectedMovie: Movie) {
+        readMoreButton.setTitleColor(.white, for: .normal)
+        readMoreButton.setTitleColor(.white, for: .selected)
         titleLabel.text = selectedMovie.title
-		titleLabel.backgroundColor = UIColor(named: L10n.totoroGray)?.withAlphaComponent(0.9)
+		titleLabel.backgroundColor = UIColor(named: L10n.totoroGray)?.withAlphaComponent(0.5)
+        titleLabel.addShadowToLabel(color: UIColor.black.cgColor, radius: 5, offset: CGSize(width: 0, height: 5), opacity: 1)
         originalTitleLabel.text =  selectedMovie.originalTitle
         originalTitleRomanLabel.text = selectedMovie.originalTitleRomanised
         directorLabel.text = selectedMovie.director
