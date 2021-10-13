@@ -48,7 +48,6 @@ extension FavoriteMoviesViewController: UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCell(for: indexPath) as CustomTableViewCell
 
         cell.titleLabel.text = movie.title
-        //cell.subTitleLabel.text = movie.originalTitle
 		cell.posterImageView.image = UIImage(named: L10n.poster+"\(movie.movieID)")
 
         return cell
@@ -83,7 +82,7 @@ extension FavoriteMoviesViewController: ReloadTableView, FavoriteMoviesView {
     func checkIfListIsEmpty() {
         if presenter.favoritedMovies.count == 0 {
             let tableHeaderView = HeaderTableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50))
-            tableHeaderView.backgroundColor = UIColor(named: L10n.totoroBeige)?.withAlphaComponent(0.90)
+            tableHeaderView.backgroundColor = UIColor(named: L10n.totoroBeige)
             tableView.tableHeaderView = tableHeaderView
         } else {
             tableView.tableHeaderView = nil

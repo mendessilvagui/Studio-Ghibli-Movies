@@ -34,13 +34,13 @@ class MenuViewController: UITabBarController {
     private func setUpTabBar() {
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
-        //appearance.backgroundColor = UIColor(named: L10n.navBarColor)?.withAlphaComponent(0.9)
-		appearance.backgroundColor = UIColor(named: L10n.totoroGray)?.withAlphaComponent(0.9)
+		appearance.backgroundColor = UIColor(named: L10n.totoroGray)
         appearance.stackedLayoutAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
 		appearance.stackedLayoutAppearance.normal.iconColor = .lightGray
         UITabBar.appearance().tintColor = .white
-
         tabBar.standardAppearance = appearance
+        tabBar.addShadowToTabBar(color: UIColor.black.cgColor, radius: 5, offset: CGSize(width: 0, height: -5), opacity: 0.5)
+        
         if #available(iOS 15.0, *) {
             tabBar.scrollEdgeAppearance = tabBar.standardAppearance
         }

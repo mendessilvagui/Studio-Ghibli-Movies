@@ -28,27 +28,15 @@ final class CustomTableViewCell: UITableViewCell, NibReusable {
 
         let containerHeightAnchor = self.contentView.heightAnchor.constraint(equalToConstant: 225)
         containerHeightAnchor.isActive = true
+
         outerPosterView.layer.cornerRadius = 10
-		outerPosterView.layer.shadowColor = UIColor.black.cgColor
-		outerPosterView.layer.shadowRadius = 5
-		outerPosterView.layer.shadowOpacity = 0.75
-
+        outerPosterView.addShadowToView(color: UIColor.black.cgColor, radius: 5, offset: .zero, opacity: 0.75)
 		innerPosterView.layer.cornerRadius = 10
-		innerPosterView.layer.shadowColor = UIColor.black.cgColor
-		innerPosterView.layer.shadowRadius = 5
-		innerPosterView.layer.shadowOffset = CGSize.zero
-		innerPosterView.layer.shadowOpacity = 1
-
+        innerPosterView.addShadowToView(color: UIColor.black.cgColor, radius: 5, offset: .zero, opacity: 1)
 		posterImageView.layer.cornerRadius = 10
 
-		//self.cellView.backgroundColor = UIColor(named: L10n.totoroBeige)?.withAlphaComponent(0.9)
-
         titleLabel.textColor = UIColor.white
-		titleLabel.layer.shadowColor = UIColor.black.cgColor
-		titleLabel.layer.shadowRadius = 3.0
-		titleLabel.layer.shadowOpacity = 1.0
-		titleLabel.layer.shadowOffset = CGSize(width: 4, height: 4)
+        titleLabel.addShadowToLabel(color: UIColor.black.cgColor, radius: 3, offset: CGSize(width: 4, height: 4), opacity: 1)
 		titleLabel.layer.masksToBounds = false
-        //self.subTitleLabel.textColor = UIColor.white
     }
 }

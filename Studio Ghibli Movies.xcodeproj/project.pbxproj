@@ -25,6 +25,10 @@
 		0333F7D0270E187300704CFA /* ChangePasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0333F7CE270E187300704CFA /* ChangePasswordViewController.xib */; };
 		0333F7D2270E188800704CFA /* ChangePasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0333F7D1270E188800704CFA /* ChangePasswordPresenter.swift */; };
 		0333F7D4270E189700704CFA /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0333F7D3270E189700704CFA /* ChangePasswordView.swift */; };
+		035144352717107E00567E26 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035144342717107E00567E26 /* UIViewExtension.swift */; };
+		035144372717123B00567E26 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035144362717123B00567E26 /* UILabelExtension.swift */; };
+		035144392717137B00567E26 /* UINavigationBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035144382717137B00567E26 /* UINavigationBarExtension.swift */; };
+		0351443B2717151100567E26 /* UITabBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0351443A2717151100567E26 /* UITabBarExtension.swift */; };
 		03584418270B976C00BEB803 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03584417270B976C00BEB803 /* Validation.swift */; };
 		0374E03A268C878000E535B6 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0374E038268C878000E535B6 /* CustomTableViewCell.swift */; };
 		0374E03B268C878000E535B6 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0374E039268C878000E535B6 /* CustomTableViewCell.xib */; };
@@ -97,6 +101,10 @@
 		0333F7CE270E187300704CFA /* ChangePasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePasswordViewController.xib; sourceTree = "<group>"; };
 		0333F7D1270E188800704CFA /* ChangePasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordPresenter.swift; sourceTree = "<group>"; };
 		0333F7D3270E189700704CFA /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
+		035144342717107E00567E26 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		035144362717123B00567E26 /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
+		035144382717137B00567E26 /* UINavigationBarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBarExtension.swift; sourceTree = "<group>"; };
+		0351443A2717151100567E26 /* UITabBarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabBarExtension.swift; sourceTree = "<group>"; };
 		03584417270B976C00BEB803 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		0374E038268C878000E535B6 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		0374E039268C878000E535B6 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
@@ -299,6 +307,10 @@
 				03D486FB26D0319F002E3769 /* UITextFieldExtension.swift */,
 				03D832782702431500FD2305 /* UIViewControllerExtension.swift */,
 				03D8327627023EA300FD2305 /* MDCOutlinedTextFieldExtension.swift */,
+				035144342717107E00567E26 /* UIViewExtension.swift */,
+				035144362717123B00567E26 /* UILabelExtension.swift */,
+				035144382717137B00567E26 /* UINavigationBarExtension.swift */,
+				0351443A2717151100567E26 /* UITabBarExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -588,6 +600,7 @@
 				E96E7FD926C6DCF900099E09 /* RxParse.swift in Sources */,
 				03BEE310270C823400A24994 /* ProfileViewController.swift in Sources */,
 				0300D24F26CECD4E009A5127 /* LogInView.swift in Sources */,
+				0351443B2717151100567E26 /* UITabBarExtension.swift in Sources */,
 				D2742CED26C6F7E800F0D962 /* ErrorType.swift in Sources */,
 				0300D24526CECCC3009A5127 /* SignUpViewController.swift in Sources */,
 				0333F7D2270E188800704CFA /* ChangePasswordPresenter.swift in Sources */,
@@ -605,6 +618,7 @@
 				03D486F126CFC9A5002E3769 /* Style.swift in Sources */,
 				03848E2A270F839100C0CA74 /* Update.swift in Sources */,
 				D2D8211526546AE3004328C3 /* DataBase.swift in Sources */,
+				035144392717137B00567E26 /* UINavigationBarExtension.swift in Sources */,
 				03A36F80270E04270040217F /* ProfilePresenter.swift in Sources */,
 				038B82AD26B072410094375D /* Movie.swift in Sources */,
 				03BEE319270CD36A00A24994 /* ReloadTableView.swift in Sources */,
@@ -612,6 +626,7 @@
 				D23E9C92264CEB1500312A56 /* SceneDelegate.swift in Sources */,
 				03848E28270F3BBE00C0CA74 /* ChangePasswordViewModel.swift in Sources */,
 				03A36F89270E174D0040217F /* FavoriteMoviesViewController.swift in Sources */,
+				035144352717107E00567E26 /* UIViewExtension.swift in Sources */,
 				03BF3AD427072D600063953B /* ResetPasswordViewController.swift in Sources */,
 				03D832792702431500FD2305 /* UIViewControllerExtension.swift in Sources */,
 				03A36F76270DD3D30040217F /* FavoriteMoviesView.swift in Sources */,
@@ -621,6 +636,7 @@
 				0300D23C26CE96AC009A5127 /* User.swift in Sources */,
 				0333F7D4270E189700704CFA /* ChangePasswordView.swift in Sources */,
 				03D486FA26D02DF7002E3769 /* ColorCompat.swift in Sources */,
+				035144372717123B00567E26 /* UILabelExtension.swift in Sources */,
 				03D8327727023EA300FD2305 /* MDCOutlinedTextFieldExtension.swift in Sources */,
 				03D486FC26D0319F002E3769 /* UITextFieldExtension.swift in Sources */,
 				03A36F72270DCC140040217F /* HeaderTableView.swift in Sources */,

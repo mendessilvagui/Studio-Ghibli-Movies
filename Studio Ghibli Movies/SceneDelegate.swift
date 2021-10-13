@@ -22,12 +22,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        //appearance.backgroundColor = UIColor(named: L10n.navBarColor)?.withAlphaComponent(0.9)
-		appearance.backgroundColor = UIColor(named: L10n.totoroGray)?.withAlphaComponent(0.9)
+		appearance.backgroundColor = UIColor(named: L10n.totoroGray)?.withAlphaComponent(0.95)
         appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white,
                                           NSAttributedString.Key.font: UIFont.systemFont(ofSize: 25)]
         nav.navigationBar.tintColor = UIColor.white
         nav.navigationBar.standardAppearance = appearance
+        nav.navigationBar.addShadowToNavBar(color: UIColor.black.cgColor, radius: 5, offset: CGSize(width: 0, height: 5), opacity: 0.5)
         nav.navigationBar.scrollEdgeAppearance = nav.navigationBar.standardAppearance
         nav.navigationBar.prefersLargeTitles = true
 

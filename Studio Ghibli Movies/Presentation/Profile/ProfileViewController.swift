@@ -36,7 +36,7 @@ class ProfileViewController: UIViewController {
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .singleLine
         tableView.alwaysBounceVertical = false
-        tableView.layer.cornerRadius = 20
+        tableView.layer.cornerRadius = 10
         tableView.tintColor = UIColor(named: L10n.totoroGray)
     }
 }
@@ -93,7 +93,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         if #available(iOS 13.0, *) {
             if let cell: ProfileTableViewCell = tableView.cellForRow(at: indexPath) as? ProfileTableViewCell {
                 UIView.animate(withDuration: 0.2) {
-                    cell.backgroundColor = UIColor(named: L10n.totoroBeige)?.withAlphaComponent(0.9)
+                    cell.backgroundColor = UIColor(named: L10n.totoroBeige)
                 }
             }
         }

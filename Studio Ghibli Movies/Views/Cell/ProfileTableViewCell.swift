@@ -20,7 +20,7 @@ class ProfileTableViewCell: UITableViewCell, NibReusable {
 
         selectionStyle = .none
         accessoryType = .disclosureIndicator
-        backgroundColor = UIColor(named: L10n.totoroBeige)?.withAlphaComponent(0.9)
+        backgroundColor = UIColor(named: L10n.totoroBeige)
         tintColor = UIColor(named: L10n.totoroGray)
         setUpAccessory()
     }
