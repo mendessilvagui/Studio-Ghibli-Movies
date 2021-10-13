@@ -10,7 +10,10 @@ import MBProgressHUD
 
 class DetailsViewController: UIViewController, UINavigationControllerDelegate {
 
+    @IBOutlet weak var heartButtonView: UIView!
+    @IBOutlet weak var heartButton: UIButton!
     @IBOutlet weak var readMoreButton: UIButton!
+    @IBOutlet weak var readMoreButtonView: UIView!
     @IBOutlet private weak var backgroundImageView: UIImageView!
 	@IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
@@ -136,12 +139,15 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
     @IBAction func readMorePressed(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
 
-        if sender.isSelected {
-            descriptionLabel.numberOfLines = 0
-            readMoreButton.setTitle("Show Less", for: .selected)
-        } else {
-            descriptionLabel.numberOfLines = 2
-            readMoreButton.setTitle("Read More", for: .normal)
+        UIView.animate(withDuration: 0.5) {
+            if sender.isSelected {
+                self.descriptionLabel.numberOfLines = 0
+                self.readMoreButton.transform = CGAffineTransform(rotationAngle: self.radians(180))
+            } else {
+                self.descriptionLabel.numberOfLines = 2
+                self.readMoreButton.transform = .identity
+            }
+            self.view.layoutIfNeeded()
         }
     }
 }
@@ -153,8 +159,14 @@ extension DetailsViewController {
 extension DetailsViewController: DetailsView {
 
     func showMovieData(_ selectedMovie: Movie) {
+        heartButtonView.layer.cornerRadius = 25
+        heartButtonView.layer.masksToBounds = false
+        heartButtonView.addShadowToView(color: UIColor.black.cgColor, radius: 10, offset: .zero, opacity: 1)
         readMoreButton.setTitleColor(.white, for: .normal)
         readMoreButton.setTitleColor(.white, for: .selected)
+        readMoreButtonView.layer.cornerRadius = 18
+        readMoreButtonView.layer.masksToBounds = true
+        readMoreButton.backgroundColor = .black.withAlphaComponent(0.1)
         titleLabel.text = selectedMovie.title
 		titleLabel.backgroundColor = UIColor(named: L10n.totoroGray)?.withAlphaComponent(0.5)
         titleLabel.addShadowToLabel(color: UIColor.black.cgColor, radius: 5, offset: CGSize(width: 0, height: 5), opacity: 1)
@@ -166,7 +178,7 @@ extension DetailsViewController: DetailsView {
         releaseDateLabel.text = selectedMovie.releaseDate
         durationLabel.text = "\(selectedMovie.runningTime) min"
         rtScoreLabel.text = selectedMovie.rtScore
-        descriptionLabel.sizeToFit()
+        //descriptionLabel.sizeToFit()
 		descriptionLabel.text = selectedMovie.moreInfo
         imageView.image = UIImage(named: "\(selectedMovie.movieID).png")
 		backgroundImageView.image = UIImage(named: L10n.poster+"\(selectedMovie.movieID)")

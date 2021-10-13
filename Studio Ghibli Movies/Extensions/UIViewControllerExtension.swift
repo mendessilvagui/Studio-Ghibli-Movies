@@ -131,6 +131,12 @@ extension UIViewController {
         self.navigationController?.navigationBar.scrollEdgeAppearance = self.navigationController?.navigationBar.standardAppearance
     }
 
+    // MARK: Degrees to radians
+
+    func radians(_ degrees: Double) -> CGFloat {
+        return CGFloat(degrees * .pi / degrees)
+    }
+
     public func switchRootViewController(_ rootViewController: UIViewController, animated: Bool,
                                          transition: UIView.AnimationOptions = .transitionFlipFromLeft,
                                          completion: (() -> Void)?) {
