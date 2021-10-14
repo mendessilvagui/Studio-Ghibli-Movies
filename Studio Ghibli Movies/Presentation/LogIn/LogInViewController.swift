@@ -26,6 +26,7 @@ class LogInViewController: UIViewController {
     private let presenter: LogInPresenter
     private let signUpViewController: SignUpViewController
     private let resetPasswordViewController: ResetPasswordViewController
+    private let menuViewController: MenuViewController
 
     // MARK: - Init
 
@@ -33,6 +34,7 @@ class LogInViewController: UIViewController {
         presenter = LogInPresenter()
         signUpViewController = SignUpViewController()
         resetPasswordViewController = ResetPasswordViewController()
+        menuViewController = MenuViewController()
         super.init(nibName: "LogInViewController", bundle: nil)
     }
 
@@ -62,7 +64,9 @@ class LogInViewController: UIViewController {
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        self.removeKeyboardObserver()
+        emailTextField.text = ""
+        passwordTextField.text = ""
+        self.view.endEditing(true)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -144,7 +148,7 @@ extension LogInViewController: LogInView {
     }
 
     func close(success: Bool) {
-        self.show(MenuViewController(), sender: self)
+        show(menuViewController, sender: self)
         navigationController?.navigationBar.isHidden = false
     }
 }

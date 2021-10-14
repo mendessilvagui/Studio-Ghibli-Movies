@@ -10,9 +10,13 @@ import UIKit
 class ProfileViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
-	@IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var imageView: UIImageView!
 
     private let presenter = ProfilePresenter()
+
+    private let editUserViewController = EditUserViewController()
+    private let changePasswordViewController = ChangePasswordViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +41,10 @@ class ProfileViewController: UIViewController {
         tableView.separatorStyle = .singleLine
         tableView.alwaysBounceVertical = false
         tableView.layer.cornerRadius = 10
+        tableView.layer.masksToBounds = true
         tableView.tintColor = UIColor(named: L10n.totoroGray)
+        containerView.addShadowToView(color: UIColor.black.cgColor, radius: 10, offset: .zero , opacity: 1)
+        containerView.backgroundColor = .clear
     }
 }
 
@@ -103,15 +110,15 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
 extension ProfileViewController: ProfileView {
 
     func redirectToEditUser() {
-        show(EditUserViewController(), sender: self)
+        show(editUserViewController, sender: self)
     }
 
     func redirectToChangePasswordScreen() {
-        show(ChangePasswordViewController(), sender: self)
+        show(changePasswordViewController, sender: self)
     }
 
     func redirectToLoginScreen() {
-        //switchRootViewController(LogInViewController(), animated: true, completion:  nil)
-        show(LogInViewController(), sender: self)
+        self.addTransitionAnimation(.fromLeft)
+        self.navigationController?.popToRootViewController(animated: false)
     }
 }

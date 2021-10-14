@@ -125,7 +125,7 @@ extension DetailsViewController: DetailsView {
         readMoreButton.backgroundColor = .black.withAlphaComponent(0.1)
         titleLabel.text = selectedMovie.title
 		titleLabel.backgroundColor = UIColor(named: L10n.totoroGray)?.withAlphaComponent(0.25)
-        titleLabel.addShadowToLabel(color: UIColor.black.cgColor, radius: 5, offset: CGSize(width: 0, height: 5), opacity: 1)
+        titleLabel.addShadowToView(color: UIColor.black.cgColor, radius: 5, offset: CGSize(width: 0, height: 5), opacity: 1)
         originalTitleLabel.text =  selectedMovie.originalTitle
         originalTitleRomanLabel.text = selectedMovie.originalTitleRomanised
         directorLabel.text = selectedMovie.director

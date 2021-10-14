@@ -11,11 +11,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
         let windowScene:UIWindowScene = scene as! UIWindowScene
         self.window = UIWindow(windowScene: windowScene)
+
+        guard let window = self.window else { return }
 
         let mainVC = LogInViewController()
         let nav = UINavigationController(rootViewController: mainVC)
@@ -27,15 +28,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                           NSAttributedString.Key.font: UIFont.systemFont(ofSize: 25)]
         nav.navigationBar.tintColor = UIColor.white
         nav.navigationBar.standardAppearance = appearance
-        nav.navigationBar.addShadowToNavBar(color: UIColor.black.cgColor, radius: 5, offset: CGSize(width: 0, height: 5), opacity: 0.5)
+        nav.navigationBar.addShadowToView(color: UIColor.black.cgColor, radius: 5, offset: CGSize(width: 0, height: 5), opacity: 0.5)
         nav.navigationBar.scrollEdgeAppearance = nav.navigationBar.standardAppearance
         nav.navigationBar.prefersLargeTitles = true
 
-        self.window!.rootViewController = nav
-        self.window!.makeKeyAndVisible()
+        window.rootViewController = nav
+        window.makeKeyAndVisible()
 
         if #available(iOS 13.0, *) {
-            window?.overrideUserInterfaceStyle = .dark
+            window.overrideUserInterfaceStyle = .dark
         }
 
         guard let _ = (scene as? UIWindowScene) else { return }

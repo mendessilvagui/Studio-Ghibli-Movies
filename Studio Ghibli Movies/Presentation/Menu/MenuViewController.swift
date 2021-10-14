@@ -39,7 +39,7 @@ class MenuViewController: UITabBarController {
 		appearance.stackedLayoutAppearance.normal.iconColor = .lightGray
         UITabBar.appearance().tintColor = .white
         tabBar.standardAppearance = appearance
-        tabBar.addShadowToTabBar(color: UIColor.black.cgColor, radius: 5, offset: CGSize(width: 0, height: -5), opacity: 0.5)
+        tabBar.addShadowToView(color: UIColor.black.cgColor, radius: 5, offset: CGSize(width: 0, height: -5), opacity: 0.5)
         
         if #available(iOS 15.0, *) {
             tabBar.scrollEdgeAppearance = tabBar.standardAppearance

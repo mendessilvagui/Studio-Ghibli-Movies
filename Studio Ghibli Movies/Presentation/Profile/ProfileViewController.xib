@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewController" customModule="Studio_Ghibli_Movies" customModuleProvider="target">
             <connections>
+                <outlet property="containerView" destination="2GA-Pf-O53" id="qlg-2j-9ge"/>
                 <outlet property="imageView" destination="Il1-3A-jbc" id="RjP-fM-ITm"/>
                 <outlet property="tableView" destination="GO6-OW-L7d" id="tON-vV-qrA"/>
                 <outlet property="view" destination="SA4-xF-erR" id="vxp-hx-65d"/>
@@ -24,22 +25,32 @@
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TOTORO" translatesAutoresizingMaskIntoConstraints="NO" id="Il1-3A-jbc">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 </imageView>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="GO6-OW-L7d">
-                    <rect key="frame" x="25" y="64" width="364" height="180"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2GA-Pf-O53" userLabel="Container View">
+                    <rect key="frame" x="25" y="69" width="364" height="180"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="GO6-OW-L7d">
+                            <rect key="frame" x="0.0" y="0.0" width="364" height="180"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </tableView>
+                    </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="180" id="swe-tO-nXo"/>
+                        <constraint firstAttribute="bottom" secondItem="GO6-OW-L7d" secondAttribute="bottom" id="4ou-Hn-Z1o"/>
+                        <constraint firstAttribute="height" constant="180" id="8nE-EU-57Z"/>
+                        <constraint firstItem="GO6-OW-L7d" firstAttribute="top" secondItem="2GA-Pf-O53" secondAttribute="top" id="exc-3j-cfQ"/>
+                        <constraint firstAttribute="trailing" secondItem="GO6-OW-L7d" secondAttribute="trailing" id="vDy-bJ-ZDc"/>
+                        <constraint firstItem="GO6-OW-L7d" firstAttribute="leading" secondItem="2GA-Pf-O53" secondAttribute="leading" id="zRn-Rb-7ed"/>
                     </constraints>
-                </tableView>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="zkj-5l-AT5"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="Il1-3A-jbc" firstAttribute="top" secondItem="SA4-xF-erR" secondAttribute="top" id="3HW-If-ydN"/>
-                <constraint firstItem="GO6-OW-L7d" firstAttribute="top" secondItem="zkj-5l-AT5" secondAttribute="top" constant="20" id="AWc-6w-CtQ"/>
-                <constraint firstItem="GO6-OW-L7d" firstAttribute="leading" secondItem="zkj-5l-AT5" secondAttribute="leading" constant="25" id="IM3-3o-klc"/>
+                <constraint firstItem="zkj-5l-AT5" firstAttribute="trailing" secondItem="2GA-Pf-O53" secondAttribute="trailing" constant="25" id="5ox-RJ-NSd"/>
+                <constraint firstItem="2GA-Pf-O53" firstAttribute="leading" secondItem="zkj-5l-AT5" secondAttribute="leading" constant="25" id="Aac-rS-TPJ"/>
                 <constraint firstItem="zkj-5l-AT5" firstAttribute="trailing" secondItem="Il1-3A-jbc" secondAttribute="trailing" id="N9c-Vv-M4B"/>
-                <constraint firstItem="zkj-5l-AT5" firstAttribute="trailing" secondItem="GO6-OW-L7d" secondAttribute="trailing" constant="25" id="VlY-EO-61h"/>
+                <constraint firstItem="2GA-Pf-O53" firstAttribute="top" secondItem="zkj-5l-AT5" secondAttribute="top" constant="25" id="c1R-3L-vrG"/>
                 <constraint firstAttribute="bottom" secondItem="Il1-3A-jbc" secondAttribute="bottom" id="kG2-Y0-eel"/>
                 <constraint firstItem="Il1-3A-jbc" firstAttribute="leading" secondItem="zkj-5l-AT5" secondAttribute="leading" id="p1r-KP-TdN"/>
             </constraints>

@@ -154,7 +154,6 @@ extension EditUserViewController: EditUserView {
     }
 
     func redirectToLoginScreen() {
-        //switchRootViewController(LogInViewController(), animated: true, completion: nil)
 		show(LogInViewController(), sender: self)
     }
 }

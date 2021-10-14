@@ -56,14 +56,6 @@ extension UIViewController {
                                    buttonTitle: String?,
                                    cancelAction: @escaping () -> Void,
                                    confirmAction: @escaping () -> Void) {
-//        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-//        alert.addAction(UIAlertAction(title: L10n.cancel, style: .default) { _ in
-//            cancelAction()
-//        })
-//        alert.addAction(UIAlertAction(title: buttonTitle ?? L10n.ok, style: .default) { _ in
-//            confirmAction()
-//        })
-//        present(alert, animated: true, completion: nil)
 
         let alert = UIAlertController(title: title, message: "", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: L10n.cancel, style: .cancel, handler: { (action: UIAlertAction!) in
@@ -147,28 +139,14 @@ extension UIViewController {
         return CGFloat(degrees * .pi / degrees)
     }
 
-    public func switchRootViewController(_ rootViewController: UIViewController, animated: Bool,
-                                         transition: UIView.AnimationOptions = .transitionFlipFromLeft,
-                                         completion: (() -> Void)?) {
-        let window: UIWindow! = UIApplication
-                                .shared
-                                .connectedScenes
-                                .compactMap { $0 as? UIWindowScene }
-                                .flatMap { $0.windows }
-                                .first { $0.isKeyWindow }
-        if animated {
-            UIView.transition(with: window, duration: 0.5, options: transition, animations: {
-                let oldState: Bool = UIView.areAnimationsEnabled
-                UIView.setAnimationsEnabled(false)
-                window.rootViewController = rootViewController
-                UIView.setAnimationsEnabled(oldState)
-                }, completion: { _ in
-                    if let completion = completion {
-                        completion()
-                    }
-            })
-        } else {
-            window.rootViewController = rootViewController
-        }
+    // MARK: Transition animation
+
+    func addTransitionAnimation(_ subtype: CATransitionSubtype) {
+        let transition = CATransition()
+        transition.duration = 0.20
+        transition.timingFunction = CAMediaTimingFunction(name: .easeOut)
+        transition.type = .moveIn
+        transition.subtype = subtype
+        self.navigationController?.view.layer.add(transition, forKey: kCATransition)
     }
 }

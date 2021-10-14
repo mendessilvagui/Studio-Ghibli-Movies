@@ -36,7 +36,7 @@ final class CustomTableViewCell: UITableViewCell, NibReusable {
 		posterImageView.layer.cornerRadius = 10
 
         titleLabel.textColor = UIColor.white
-        titleLabel.addShadowToLabel(color: UIColor.black.cgColor, radius: 3, offset: CGSize(width: 4, height: 4), opacity: 1)
+        titleLabel.addShadowToView(color: UIColor.black.cgColor, radius: 3, offset: CGSize(width: 4, height: 4), opacity: 1)
 		titleLabel.layer.masksToBounds = false
     }
 }
