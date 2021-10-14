@@ -10,10 +10,10 @@ import MBProgressHUD
 
 class DetailsViewController: UIViewController, UINavigationControllerDelegate {
 
-    @IBOutlet weak var heartButtonView: UIView!
-    @IBOutlet weak var heartButton: UIButton!
-    @IBOutlet weak var readMoreButton: UIButton!
-    @IBOutlet weak var readMoreButtonView: UIView!
+    @IBOutlet private weak var heartButtonView: UIView!
+    @IBOutlet private weak var heartButton: UIButton!
+    @IBOutlet private weak var readMoreButton: UIButton!
+    @IBOutlet private weak var readMoreButtonView: UIView!
     @IBOutlet private weak var backgroundImageView: UIImageView!
 	@IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
@@ -63,77 +63,39 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         presenter.loadMovieDetails()
     }
+
 // MARK: - Updatade favorite button on touch
 
-    private func updateRightBarButton(){
-        let favButton = UIButton()
-        favButton.addTarget(self, action: #selector(favButtonDidTap), for: .touchUpInside)
 
+    @IBAction func favoritePressed(_ sender: UIButton) {
+        self.isFavorited = !self.isFavorited
         if self.isFavorited {
-			favButton.setImage(UIImage(systemName: L10n.heartFill), for: .normal)
+            self.favorite()
         } else {
-			favButton.setImage(UIImage(systemName: L10n.heart), for: .normal)
+            self.unfavorite()
         }
-        let rightButton = UIBarButtonItem(customView: favButton)
-        self.navigationItem.setRightBarButtonItems([rightButton], animated: true)
-    }
-
-    @objc private func favButtonDidTap() {
-        self.isFavorited = !self.isFavorited;
-        if self.isFavorited {
-            self.favorite();
-        } else {
-            self.unfavorite();
-        }
-        self.updateRightBarButton();
     }
 
 // MARK: - Add favorite and comment to database
 
     private func favorite() {
 
-        var textField = UITextField()
-
-		let addAlert = UIAlertController(title: L10n.addToFavorites, message: "", preferredStyle: .alert)
-
-		addAlert.addAction(UIAlertAction(title: L10n.add, style: .default, handler: { (action: UIAlertAction!) in
-			self.showIndicator(L10n.saving)
-            self.presenter.favorite(withComment: textField.text ?? "")
-            self.hideIndicator()
-        }))
-
-		addAlert.addAction(UIAlertAction(title: L10n.cancel, style: .cancel, handler: { (action: UIAlertAction!) in
-            addAlert.dismiss(animated: true, completion: nil)
+        displayCancellableMessage(withTitle: L10n.addToFavorites, buttonTitle: L10n.add) {
             self.isFavorited = false
-            self.updateRightBarButton()
-        }))
-
-        addAlert.addTextField { (alertTextField) in
-			alertTextField.placeholder = L10n.leaveAComment
-            textField = alertTextField
+        } confirmAction: {
+            self.presenter.favorite()
         }
-        present(addAlert, animated: true, completion: nil)
     }
 
 // MARK: - Delete favorite and comment from database
 
     private func unfavorite() {
 
-		let deleteAlert = UIAlertController(title: L10n.deleteFromFavorites, message: "", preferredStyle: .alert)
-
-		deleteAlert.addAction(UIAlertAction(title: L10n.delete, style: .destructive, handler: { (action: UIAlertAction!) in
-			self.showIndicator(L10n.deleting)
-            self.presenter.unfavorite()
-            self.hideIndicator()
-        }))
-
-		deleteAlert.addAction(UIAlertAction(title: L10n.cancel, style: .cancel, handler: { (action: UIAlertAction!) in
-            deleteAlert.dismiss(animated: true, completion: nil)
-
+        displayCancellableMessage(withTitle: L10n.deleteFromFavorites, buttonTitle: L10n.delete) {
             self.isFavorited = true
-            self.updateRightBarButton()
-        }))
-        present(deleteAlert, animated: true, completion: nil)
+        } confirmAction: {
+            self.presenter.unfavorite()
+        }
     }
 
     @IBAction func readMorePressed(_ sender: UIButton) {
@@ -152,10 +114,6 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
     }
 }
 
-extension DetailsViewController {
-
-}
-
 extension DetailsViewController: DetailsView {
 
     func showMovieData(_ selectedMovie: Movie) {
@@ -168,7 +126,7 @@ extension DetailsViewController: DetailsView {
         readMoreButtonView.layer.masksToBounds = true
         readMoreButton.backgroundColor = .black.withAlphaComponent(0.1)
         titleLabel.text = selectedMovie.title
-		titleLabel.backgroundColor = UIColor(named: L10n.totoroGray)?.withAlphaComponent(0.5)
+		titleLabel.backgroundColor = UIColor(named: L10n.totoroGray)?.withAlphaComponent(0.25)
         titleLabel.addShadowToLabel(color: UIColor.black.cgColor, radius: 5, offset: CGSize(width: 0, height: 5), opacity: 1)
         originalTitleLabel.text =  selectedMovie.originalTitle
         originalTitleRomanLabel.text = selectedMovie.originalTitleRomanised
@@ -178,21 +136,27 @@ extension DetailsViewController: DetailsView {
         releaseDateLabel.text = selectedMovie.releaseDate
         durationLabel.text = "\(selectedMovie.runningTime) min"
         rtScoreLabel.text = selectedMovie.rtScore
-        //descriptionLabel.sizeToFit()
 		descriptionLabel.text = selectedMovie.moreInfo
         imageView.image = UIImage(named: "\(selectedMovie.movieID).png")
 		backgroundImageView.image = UIImage(named: L10n.poster+"\(selectedMovie.movieID)")
 		Style.styleViewBackground(imageView: backgroundImageView)
     }
 
+    func updateFavButton() {
+        if isFavorited {
+            heartButton.setImage(UIImage(systemName: L10n.heartFill), for: .normal)
+        } else {
+            heartButton.setImage(UIImage(systemName: L10n.heart), for: .normal)
+        }
+    }
+
     func updateDetails(details: Details) {
-        self.isFavorited = details.selected
-        commentBoxLabel.text = details.comment
-        self.updateRightBarButton()
+        isFavorited = details.selected
+        updateFavButton()
     }
 
     func updateComment(_ comment: String?) {
-        self.commentBoxLabel.text = comment
+        commentBoxLabel.text = comment
     }
 
     func showIndicator(_ title: String) {
@@ -206,6 +170,6 @@ extension DetailsViewController: DetailsView {
     }
 
     func reloadFavoriteMoviesTableView() {
-        self.favoriteMoviesVCDelegate?.reloadTableView()
+        favoriteMoviesVCDelegate?.reloadTableView()
     }
 }

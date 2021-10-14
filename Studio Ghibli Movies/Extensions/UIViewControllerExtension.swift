@@ -52,15 +52,26 @@ extension UIViewController {
         present(alertController, animated: true, completion: nil)
     }
 
-    func displayCancellableMessage(_ message: String,
-                                   withTitle title: String,
+    func displayCancellableMessage(withTitle title: String,
                                    buttonTitle: String?,
+                                   cancelAction: @escaping () -> Void,
                                    confirmAction: @escaping () -> Void) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: L10n.cancel, style: .default, handler: nil))
-        alert.addAction(UIAlertAction(title: buttonTitle ?? L10n.ok, style: UIAlertAction.Style.default) { _ in
+//        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+//        alert.addAction(UIAlertAction(title: L10n.cancel, style: .default) { _ in
+//            cancelAction()
+//        })
+//        alert.addAction(UIAlertAction(title: buttonTitle ?? L10n.ok, style: .default) { _ in
+//            confirmAction()
+//        })
+//        present(alert, animated: true, completion: nil)
+
+        let alert = UIAlertController(title: title, message: "", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: L10n.cancel, style: .cancel, handler: { (action: UIAlertAction!) in
+            cancelAction()
+        }))
+        alert.addAction(UIAlertAction(title: buttonTitle ?? L10n.ok, style: .default, handler: { (action: UIAlertAction!) in
             confirmAction()
-        })
+        }))
         present(alert, animated: true, completion: nil)
     }
 
@@ -124,7 +135,6 @@ extension UIViewController {
         self.title = title
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        //appearance.backgroundColor = UIColor(named: L10n.navBarColor)?.withAlphaComponent(0.9)
 		appearance.backgroundColor = UIColor(named: L10n.totoroGray)?.withAlphaComponent(0.9)
         appearance.titleTextAttributes =  [NSAttributedString.Key.font: UIFont.systemFont(ofSize: size)]
         self.navigationController?.navigationBar.standardAppearance = appearance

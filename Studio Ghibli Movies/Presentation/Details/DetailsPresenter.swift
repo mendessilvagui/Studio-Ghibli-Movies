@@ -42,18 +42,22 @@ class DetailsPresenter {
             .disposed(by: disposeBag)
     }
 
-    func favorite(withComment comment: String) {
+    //func favorite(withComment comment: String) {
+    func favorite() {
         self.details.selected = true
-        self.details.comment = comment
+        //self.details.comment = comment
         self.details.parentMovie = selectedMovie
         self.details.user = User.current()
 
+        self.view?.showIndicator(L10n.saving)
 		RxParse.saveObject(details)
             .subscribe(onSuccess: { _ in
+                self.view?.hideIndicator()
+                self.view?.updateFavButton()
                 self.selectedMovie.childDetails = self.details
                 self.selectedMovie.saveInBackground() {(succeeded, error)  in
                     if (succeeded) {
-                        self.view?.updateComment(comment)
+                        //self.view?.updateComment(comment)
                     } else if let error = error {
                         print(error)
                     }
@@ -64,8 +68,11 @@ class DetailsPresenter {
     }
 
     func unfavorite() {
+        self.view?.showIndicator(L10n.deleting)
 		RxParse.deleteObject(details)
             .subscribe(onCompleted: {
+                self.view?.hideIndicator()
+                self.view?.updateFavButton()
                 self.view?.reloadFavoriteMoviesTableView()
 				self.selectedMovie.remove(forKey: L10n.childDetails)
                 self.selectedMovie.saveInBackground() {(succeeded, error)  in
