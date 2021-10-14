@@ -51,7 +51,6 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
         super.viewDidLoad()
 
 		self.title = L10n.details
-		//self.view.backgroundColor = UIColor(named: L10n.totoroBeige)
 
         self.navigationController?.delegate = self
         self.navigationItem.largeTitleDisplayMode = .never
@@ -95,6 +94,7 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
             self.isFavorited = true
         } confirmAction: {
             self.presenter.unfavorite()
+            self.navigationController?.popViewController(animated: true)
         }
     }
 
@@ -120,8 +120,6 @@ extension DetailsViewController: DetailsView {
         heartButtonView.layer.cornerRadius = 25
         heartButtonView.layer.masksToBounds = false
         heartButtonView.addShadowToView(color: UIColor.black.cgColor, radius: 10, offset: .zero, opacity: 1)
-        readMoreButton.setTitleColor(.white, for: .normal)
-        readMoreButton.setTitleColor(.white, for: .selected)
         readMoreButtonView.layer.cornerRadius = 18
         readMoreButtonView.layer.masksToBounds = true
         readMoreButton.backgroundColor = .black.withAlphaComponent(0.1)
@@ -153,10 +151,6 @@ extension DetailsViewController: DetailsView {
     func updateDetails(details: Details) {
         isFavorited = details.selected
         updateFavButton()
-    }
-
-    func updateComment(_ comment: String?) {
-        commentBoxLabel.text = comment
     }
 
     func showIndicator(_ title: String) {

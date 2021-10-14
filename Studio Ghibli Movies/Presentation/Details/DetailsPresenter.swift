@@ -42,10 +42,8 @@ class DetailsPresenter {
             .disposed(by: disposeBag)
     }
 
-    //func favorite(withComment comment: String) {
     func favorite() {
         self.details.selected = true
-        //self.details.comment = comment
         self.details.parentMovie = selectedMovie
         self.details.user = User.current()
 
@@ -57,7 +55,7 @@ class DetailsPresenter {
                 self.selectedMovie.childDetails = self.details
                 self.selectedMovie.saveInBackground() {(succeeded, error)  in
                     if (succeeded) {
-                        //self.view?.updateComment(comment)
+                        // Detail successfully added
                     } else if let error = error {
                         print(error)
                     }

@@ -12,7 +12,6 @@ protocol DetailsView: NSObject {
     func showMovieData(_ selectedMovie: Movie)
     func updateFavButton()
     func updateDetails(details: Details)
-    func updateComment(_ comment: String?)
     func showIndicator(_ title: String)
     func hideIndicator()
     func reloadFavoriteMoviesTableView()

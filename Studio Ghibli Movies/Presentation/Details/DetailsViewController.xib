@@ -328,10 +328,14 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hHS-pC-u59" userLabel="Heart Button View">
                             <rect key="frame" x="349" y="15" width="50" height="50"/>
                             <subviews>
-                                <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsk-A6-X5u" userLabel="Heart Button">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsk-A6-X5u" userLabel="Heart Button">
                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" image="suit.heart" catalog="system">
+                                    <color key="tintColor" name="totoroGray"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="Button" image="suit.heart" catalog="system">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system">
                                         <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </buttonConfiguration>
                                     <connections>
@@ -386,6 +390,7 @@
     <resources>
         <image name="chevron.down" catalog="system" width="128" height="72"/>
         <image name="folder.badge.plus" catalog="system" width="128" height="91"/>
+        <image name="heart" catalog="system" width="128" height="109"/>
         <image name="suit.heart" catalog="system" width="128" height="109"/>
         <namedColor name="totoroGray">
             <color red="0.41600000858306885" green="0.42399999499320984" blue="0.40799999237060547" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
