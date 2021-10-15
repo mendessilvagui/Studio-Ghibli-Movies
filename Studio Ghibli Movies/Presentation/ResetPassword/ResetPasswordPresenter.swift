@@ -20,6 +20,8 @@ class ResetPasswordPresenter {
         self.view = view
     }
 
+    //MARK: - Public methods
+
     private func checkEmailValidity(_ email: String) -> InputValidity {
         let emailValidity = InputValidator.validateInput(
             rules: [EmailCheck()],
@@ -29,7 +31,6 @@ class ResetPasswordPresenter {
     }
 
     func sendResetPasswordEmail(email: String) {
-
         if checkEmailValidity(email) == .valid {
             self.view?.onValidEmail()
             RxParse.resetPassword(for: email)

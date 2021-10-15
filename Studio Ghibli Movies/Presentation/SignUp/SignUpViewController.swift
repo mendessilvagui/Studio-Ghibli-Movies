@@ -176,7 +176,7 @@ extension SignUpViewController: UITextFieldDelegate {
     }
 }
 
-//MARK: - SignUpView protocol extension
+//MARK: - SignUpView protocol methods
 
 extension SignUpViewController: SignUpView {
 

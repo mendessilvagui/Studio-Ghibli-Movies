@@ -17,6 +17,8 @@ class ResetPasswordViewController: UIViewController {
     
     private let presenter: ResetPasswordPresenter
 
+    // MARK: - Init
+
     init() {
         presenter = ResetPasswordPresenter()
         super.init(nibName: "ResetPasswordViewController", bundle: nil)
@@ -25,6 +27,8 @@ class ResetPasswordViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError(L10n.initError)
     }
+
+    //MARK: - UIViewController lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +46,8 @@ class ResetPasswordViewController: UIViewController {
         self.view.endEditing(true)
     }
 
+    //MARK: - SetUp methods
+
     private func stylePage() {
         Style.styleForm(view: formView, button: sendEmailButton)
     }
@@ -51,6 +57,8 @@ class ResetPasswordViewController: UIViewController {
         emailTextField.styleTextField(fieldColor: UIColor(named: L10n.totoroGray), textColor: UIColor(named: L10n.totoroGray))
         emailTextField.label.text = "E-mail"
     }
+
+    //MARK: - IBAction methods
 
     @IBAction func dismissResetPasswordWindow(_ sender: UIButton) {
         self.dismissAsAlert(nil)
@@ -79,7 +87,7 @@ extension ResetPasswordViewController: UITextFieldDelegate {
     }
 }
 
-//MARK: - ResetPasswordView protocol extension
+//MARK: - ResetPasswordView protocol methods
 
 extension ResetPasswordViewController: ResetPasswordView {
 

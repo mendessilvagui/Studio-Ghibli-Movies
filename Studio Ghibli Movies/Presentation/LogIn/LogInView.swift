@@ -6,9 +6,8 @@
 //
 
 import Foundation
-import Parse
 
-protocol LogInView: NSObject {
+protocol LogInView: AnyObject {
     func showError(_ error: Error)
     func close(success: Bool)
 }

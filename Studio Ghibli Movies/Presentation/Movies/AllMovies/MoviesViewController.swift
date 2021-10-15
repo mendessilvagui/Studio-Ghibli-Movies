@@ -32,7 +32,7 @@ class MoviesViewController: UIViewController {
     }
 }
 
-// MARK: - TableView DataSource and Delegate Methods
+// MARK: - TableView DataSource and Delegate methods
 
 extension MoviesViewController: UITableViewDataSource, UITableViewDelegate {
 
@@ -70,7 +70,7 @@ extension MoviesViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-//MARK: - ReloadTableView and MoviesView protocols extension
+//MARK: - ReloadTableView and MoviesView protocols methods
 
 extension MoviesViewController: ReloadTableView, MoviesView {
 

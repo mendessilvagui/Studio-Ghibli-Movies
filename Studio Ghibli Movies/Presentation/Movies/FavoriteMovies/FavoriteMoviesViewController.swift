@@ -12,7 +12,9 @@ class FavoriteMoviesViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
 
     private let presenter = FavoriteMoviesPresenter()
-
+    
+    //MARK: - UIViewController lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,7 +32,7 @@ class FavoriteMoviesViewController: UIViewController {
     }
 }
 
-// MARK: - TableView DataSource and Delegate Methods
+// MARK: - TableView DataSource and Delegate methods
 
 extension FavoriteMoviesViewController: UITableViewDataSource, UITableViewDelegate {
 
@@ -69,7 +71,7 @@ extension FavoriteMoviesViewController: UITableViewDataSource, UITableViewDelega
     }
 }
 
-// MARK: - ReloadTableView and MoviesView protocols extension
+// MARK: - ReloadTableView and MoviesView protocols methods
 
 extension FavoriteMoviesViewController: ReloadTableView, FavoriteMoviesView {
 

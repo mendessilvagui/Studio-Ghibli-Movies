@@ -161,7 +161,7 @@ class ChangePasswordViewController: UIViewController {
     }
 }
 
-//MARK: - ChangePasswordView protocol extension
+//MARK: - ChangePasswordView protocol methods
 
 extension ChangePasswordViewController: ChangePasswordView {
 

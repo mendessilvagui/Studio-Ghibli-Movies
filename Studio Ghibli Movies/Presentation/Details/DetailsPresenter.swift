@@ -25,7 +25,7 @@ class DetailsPresenter {
         self.view = view
     }
 
-    // MARK: - Presenter methods
+    // MARK: - Public methods
 
     func start() {
         view?.showMovieData(selectedMovie)

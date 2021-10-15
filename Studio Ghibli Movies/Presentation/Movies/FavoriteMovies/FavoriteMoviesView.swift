@@ -6,9 +6,8 @@
 //
 
 import Foundation
-import Parse
 
-protocol FavoriteMoviesView: NSObject {
+protocol FavoriteMoviesView: AnyObject {
     func reloadTableView()
     func checkIfListIsEmpty()
 }

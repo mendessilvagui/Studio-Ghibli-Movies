@@ -34,7 +34,7 @@ class SignUpPresenter {
         self.view = view
     }
 
-    // MARK: - Presenter methods
+    // MARK: - Public methods
 
     func checkFieldsValidity(withRequest viewRequest: SignupViewRequest) {
         let nameValidity = InputValidator.validateInput(

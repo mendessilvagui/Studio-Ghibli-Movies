@@ -126,7 +126,7 @@ class LogInViewController: UIViewController {
     }
 }
 
-//MARK: - Texfields delegate
+//MARK: - TextFieldDelegate methods
 
 extension LogInViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -140,7 +140,7 @@ extension LogInViewController: UITextFieldDelegate {
     }
 }
 
-//MARK: - LogInView protocol extension
+//MARK: - LogInView protocol methods
 
 extension LogInViewController: LogInView {
     func showError(_ error: Error) {
@@ -153,7 +153,7 @@ extension LogInViewController: LogInView {
     }
 }
 
-//MARK: - SingupViewControllerDelegate protocol and extension
+//MARK: - SingupViewControllerDelegate protocol and methods
 
 protocol SignupViewControllerDelegate: AnyObject {
     func userRegistered(email: String?, password: String?)

@@ -6,9 +6,8 @@
 //
 
 import Foundation
-import Parse
 
-protocol SignUpView: NSObject {
+protocol SignUpView: AnyObject {
     func showError(_ error: Error)
     func close(email: String?, password: String?)
     func updateView(withResponse: SignupViewResponse)

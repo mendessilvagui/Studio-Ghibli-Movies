@@ -17,6 +17,8 @@ class ProfileViewController: UIViewController {
 
     private let editUserViewController = EditUserViewController()
     private let changePasswordViewController = ChangePasswordViewController()
+
+    //MARK: - UIViewController lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +30,8 @@ class ProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.navigationItem.title = "Profile"
     }
+
+    //MARK: - SetUp methods
 
 	private func styleView() {
 		Style.styleViewBackground(imageView: imageView)
@@ -47,6 +51,8 @@ class ProfileViewController: UIViewController {
         containerView.backgroundColor = .clear
     }
 }
+
+//MARK: - TableViewDataSource and TableViewDelegate methods
 
 extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
 
@@ -106,6 +112,8 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
 }
+
+// MARK: - ProfileView protocols methods
 
 extension ProfileViewController: ProfileView {
 

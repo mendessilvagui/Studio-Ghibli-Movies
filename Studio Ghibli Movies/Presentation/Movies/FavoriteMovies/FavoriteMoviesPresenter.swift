@@ -19,7 +19,7 @@ class FavoriteMoviesPresenter {
         self.view = view
     }
 
-    //MARK: - Presenter methods
+    //MARK: - Public methods
 
     func loadFavoriteMoviesList() {
         DataBase.loadFavoriteMovies()

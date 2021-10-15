@@ -20,10 +20,9 @@ class LogInPresenter {
         self.view = view
     }
 
-    // MARK: - Presenter methods
+    // MARK: - Public methods
 
     func loginUser(username: String, password: String) {
-
         RxParse.logIn(withUsername: username, password: password)
             .subscribe(onSuccess: { _ in
                 guard let currentUser = User.current() else { return }

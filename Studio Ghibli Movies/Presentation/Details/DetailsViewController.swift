@@ -63,8 +63,7 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
         presenter.loadMovieDetails()
     }
 
-// MARK: - Updatade favorite button on touch
-
+// MARK: - IBAction methods
 
     @IBAction func favoritePressed(_ sender: UIButton) {
         self.isFavorited = !self.isFavorited
@@ -72,29 +71,6 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
             self.favorite()
         } else {
             self.unfavorite()
-        }
-    }
-
-// MARK: - Add favorite and comment to database
-
-    private func favorite() {
-
-        displayCancellableMessage(withTitle: L10n.addToFavorites, buttonTitle: L10n.add) {
-            self.isFavorited = false
-        } confirmAction: {
-            self.presenter.favorite()
-        }
-    }
-
-// MARK: - Delete favorite and comment from database
-
-    private func unfavorite() {
-
-        displayCancellableMessage(withTitle: L10n.deleteFromFavorites, buttonTitle: L10n.delete) {
-            self.isFavorited = true
-        } confirmAction: {
-            self.presenter.unfavorite()
-            self.navigationController?.popViewController(animated: true)
         }
     }
 
@@ -112,7 +88,30 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
             self.view.layoutIfNeeded()
         }
     }
+
+// MARK: - Add as favorite to database
+
+    private func favorite() {
+        displayCancellableMessage(withTitle: L10n.addToFavorites, buttonTitle: L10n.add) {
+            self.isFavorited = false
+        } confirmAction: {
+            self.presenter.favorite()
+        }
+    }
+
+// MARK: - Delete as favorite from database
+
+    private func unfavorite() {
+        displayCancellableMessage(withTitle: L10n.deleteFromFavorites, buttonTitle: L10n.delete) {
+            self.isFavorited = true
+        } confirmAction: {
+            self.presenter.unfavorite()
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
 }
+
+//MARK: - DetailsView protocol methods
 
 extension DetailsViewController: DetailsView {
 

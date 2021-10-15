@@ -19,7 +19,7 @@ class MoviesPresenter {
         self.view = view
     }
 
-    //MARK: - Presenter methods
+    //MARK: - Public methods
 
     func loadMoviesList() {
         if movies.count == 0 {

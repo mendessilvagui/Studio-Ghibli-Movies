@@ -6,8 +6,7 @@
 //
 
 import Foundation
-import Parse
 
-protocol MoviesView: NSObject {
+protocol MoviesView: AnyObject {
     func reloadTableView()
 }
