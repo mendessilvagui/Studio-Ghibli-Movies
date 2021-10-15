@@ -31,6 +31,10 @@
 		03584418270B976C00BEB803 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03584417270B976C00BEB803 /* Validation.swift */; };
 		0374E03A268C878000E535B6 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0374E038268C878000E535B6 /* CustomTableViewCell.swift */; };
 		0374E03B268C878000E535B6 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0374E039268C878000E535B6 /* CustomTableViewCell.xib */; };
+		037654402719C5D2008A1E51 /* CurrentUserComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0376543E2719C5D2008A1E51 /* CurrentUserComments.swift */; };
+		037654412719C5D2008A1E51 /* CurrentUserComments.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0376543F2719C5D2008A1E51 /* CurrentUserComments.xib */; };
+		037654442719F9E1008A1E51 /* AllUsersComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037654422719F9E1008A1E51 /* AllUsersComments.swift */; };
+		037654452719F9E1008A1E51 /* AllUsersComments.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037654432719F9E1008A1E51 /* AllUsersComments.xib */; };
 		03848E26270F3A8700C0CA74 /* EditUserVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03848E25270F3A8700C0CA74 /* EditUserVIewModel.swift */; };
 		03848E28270F3BBE00C0CA74 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03848E27270F3BBE00C0CA74 /* ChangePasswordViewModel.swift */; };
 		03848E2A270F839100C0CA74 /* Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03848E29270F839100C0CA74 /* Update.swift */; };
@@ -106,6 +110,10 @@
 		03584417270B976C00BEB803 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		0374E038268C878000E535B6 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		0374E039268C878000E535B6 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
+		0376543E2719C5D2008A1E51 /* CurrentUserComments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserComments.swift; sourceTree = "<group>"; };
+		0376543F2719C5D2008A1E51 /* CurrentUserComments.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentUserComments.xib; sourceTree = "<group>"; };
+		037654422719F9E1008A1E51 /* AllUsersComments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUsersComments.swift; sourceTree = "<group>"; };
+		037654432719F9E1008A1E51 /* AllUsersComments.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AllUsersComments.xib; sourceTree = "<group>"; };
 		03848E25270F3A8700C0CA74 /* EditUserVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserVIewModel.swift; sourceTree = "<group>"; };
 		03848E27270F3BBE00C0CA74 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
 		03848E29270F839100C0CA74 /* Update.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Update.swift; sourceTree = "<group>"; };
@@ -178,6 +186,10 @@
 				0374E038268C878000E535B6 /* CustomTableViewCell.swift */,
 				03A36F78270E00050040217F /* ProfileTableViewCell.xib */,
 				03A36F77270E00050040217F /* ProfileTableViewCell.swift */,
+				0376543F2719C5D2008A1E51 /* CurrentUserComments.xib */,
+				0376543E2719C5D2008A1E51 /* CurrentUserComments.swift */,
+				037654432719F9E1008A1E51 /* AllUsersComments.xib */,
+				037654422719F9E1008A1E51 /* AllUsersComments.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -522,10 +534,12 @@
 				03D1599F268A533A001E3144 /* MoviesViewController.xib in Resources */,
 				0333F7D0270E187300704CFA /* ChangePasswordViewController.xib in Resources */,
 				0300D23A26CE8902009A5127 /* LogInViewController.xib in Resources */,
+				037654452719F9E1008A1E51 /* AllUsersComments.xib in Resources */,
 				03A36F7A270E00050040217F /* ProfileTableViewCell.xib in Resources */,
 				D23E9C9C264CEB2100312A56 /* Assets.xcassets in Resources */,
 				D2742D1226CC322800F0D962 /* Info.plist in Resources */,
 				0333F7C8270E182900704CFA /* EditUserViewController.xib in Resources */,
+				037654412719C5D2008A1E51 /* CurrentUserComments.xib in Resources */,
 				03A36F88270E174D0040217F /* FavoriteMoviesViewController.xib in Resources */,
 				0300D24126CEC775009A5127 /* DetailsViewController.xib in Resources */,
 			);
@@ -616,6 +630,7 @@
 				03A36F79270E00050040217F /* ProfileTableViewCell.swift in Sources */,
 				0333F7CA270E184600704CFA /* EditUserView.swift in Sources */,
 				038B82AF26B0724F0094375D /* Details.swift in Sources */,
+				037654442719F9E1008A1E51 /* AllUsersComments.swift in Sources */,
 				03584418270B976C00BEB803 /* Validation.swift in Sources */,
 				D23E9CB7264EBFF900312A56 /* DetailsViewController.swift in Sources */,
 				03A36F7C270E00F10040217F /* ProfileTableViewType.swift in Sources */,
@@ -637,6 +652,7 @@
 				03A36F76270DD3D30040217F /* FavoriteMoviesView.swift in Sources */,
 				0300D24D26CECD40009A5127 /* LogInPresenter.swift in Sources */,
 				03848E26270F3A8700C0CA74 /* EditUserVIewModel.swift in Sources */,
+				037654402719C5D2008A1E51 /* CurrentUserComments.swift in Sources */,
 				0300D24B26CECD2E009A5127 /* SignUpView.swift in Sources */,
 				0300D23C26CE96AC009A5127 /* User.swift in Sources */,
 				0333F7D4270E189700704CFA /* ChangePasswordView.swift in Sources */,
