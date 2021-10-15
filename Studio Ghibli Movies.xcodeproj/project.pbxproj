@@ -207,8 +207,8 @@
 		0327155027188DE1006DCCF2 /* About */ = {
 			isa = PBXGroup;
 			children = (
-				0327155127188E0E006DCCF2 /* AboutViewController.swift */,
 				0327155227188E0E006DCCF2 /* AboutViewController.xib */,
+				0327155127188E0E006DCCF2 /* AboutViewController.swift */,
 			);
 			path = About;
 			sourceTree = "<group>";
