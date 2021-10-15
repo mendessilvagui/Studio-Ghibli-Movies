@@ -10,13 +10,14 @@ import MBProgressHUD
 
 class DetailsViewController: UIViewController, UINavigationControllerDelegate {
 
+    @IBOutlet private weak var backgroundImageView: UIImageView!
     @IBOutlet private weak var heartButtonView: UIView!
     @IBOutlet private weak var heartButton: UIButton!
+    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var readMoreButton: UIButton!
     @IBOutlet private weak var readMoreButtonView: UIView!
-    @IBOutlet private weak var backgroundImageView: UIImageView!
-	@IBOutlet private weak var imageView: UIImageView!
-    @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var originalTitleLabel: UILabel!
     @IBOutlet private weak var originalTitleRomanLabel: UILabel!
     @IBOutlet private weak var releaseDateLabel: UILabel!
@@ -24,8 +25,8 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet private weak var rtScoreLabel: UILabel!
     @IBOutlet private weak var directorLabel: UILabel!
     @IBOutlet private weak var producerLabel: UILabel!
-    @IBOutlet private weak var descriptionLabel: UILabel!
-    @IBOutlet private weak var commentBoxLabel: UILabel!
+    @IBOutlet weak var commentsTableView: UITableView!
+    @IBOutlet weak var commentsHeightConstraint: NSLayoutConstraint!
 
     private var isFavorited: Bool = false
     public var moviesVC = MoviesViewController()
@@ -36,8 +37,8 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
 
     // MARK: - Init
 
-    init(selectedMovie: Movie) {
-        presenter = DetailsPresenter(selectedMovie: selectedMovie)
+    init(selectedMovie: Movie, user: User) {
+        presenter = DetailsPresenter(selectedMovie: selectedMovie, user: user)
 		super.init(nibName: L10n.detailsViewController, bundle: nil)
     }
 
@@ -54,6 +55,11 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
 
         self.navigationController?.delegate = self
         self.navigationItem.largeTitleDisplayMode = .never
+
+        commentsTableView.delegate = self
+        commentsTableView.dataSource = self
+        commentsTableView.register(cellType: CurrentUserComments.self)
+        commentsTableView.register(cellType: AllUsersComments.self)
 
         presenter.setView(view: self)
         presenter.start()
@@ -89,6 +95,9 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
         }
     }
 
+    @IBAction func leaveACommentPressed(_ sender: UIButton) {
+    }
+
 // MARK: - Add as favorite to database
 
     private func favorite() {
@@ -107,6 +116,17 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
         } confirmAction: {
             self.presenter.unfavorite()
         }
+    }
+}
+
+extension DetailsViewController: UITableViewDataSource, UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
     }
 }
 

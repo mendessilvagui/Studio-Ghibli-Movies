@@ -60,8 +60,9 @@ extension FavoriteMoviesViewController: UITableViewDataSource, UITableViewDelega
         if let indexPath = tableView.indexPathForSelectedRow {
 
             let movie = presenter.favoritedMovies[indexPath.row]
+            guard let user = User.current() else { return }
 
-            let detailVC = DetailsViewController(selectedMovie: movie)
+            let detailVC = DetailsViewController(selectedMovie: movie, user: user)
             detailVC.favoriteMoviesVC = self
             detailVC.favoriteMoviesVCDelegate = self
             tableView.deselectRow(at: (tableView.indexPathForSelectedRow)!, animated: false)

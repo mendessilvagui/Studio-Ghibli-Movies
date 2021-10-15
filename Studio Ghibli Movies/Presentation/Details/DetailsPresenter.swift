@@ -17,8 +17,9 @@ class DetailsPresenter {
     private var details = Details()
     private var user = User()
 
-    init(selectedMovie: Movie) {
+    init(selectedMovie: Movie, user: User) {
         self.selectedMovie = selectedMovie
+        self.user = user
     }
 
     func setView(view: DetailsView) {
@@ -53,7 +54,19 @@ class DetailsPresenter {
                 self.view?.hideIndicator()
                 self.view?.updateFavButton()
                 self.selectedMovie.childDetails = self.details
+
+                let relation = self.user.relation(forKey: "details")
+                relation.add(self.details)
+
                 self.selectedMovie.saveInBackground() {(succeeded, error)  in
+                    if (succeeded) {
+                        // Detail successfully added
+                    } else if let error = error {
+                        print(error)
+                    }
+                }
+
+                self.user.saveInBackground() {(succeeded, error)  in
                     if (succeeded) {
                         // Detail successfully added
                     } else if let error = error {
@@ -74,6 +87,7 @@ class DetailsPresenter {
                 self.view?.reloadFavoriteMoviesTableView()
                 self.view?.redirectToMenuScreen()
 				self.selectedMovie.remove(forKey: L10n.childDetails)
+                self.user.remove(forKey: "details")
                 self.selectedMovie.saveInBackground() {(succeeded, error)  in
                     if (succeeded) {
                         // Detail successfully deleted

@@ -53,6 +53,23 @@ struct DataBase {
 		}
 	}
 
+//    static func fetchAllUsersWithComments() -> Single<[User]> {
+//
+//        guard let detailsQuerry = Details.query()?
+//                .whereKeyExists("comment") else {
+//                    return Single.error(ErrorType.generic)
+//                }
+//
+//        guard let query = User.query()
+//                ?.whereKey(<#T##key: String##String#>, matchesQuery: <#T##PFQuery<PFObject>#>) else {
+//            return Single.error(ErrorType.generic)
+//        }
+//
+//        return RxParse.findObjects(query).flatMap { (users: [User]) in
+//            return Single.just(users)
+//        }
+//    }
+
     static func fetchUser(_ user: User) -> Single<User> {
         return RxParse.fetchObject(user)
     }

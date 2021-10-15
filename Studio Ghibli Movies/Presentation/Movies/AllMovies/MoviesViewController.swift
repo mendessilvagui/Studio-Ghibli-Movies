@@ -49,7 +49,6 @@ extension MoviesViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(for: indexPath) as CustomTableViewCell
 
         cell.titleLabel.text = movie.title
-        //cell.subTitleLabel.text = movie.originalTitle
 		cell.posterImageView.image = UIImage(named: L10n.poster+"\(movie.movieID)")
 
         return cell
@@ -60,8 +59,9 @@ extension MoviesViewController: UITableViewDataSource, UITableViewDelegate {
         if let indexPath = tableView.indexPathForSelectedRow {
 
             let movie = presenter.movies[indexPath.row]
+            guard let user = User.current() else { return }
 
-            let detailVC = DetailsViewController(selectedMovie: movie)
+            let detailVC = DetailsViewController(selectedMovie: movie, user: user)
             detailVC.moviesVC = self
             tableView.deselectRow(at: (tableView.indexPathForSelectedRow)!, animated: false)
 
