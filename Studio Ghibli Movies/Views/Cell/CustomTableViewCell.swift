@@ -12,7 +12,6 @@ final class CustomTableViewCell: UITableViewCell, NibReusable {
 
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var outerPosterView: UIView!
 	@IBOutlet weak var innerPosterView: UIView!
 
@@ -30,13 +29,13 @@ final class CustomTableViewCell: UITableViewCell, NibReusable {
         containerHeightAnchor.isActive = true
 
         outerPosterView.layer.cornerRadius = 10
-        outerPosterView.addShadowToView(color: UIColor.black.cgColor, radius: 5, offset: .zero, opacity: 0.75)
+        outerPosterView.addShadowToView(color: UIColor.black.cgColor, radius: 3, offset: .zero, opacity: 0.5)
 		innerPosterView.layer.cornerRadius = 10
         innerPosterView.addShadowToView(color: UIColor.black.cgColor, radius: 5, offset: .zero, opacity: 1)
 		posterImageView.layer.cornerRadius = 10
 
         titleLabel.textColor = UIColor.white
-        titleLabel.addShadowToView(color: UIColor.black.cgColor, radius: 3, offset: CGSize(width: 4, height: 4), opacity: 1)
+        titleLabel.addShadowToView(color: UIColor.black.cgColor, radius: 3, offset: CGSize(width: 2, height: 2), opacity: 0.75)
 		titleLabel.layer.masksToBounds = false
     }
 }
