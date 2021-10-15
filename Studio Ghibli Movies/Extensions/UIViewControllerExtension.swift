@@ -58,12 +58,17 @@ extension UIViewController {
                                    confirmAction: @escaping () -> Void) {
 
         let alert = UIAlertController(title: title, message: "", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: L10n.cancel, style: .cancel, handler: { (action: UIAlertAction!) in
+
+        let cancel = UIAlertAction(title: L10n.cancel, style: .destructive, handler: { (action: UIAlertAction!) in
             cancelAction()
-        }))
-        alert.addAction(UIAlertAction(title: buttonTitle ?? L10n.ok, style: .default, handler: { (action: UIAlertAction!) in
+        })
+        alert.addAction(cancel)
+
+        let confirm = UIAlertAction(title: buttonTitle ?? L10n.ok, style: .default, handler: { (action: UIAlertAction!) in
             confirmAction()
-        }))
+        })
+        alert.addAction(confirm)
+
         present(alert, animated: true, completion: nil)
     }
 
