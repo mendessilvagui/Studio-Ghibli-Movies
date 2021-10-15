@@ -15,4 +15,5 @@ protocol DetailsView: NSObject {
     func showIndicator(_ title: String)
     func hideIndicator()
     func reloadFavoriteMoviesTableView()
+    func redirectToMenuScreen()
 }

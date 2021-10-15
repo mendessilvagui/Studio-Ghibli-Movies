@@ -106,7 +106,6 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
             self.isFavorited = true
         } confirmAction: {
             self.presenter.unfavorite()
-            self.navigationController?.popViewController(animated: true)
         }
     }
 }
@@ -164,5 +163,9 @@ extension DetailsViewController: DetailsView {
 
     func reloadFavoriteMoviesTableView() {
         favoriteMoviesVCDelegate?.reloadTableView()
+    }
+
+    func redirectToMenuScreen() {
+        self.navigationController?.popViewController(animated: true)
     }
 }

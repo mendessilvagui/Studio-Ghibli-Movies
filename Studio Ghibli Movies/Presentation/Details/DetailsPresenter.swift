@@ -72,6 +72,7 @@ class DetailsPresenter {
                 self.view?.hideIndicator()
                 self.view?.updateFavButton()
                 self.view?.reloadFavoriteMoviesTableView()
+                self.view?.redirectToMenuScreen()
 				self.selectedMovie.remove(forKey: L10n.childDetails)
                 self.selectedMovie.saveInBackground() {(succeeded, error)  in
                     if (succeeded) {
